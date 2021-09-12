@@ -1,41 +1,47 @@
-#!/usr/bin/env -S /usr/bin/time --format "\tDauer %e [s] \t%U [s] User-Zeit\t%S [s] System-Zeit\t%P CPU" /usr/bin/python3 -OO
+#!/usr/bin/env -S /usr/bin/time --format "\tDauer %e [s] \t%U [s] User-Zeit\t%S [s] System-Zeit\t%P CPU" python3 -OO
 # coding=utf-8
 """Turnier-Ergebnis-Parser
 urllib.request für https nötig
 https://www.w3schools.com/xml/xpath_syntax.asp
 """
 import urllib.request
-
+from urllib.error import HTTPError
 import joblib
 from lxml.html import parse
-from pandas import DataFrame, set_option as pandas_set_option
+from pandas import DataFrame
+from pandas import set_option as pandas_set_option
 from valuefragments import ic
-from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
-from tpsprocessing import checktpsontree, ogparserurl, interpret_tps_result
+
 from dtvprocessing import get_dtv_df
+from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
+from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
 def eventurl_to_web(eventurl: str) -> None:
     """Convert URL from Event to HTML for TSH CMS."""
-    tree = parse(urllib.request.urlopen(eventurl))
-    if checktpsontree(tree):
-        ic(f"{eventurl} ist eine TPS-Veranstaltung")
-        theparsefun = ogparserurl
-        the_interpret_fun = interpret_tps_result
-    elif checkttontree(tree):
-        ic(f"{eventurl} ist eine TT-Veranstaltung")
-        theparsefun = srparserurl
-        the_interpret_fun = interpret_tt_result
+    try:
+        tree = parse(urllib.request.urlopen(eventurl))
+    except HTTPError as http_error:
+        print(http_error)
     else:
-        print(f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden.")
-        return
-    allreslinks = theparsefun(eventurl).values()
-    tsh_results = joblib.Parallel(
-        n_jobs=1 if __debug__ else -1, verbose=10 if __debug__ else 0
-    )(joblib.delayed(the_interpret_fun)(a) for a in theparsefun(eventurl).values())
-    print_tsh_web(list(allreslinks), tsh_results)
+        if checktpsontree(tree):
+            ic(f"{eventurl} ist eine TPS-Veranstaltung")
+            theparsefun = ogparserurl
+            the_interpret_fun = interpret_tps_result
+        elif checkttontree(tree):
+            ic(f"{eventurl} ist eine TT-Veranstaltung")
+            theparsefun = srparserurl
+            the_interpret_fun = interpret_tt_result
+        else:
+            print(f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden.")
+            return
+        allreslinks = theparsefun(eventurl).values()
+        tsh_results = joblib.Parallel(
+            n_jobs=1 if __debug__ else -1, verbose=10 if __debug__ else 0
+        )(joblib.delayed(the_interpret_fun)(a) for a in theparsefun(eventurl).values())
+        print_tsh_web(list(allreslinks), tsh_results)
 
 
 def checkresulturl(wrkurl: str) -> None:

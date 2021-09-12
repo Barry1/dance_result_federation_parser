@@ -78,7 +78,12 @@ python = ">=3.9"
 fastparquet = "*"
 pandas = "*"
 joblib = "*"
-valuefragments = {git = "https://github.com/Barry1/PyValueFragments", rev = "main"}
+lxml = "*"
+typing-extensions = "*"
+valuefragments = {git = "https://github.com/Barry1/PyValueFragments.git", rev = "main"}
+requests = "*"
+bs4 = "*"
+html5lib = "*"
 [tool.poetry.dev-dependencies]
 
 [build-system]
