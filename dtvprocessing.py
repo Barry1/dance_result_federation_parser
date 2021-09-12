@@ -50,9 +50,8 @@ def create_dtv_df() -> DataFrame:
                 else:  # Neuer Verein
                     # ic(tostring(eintrag))
                     orgdata = eintrag.xpath('div[@class="trigger"]/h3/text()')
-                    the_name, the_group, the_id = re.match(
-                        r"(.*)–(.*)\((\d+)\)", orgdata[0]
-                    ).groups()
+                    if tempmatch := re.match(r"(.*)–(.*)\((\d+)\)", orgdata[0]):
+                        the_name, the_group, the_id = tempmatch.groups()
                     dtv_associations.loc[int(the_id), :] = [
                         the_group.strip(),
                         cleanevfromentry(the_name),
@@ -72,7 +71,7 @@ def create_dtv_df() -> DataFrame:
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     """Retrieve dataframe of associations from Cache or Web."""
     dtv_associations_cache_file = (
-        __file__[0 : __file__.rfind("/")] + "/dtv_associations.parquet"
+        __file__[0 : __file__.rfind("/")] + "/dtv_associations.parquet"  # noqa: E203
     )
     max_cache_age_in_seconds = 7 * 24 * 60 * 60  # eine Woche
     if os.path.exists(dtv_associations_cache_file) and not (
