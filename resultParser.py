@@ -6,7 +6,8 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 """
 import urllib.request
 from urllib.error import HTTPError
-import joblib
+
+from joblib import Parallel, delayed
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
@@ -22,7 +23,8 @@ pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 def eventurl_to_web(eventurl: str) -> None:
     """Convert URL from Event to HTML for TSH CMS."""
     try:
-        tree = parse(urllib.request.urlopen(eventurl))
+        with urllib.request.urlopen(eventurl) as openedurl:
+            tree = parse(openedurl)
     except HTTPError as http_error:
         print(http_error)
     else:
@@ -38,9 +40,9 @@ def eventurl_to_web(eventurl: str) -> None:
             print(f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden.")
             return
         allreslinks = theparsefun(eventurl).values()
-        tsh_results = joblib.Parallel(
+        tsh_results = Parallel(
             n_jobs=1 if __debug__ else -1, verbose=10 if __debug__ else 0
-        )(joblib.delayed(the_interpret_fun)(a) for a in theparsefun(eventurl).values())
+        )(delayed(the_interpret_fun)(a) for a in theparsefun(eventurl).values())
         print_tsh_web(list(allreslinks), tsh_results)
 
 
@@ -62,14 +64,14 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
     print("<!-- ===================================================== -->")
     for actreslink, value in zip(allreslinks, tsh_results):
         lastpos = actreslink.rfind("/")  # type: int
-        TurnierInfo = actreslink[
+        turnier_info = actreslink[
             actreslink.rfind("/", 0, lastpos) + 1 : lastpos
         ]  # type: str
         print(
             '<h1><a href="'
             + actreslink
             + '" target="_blank" rel="noopener">'
-            + TurnierInfo
+            + turnier_info
             + "</a></h1>"
         )
         if value[value.Verband == "TSH"].empty:
@@ -109,14 +111,14 @@ def print_tsh_web_alt(allreslinks: list[str], tsh_results: list[DataFrame]) -> N
     print("<!-- ===================================================== -->")
     for currresnum, value in enumerate(tsh_results):
         lastpos = allreslinks[currresnum].rfind("/")
-        TurnierInfo = allreslinks[currresnum][
+        turnier_info = allreslinks[currresnum][
             allreslinks[currresnum].rfind("/", 0, lastpos) + 1 : lastpos
         ]
         print(
             '<h1><a href="'
             + allreslinks[currresnum]
             + '" target="_blank" rel="noopener">'
-            + TurnierInfo
+            + turnier_info
             + "</a></h1>"
         )
         if value[value.Verband == "TSH"].empty:
