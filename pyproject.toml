@@ -2,14 +2,14 @@
 # Cool info <https://blog.pilosus.org/posts/2019/12/26/python-third-party-tools-configuration/>
 # https://github.com/hhatto/autopep8/blob/master/README.rst#pyproject-toml
 [tool.autopep8]
-max_line_length = 88
+max_line_length = 79
 in-place = true
 recursive = true
 jobs = 0
 
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 [tool.black]
-#line-length = 88
+#line-length = 79
 target-version = ['py39'] #'py37', 'py38',
 color = true
 safe = true
@@ -24,7 +24,7 @@ lint = ["pylint", "mypy", "flake8"]
 log_level = "INFO"
 
 [tool.flake8]
-max-line-length = 88
+max-line-length = 79
 
 # https://interrogate.readthedocs.io/en/latest/#configuration
 [tool.interrogate]
@@ -46,6 +46,13 @@ skip = "venv"
 
 [pylama.pep8]
 max_line_length = 88
+
+[pylama.pycodestyle]
+max_line_length = 88
+
+[pylama.pylint]
+max_line_length = 88
+
 
 [tool.pylint.MASTER]
 jobs = 0

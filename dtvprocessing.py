@@ -44,7 +44,7 @@ def create_dtv_df() -> DataFrame:
         while tempfound:
             # ic(len(tempfound))
             for eintrag in tempfound:
-                if eintrag.tag == "h3":  # Neuer Ortsangabe
+                if eintrag.tag == "h3":  # Neue Ortsangabe
                     # ic("Neuer Ort: " + eintrag.text)
                     the_place = eintrag.text
                 else:  # Neuer Verein
@@ -52,11 +52,11 @@ def create_dtv_df() -> DataFrame:
                     orgdata = eintrag.xpath('div[@class="trigger"]/h3/text()')
                     if tempmatch := re.match(r"(.*)–(.*)\((\d+)\)", orgdata[0]):
                         the_name, the_group, the_id = tempmatch.groups()
-                    dtv_associations.loc[int(the_id), :] = [
-                        the_group.strip(),
-                        cleanevfromentry(the_name),
-                        the_place.strip(),
-                    ]
+                        dtv_associations.loc[int(the_id), :] = [
+                            the_group.strip(),
+                            cleanevfromentry(the_name),
+                            the_place.strip(),
+                        ]
             login_data["seite"] += 1
             tempfound = (
                 fromstring(sess_context.post(search_url, data=login_data).content)
