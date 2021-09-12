@@ -4,8 +4,8 @@
 urllib.request für https nötig
 https://www.w3schools.com/xml/xpath_syntax.asp
 """
-import urllib.request
 from urllib.error import HTTPError
+from urllib.request import urlopen
 
 from joblib import Parallel, delayed
 from lxml.html import parse
@@ -23,7 +23,7 @@ pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 def eventurl_to_web(eventurl: str) -> None:
     """Convert URL from Event to HTML for TSH CMS."""
     try:
-        with urllib.request.urlopen(eventurl) as openedurl:
+        with urlopen(eventurl) as openedurl:
             tree = parse(openedurl)
     except HTTPError as http_error:
         print(http_error)
@@ -48,7 +48,7 @@ def eventurl_to_web(eventurl: str) -> None:
 
 def checkresulturl(wrkurl: str) -> None:
     """Check URL if TT or TPS."""
-    with urllib.request.urlopen(wrkurl) as urlrequest:
+    with urlopen(wrkurl) as urlrequest:
         tree = parse(urlrequest)
         if checktpsontree(tree):
             print(wrkurl + " ist TPS")
