@@ -1,0 +1,116 @@
+"""Module for TopTurnier-specific functions."""
+from urllib.error import HTTPError
+
+from bs4 import BeautifulSoup, SoupStrainer
+from pandas import DataFrame, concat, read_html
+from requests import get as requests_get
+
+from dtvprocessing import get_dtv_df
+from stringprocessing import clean_number_from_couple, cleanevfromentry
+
+
+def checkttontree(the_e_tree) -> bool:
+    """Sucht in einem lxml-Tree nach Hinweisen dafür,
+    ob das eine HTML-Seite von TopTurnier von Stefan Rath ist.
+    Konkret wird nach einem Link auf die Homepage topturnier.de gesucht.
+    Da die Schreibweise TopTurnier auch gefunden werden soll und lower-case
+    nicht mit lxml funktioniert (XPATH2.0-Funktion) wird mit translate gearbeitet.
+    """
+    return bool(
+        the_e_tree.xpath(
+            "//meta[contains(translate(@content,"
+            '"ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ",'
+            '"abcdefghijklmnopqrstuvwxyzäöü"),"topturnier")]'
+        )
+    )
+
+
+def srparserurl(baseurlwith: str) -> dict:
+    """Parse S. Rath TopTurnier URL.
+
+    Basiert auf BeautifulSoup,
+    benötigt für eine exemplarische Seite
+    http://tsa.de.cool/20190914_Senioren 196 ms.
+    """
+    assert baseurlwith.endswith(
+        ("index.htm", "index.html")
+    ), 'URL muss auf "/" und index.htm[l] enden'
+    baseurl = baseurlwith[0 : baseurlwith.rfind("/")]
+    tournmtsdict = {}
+    for eintrag in BeautifulSoup(
+        requests_get(baseurlwith).text,
+        features="lxml",
+        parse_only=SoupStrainer("a"),
+    )("span"):
+        tournmtsdict.update({eintrag.text: baseurl + "/" + eintrag.parent["href"]})
+    return tournmtsdict
+
+
+def tt_from_erg(theresulturl: str) -> DataFrame:
+    """Process erg.html from TopTurnier resultpage."""
+    assert theresulturl.endswith("erg.htm"), f"{theresulturl} endet nicht auf erg.htm"
+    tab1tbl = read_html(
+        requests_get(theresulturl).text.replace("<BR>", "</td><td>"),
+        attrs={"class": "tab1"},
+    )
+    try:
+        tab2tbl = read_html(
+            requests_get(theresulturl).text.replace("<BR>", "</td><td>"),
+            attrs={"class": "tab2"},
+        )
+    except ValueError:
+        erg_df = concat(tab1tbl)
+        # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
+        erg_df.dropna(axis=0, subset=erg_df.columns[0:3], inplace=True)
+        # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
+        erg_df.dropna(axis=1, inplace=True)
+        erg_df = erg_df.iloc[:, [0, -2, -1]]
+    else:
+        erg_df = concat([*tab1tbl, *tab2tbl])
+        # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
+        erg_df.dropna(axis=0, subset=erg_df.columns[0:3], inplace=True)
+        # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
+        erg_df.dropna(axis=1, inplace=True)
+        erg_df = erg_df.iloc[:, [0, 1, 2]]
+    erg_df.columns = ["Platz", "Paar", "Verein"]
+    # Nur Zeilen behalten, bei denen ein "." im Platz ist
+    erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
+    erg_df.loc[:, "Paar"] = erg_df.Paar.map(clean_number_from_couple)
+    erg_df.loc[:, "Verein"] = erg_df.Verein.map(cleanevfromentry)
+    # erg_df['ordercol']=erg_df['Platz'].apply(lambda x:int(x[0:x.find('.')]))
+    # erg_df=erg_df.sort_values(by='ordercol').drop('ordercol', axis=1)
+    # "inner" ging, sortiere falsch#.sort_values(by="Platz")
+    return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")
+
+
+def tt_from_ergwert(theresulturl: str) -> DataFrame:
+    """Process ergwert from topturnier."""
+    assert theresulturl.endswith(
+        "ergwert.htm"
+    ), f"{theresulturl} endet nicht auf ergwert.htm"
+    ergwert = read_html(theresulturl, attrs={"class": "tab1"})[0]
+    return ergwert[ergwert[2].str.isnumeric()].iloc[:, 0:3]
+
+
+def interpret_tt_result(theresulturl: str) -> DataFrame:
+    """Process TopTurnier URL."""
+    assert theresulturl.endswith(
+        "index.htm"
+    ), "Es muss die index.htm-URL vom Turnier (nicht Veranstaltung) angegeben werden"
+    # print(theresulturl)
+    theresulturl = theresulturl.replace("index.htm", "erg.htm")
+    try:
+        return tt_from_erg(theresulturl)
+    except HTTPError as http_error:
+        print(
+            f"Beim tt_from_erg von {theresulturl} trat der HTTPError {http_error} auf"
+        )
+        return DataFrame(columns=["Platz", "Paar", "Verein", "Verband", "Ort"])
+    except ValueError as value_error:
+        print(
+            f"Beim tt_from_erg von {theresulturl} trat der ValueError {value_error} auf"
+        )
+        return DataFrame(columns=["Platz", "Paar", "Verein", "Verband", "Ort"])
+    except Exception as general_exception:
+        print(f"Beim tt_from_erg von {theresulturl} trat {general_exception} auf")
+        return DataFrame(columns=["Platz", "Paar", "Verein", "Verband", "Ort"])
