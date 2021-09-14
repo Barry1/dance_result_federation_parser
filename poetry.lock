@@ -271,7 +271,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "c8398808503d6fe383674186d0ac14b146f3d010"
+resolved_reference = "1585aa2e6b8e4917209ea49a984441a165d091cf"
 
 [[package]]
 name = "webencodings"
