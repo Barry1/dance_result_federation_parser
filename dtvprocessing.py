@@ -3,10 +3,9 @@ import os
 import re
 import time
 
-import requests
-import urllib3
 from lxml.html import fromstring
 from pandas import DataFrame, read_parquet
+from requests import Session, urllib3  # type:ignore
 from valuefragments import ic
 
 from stringprocessing import cleanevfromentry
@@ -23,7 +22,7 @@ def create_dtv_df() -> DataFrame:
         '//*[@id="mod_vereinssuche_formular"]/input[@name="REQUEST_TOKEN"]/@value'
     )
     xpath_for_orgs = '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
-    with requests.Session() as sess_context:
+    with Session() as sess_context:
         sess_context.verify = False
         rqtoken = fromstring(sess_context.get(search_url).content).xpath(
             xpath_for_token
@@ -52,7 +51,7 @@ def create_dtv_df() -> DataFrame:
                     orgdata = eintrag.xpath('div[@class="trigger"]/h3/text()')
                     if tempmatch := re.match(r"(.*)–(.*)\((\d+)\)", orgdata[0]):
                         the_name, the_group, the_id = tempmatch.groups()
-                        dtv_associations.loc[int(the_id), :] = [
+                        dtv_associations.loc[int(the_id)] = [  # type:ignore
                             the_group.strip(),
                             cleanevfromentry(the_name),
                             the_place.strip(),
