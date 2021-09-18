@@ -46,7 +46,7 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
             parse_only=SoupStrainer("a"),
         )("span"),
     ):
-        if (the_parent := eintrag.parent) != None and not isinstance(
+        if (the_parent := eintrag.parent) is not None and not isinstance(
             href_val := the_parent["href"], list
         ):
             tournmtsdict.update({eintrag.text: baseurl + "/" + href_val})

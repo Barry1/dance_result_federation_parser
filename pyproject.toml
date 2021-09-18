@@ -53,7 +53,6 @@ max_line_length = 88
 [pylama.pylint]
 max_line_length = 88
 
-
 [tool.pylint.MASTER]
 jobs = 0
 output-format = "colorized"
@@ -81,17 +80,25 @@ description = ""
 authors = ["Ebeling, Dr. Bastian <bastian.ebeling@web.de>"]
 
 [tool.poetry.dependencies]
-python = ">=3.9"
+bs4 = "*"
 fastparquet = "*"
-pandas = "*"
+html5lib = "*"
 joblib = "*"
 lxml = "*"
-typing-extensions = "*"
-valuefragments = {git = "https://github.com/Barry1/PyValueFragments.git", rev = "main"}
+pandas = "*"
+python = ">=3.9,<4"
 requests = "*"
-bs4 = "*"
-html5lib = "*"
+typing = { version = "*", python = "<3.5" }
+typing-extensions = "*"
+valuefragments = { git = "https://github.com/Barry1/PyValueFragments.git", rev = "main" }
+
 [tool.poetry.dev-dependencies]
+black = "*"
+isort = "*"
+mypy = "*"
+pylama = "*"
+pyre-check ="*"
+pytype = { version = "*", python = "<=3.7" }
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
