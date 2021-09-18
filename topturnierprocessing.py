@@ -1,7 +1,8 @@
 """Module for TopTurnier-specific functions."""
 from urllib.error import HTTPError
-
+from typing import cast
 from bs4 import BeautifulSoup, SoupStrainer
+from bs4.element import ResultSet, Tag
 from pandas import DataFrame, concat, read_html
 from requests import get as requests_get
 
@@ -36,13 +37,19 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
         ("index.htm", "index.html")
     ), 'URL muss auf "/" und index.htm[l] enden'
     baseurl: str = baseurlwith[0 : baseurlwith.rfind("/")]
-    tournmtsdict = {}
-    for eintrag in BeautifulSoup(
-        requests_get(baseurlwith).text,
-        features="lxml",
-        parse_only=SoupStrainer("a"),
-    )("span"):
-        tournmtsdict.update({eintrag.text: baseurl + "/" + eintrag.parent["href"]})
+    tournmtsdict: dict[str, str] = {}
+    for eintrag in cast(
+        ResultSet[Tag],
+        BeautifulSoup(
+            requests_get(baseurlwith).text,
+            features="lxml",
+            parse_only=SoupStrainer("a"),
+        )("span"),
+    ):
+        if (the_parent := eintrag.parent) != None and not isinstance(
+            href_val := the_parent["href"], list
+        ):
+            tournmtsdict.update({eintrag.text: baseurl + "/" + href_val})
     return tournmtsdict
 
 
