@@ -20,7 +20,7 @@ def checktpsontree(the_e_tree) -> bool:
     )
 
 
-def ogparserurl(baseurl: str) -> dict:
+def ogparserurl(baseurl: str) -> dict[str, str]:
     """Parse results from O. Gröhns competition software."""
     assert not baseurl.endswith(
         ("/", "index.htm", "index.html")
@@ -62,7 +62,7 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
     tps_result_df = tps_result_df[
         to_numeric(tps_result_df.Startnummer, errors="coerce").notnull()
     ]
-    with option_context("mode.chained_assignment", None):
-        tps_result_df.loc[:, "Verein"] = tps_result_df.Verein.map(cleanevfromentry)
+    # with option_context("mode.chained_assignment", None):
+    tps_result_df.loc[:, "Verein"] = tps_result_df.Verein.map(cleanevfromentry)
     # Sortierung korrigert
     return tps_result_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")

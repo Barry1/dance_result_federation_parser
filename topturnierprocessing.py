@@ -25,7 +25,7 @@ def checkttontree(the_e_tree) -> bool:
     )
 
 
-def srparserurl(baseurlwith: str) -> dict:
+def srparserurl(baseurlwith: str) -> dict[str, str]:
     """Parse S. Rath TopTurnier URL.
 
     Basiert auf BeautifulSoup,
@@ -35,7 +35,7 @@ def srparserurl(baseurlwith: str) -> dict:
     assert baseurlwith.endswith(
         ("index.htm", "index.html")
     ), 'URL muss auf "/" und index.htm[l] enden'
-    baseurl = baseurlwith[0 : baseurlwith.rfind("/")]
+    baseurl: str = baseurlwith[0 : baseurlwith.rfind("/")]
     tournmtsdict = {}
     for eintrag in BeautifulSoup(
         requests_get(baseurlwith).text,
@@ -99,18 +99,19 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     ), "Es muss die index.htm-URL vom Turnier (nicht Veranstaltung) angegeben werden"
     # print(theresulturl)
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
+    ret_df = DataFrame(columns=["Platz", "Paar", "Verein", "Verband", "Ort"])
     try:
-        return tt_from_erg(theresulturl)
+        ret_df = tt_from_erg(theresulturl)
     except HTTPError as http_error:
         print(
             f"Beim tt_from_erg von {theresulturl} trat der HTTPError {http_error} auf"
         )
-        return DataFrame(columns=["Platz", "Paar", "Verein", "Verband", "Ort"])
     except ValueError as value_error:
         print(
             f"Beim tt_from_erg von {theresulturl} trat der ValueError {value_error} auf"
         )
-        return DataFrame(columns=["Platz", "Paar", "Verein", "Verband", "Ort"])
     except Exception as general_exception:
         print(f"Beim tt_from_erg von {theresulturl} trat {general_exception} auf")
-        return DataFrame(columns=["Platz", "Paar", "Verein", "Verband", "Ort"])
+        raise
+    finally:
+        return ret_df

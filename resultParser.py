@@ -4,6 +4,7 @@
 urllib.request für https nötig
 https://www.w3schools.com/xml/xpath_syntax.asp
 """
+from typing import Callable
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
@@ -28,6 +29,7 @@ def eventurl_to_web(eventurl: str) -> None:
     except HTTPError as http_error:
         print(http_error)
     else:
+        the_interpret_fun: Callable[[str], DataFrame]
         if checktpsontree(tree):
             ic(f"{eventurl} ist eine TPS-Veranstaltung")
             theparsefun = ogparserurl
@@ -40,7 +42,7 @@ def eventurl_to_web(eventurl: str) -> None:
             print(f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden.")
             return
         allreslinks = theparsefun(eventurl).values()
-        tsh_results = Parallel(
+        tsh_results: list[DataFrame] = Parallel(
             n_jobs=1 if __debug__ else -1, verbose=10 if __debug__ else 0
         )(delayed(the_interpret_fun)(a) for a in theparsefun(eventurl).values())
         print_tsh_web(list(allreslinks), tsh_results)
@@ -58,10 +60,12 @@ def checkresulturl(wrkurl: str) -> None:
 
 def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
     """Export data as HTML for TSH-CMS."""
-    print("<p>Einleitende Worte.</p>")
-    print('<hr id="system-readmore" />')
-    print("<p>Noch mehr einleitende Worte.</p>")
-    print("<!-- ===================================================== -->")
+    print(
+        "<p>Einleitende Worte.</p>",
+        '<hr id="system-readmore" />',
+        "<p>Noch mehr einleitende Worte.</p>",
+        "<!-- ===================================================== -->",
+    )
     for actreslink, value in zip(allreslinks, tsh_results):
         lastpos = actreslink.rfind("/")  # type: int
         turnier_info = actreslink[
