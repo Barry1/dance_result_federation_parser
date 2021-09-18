@@ -3,7 +3,7 @@ from urllib.parse import quote
 from urllib.request import urlopen
 
 from lxml.html import parse
-from pandas import DataFrame, option_context, read_html, to_numeric
+from pandas import DataFrame, read_html, to_numeric  # , option_context
 
 from dtvprocessing import get_dtv_df
 from stringprocessing import cleanevfromentry  # ,clean_number_from_couple

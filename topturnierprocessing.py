@@ -113,5 +113,4 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     except Exception as general_exception:
         print(f"Beim tt_from_erg von {theresulturl} trat {general_exception} auf")
         raise
-    finally:
-        return ret_df
+    return ret_df
