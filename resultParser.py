@@ -29,6 +29,7 @@ def eventurl_to_web(eventurl: str) -> None:
     except HTTPError as http_error:
         print(http_error)
     else:
+        theparsefun: Callable[[str], dict[str, str]]
         the_interpret_fun: Callable[[str], DataFrame]
         if checktpsontree(tree):
             ic(f"{eventurl} ist eine TPS-Veranstaltung")
