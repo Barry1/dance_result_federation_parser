@@ -90,13 +90,14 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")
 
 
-def tt_from_ergwert(theresulturl: str) -> DataFrame:
+''' def tt_from_ergwert(theresulturl: str) -> DataFrame:
     """Process ergwert from topturnier."""
     assert theresulturl.endswith(
         "ergwert.htm"
     ), f"{theresulturl} endet nicht auf ergwert.htm"
     ergwert = read_html(theresulturl, attrs={"class": "tab1"})[0]
     return ergwert[ergwert[2].str.isnumeric()].iloc[:, 0:3]
+ '''
 
 
 def interpret_tt_result(theresulturl: str) -> DataFrame:
