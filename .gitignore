@@ -1,3 +1,4 @@
 dtv_associations.parquet
 __pycache__/
 *.out
+out/
