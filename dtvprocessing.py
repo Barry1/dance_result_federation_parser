@@ -50,12 +50,14 @@ def create_dtv_df() -> DataFrame:
                     # ic(tostring(eintrag))
                     orgdata = eintrag.xpath('div[@class="trigger"]/h3/text()')
                     if tempmatch := re.match(r"(.*)–(.*)\((\d+)\)", orgdata[0]):
+                        the_group: str
                         the_name, the_group, the_id = tempmatch.groups()
-                        dtv_associations.loc[int(the_id)] = [  # type:ignore
-                            the_group.strip(),
-                            cleanevfromentry(the_name),
-                            the_place.strip(),
-                        ]
+                        if the_group is not None:
+                            dtv_associations.loc[int(the_id)] = [  # type:ignore
+                                the_group.strip(),
+                                cleanevfromentry(the_name),
+                                the_place.strip(),
+                            ]
             login_data["seite"] += 1
             tempfound = (
                 fromstring(sess_context.post(search_url, data=login_data).content)

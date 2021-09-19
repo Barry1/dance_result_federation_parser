@@ -9,6 +9,7 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 
 from joblib import Parallel, delayed
+from lxml.etree import _ElementTree
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
@@ -25,7 +26,7 @@ def eventurl_to_web(eventurl: str) -> None:
     """Convert URL from Event to HTML for TSH CMS."""
     try:
         with urlopen(eventurl) as openedurl:
-            tree = parse(openedurl)
+            tree: _ElementTree = parse(openedurl)
     except HTTPError as http_error:
         print(http_error)
     else:

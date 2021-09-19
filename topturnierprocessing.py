@@ -1,6 +1,7 @@
 """Module for TopTurnier-specific functions."""
-from urllib.error import HTTPError
 from typing import cast
+from urllib.error import HTTPError
+
 from bs4 import BeautifulSoup, SoupStrainer
 from bs4.element import ResultSet, Tag
 from pandas import DataFrame, concat, read_html
