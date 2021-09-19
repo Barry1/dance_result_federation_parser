@@ -49,14 +49,14 @@ def eventurl_to_web(eventurl: str) -> None:
         print_tsh_web(list(allreslinks), tsh_results)
 
 
-def checkresulturl(wrkurl: str) -> None:
+''' def checkresulturl(wrkurl: str) -> None:
     """Check URL if TT or TPS."""
     with urlopen(wrkurl) as urlrequest:
         tree = parse(urlrequest)
         if checktpsontree(tree):
             print(wrkurl + " ist TPS")
         if checkttontree(tree):
-            print(wrkurl + " ist TT")
+            print(wrkurl + " ist TT") '''
 
 
 def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
@@ -108,7 +108,7 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
         print("<!-- ===================================================== -->")
 
 
-def print_tsh_web_alt(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
+''' def print_tsh_web_alt(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
     """Old implementation to build data for TSH-CMS."""
     print("<p>Einleitende Worte.</p>")
     print('<hr id="system-readmore" />')
@@ -142,7 +142,7 @@ def print_tsh_web_alt(allreslinks: list[str], tsh_results: list[DataFrame]) -> N
                 )
             print("</ul>")
         print("<!-- ===================================================== -->")
-
+ '''
 
 if __name__ == "__main__":
     # execute only if run as a script
