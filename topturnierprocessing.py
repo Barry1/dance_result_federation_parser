@@ -2,8 +2,9 @@
 from typing import cast
 from urllib.error import HTTPError
 
-from bs4 import BeautifulSoup, SoupStrainer
-from bs4.element import ResultSet, Tag
+from bs4 import BeautifulSoup
+from bs4.element import ResultSet, SoupStrainer, Tag
+from lxml.etree import _ElementTree
 from pandas import DataFrame, concat, read_html
 from requests import get as requests_get
 
@@ -11,7 +12,7 @@ from dtvprocessing import get_dtv_df
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
 
-def checkttontree(the_e_tree) -> bool:
+def checkttontree(the_e_tree: _ElementTree) -> bool:
     """Sucht in einem lxml-Tree nach Hinweisen dafür,
     ob das eine HTML-Seite von TopTurnier von Stefan Rath ist.
     Konkret wird nach einem Link auf die Homepage topturnier.de gesucht.
