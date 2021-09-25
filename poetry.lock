@@ -602,17 +602,26 @@ version = "0.1.1"
 description = "Testing installation of Package"
 category = "main"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.7"
 develop = false
 
 [package.dependencies]
 typing-extensions = "*"
+vermin = "*"
 
 [package.source]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "37a8866ebd0283fcd6eb838d322bea7269037652"
+resolved_reference = "ce817e45206032f054f594c8545c6a9fa05be89b"
+
+[[package]]
+name = "vermin"
+version = "1.2.2"
+description = "Concurrently detect the minimum Python versions needed to run code"
+category = "main"
+optional = false
+python-versions = ">=2.7"
 
 [[package]]
 name = "webencodings"
@@ -1099,6 +1108,9 @@ urllib3 = [
     {file = "urllib3-1.26.7.tar.gz", hash = "sha256:4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece"},
 ]
 valuefragments = []
+vermin = [
+    {file = "vermin-1.2.2-py2.py3-none-any.whl", hash = "sha256:5dfa0a36bdd6a73a925e417a452df5b0c7afcebc01362439409b5cf56ee8a6f2"},
+]
 webencodings = [
     {file = "webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"},
     {file = "webencodings-0.5.1.tar.gz", hash = "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"},
