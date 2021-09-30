@@ -613,7 +613,7 @@ vermin = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "37101c8ac3457050eed14d9b405188a4d36e53ee"
+resolved_reference = "d3599a957e442c1dac1e48af4d4b29bcd2d9447b"
 
 [[package]]
 name = "vermin"
