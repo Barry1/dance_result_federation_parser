@@ -625,7 +625,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<4"
-content-hash = "42a90172368b76a24b53d6ff6b14e7c3ce85a6f79d99569864fa8f6e7bdbeb4e"
+content-hash = "fe45bf7904ff423608dd69ecd4d49f56d4557898ff7867fcc7c6102f7367cb20"
 
 [metadata.files]
 async-generator = [
