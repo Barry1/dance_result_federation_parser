@@ -22,11 +22,11 @@ out/%.pyi: %.py
 	stubgen $^
 
 formatting:
-	poetry run isort --python-version 39 --profile black *.py
-	poetry run black *.py
+	poetry run isort --python-version 39 --profile black $(OBJS)
+	poetry run black $(OBJS)
 
 vulture:
-	-poetry run vulture .
+	-poetry run vulture $(OBJS)
 
 pytype:
 	-poetry run pytype --keep-going --protocols --precise-return $(OBJS)
