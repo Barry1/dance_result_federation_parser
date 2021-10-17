@@ -1,26 +1,32 @@
 MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 
-.PHONY: ALL pylint mypy isort black vulture pytype
+.PHONY: ALL pylint mypy isort black vulture pytype poetryprep
 
 OBJS=dtvprocessing.py resultParser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py
 
 ALL: pylint mypy formatting vulture pytype
 
+poetryprep:
+	sudo apt install python3-distutils
+	poetry env use $$(which python3.9)
+	poetry update
+	poetry install
+
 pylint:
-	-pylint $(OBJS)
+	-poetry run pylint $(OBJS)
 
 mypy:
-	-mypy --install-types --non-interactive $(OBJS)
+	-poetry run mypy --install-types --non-interactive $(OBJS)
 
 out/%.pyi: %.py
 	stubgen $^
 
 formatting:
-	isort .
-	black .
+	poetry run isort --python-version 39 --profile black *.py
+	poetry run black *.py
 
 vulture:
-	-vulture .
+	-poetry run vulture .
 
 pytype:
-	-pytype --keep-going --protocols --precise-return $(OBJS)
+	-poetry run pytype --keep-going --protocols --precise-return $(OBJS)
