@@ -99,7 +99,7 @@ black = "*"
 isort = "*"
 mypy = "*"
 pylama = "*"
-# pyre-check = "*"
+pyre-check = {version="*", platform="linux"}
 pytype = { version = "*", python = "<=3.7" }
 
 [build-system]
