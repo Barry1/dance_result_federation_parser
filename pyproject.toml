@@ -87,7 +87,8 @@ html5lib = "*"
 joblib = "*"
 lxml = "*"
 pandas = "*"
-python = ">=3.9,<4"
+#python = ">=3.9,<4"
+python = "~3.9"
 requests = "*"
 typing = { version = "*", python = "<3.5" }
 typing-extensions = "*"
@@ -98,7 +99,7 @@ black = "*"
 isort = "*"
 mypy = "*"
 pylama = "*"
-pyre-check = "*"
+# pyre-check = "*"
 pytype = { version = "*", python = "<=3.7" }
 
 [build-system]
