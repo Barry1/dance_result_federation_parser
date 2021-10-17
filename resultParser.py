@@ -51,16 +51,6 @@ def eventurl_to_web(eventurl: str) -> None:
         print_tsh_web(list(allreslinks), tsh_results)
 
 
-''' def checkresulturl(wrkurl: str) -> None:
-    """Check URL if TT or TPS."""
-    with urlopen(wrkurl) as urlrequest:
-        tree = parse(urlrequest)
-        if checktpsontree(tree):
-            print(wrkurl + " ist TPS")
-        if checkttontree(tree):
-            print(wrkurl + " ist TT") '''
-
-
 def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
     """Export data as HTML for TSH-CMS."""
     print(
@@ -90,7 +80,7 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
             )
             print(
                 '<img src="https://loremflickr.com/150/200/ballroom-dancing"'
-                'alt="Beispielfoto" height="200" />'
+                ' alt="Beispielfoto" height="200" />'
             )
             print("<br />Foto: loremflickr.com</div>")
             print("<ul>")
@@ -109,42 +99,6 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
             print("</ul>")
         print("<!-- ===================================================== -->")
 
-
-''' def print_tsh_web_alt(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
-    """Old implementation to build data for TSH-CMS."""
-    print("<p>Einleitende Worte.</p>")
-    print('<hr id="system-readmore" />')
-    print("<p>Noch mehr einleitende Worte.</p>")
-    print("<!-- ===================================================== -->")
-    for currresnum, value in enumerate(tsh_results):
-        lastpos = allreslinks[currresnum].rfind("/")
-        turnier_info = allreslinks[currresnum][
-            allreslinks[currresnum].rfind("/", 0, lastpos) + 1 : lastpos
-        ]
-        print(
-            '<h1><a href="'
-            + allreslinks[currresnum]
-            + '" target="_blank" rel="noopener">'
-            + turnier_info
-            + "</a></h1>"
-        )
-        if value[value.Verband == "TSH"].empty:
-            print("<p>Leider ohne TSH-Beteiligung.</p>")
-        else:
-            print("<ul>")
-            for resline in value[value.Verband == "TSH"].iterrows():
-                print(
-                    "<li>"
-                    + resline[1].Platz
-                    + " "
-                    + resline[1].Paar
-                    + " ("
-                    + resline[1].Verein
-                    + ")</li>"
-                )
-            print("</ul>")
-        print("<!-- ===================================================== -->")
- '''
 
 if __name__ == "__main__":
     # execute only if run as a script
