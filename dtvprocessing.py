@@ -10,6 +10,8 @@ from valuefragments import ic
 
 from stringprocessing import cleanevfromentry
 
+PARQUETENGINE = "fastparquet"  # the others seem not to work engine{‘auto’, ‘pyarrow’, ‘’}, default ‘auto’
+
 
 def create_dtv_df() -> DataFrame:
     """Build dataframe from all organisations taken from DTV-Website."""
@@ -86,12 +88,11 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
             ".",
         )
         dtv_associations = read_parquet(
-            dtv_associations_cache_file, engine="fastparquet"
+            dtv_associations_cache_file, engine=PARQUETENGINE
         )
     else:  # Keine Cache-Datei vorhanden
         ic("Aktuelle DTV-Vereinsdaten werden geholt.")
         dtv_associations = create_dtv_df()
-        # ,compression="snappy","GZIP",,engine='fastparquet',compression=None
-        dtv_associations.to_parquet(dtv_associations_cache_file, engine="fastparquet")
+        dtv_associations.to_parquet(dtv_associations_cache_file, engine=PARQUETENGINE)
         ic("DTV-Vereinsdaten aktualisiert.")
     return dtv_associations
