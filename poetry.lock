@@ -407,7 +407,7 @@ pyflakes = ">=1.5.0"
 
 [[package]]
 name = "pyre-check"
-version = "0.9.7"
+version = "0.9.8"
 description = "A performant type checker for Python"
 category = "dev"
 optional = false
@@ -621,7 +621,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "4ef55d7a0920bcf72ed1353f35fe2f81099aaad0"
+resolved_reference = "62730c9deaf84f5ab51c2c8d7e4aab3290b22c2e"
 
 [[package]]
 name = "webencodings"
@@ -974,9 +974,9 @@ pylama = [
     {file = "pylama-7.7.1.tar.gz", hash = "sha256:9bae53ef9c1a431371d6a8dca406816a60d547147b60a4934721898f553b7d8f"},
 ]
 pyre-check = [
-    {file = "pyre-check-0.9.7.tar.gz", hash = "sha256:ada3d317129787183bb21e41cdc24fcd25641cadd407c7e83a8e28273a67357b"},
-    {file = "pyre_check-0.9.7-py3-none-macosx_10_11_x86_64.whl", hash = "sha256:238f5a6f5997c5356294396bd707e2fd2c5dd442c3718c1cfa71a4cf239f43e2"},
-    {file = "pyre_check-0.9.7-py3-none-manylinux1_x86_64.whl", hash = "sha256:4178fd706cdeda5b2a761dafa8e08c201c6d910a07a7f0e4972f2a796a3c890a"},
+    {file = "pyre-check-0.9.8.tar.gz", hash = "sha256:cf17eab5a4ded18d2ef06bf7b4d60a3270891d2fd5111f0aa76a88f86ab70d76"},
+    {file = "pyre_check-0.9.8-py3-none-macosx_10_11_x86_64.whl", hash = "sha256:1b814fe31a9c24eb46091fd21d9666d73cf27c9d744043143be6ba5e6afed34e"},
+    {file = "pyre_check-0.9.8-py3-none-manylinux1_x86_64.whl", hash = "sha256:37d78c9084c14e40154ee019619ba166dbdbba1f6d043febda40370b5482ae0a"},
 ]
 pyre-extensions = [
     {file = "pyre-extensions-0.0.22.tar.gz", hash = "sha256:202ec79bbeee6a8d09ebeaa987a4014d52470a16ec57624bbe97258285970c77"},
