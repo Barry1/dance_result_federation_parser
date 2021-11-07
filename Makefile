@@ -2,7 +2,7 @@ MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 
 .PHONY: ALL pylint mypy isort black vulture pytype poetryprep
 
-OBJS=dtvprocessing.py resultParser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py
+OBJS=dtvprocessing.py resultParser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py singleResultParser.py
 
 ALL: pylint mypy formatting vulture pytype
 
