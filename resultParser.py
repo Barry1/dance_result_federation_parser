@@ -4,7 +4,7 @@
 urllib.request für https nötig
 https://www.w3schools.com/xml/xpath_syntax.asp
 """
-from typing import Callable
+from typing import Callable, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
@@ -45,9 +45,12 @@ def eventurl_to_web(eventurl: str) -> None:
             print(f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden.")
             return
         allreslinks = theparsefun(eventurl).values()
-        tsh_results: list[DataFrame] = Parallel(
-            n_jobs=1 if __debug__ else -1, verbose=10 if __debug__ else 0
-        )(delayed(the_interpret_fun)(a) for a in theparsefun(eventurl).values())
+        tsh_results: list[DataFrame] = cast(
+            list[DataFrame],
+            Parallel(n_jobs=1 if __debug__ else -1, verbose=10 if __debug__ else 0)(
+                delayed(the_interpret_fun)(a) for a in theparsefun(eventurl).values()
+            ),
+        )
         print_tsh_web(list(allreslinks), tsh_results)
 
 
