@@ -8,11 +8,13 @@ import asyncio
 from typing import Callable, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
+
 from joblib import Parallel, delayed
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
 from valuefragments import ic
+
 from dtvprocessing import get_dtv_df
 from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
@@ -157,4 +159,7 @@ if __name__ == "__main__":
         ]
         for theurl in urlszumpruefen:
             print(f"Geprüft wird die Funktion anhand von {theurl}")
-            eventurl_to_web(theurl)
+            if RUN_ASYNC:
+                asyncio.run(async_eventurl_to_web(theurl))
+            else:
+                eventurl_to_web(theurl)
