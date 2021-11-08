@@ -87,12 +87,15 @@ html5lib = "*"
 joblib = "*"
 lxml = "*"
 pandas = "*"
-#python = ">=3.9,<4"
-python = "~3.9"
+python = ">=3.9,<4"
+#python = "~3.9"
 requests = "*"
 typing = { version = "*", python = "<3.5" }
 typing-extensions = "*"
 valuefragments = { git = "https://github.com/Barry1/PyValueFragments.git", rev = "main" }
+colorama = "*"
+radon = "*"
+pylint = "*"
 
 [tool.poetry.dev-dependencies]
 black = "*"
