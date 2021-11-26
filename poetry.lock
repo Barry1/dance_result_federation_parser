@@ -448,7 +448,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "pylama"
-version = "8.0.4"
+version = "8.0.6"
 description = "Code audit tool for python"
 category = "dev"
 optional = false
@@ -660,7 +660,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "types-requests"
-version = "2.26.0"
+version = "2.26.1"
 description = "Typing stubs for requests"
 category = "dev"
 optional = false
@@ -1161,8 +1161,8 @@ pyflakes = [
     {file = "pyflakes-2.4.0.tar.gz", hash = "sha256:05a85c2872edf37a4ed30b0cce2f6093e1d0581f8c19d7393122da7e25b2b24c"},
 ]
 pylama = [
-    {file = "pylama-8.0.4-py3-none-any.whl", hash = "sha256:c5d9694733aaf7b6f55cfcf418537faccec2449f5d1a98247584ebe8f810b843"},
-    {file = "pylama-8.0.4.tar.gz", hash = "sha256:a5b5bce51579ba2c25997108cebf4116a5164f915e49c0d0c89bfc1631e750eb"},
+    {file = "pylama-8.0.6-py3-none-any.whl", hash = "sha256:66e313c5b0c017f6ea003c272c9271d1421eb1756c6b06b9fd7eca2c75f1b343"},
+    {file = "pylama-8.0.6.tar.gz", hash = "sha256:07a22f34bd8199a3808291bbe54d2b6e3de7e3717f64ad106c28ff0085a2ae50"},
 ]
 pylint = [
     {file = "pylint-2.12.1-py3-none-any.whl", hash = "sha256:b4b5a7b6d04e914a11c198c816042af1fb2d3cda29bb0c98a9c637010da2a5c5"},
@@ -1310,8 +1310,8 @@ tomli = [
     {file = "tomli-1.2.2.tar.gz", hash = "sha256:c6ce0015eb38820eaf32b5db832dbc26deb3dd427bd5f6556cf0acac2c214fee"},
 ]
 types-requests = [
-    {file = "types-requests-2.26.0.tar.gz", hash = "sha256:df5ec8c34b413a42ebb38e4f96bdeb68090b875bdfcc5138dc82989c95445883"},
-    {file = "types_requests-2.26.0-py3-none-any.whl", hash = "sha256:809b5dcd3c408ac39d11d593835b6aff32420b3e7ddb79c7f3e823330f040466"},
+    {file = "types-requests-2.26.1.tar.gz", hash = "sha256:0893e112e1510bbb67f537941c92192de7472e51bf7f236e0e583866f0ed933e"},
+    {file = "types_requests-2.26.1-py3-none-any.whl", hash = "sha256:853571b3accc188976c0f4feffcaebf6cdfc170082b5e43f3358aa78de61f531"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.0.0-py3-none-any.whl", hash = "sha256:829704698b22e13ec9eaf959122315eabb370b0884400e9818334d8b677023d9"},
