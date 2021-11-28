@@ -154,7 +154,7 @@ lzo = ["python-lzo"]
 
 [[package]]
 name = "fsspec"
-version = "2021.11.0"
+version = "2021.11.1"
 description = "File-system specification"
 category = "main"
 optional = false
@@ -448,7 +448,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "pylama"
-version = "8.0.6"
+version = "8.1.4"
 description = "Code audit tool for python"
 category = "dev"
 optional = false
@@ -872,8 +872,8 @@ fastparquet = [
     {file = "fastparquet-0.7.2.tar.gz", hash = "sha256:3c4bd638260357df55a9e71d0bd797c12f14f691a61dfd91a66f5b8d2a247683"},
 ]
 fsspec = [
-    {file = "fsspec-2021.11.0-py3-none-any.whl", hash = "sha256:8843f31c7a7bb1afc4add371948f10701814594d407ee1b0bb4facec8b517efa"},
-    {file = "fsspec-2021.11.0.tar.gz", hash = "sha256:cbb7bafd59aa33684a92e843877f4adc0109fb0722b1a26e7d08f5a6e2500904"},
+    {file = "fsspec-2021.11.1-py3-none-any.whl", hash = "sha256:bcb136caa37e1470dd8314a7d3917cb9b25dd9da44c10d36df556ab4ef038185"},
+    {file = "fsspec-2021.11.1.tar.gz", hash = "sha256:03683e606651d5e4bd9180525d57477bd5430e5dc68d2e459835dc14cecc3dd4"},
 ]
 future = [
     {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
@@ -1161,8 +1161,8 @@ pyflakes = [
     {file = "pyflakes-2.4.0.tar.gz", hash = "sha256:05a85c2872edf37a4ed30b0cce2f6093e1d0581f8c19d7393122da7e25b2b24c"},
 ]
 pylama = [
-    {file = "pylama-8.0.6-py3-none-any.whl", hash = "sha256:66e313c5b0c017f6ea003c272c9271d1421eb1756c6b06b9fd7eca2c75f1b343"},
-    {file = "pylama-8.0.6.tar.gz", hash = "sha256:07a22f34bd8199a3808291bbe54d2b6e3de7e3717f64ad106c28ff0085a2ae50"},
+    {file = "pylama-8.1.4-py3-none-any.whl", hash = "sha256:f37898cd32c52529dd5e54c8c5dfc299afb7ffd5299e381be7d3ff5523eddd8e"},
+    {file = "pylama-8.1.4.tar.gz", hash = "sha256:b920198cd3d22b7a3f288eca3e937258670561139cbb3400d29c28060bc489d0"},
 ]
 pylint = [
     {file = "pylint-2.12.1-py3-none-any.whl", hash = "sha256:b4b5a7b6d04e914a11c198c816042af1fb2d3cda29bb0c98a9c637010da2a5c5"},
