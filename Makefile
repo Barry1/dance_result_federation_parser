@@ -19,7 +19,7 @@ mypy:
 	-poetry run mypy --install-types --non-interactive $(OBJS)
 
 out/%.pyi: %.py
-	stubgen $^
+	poetry run stubgen $^
 
 formatting:
 	poetry run isort --python-version 39 --profile black $(OBJS)
