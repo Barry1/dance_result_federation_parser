@@ -6,6 +6,9 @@ OBJS=dtvprocessing.py resultParser.py stringprocessing.py topturnierprocessing.p
 
 ALL: pylint mypy formatting vulture pytype
 
+testruns:
+	poetry run ./resultParser.py https://turniere.btc-gruen-gold.de/bb2022 > BlausBand2022.txt
+
 poetryprep:
 	sudo apt install python3-distutils
 	poetry env use $$(which python3.9)
