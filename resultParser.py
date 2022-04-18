@@ -136,6 +136,8 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
         print("<!-- ===================================================== -->")
 
 
+__ALL__ = ["interpret_tt_result", "print_tsh_web"]
+
 if __name__ == "__main__":
     # execute only if run as a script
     import sys

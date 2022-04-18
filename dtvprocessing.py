@@ -37,12 +37,13 @@ def create_dtv_df() -> DataFrame:
             "landesverband[]": "",
             "seite": 0,
         }
-        tempfound = (
-            fromstring(sess_context.post(search_url, data=login_data).content)
+        while (
+            tempfound := fromstring(
+                sess_context.post(search_url, data=login_data).content
+            )
             .xpath(xpath_for_orgs)[0]
             .getchildren()
-        )
-        while tempfound:
+        ):
             # ic(len(tempfound))
             for eintrag in tempfound:
                 if eintrag.tag == "h3":  # Neue Ortsangabe
@@ -55,17 +56,12 @@ def create_dtv_df() -> DataFrame:
                         the_group: str
                         the_name, the_group, the_id = tempmatch.groups()
                         if the_group is not None:
-                            dtv_associations.loc[int(the_id)] = [  # type:ignore
+                            dtv_associations.loc[int(the_id)] = [
                                 the_group.strip(),
                                 cleanevfromentry(the_name),
                                 the_place.strip(),
                             ]
             login_data["seite"] += 1
-            tempfound = (
-                fromstring(sess_context.post(search_url, data=login_data).content)
-                .xpath(xpath_for_orgs)[0]
-                .getchildren()
-            )
     ic(dtv_associations.describe())
     ic(dtv_associations[["Verband", "Verein"]].groupby("Verband").count())
     return dtv_associations.sort_index()
@@ -74,7 +70,7 @@ def create_dtv_df() -> DataFrame:
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     """Retrieve dataframe of associations from Cache or Web."""
     dtv_associations_cache_file = (
-        __file__[0 : __file__.rfind("/")] + "/dtv_associations.parquet"  # noqa: E203
+        __file__[: __file__.rfind("/")] + "/dtv_associations.parquet"  # noqa: E203
     )
     max_cache_age_in_seconds = 7 * 24 * 60 * 60  # eine Woche
     if os.path.exists(dtv_associations_cache_file) and not (
