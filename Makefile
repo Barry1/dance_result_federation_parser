@@ -4,18 +4,27 @@ MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 
 OBJS=dtvprocessing.py resultParser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py singleResultParser.py
 
+runme=poetry run python -OO ./resultParser.py
+
 ALL: pylint mypy formatting vulture pytype
 
-testruns: BlausBand2018.txt BlausBand2019.txt BlausBand2022.txt
+testruns: BlausBand2018.txt BlausBand2019.txt BlausBand2022.txt HolmOstern2022.txt
 
 BlauesBand2018.txt:
-	poetry run python -OO ./resultParser.py http://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm > BlauesBand2018.txt 2> BlauesBand2018.err
+	$(runme) http://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm > $@ 2> $(@:.txt=.err)
 
 BlauesBand2019.txt:
-	poetry run python -OO ./resultParser.py http://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm > BlauesBand2019.txt 2> BlauesBand2019.err
+	$(runme) http://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm > $@ 2> $(@:.txt=.err)
 
 BlauesBand2022.txt:
-	poetry run python -OO ./resultParser.py https://turniere.btc-gruen-gold.de/bb2022/index.htm > BlauesBand2022.txt 2> BlauesBand2022.err
+	$(runme) https://turniere.btc-gruen-gold.de/bb2022/index.htm > $@ 2> $(@:.txt=.err)
+
+HolmOstern2022.txt:
+	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/freitag/index.htm > $@ 2> $(@:.txt=.err)
+	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/samstag/index.htm >> $@ 2>> $(@:.txt=.err)
+	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/sonntag/index.htm >> $@ 2>> $(@:.txt=.err)
+	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/montag/index.htm >> $@ 2>> $(@:.txt=.err)
+
 
 poetryprep:
 	sudo apt install python3-distutils
