@@ -7,6 +7,7 @@ from bs4.element import ResultSet, SoupStrainer, Tag
 from lxml.etree import _ElementTree
 from pandas import DataFrame, concat, read_html
 from requests import get as requests_get
+from valuefragments import eprint
 
 from dtvprocessing import get_dtv_df
 from stringprocessing import clean_number_from_couple, cleanevfromentry
@@ -103,14 +104,14 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     try:
         ret_df = tt_from_erg(theresulturl)
     except HTTPError as http_error:
-        print(
+        eprint(
             f"Beim tt_from_erg von {theresulturl} trat der HTTPError {http_error} auf"
         )
     except ValueError as value_error:
-        print(
+        eprint(
             f"Beim tt_from_erg von {theresulturl} trat der ValueError {value_error} auf"
         )
     except Exception as general_exception:
-        print(f"Beim tt_from_erg von {theresulturl} trat {general_exception} auf")
+        eprint(f"Beim tt_from_erg von {theresulturl} trat {general_exception} auf")
         raise
     return ret_df
