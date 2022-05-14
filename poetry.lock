@@ -762,7 +762,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
 name = "valuefragments"
-version = "0.1.3"
+version = "0.1.4"
 description = "Testing installation of Package"
 category = "main"
 optional = false
@@ -776,7 +776,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "18cf6036ce1d5883cef9e8397e6c2a6f90aea0a4"
+resolved_reference = "3749241802fa19aead719c501a56a24ddf61e6e1"
 
 [[package]]
 name = "webencodings"
