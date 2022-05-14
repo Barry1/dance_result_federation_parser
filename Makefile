@@ -10,6 +10,9 @@ ALL: pylint mypy formatting vulture pytype
 
 testruns: BlausBand2018.txt BlausBand2019.txt BlausBand2022.txt HolmOstern2022.txt
 
+HessenTanzt2022.txt:
+	$(runme) https://www.hessen-tanzt.de/media/ht2022/index.htm > $@ 2> $(@:.txt=.err)
+
 BlauesBand2018.txt:
 	$(runme) http://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm > $@ 2> $(@:.txt=.err)
 
