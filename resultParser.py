@@ -20,6 +20,7 @@ from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 RUN_ASYNC = True
+IMG_PREP = False
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
@@ -108,18 +109,19 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
             + "</a></h1>"
         )
         if value[value.Verband == "TSH"].empty:
-            print("<p>Leider ohne TSH-Beteiligung.</p>")
+            print("<p>Leider ohne TSH-Beteiligung.</p>", file=sys.stderr)
         else:
-            print(
-                '<div style="float: right; margin-left: 10px;'
-                ' text-align: center;font-size: 8pt;">'
-            )
-            print(
-                '<img src="https://loremflickr.com/150/200/ballroom-dancing"'
-                ' alt="Beispielfoto" height="200" />'
-            )
-            print("<br />Foto: loremflickr.com</div>")
-            print("<ul>")
+            if IMG_PREP:
+                print(
+                    '<div style="float: right; margin-left: 10px;'
+                    ' text-align: center;font-size: 8pt;">'
+                )
+                print(
+                    '<img src="https://loremflickr.com/150/200/ballroom-dancing"'
+                    ' alt="Beispielfoto" height="200" />'
+                )
+                print("<br />Foto: loremflickr.com</div>")
+                print("<ul>")
             for resline in value[value.Verband == "TSH"].iterrows():
                 # display(resline)
                 # display(resline[1])
