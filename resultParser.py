@@ -13,7 +13,7 @@ from joblib import Parallel, delayed
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
-from valuefragments import ic
+from valuefragments import eprint, ic
 
 from dtvprocessing import get_dtv_df
 from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
@@ -98,10 +98,8 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
     )
     for actreslink, value in zip(allreslinks, tsh_results):
         lastpos = actreslink.rfind("/")  # type: int
-        turnier_info = actreslink[
-            actreslink.rfind("/", 0, lastpos) + 1 : lastpos
-        ]  # type: str
-        print(
+        turnier_info: str = actreslink[actreslink.rfind("/", 0, lastpos) + 1 : lastpos]
+        tournhdr: str = (
             '<h1><a href="'
             + actreslink
             + '" target="_blank" rel="noopener">'
@@ -109,8 +107,11 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
             + "</a></h1>"
         )
         if value[value.Verband == "TSH"].empty:
-            print("<p>Leider ohne TSH-Beteiligung.</p>", file=sys.stderr)
+            eprint(tournhdr)
+            eprint("<p>Leider ohne TSH-Beteiligung.</p>")
+            eprint("<!-- ===================================================== -->")
         else:
+            print(tournhdr)
             if IMG_PREP:
                 print(
                     '<div style="float: right; margin-left: 10px;'
@@ -135,7 +136,7 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
                     + ")</li>"
                 )
             print("</ul>")
-        print("<!-- ===================================================== -->")
+            print("<!-- ===================================================== -->")
 
 
 __ALL__ = ["interpret_tt_result", "print_tsh_web"]
