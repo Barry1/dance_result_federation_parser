@@ -10,7 +10,7 @@ jobs = 0
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 [tool.black]
 #line-length = 79
-target-version = ['py39'] #'py37', 'py38',
+target-version = ['py310'] #'py37', 'py38',
 color = true
 safe = true
 
@@ -39,7 +39,7 @@ show_error_context = true
 
 [tool.isort]
 # https://pycqa.github.io/isort/docs/configuration/options
-py_version = 39
+py_version = 310
 color_output = true
 profile = "black"
 skip = "venv"
@@ -87,7 +87,7 @@ html5lib = "*"
 joblib = "*"
 lxml = "*"
 pandas = "*"
-python = "^3.10"
+python = "~3.10"
 requests = "*"
 typing = { version = "*", python = "<3.5" }
 typing-extensions = "*"
@@ -97,10 +97,13 @@ radon = "*"
 pylint = "*"
 mypy = "^0.942"
 
+
 [tool.poetry.dev-dependencies]
 black = "*"
 isort = "*"
 mypy = "*"
+nuitka = "^0.8.3"
+ordered-set = "^4.1.0"
 pylama = "*"
 pyre-check = {version="*", platform="linux"}
 pytype = { version = "*", python = "<=3.7" }
