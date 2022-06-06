@@ -97,14 +97,11 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
         "<!-- ===================================================== -->",
     )
     for actreslink, value in zip(allreslinks, tsh_results):
-        lastpos = actreslink.rfind("/")  # type: int
+        lastpos: int = actreslink.rfind("/")
         turnier_info: str = actreslink[actreslink.rfind("/", 0, lastpos) + 1 : lastpos]
         tournhdr: str = (
-            '<h1><a href="'
-            + actreslink
-            + '" target="_blank" rel="noopener">'
-            + turnier_info
-            + "</a></h1>"
+            f'<h1><a href="{actreslink}" target="_blank" '
+            f'rel="noopener">{turnier_info}</a></h1>'
         )
         if value[value.Verband == "TSH"].empty:
             eprint(tournhdr)
@@ -122,18 +119,12 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
                     ' alt="Beispielfoto" height="200" />'
                 )
                 print("<br />Foto: loremflickr.com</div>")
-                print("<ul>")
+            print("<ul>")
             for resline in value[value.Verband == "TSH"].iterrows():
                 # display(resline)
                 # display(resline[1])
                 print(
-                    "<li>"
-                    + resline[1].Platz
-                    + " "
-                    + resline[1].Paar
-                    + " ("
-                    + resline[1].Verein
-                    + ")</li>"
+                    f"<li>{resline[1].Platz} {resline[1].Paar} ({resline[1].Verein})</li>"
                 )
             print("</ul>")
             print("<!-- ===================================================== -->")
