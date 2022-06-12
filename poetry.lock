@@ -718,7 +718,7 @@ use_chardet_on_py3 = ["chardet (>=3.0.2,<5)"]
 
 [[package]]
 name = "setuptools"
-version = "62.3.3"
+version = "62.3.4"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
 category = "main"
 optional = false
@@ -893,7 +893,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "8886c999c8ef5b2d05a287123e1d84b78c739936"
+resolved_reference = "1cc18920d32a4cad82bf7974e1475470ab3b6daa"
 
 [[package]]
 name = "webencodings"
@@ -1459,8 +1459,8 @@ requests = [
     {file = "requests-2.28.0.tar.gz", hash = "sha256:d568723a7ebd25875d8d1eaf5dfa068cd2fc8194b2e483d7b1f7c81918dbec6b"},
 ]
 setuptools = [
-    {file = "setuptools-62.3.3-py3-none-any.whl", hash = "sha256:d1746e7fd520e83bbe210d02fff1aa1a425ad671c7a9da7d246ec2401a087198"},
-    {file = "setuptools-62.3.3.tar.gz", hash = "sha256:e7d11f3db616cda0751372244c2ba798e8e56a28e096ec4529010b803485f3fe"},
+    {file = "setuptools-62.3.4-py3-none-any.whl", hash = "sha256:30b6b0fbacc459c90d27a63e6173facfc8b8c99a48fb24b5044f459ba63cd6cf"},
+    {file = "setuptools-62.3.4.tar.gz", hash = "sha256:1f5d3a1502812025cdb2e5609b6af2d207332e3f50febe6db10ed3a59b2f155f"},
 ]
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
