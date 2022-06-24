@@ -102,11 +102,12 @@ mypy = "^0.942"
 black = "*"
 isort = "*"
 mypy = "*"
-nuitka = "^0.8.3"
-ordered-set = "^4.1.0"
+nuitka = "*"
+ordered-set = "*"
 pylama = "*"
 pyre-check = {version="*", platform="linux"}
-pytype = { version = "*", python = "<=3.7" }
+pytype = "*"
+#{ version = "*", python = "<=3.7" }
 types-requests = "*"
 
 [build-system]
