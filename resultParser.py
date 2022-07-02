@@ -11,6 +11,7 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 
 from joblib import Parallel, delayed
+from lxml.etree import _ElementTree
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
@@ -19,7 +20,7 @@ from valuefragments import eprint
 from dtvprocessing import get_dtv_df
 from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
-
+PYANNOTATE=False
 thelogger = logging.getLogger("TSH.resultParser")
 logformatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -40,7 +41,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
     """Async convert URL from Event to HTML for TSH CMS."""
     try:
         with urlopen(eventurl) as openedurl:
-            tree = await asyncio.to_thread(parse, openedurl)
+            tree: _ElementTree = await asyncio.to_thread(parse, openedurl)
     except HTTPError as http_error:
         thelogger.exception(http_error)
     else:
@@ -75,7 +76,7 @@ def eventurl_to_web(eventurl: str) -> None:
     """Convert URL from Event to HTML for TSH CMS."""
     try:
         with urlopen(eventurl) as openedurl:
-            tree = parse(openedurl)
+            tree: _ElementTree = parse(openedurl)
     except HTTPError as http_error:
         thelogger.exception(http_error)
     else:
@@ -108,6 +109,7 @@ def human_comp_info(turnier_info: str) -> str:
     """Convert URL part to human words."""
     thelogger.debug("%s: %s", "TEST", turnier_info)
     [comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split("_", 2)
+    comp_num
     comp_desc = comp_desc.upper()
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
     comp_desc = comp_desc.replace("SEN", "Senioren ")
@@ -183,9 +185,12 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
 
 
 __ALL__ = ["interpret_tt_result", "print_tsh_web"]
-
 if __name__ == "__main__":
     # execute only if run as a script
+    if PYANNOTATE:
+        from pyannotate_runtime import collect_types
+        collect_types.init_types_collection()
+        collect_types.start()
     import sys
 
     if len(sys.argv) > 1:
@@ -206,8 +211,11 @@ if __name__ == "__main__":
             "http://tsk-buchholz.de/images/Tanzclub/Sparten/Turniertanz/GLM%202020.02.29",
         ]
         for theurl in urlszumpruefen:
-            thelogger.info(f"Geprüft wird die Funktion anhand von {theurl}")
+            thelogger.info("Geprüft wird die Funktion anhand von %s", theurl)
             if RUN_ASYNC:
                 asyncio.run(async_eventurl_to_web(theurl))
             else:
                 eventurl_to_web(theurl)
+    if PYANNOTATE:
+        collect_types.stop()
+        collect_types.dump_stats('type_info.json')
