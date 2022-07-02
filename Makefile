@@ -5,10 +5,26 @@ MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 OBJS=dtvprocessing.py resultParser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py singleResultParser.py
 
 runme=poetry run python -OO ./resultParser.py
+runmesingle=poetry run python -OO ./singleResultParser.py
 
 ALL: pylint mypy formatting vulture pytype
 
-testruns: BlausBand2018.txt BlausBand2019.txt BlausBand2022.txt HolmOstern2022.txt
+testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern2022.txt
+
+danceComp_2022.txt:
+	$(runme) https://ergebnisse.dancecomp.de/2022/index.htm  > $@ 2> $(@:.txt=.err)
+
+BalSen_2022.txt:
+	$(runme) https://tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm > $@ 2> $(@:.txt=.err)
+
+DC_HGR-A_LAT_2022.txt:
+	$(runmesingle) https://www.boston-club.de/ergebnis/dchgralat2022/index.htm > $@ 2> $(@:.txt=.err)
+
+DM_SENII_STD_2022.txt:
+	$(runmesingle) https://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/0-dm_sen2sstd/index.htm > $@ 2> $(@:.txt=.err)
+
+BadBevensen_2022.txt:
+	$(runme) https://www.tanzsport-biedermann.de/results/pfingsten22/index.html > $@ 2> $(@:.txt=.err)
 
 DSF_2022.txt:
 	$(runme) https://ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm > $@ 2> $(@:.txt=.err)
