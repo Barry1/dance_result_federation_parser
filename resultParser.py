@@ -82,16 +82,16 @@ def eventurl_to_web(eventurl: str) -> None:
         theparsefun: Callable[[str], dict[str, str]]
         the_interpret_fun: Callable[[str], DataFrame]
         if checktpsontree(tree):
-            thelogger.info(f"{eventurl} ist eine TPS-Veranstaltung")
+            thelogger.info("%s ist eine TPS-Veranstaltung", eventurl)
             theparsefun = ogparserurl
             the_interpret_fun = interpret_tps_result
         elif checkttontree(tree):
-            thelogger.info(f"{eventurl} ist eine TT-Veranstaltung")
+            thelogger.info("%s ist eine TT-Veranstaltung", eventurl)
             theparsefun = srparserurl
             the_interpret_fun = interpret_tt_result
         else:
             thelogger.debug(
-                f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden."
+                "Die URL %s kann weder TPS noch TT zugeordnet werden.", eventurl
             )
             return
         allreslinks = theparsefun(eventurl).values()
@@ -104,9 +104,10 @@ def eventurl_to_web(eventurl: str) -> None:
         print_tsh_web(list(allreslinks), tsh_results)
 
 
-def humanCompInfo(turnier_info: str) -> str:
+def human_comp_info(turnier_info: str) -> str:
+    """Convert URL part to human words."""
     thelogger.debug("%s: %s", "TEST", turnier_info)
-    [compNum, compDate, comp_desc] = turnier_info.replace("-", "_").split("_", 2)
+    [comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split("_", 2)
     comp_desc = comp_desc.upper()
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
     comp_desc = comp_desc.replace("SEN", "Senioren ")
@@ -118,7 +119,7 @@ def humanCompInfo(turnier_info: str) -> str:
     comp_desc = comp_desc.replace("4", " IV ")
     comp_desc = comp_desc.replace("5", " V ")
     comp_desc = comp_desc.replace("  ", " ")
-    comp_desc_human = compDate[:2] + "." + compDate[2:] + "."  # compNum+':'+
+    comp_desc_human = comp_date[:2] + "." + comp_date[2:] + "."  # comp_num+':'+
     if comp_desc.startswith("WDSF"):
         comp_desc_human += " WDSF " + comp_desc[4:].strip()
     else:
@@ -140,7 +141,7 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
     )
     for actreslink, value in zip(allreslinks, tsh_results):
         lastpos: int = actreslink.rfind("/")
-        turnier_info: str = humanCompInfo(
+        turnier_info: str = human_comp_info(
             actreslink[actreslink.rfind("/", 0, lastpos) + 1 : lastpos]
         )
         tournhdr: str = (
@@ -189,7 +190,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         for theurl in sys.argv[1:]:
-            thelogger.info(f"Auswertung von {theurl}")
+            thelogger.info("Auswertung von %s", theurl)
             if RUN_ASYNC:
                 asyncio.run(async_eventurl_to_web(theurl))
             else:

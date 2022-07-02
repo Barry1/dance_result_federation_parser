@@ -3,6 +3,8 @@ import logging
 from typing import cast
 from urllib.error import HTTPError
 
+import pandas
+
 thelogger = logging.getLogger("TSH.resultParser")
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, SoupStrainer, Tag
@@ -73,14 +75,14 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     except ValueError:
         erg_df = concat(tab1tbl)
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
-        erg_df.dropna(axis=0, subset=erg_df.columns[0:3], inplace=True)
+        erg_df.dropna(axis=0, subset=erg_df.columns[:3], inplace=True)
         # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
         erg_df.dropna(axis=1, inplace=True)
         erg_df = erg_df.iloc[:, [0, -2, -1]]
     else:
         erg_df = concat([*tab1tbl, *tab2tbl])
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
-        erg_df.dropna(axis=0, subset=erg_df.columns[0:3], inplace=True)
+        erg_df.dropna(axis=0, subset=erg_df.columns[:3], inplace=True)
         # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
         erg_df.dropna(axis=1, inplace=True)
         erg_df = erg_df.iloc[:, [0, 1, 2]]
@@ -89,7 +91,7 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
     erg_df.loc[:, "Paar"] = erg_df.Paar.map(clean_number_from_couple)
     erg_df.loc[:, "Verein"] = erg_df.Verein.map(cleanevfromentry)
-    # erg_df['ordercol']=erg_df['Platz'].apply(lambda x:int(x[0:x.find('.')]))
+    # erg_df['ordercol']=erg_df['Platz'].apply(lambda x:int(x[:x.find('.')]))
     # erg_df=erg_df.sort_values(by='ordercol').drop('ordercol', axis=1)
     # "inner" ging, sortiere falsch#.sort_values(by="Platz")
     return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")
@@ -106,16 +108,20 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     try:
         ret_df = tt_from_erg(theresulturl)
     except HTTPError as http_error:
-        thelogger.exception(
-            f"Beim tt_from_erg von {theresulturl} trat der HTTPError {http_error} auf"
+        thelogger.warning(
+            "Beim tt_from_erg von %s trat der HTTPError %s auf",
+            theresulturl,
+            http_error,
         )
     except ValueError as value_error:
-        thelogger.exception(
-            f"Beim tt_from_erg von {theresulturl} trat der ValueError {value_error} auf"
+        thelogger.debug(
+            "Beim tt_from_erg von %s trat der ValueError %s auf",
+            theresulturl,
+            value_error,
         )
     except Exception as general_exception:
         thelogger.exception(
-            f"Beim tt_from_erg von {theresulturl} trat {general_exception} auf"
+            "Beim tt_from_erg von %s trat %s auf", theresulturl, general_exception
         )
         raise
     return ret_df
