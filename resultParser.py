@@ -116,8 +116,8 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
         lastpos: int = actreslink.rfind("/")
         turnier_info: str = actreslink[actreslink.rfind("/", 0, lastpos) + 1 : lastpos]
         tournhdr: str = (
-            f'<h1><a href="{actreslink}" target="_blank" '
-            f'rel="noopener">{turnier_info}</a></h1>'
+            f'<h2><a href="{actreslink}" target="_blank" '
+            f'rel="noopener">{turnier_info}</a></h2>'
         )
         if value[value.Verband == "TSH"].empty:
             eprint(tournhdr)
