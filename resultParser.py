@@ -5,6 +5,7 @@ urllib.request für https nötig
 https://www.w3schools.com/xml/xpath_syntax.asp
 """
 import asyncio
+import logging
 from typing import Callable, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
@@ -13,7 +14,7 @@ from joblib import Parallel, delayed
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
-from valuefragments import eprint, ic
+from valuefragments import eprint
 
 from dtvprocessing import get_dtv_df
 from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
@@ -30,20 +31,22 @@ async def async_eventurl_to_web(eventurl: str) -> None:
         with urlopen(eventurl) as openedurl:
             tree = await asyncio.to_thread(parse, openedurl)
     except HTTPError as http_error:
-        print(http_error)
+        logging.exception(http_error)
     else:
         theparsefun: Callable[[str], dict[str, str]]
         the_interpret_fun: Callable[[str], DataFrame]
         if checktpsontree(tree):
-            ic(f"{eventurl} ist eine TPS-Veranstaltung")
+            logging.info(f"{eventurl} ist eine TPS-Veranstaltung")
             theparsefun = ogparserurl
             the_interpret_fun = interpret_tps_result
         elif checkttontree(tree):
-            ic(f"{eventurl} ist eine TT-Veranstaltung")
+            logging.info(f"{eventurl} ist eine TT-Veranstaltung")
             theparsefun = srparserurl
             the_interpret_fun = interpret_tt_result
         else:
-            print(f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden.")
+            logging.debug(
+                f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden."
+            )
             return
         allreslinks = theparsefun(eventurl).values()
         tsh_results: list[DataFrame] = list(
@@ -63,20 +66,22 @@ def eventurl_to_web(eventurl: str) -> None:
         with urlopen(eventurl) as openedurl:
             tree = parse(openedurl)
     except HTTPError as http_error:
-        print(http_error)
+        logging.exception(http_error)
     else:
         theparsefun: Callable[[str], dict[str, str]]
         the_interpret_fun: Callable[[str], DataFrame]
         if checktpsontree(tree):
-            ic(f"{eventurl} ist eine TPS-Veranstaltung")
+            logging.info(f"{eventurl} ist eine TPS-Veranstaltung")
             theparsefun = ogparserurl
             the_interpret_fun = interpret_tps_result
         elif checkttontree(tree):
-            ic(f"{eventurl} ist eine TT-Veranstaltung")
+            logging.info(f"{eventurl} ist eine TT-Veranstaltung")
             theparsefun = srparserurl
             the_interpret_fun = interpret_tt_result
         else:
-            print(f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden.")
+            logging.debug(
+                f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden."
+            )
             return
         allreslinks = theparsefun(eventurl).values()
         tsh_results: list[DataFrame] = cast(
