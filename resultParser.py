@@ -56,7 +56,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             the_interpret_fun = interpret_tt_result
         else:
             thelogger.debug(
-                f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden."
+                "Die URL %s kann weder TPS noch TT zugeordnet werden.", eventurl
             )
             return
         allreslinks = theparsefun(eventurl).values()
@@ -104,17 +104,45 @@ def eventurl_to_web(eventurl: str) -> None:
         print_tsh_web(list(allreslinks), tsh_results)
 
 
+def humanCompInfo(turnier_info: str) -> str:
+    thelogger.debug("%s: %s", "TEST", turnier_info)
+    [compNum, compDate, comp_desc] = turnier_info.replace("-", "_").split("_", 2)
+    comp_desc = comp_desc.upper()
+    comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
+    comp_desc = comp_desc.replace("SEN", "Senioren ")
+    comp_desc = comp_desc.replace("LAT", " Latein ")
+    comp_desc = comp_desc.replace("STD", " Standard ")
+    comp_desc = comp_desc.replace("1", " I ")
+    comp_desc = comp_desc.replace("2", " II ")
+    comp_desc = comp_desc.replace("3", " III ")
+    comp_desc = comp_desc.replace("4", " IV ")
+    comp_desc = comp_desc.replace("5", " V ")
+    comp_desc = comp_desc.replace("  ", " ")
+    comp_desc_human = compDate[:2] + "." + compDate[2:] + "."  # compNum+':'+
+    if comp_desc.startswith("WDSF"):
+        comp_desc_human += " WDSF " + comp_desc[4:].strip()
+    else:
+        comp_desc_human += " DTV " + comp_desc[3:].strip()
+    thelogger.debug("%s: %s", "TEST", comp_desc_human)
+    return comp_desc_human
+
+
 def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
     """Export data as HTML for TSH-CMS."""
     print(
         "<p>Einleitende Worte.</p>",
         '<hr id="system-readmore" />',
-        "<p>Noch mehr einleitende Worte.</p>",
+        "<p>Hier folgend die Ergebnisse",
+        "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",
+        "der TSH-Paare.",
+        "Die &Uuml;berschriften sind die Links zum Ergebnis.</p>",
         "<!-- ===================================================== -->",
     )
     for actreslink, value in zip(allreslinks, tsh_results):
         lastpos: int = actreslink.rfind("/")
-        turnier_info: str = actreslink[actreslink.rfind("/", 0, lastpos) + 1 : lastpos]
+        turnier_info: str = humanCompInfo(
+            actreslink[actreslink.rfind("/", 0, lastpos) + 1 : lastpos]
+        )
         tournhdr: str = (
             f'<h2><a href="{actreslink}" target="_blank" '
             f'rel="noopener">{turnier_info}</a></h2>'
@@ -144,6 +172,13 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
                 )
             print("</ul>")
             print("<!-- ===================================================== -->")
+            print(
+                "<p>Falls ich ein Paar übersehen habe,",
+                "bitte ich freundlich um eine",
+                "<a href=",
+                '"mailto:ebeling@tanzen-in-sh.de?subject=&Uuml;bersehenes%20Ergebnis"',
+                ">Email</a>.</p>",
+            )
 
 
 __ALL__ = ["interpret_tt_result", "print_tsh_web"]
