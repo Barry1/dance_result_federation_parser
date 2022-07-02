@@ -20,6 +20,17 @@ from dtvprocessing import get_dtv_df
 from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
+thelogger = logging.getLogger("TSH.resultParser")
+logformatter = logging.Formatter(
+    "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)  # https://docs.python.org/3/library/logging.html#logrecord-attributes
+logfilehandler = logging.FileHandler("resultParser.log")
+logfilehandler.setFormatter(logformatter)
+thelogger.addHandler(logfilehandler)
+if __debug__:
+    thelogger.setLevel(logging.DEBUG)
+else:
+    thelogger.setLevel(logging.INFO)
 RUN_ASYNC = True
 IMG_PREP = False
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
@@ -31,20 +42,20 @@ async def async_eventurl_to_web(eventurl: str) -> None:
         with urlopen(eventurl) as openedurl:
             tree = await asyncio.to_thread(parse, openedurl)
     except HTTPError as http_error:
-        logging.exception(http_error)
+        thelogger.exception(http_error)
     else:
         theparsefun: Callable[[str], dict[str, str]]
         the_interpret_fun: Callable[[str], DataFrame]
         if checktpsontree(tree):
-            logging.info(f"{eventurl} ist eine TPS-Veranstaltung")
+            thelogger.info("%s ist eine TPS-Veranstaltung", eventurl)
             theparsefun = ogparserurl
             the_interpret_fun = interpret_tps_result
         elif checkttontree(tree):
-            logging.info(f"{eventurl} ist eine TT-Veranstaltung")
+            thelogger.info("%s ist eine TT-Veranstaltung", eventurl)
             theparsefun = srparserurl
             the_interpret_fun = interpret_tt_result
         else:
-            logging.debug(
+            thelogger.debug(
                 f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden."
             )
             return
@@ -66,20 +77,20 @@ def eventurl_to_web(eventurl: str) -> None:
         with urlopen(eventurl) as openedurl:
             tree = parse(openedurl)
     except HTTPError as http_error:
-        logging.exception(http_error)
+        thelogger.exception(http_error)
     else:
         theparsefun: Callable[[str], dict[str, str]]
         the_interpret_fun: Callable[[str], DataFrame]
         if checktpsontree(tree):
-            logging.info(f"{eventurl} ist eine TPS-Veranstaltung")
+            thelogger.info(f"{eventurl} ist eine TPS-Veranstaltung")
             theparsefun = ogparserurl
             the_interpret_fun = interpret_tps_result
         elif checkttontree(tree):
-            logging.info(f"{eventurl} ist eine TT-Veranstaltung")
+            thelogger.info(f"{eventurl} ist eine TT-Veranstaltung")
             theparsefun = srparserurl
             the_interpret_fun = interpret_tt_result
         else:
-            logging.debug(
+            thelogger.debug(
                 f"Die URL {eventurl} kann weder TPS noch TT zugeordnet werden."
             )
             return
@@ -143,14 +154,14 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         for theurl in sys.argv[1:]:
-            print(f"Auswertung von {theurl}")
+            thelogger.info(f"Auswertung von {theurl}")
             if RUN_ASYNC:
                 asyncio.run(async_eventurl_to_web(theurl))
             else:
                 eventurl_to_web(theurl)
     else:
-        print("Selbsttest des Moduls resultParser")
-        print(get_dtv_df().loc[403:406])
+        thelogger.info("Selbsttest des Moduls resultParser")
+        thelogger.info(get_dtv_df().loc[403:406])
         urlszumpruefen = [
             "http://tsa.de.cool/20190914_Senioren/index.htm",
             "http://www.tanzen-in-sh.de/ergebnisse/2019/2019-02-02_GLM_Kin-Jug_D-A_LAT/index.htm",
@@ -159,7 +170,7 @@ if __name__ == "__main__":
             "http://tsk-buchholz.de/images/Tanzclub/Sparten/Turniertanz/GLM%202020.02.29",
         ]
         for theurl in urlszumpruefen:
-            print(f"Geprüft wird die Funktion anhand von {theurl}")
+            thelogger.info(f"Geprüft wird die Funktion anhand von {theurl}")
             if RUN_ASYNC:
                 asyncio.run(async_eventurl_to_web(theurl))
             else:

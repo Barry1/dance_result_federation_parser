@@ -1,14 +1,16 @@
 """Module for TopTurnier-specific functions."""
+import logging
 from typing import cast
 from urllib.error import HTTPError
 
+thelogger = logging.getLogger("TSH.resultParser")
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, SoupStrainer, Tag
 from lxml.etree import _ElementTree
 from pandas import DataFrame, concat, read_html
 from requests import get as requests_get
-from valuefragments import eprint
 
+# from valuefragments import logging.exception
 from dtvprocessing import get_dtv_df
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
@@ -39,7 +41,7 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
     assert baseurlwith.endswith(
         ("index.htm", "index.html")
     ), 'URL muss auf "/" und index.htm[l] enden'
-    baseurl: str = baseurlwith[0 : baseurlwith.rfind("/")]
+    baseurl: str = baseurlwith[: baseurlwith.rfind("/")]
     tournmtsdict: dict[str, str] = {}
     for eintrag in cast(
         ResultSet[Tag],
@@ -52,7 +54,7 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
         if (the_parent := eintrag.parent) is not None and not isinstance(
             href_val := the_parent["href"], list
         ):
-            tournmtsdict.update({eintrag.text: baseurl + "/" + href_val})
+            tournmtsdict[eintrag.text] = f"{baseurl}/" + href_val
     return tournmtsdict
 
 
@@ -98,20 +100,22 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     assert theresulturl.endswith(
         "index.htm"
     ), "Es muss die index.htm-URL vom Turnier (nicht Veranstaltung) angegeben werden"
-    # print(theresulturl)
+    thelogger.debug(theresulturl)
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
     ret_df = DataFrame(columns=["Platz", "Paar", "Verein", "Verband", "Ort"])
     try:
         ret_df = tt_from_erg(theresulturl)
     except HTTPError as http_error:
-        eprint(
+        thelogger.exception(
             f"Beim tt_from_erg von {theresulturl} trat der HTTPError {http_error} auf"
         )
     except ValueError as value_error:
-        eprint(
+        thelogger.exception(
             f"Beim tt_from_erg von {theresulturl} trat der ValueError {value_error} auf"
         )
     except Exception as general_exception:
-        eprint(f"Beim tt_from_erg von {theresulturl} trat {general_exception} auf")
+        thelogger.exception(
+            f"Beim tt_from_erg von {theresulturl} trat {general_exception} auf"
+        )
         raise
     return ret_df
