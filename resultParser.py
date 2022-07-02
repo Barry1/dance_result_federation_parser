@@ -172,13 +172,13 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
                 )
             print("</ul>")
             print("<!-- ===================================================== -->")
-            print(
-                "<p>Falls ich ein Paar übersehen habe,",
-                "bitte ich freundlich um eine",
-                "<a href=",
-                '"mailto:ebeling@tanzen-in-sh.de?subject=&Uuml;bersehenes%20Ergebnis"',
-                ">Email</a>.</p>",
-            )
+    print(
+        "<p>Falls ich ein Paar übersehen habe,",
+        "bitte ich freundlich um eine",
+        "<a href=",
+        '"mailto:ebeling@tanzen-in-sh.de?subject=&Uuml;bersehenes%20Ergebnis"',
+        ">Email</a>.</p>",
+    )
 
 
 __ALL__ = ["interpret_tt_result", "print_tsh_web"]
