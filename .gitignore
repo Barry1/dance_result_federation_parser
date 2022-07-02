@@ -5,3 +5,5 @@ out/
 *.txt
 *.err
 nuitka
+resultParser.log
+singleResultParser.log
