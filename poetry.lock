@@ -2,7 +2,7 @@
 name = "astroid"
 version = "2.11.6"
 description = "An abstract syntax tree for Python with inference support."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6.2"
 
@@ -23,21 +23,21 @@ python-versions = ">=3.5"
 name = "attrs"
 version = "21.4.0"
 description = "Classes Without Boilerplate"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.extras]
-dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope.interface", "furo", "sphinx", "sphinx-notfound-page", "pre-commit", "cloudpickle"]
-docs = ["furo", "sphinx", "zope.interface", "sphinx-notfound-page"]
-tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope.interface", "cloudpickle"]
+dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope-interface", "furo", "sphinx", "sphinx-notfound-page", "pre-commit", "cloudpickle"]
+docs = ["furo", "sphinx", "zope-interface", "sphinx-notfound-page"]
+tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope-interface", "cloudpickle"]
 tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "cloudpickle"]
 
 [[package]]
 name = "beautifulsoup4"
 version = "4.11.1"
 description = "Screen-scraping library"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6.0"
 
@@ -73,7 +73,7 @@ uvloop = ["uvloop (>=0.15.2)"]
 name = "bs4"
 version = "0.0.1"
 description = "Dummy package for Beautiful Soup"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -84,7 +84,7 @@ beautifulsoup4 = "*"
 name = "certifi"
 version = "2022.6.15"
 description = "Python package for providing Mozilla's CA Bundle."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -92,7 +92,7 @@ python-versions = ">=3.6"
 name = "charset-normalizer"
 version = "2.1.0"
 description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6.0"
 
@@ -114,7 +114,7 @@ colorama = {version = "*", markers = "platform_system == \"Windows\""}
 name = "colorama"
 version = "0.4.5"
 description = "Cross-platform colored terminal text."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -122,7 +122,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 name = "cramjam"
 version = "2.5.0"
 description = "Thin Python bindings to de/compression algorithms in Rust"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -146,7 +146,7 @@ dev = ["pytest (>=6.2.3)", "ipython", "mypy (>=0.710)", "hypothesis", "portray",
 name = "dill"
 version = "0.3.5.1"
 description = "serialize all of python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*"
 
@@ -165,7 +165,7 @@ python-versions = "*"
 name = "fastparquet"
 version = "0.8.1"
 description = "Python support for Parquet file format"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7,"
 
@@ -206,7 +206,7 @@ flake8 = "*"
 name = "fsspec"
 version = "2022.5.0"
 description = "File-system specification"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -237,7 +237,7 @@ tqdm = ["tqdm"]
 name = "future"
 version = "0.18.2"
 description = "Clean single-source support for Python 3 and 2"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
@@ -245,7 +245,7 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 name = "html5lib"
 version = "1.1"
 description = "HTML parser based on the WHATWG HTML specification"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -263,7 +263,7 @@ lxml = ["lxml"]
 name = "idna"
 version = "3.3"
 description = "Internationalized Domain Names in Applications (IDNA)"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
 
@@ -271,7 +271,7 @@ python-versions = ">=3.5"
 name = "importlab"
 version = "0.7"
 description = "A library to calculate python dependency graphs."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6.0"
 
@@ -293,7 +293,7 @@ sortedcontainers = ">=2.0,<3.0"
 name = "isort"
 version = "5.10.1"
 description = "A Python utility / library to sort Python imports."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6.1,<4.0"
 
@@ -307,7 +307,7 @@ plugins = ["setuptools"]
 name = "joblib"
 version = "1.1.0"
 description = "Lightweight pipelining with Python functions"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -315,7 +315,7 @@ python-versions = ">=3.6"
 name = "lazy-object-proxy"
 version = "1.7.1"
 description = "A fast and thorough lazy object proxy."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -323,7 +323,7 @@ python-versions = ">=3.6"
 name = "libcst"
 version = "0.4.5"
 description = "A concrete syntax tree with AST-like properties for Python 3.5, 3.6, 3.7, 3.8, 3.9, and 3.10 programs."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -339,7 +339,7 @@ dev = ["black (==22.3.0)", "coverage (>=4.5.4)", "fixit (==0.1.1)", "flake8 (>=3
 name = "lxml"
 version = "4.9.1"
 description = "Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, != 3.4.*"
 
@@ -353,7 +353,7 @@ source = ["Cython (>=0.29.7)"]
 name = "mando"
 version = "0.6.4"
 description = "Create Python CLI apps with little to no effort at all!"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -395,7 +395,7 @@ marshmallow = ">=2.0.0"
 name = "mccabe"
 version = "0.6.1"
 description = "McCabe checker, plugin for flake8"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -415,7 +415,7 @@ mypy-extensions = "*"
 name = "mypy"
 version = "0.961"
 description = "Optional static typing for Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -433,7 +433,7 @@ reports = ["lxml"]
 name = "mypy-extensions"
 version = "0.4.3"
 description = "Experimental type system extensions for programs checked with the mypy typechecker."
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -441,7 +441,7 @@ python-versions = "*"
 name = "networkx"
 version = "2.8.3"
 description = "Python package for creating and manipulating graphs and networks"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8"
 
@@ -456,7 +456,7 @@ test = ["pytest (>=7.1)", "pytest-cov (>=3.0)", "codecov (>=2.1)"]
 name = "ninja"
 version = "1.10.2.3"
 description = "Ninja is a small build system with a focus on speed"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -476,7 +476,7 @@ setuptools = "*"
 
 [[package]]
 name = "nuitka"
-version = "0.9.2"
+version = "0.9.3"
 description = "Python compiler with full language support and CPython compatibility"
 category = "dev"
 optional = false
@@ -486,7 +486,7 @@ python-versions = "*"
 name = "numpy"
 version = "1.23.0"
 description = "NumPy is the fundamental package for array computing with Python."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8"
 
@@ -516,7 +516,7 @@ pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
 name = "pandas"
 version = "1.4.3"
 description = "Powerful data structures for data analysis, time series, and statistics"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8"
 
@@ -551,7 +551,7 @@ flake8-polyfill = ">=1.0.2,<2"
 name = "platformdirs"
 version = "2.5.2"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -641,7 +641,7 @@ toml = ["toml"]
 name = "pydot"
 version = "1.4.2"
 description = "Python interface to Graphviz's Dot"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
@@ -691,7 +691,7 @@ vulture = ["vulture"]
 name = "pylint"
 version = "2.14.4"
 description = "python code static checker"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 
@@ -764,7 +764,7 @@ pylint = ">=1.7"
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6.8"
 
@@ -822,7 +822,7 @@ dev = ["twine (>=3.4.1)"]
 name = "python-dateutil"
 version = "2.8.2"
 description = "Extensions to the standard Python datetime module"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
 
@@ -833,7 +833,7 @@ six = ">=1.5"
 name = "pytype"
 version = "2022.6.30"
 description = "Python type inferencer"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "<3.11,>=3.7"
 
@@ -851,7 +851,7 @@ toml = "*"
 name = "pytz"
 version = "2022.1"
 description = "World timezone definitions, modern and historical"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -859,7 +859,7 @@ python-versions = "*"
 name = "pyyaml"
 version = "6.0"
 description = "YAML parser and emitter for Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -867,7 +867,7 @@ python-versions = ">=3.6"
 name = "radon"
 version = "5.1.0"
 description = "Code Metrics in Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -880,7 +880,7 @@ mando = ">=0.6,<0.7"
 name = "requests"
 version = "2.28.1"
 description = "Python HTTP for Humans."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7, <4"
 
@@ -934,22 +934,22 @@ yaml = ["pyyaml"]
 
 [[package]]
 name = "setuptools"
-version = "62.6.0"
+version = "63.1.0"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
 [package.extras]
 docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-reredirects", "sphinxcontrib-towncrier", "furo"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-enabler (>=1.0.1)", "pytest-perf", "mock", "flake8-2020", "virtualenv (>=13.0.0)", "wheel", "pip (>=19.1)", "jaraco.envs (>=2.2)", "pytest-xdist", "jaraco.path (>=3.2.0)", "build", "filelock (>=3.4.0)", "pip-run (>=8.8)", "ini2toml[lite] (>=0.9)", "tomli-w (>=1.0.0)", "pytest-black (>=0.3.7)", "pytest-cov", "pytest-mypy (>=0.9.1)"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-enabler (>=1.3)", "pytest-perf", "mock", "flake8-2020", "virtualenv (>=13.0.0)", "wheel", "pip (>=19.1)", "jaraco.envs (>=2.2)", "pytest-xdist", "jaraco.path (>=3.2.0)", "build", "filelock (>=3.4.0)", "pip-run (>=8.8)", "ini2toml[lite] (>=0.9)", "tomli-w (>=1.0.0)", "pytest-black (>=0.3.7)", "pytest-cov", "pytest-mypy (>=0.9.1)"]
 testing-integration = ["pytest", "pytest-xdist", "pytest-enabler", "virtualenv (>=13.0.0)", "tomli", "wheel", "jaraco.path (>=3.2.0)", "jaraco.envs (>=2.2)", "build", "filelock (>=3.4.0)"]
 
 [[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
@@ -973,7 +973,7 @@ python-versions = "*"
 name = "soupsieve"
 version = "2.3.2.post1"
 description = "A modern CSS selector implementation for Beautiful Soup."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -981,7 +981,7 @@ python-versions = ">=3.6"
 name = "tabulate"
 version = "0.8.10"
 description = "Pretty-print tabular data"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -1008,7 +1008,7 @@ build = ["black", "coverage", "coveralls", "flake8", "isort (>=5.1,<6.0)", "mypy
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
@@ -1016,7 +1016,7 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -1024,7 +1024,7 @@ python-versions = ">=3.7"
 name = "tomlkit"
 version = "0.11.0"
 description = "Style preserving TOML library"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6,<4.0"
 
@@ -1071,7 +1071,7 @@ python-versions = "*"
 name = "typing"
 version = "3.7.4.3"
 description = "Type Hints for Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
@@ -1079,7 +1079,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 name = "typing-extensions"
 version = "4.3.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -1087,7 +1087,7 @@ python-versions = ">=3.7"
 name = "typing-inspect"
 version = "0.7.1"
 description = "Runtime inspection utilities for typing module."
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -1099,7 +1099,7 @@ typing-extensions = ">=3.7.4"
 name = "urllib3"
 version = "1.26.9"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
 
@@ -1112,7 +1112,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 name = "valuefragments"
 version = "0.1.5"
 description = "Testing installation of Package"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "~3.10"
 develop = false
@@ -1125,7 +1125,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "a9682b8fb8fa941bf53687247859285d71f89567"
+resolved_reference = "d36560c119b6814150122515e978c6106b159e5f"
 
 [[package]]
 name = "vermin"
@@ -1139,7 +1139,7 @@ python-versions = ">=2.7"
 name = "webencodings"
 version = "0.5.1"
 description = "Character encoding aliases for legacy web content"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -1147,7 +1147,7 @@ python-versions = "*"
 name = "wrapt"
 version = "1.14.1"
 description = "Module for decorators, wrappers and monkey patching."
-category = "main"
+category = "dev"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
@@ -1562,7 +1562,7 @@ nodeenv = [
     {file = "nodeenv-1.7.0.tar.gz", hash = "sha256:e0e7f7dfb85fc5394c6fe1e8fa98131a2473e04311a45afb6508f7cf1836fa2b"},
 ]
 nuitka = [
-    {file = "Nuitka-0.9.2.tar.gz", hash = "sha256:40fa9be55bd283aee3db371fb70cd2097c2d0491deda5eeb5089d850071807ea"},
+    {file = "Nuitka-0.9.3.tar.gz", hash = "sha256:db7b8bfcb365b5ce8a792d5a7caffbbfbcc5aa14c1f8025cb0d4b61379030703"},
 ]
 numpy = [
     {file = "numpy-1.23.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:58bfd40eb478f54ff7a5710dd61c8097e169bc36cc68333d00a9bcd8def53b38"},
@@ -1810,8 +1810,8 @@ setoptconf-tmp = [
     {file = "setoptconf_tmp-0.3.1-py3-none-any.whl", hash = "sha256:76035d5cd1593d38b9056ae12d460eca3aaa34ad05c315b69145e138ba80a745"},
 ]
 setuptools = [
-    {file = "setuptools-62.6.0-py3-none-any.whl", hash = "sha256:c1848f654aea2e3526d17fc3ce6aeaa5e7e24e66e645b5be2171f3f6b4e5a178"},
-    {file = "setuptools-62.6.0.tar.gz", hash = "sha256:990a4f7861b31532871ab72331e755b5f14efbe52d336ea7f6118144dd478741"},
+    {file = "setuptools-63.1.0-py3-none-any.whl", hash = "sha256:db3b8e2f922b2a910a29804776c643ea609badb6a32c4bcc226fd4fd902cce65"},
+    {file = "setuptools-63.1.0.tar.gz", hash = "sha256:16923d366ced322712c71ccb97164d07472abeecd13f3a6c283f6d5d26722793"},
 ]
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
