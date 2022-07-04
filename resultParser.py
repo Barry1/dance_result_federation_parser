@@ -20,7 +20,8 @@ from valuefragments import eprint
 from dtvprocessing import get_dtv_df
 from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
-PYANNOTATE=False
+
+PYANNOTATE = False
 thelogger = logging.getLogger("TSH.resultParser")
 logformatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -182,13 +183,12 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
         '"mailto:ebeling@tanzen-in-sh.de?subject=&Uuml;bersehenes%20Ergebnis"',
         ">Email</a>.</p>",
     )
-
-
-__ALL__ = ["interpret_tt_result", "print_tsh_web"]
+__all__ = ["interpret_tt_result", "print_tsh_web"]
 if __name__ == "__main__":
     # execute only if run as a script
     if PYANNOTATE:
         from pyannotate_runtime import collect_types
+
         collect_types.init_types_collection()
         collect_types.start()
     import sys
@@ -218,4 +218,4 @@ if __name__ == "__main__":
                 eventurl_to_web(theurl)
     if PYANNOTATE:
         collect_types.stop()
-        collect_types.dump_stats('type_info.json')
+        collect_types.dump_stats("type_info.json")
