@@ -33,9 +33,25 @@ generate_badge = "."
 verbose = 2
 
 [tool.mypy]
-strict = true
+disallow_untyped_defs = true
+pretty = true
+python_version = "3.10"
 show_error_codes = true
 show_error_context = true
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+module = [
+    "psutil",
+    "pandas",
+    "joblib",
+    "lxml.*",
+    "bs4.*",
+    "pyannotate_runtime"
+]
+ignore_missing_imports = true
 
 [tool.isort]
 # https://pycqa.github.io/isort/docs/configuration/options
@@ -82,33 +98,39 @@ authors = ["Ebeling, Dr. Bastian <bastian.ebeling@web.de>"]
 
 [tool.poetry.dependencies]
 bs4 = "*"
+colorama = "*"
 fastparquet = "*"
 html5lib = "*"
 joblib = "*"
 lxml = "*"
+mypy = "*"
 pandas = "*"
+pylint = "*"
 python = "~3.10"
+radon = "*"
 requests = "*"
 typing = "*"
 typing-extensions = "*"
 valuefragments = { git = "https://github.com/Barry1/PyValueFragments.git", rev = "main" }
-colorama = "*"
-radon = "*"
-pylint = "*"
-mypy = "*"
-
 
 [tool.poetry.dev-dependencies]
+#{ version = "*", python = "<=3.7" }
 black = "*"
 isort = "*"
+MonkeyType = "^22.2.0"
 mypy = "*"
 nuitka = "*"
 ordered-set = "*"
+prospector = "^1.7.7"
+pyannotate = "^1.2.0"
+pyflakes = "^2.4.0"
 pylama = "*"
 pyre-check = {version="*", platform="linux"}
+pyright = "^1.1.256"
 pytype = "*"
-#{ version = "*", python = "<=3.7" }
+retype="*"
 types-requests = "*"
+vermin = "^1.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
