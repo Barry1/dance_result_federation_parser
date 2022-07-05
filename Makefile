@@ -57,6 +57,11 @@ poetryprep:
 	poetry update
 	poetry install
 
+monkeytype.sqlite3:
+	poetry run monkeytype run ./resultParser.py
+
+
+
 pylint:
 	-poetry run pylint $(OBJS)
 
@@ -81,3 +86,6 @@ bindeps:
 
 nuitka/resultParser.bin: resultParser.py
 	niceload poetry run nuitka3 --follow-imports --output-dir=nuitka --show-progress resultParser.py
+
+vermin:
+	poetry run vermin --eval-annotations --backport asyncio --backport typing *.py
