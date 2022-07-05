@@ -10,14 +10,14 @@ from valuefragments import ic
 
 from stringprocessing import cleanevfromentry
 
-PARQUETENGINE = "fastparquet"  # the others seem not to work engine{‘auto’, ‘pyarrow’, ‘’}, default ‘auto’
+PARQUETENGINE = "fastparquet"  # ‘pyarrow’='auto' seems not to work
 
 
 def create_dtv_df() -> DataFrame:
     """Build dataframe from all organisations taken from DTV-Website."""
-    dtv_associations = DataFrame(columns=["ID", "Verband", "Verein", "Ort"]).set_index(
-        "ID"
-    )
+    dtv_associations: DataFrame = DataFrame(
+        columns=["ID", "Verband", "Verein", "Ort"]
+    ).set_index("ID")
     search_url = "https://www.tanzsport.de/de/service/vereinssuche"
     urllib3.disable_warnings()
     xpath_for_token = (
@@ -26,7 +26,7 @@ def create_dtv_df() -> DataFrame:
     xpath_for_orgs = '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
     with Session() as sess_context:
         sess_context.verify = False
-        rqtoken = fromstring(sess_context.get(search_url).content).xpath(
+        rqtoken: str = fromstring(sess_context.get(search_url).content).xpath(
             xpath_for_token
         )
         login_data = {
