@@ -3,18 +3,16 @@ import logging
 from typing import cast
 from urllib.error import HTTPError
 
-import pandas
-
-thelogger = logging.getLogger("TSH.resultParser")
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, SoupStrainer, Tag
 from lxml.etree import _ElementTree
 from pandas import DataFrame, concat, read_html
 from requests import get as requests_get
 
-# from valuefragments import logging.exception
 from dtvprocessing import get_dtv_df
 from stringprocessing import clean_number_from_couple, cleanevfromentry
+
+thelogger = logging.getLogger("TSH.resultParser")
 
 
 def checkttontree(the_e_tree: _ElementTree) -> bool:
@@ -63,12 +61,12 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
 def tt_from_erg(theresulturl: str) -> DataFrame:
     """Process erg.html from TopTurnier resultpage."""
     assert theresulturl.endswith("erg.htm"), f"{theresulturl} endet nicht auf erg.htm"
-    tab1tbl = read_html(
+    tab1tbl: list[DataFrame] = read_html(
         requests_get(theresulturl).text.replace("<BR>", "</td><td>"),
         attrs={"class": "tab1"},
     )
     try:
-        tab2tbl = read_html(
+        tab2tbl: list[DataFrame] = read_html(
             requests_get(theresulturl).text.replace("<BR>", "</td><td>"),
             attrs={"class": "tab2"},
         )
