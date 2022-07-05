@@ -1,5 +1,8 @@
 """Helpers for String processing."""
+import logging
 from re import sub as re_sub
+
+thelogger = logging.getLogger("TSH.resultParser")
 
 
 def cleanevfromentry(singleorg: str) -> str:
