@@ -1,6 +1,6 @@
 [[package]]
 name = "astroid"
-version = "2.11.6"
+version = "2.11.7"
 description = "An abstract syntax tree for Python with inference support."
 category = "main"
 optional = false
@@ -1108,7 +1108,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "aea084b1890141378bf4a32d9ec4a0672fe70636"
+resolved_reference = "8f4a626b406cba1520bbb4a19bd6389185f3f6b0"
 
 [[package]]
 name = "vermin"
@@ -1140,10 +1140,7 @@ python-versions = "~3.10"
 content-hash = "3c6f645d97344b8c865bf532c9b3d82c53332fa4d5f2f39b0aaa5be3e34c7e78"
 
 [metadata.files]
-astroid = [
-    {file = "astroid-2.11.6-py3-none-any.whl", hash = "sha256:ba33a82a9a9c06a5ceed98180c5aab16e29c285b828d94696bf32d6015ea82a9"},
-    {file = "astroid-2.11.6.tar.gz", hash = "sha256:4f933d0bf5e408b03a6feb5d23793740c27e07340605f236496cd6ce552043d6"},
-]
+astroid = []
 async-generator = [
     {file = "async_generator-1.10-py3-none-any.whl", hash = "sha256:01c7bf666359b4967d2cda0000cc2e4af16a0ae098cbffcb8472fb9e8ad6585b"},
     {file = "async_generator-1.10.tar.gz", hash = "sha256:6ebb3d106c12920aaae42ccb6f787ef5eefdcdd166ea3d628fa8476abe712144"},
