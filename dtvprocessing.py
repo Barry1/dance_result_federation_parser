@@ -2,17 +2,14 @@
 import os
 import re
 import time
-
+import logging
+from typing import Literal
 from lxml.html import fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
-from valuefragments import ic
-
 from stringprocessing import cleanevfromentry
-
-PARQUETENGINE = "fastparquet"  # ‘pyarrow’='auto' seems not to work
-
-
+thelogger:logging.Logger = logging.getLogger("TSH.resultParser")
+PARQUETENGINE:Literal['fastparquet','pyarrow','auto'] = "fastparquet"
 def create_dtv_df() -> DataFrame:
     """Build dataframe from all organisations taken from DTV-Website."""
     dtv_associations: DataFrame = DataFrame(
@@ -29,7 +26,7 @@ def create_dtv_df() -> DataFrame:
         rqtoken: str = fromstring(sess_context.get(search_url).content).xpath(
             xpath_for_token
         )
-        login_data = {
+        login_data:dict[str,str|int] = {
             "FORM_SUBMIT": "mod_vereinssuche_formular",
             "REQUEST_TOKEN": rqtoken,
             "name": "",
@@ -44,13 +41,13 @@ def create_dtv_df() -> DataFrame:
             .xpath(xpath_for_orgs)[0]
             .getchildren()
         ):
-            # ic(len(tempfound))
+            # thelogger.info(len(tempfound))
             for eintrag in tempfound:
                 if eintrag.tag == "h3":  # Neue Ortsangabe
-                    # ic("Neuer Ort: " + eintrag.text)
-                    the_place = eintrag.text
+                    # thelogger.info("Neuer Ort: " + eintrag.text)
+                    the_place:str = eintrag.text
                 else:  # Neuer Verein
-                    # ic(tostring(eintrag))
+                    # thelogger.info(tostring(eintrag))
                     orgdata = eintrag.xpath('div[@class="trigger"]/h3/text()')
                     if tempmatch := re.match(r"(.*)–(.*)\((\d+)\)", orgdata[0]):
                         the_group: str
@@ -62,8 +59,8 @@ def create_dtv_df() -> DataFrame:
                                 the_place.strip(),
                             ]
             login_data["seite"] += 1
-    ic(dtv_associations.describe())
-    ic(dtv_associations[["Verband", "Verein"]].groupby("Verband").count())
+    thelogger.info(dtv_associations.describe())
+    thelogger.info(dtv_associations[["Verband", "Verein"]].groupby("Verband").count())
     return dtv_associations.sort_index()
 
 
@@ -78,7 +75,7 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
         and time.time() - os.path.getmtime(dtv_associations_cache_file)
         > max_cache_age_in_seconds
     ):  # Cache-Datei vorhanden
-        ic(
+        thelogger.info(
             "DTV-Vereinsdaten sind vom",
             time.ctime(os.path.getmtime(dtv_associations_cache_file)),
             ".",
@@ -87,8 +84,8 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
             dtv_associations_cache_file, engine=PARQUETENGINE
         )
     else:  # Keine Cache-Datei vorhanden
-        ic("Aktuelle DTV-Vereinsdaten werden geholt.")
+        thelogger.info("Aktuelle DTV-Vereinsdaten werden geholt.")
         dtv_associations = create_dtv_df()
         dtv_associations.to_parquet(dtv_associations_cache_file, engine=PARQUETENGINE)
-        ic("DTV-Vereinsdaten aktualisiert.")
+        thelogger.info("DTV-Vereinsdaten aktualisiert.")
     return dtv_associations
