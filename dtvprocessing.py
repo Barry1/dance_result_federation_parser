@@ -4,7 +4,8 @@ import re
 import time
 import logging
 from typing import Literal
-from lxml.html import fromstring
+from lxml.etree import _ElementUnicodeResult
+from lxml.html import fromstring,HtmlElement
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
 from stringprocessing import cleanevfromentry
@@ -34,6 +35,7 @@ def create_dtv_df() -> DataFrame:
             "landesverband[]": "",
             "seite": 0,
         }
+        tempfound:list[HtmlElement]
         while (
             tempfound := fromstring(
                 sess_context.post(search_url, data=login_data).content
@@ -41,15 +43,14 @@ def create_dtv_df() -> DataFrame:
             .xpath(xpath_for_orgs)[0]
             .getchildren()
         ):
-            thelogger.debug(type(tempfound))
             thelogger.debug(len(tempfound))
             for eintrag in tempfound:
                 if eintrag.tag == "h3":  # Neue Ortsangabe
-                    thelogger.debug("Neuer Ort: " + eintrag.text)
+                    thelogger.debug("Neuer Ort: %s",eintrag.text)
                     the_place:str = eintrag.text
                 else:  # Neuer Verein
-                    thelogger.debug(tostring(eintrag))
-                    orgdata = eintrag.xpath('div[@class="trigger"]/h3/text()')
+                    #thelogger.debug("%s",repr(eintrag))
+                    orgdata:list[_ElementUnicodeResult] = eintrag.xpath('div[@class="trigger"]/h3/text()')
                     if tempmatch := re.match(r"(.*)–(.*)\((\d+)\)", orgdata[0]):
                         the_group: str
                         the_name, the_group, the_id = tempmatch.groups()
@@ -60,8 +61,8 @@ def create_dtv_df() -> DataFrame:
                                 the_place.strip(),
                             ]
             login_data["seite"] += 1
-    thelogger.debug(dtv_associations.describe())
-    thelogger.debug(dtv_associations[["Verband", "Verein"]].groupby("Verband").count())
+    thelogger.debug("%s",dtv_associations.describe())
+    thelogger.debug("%s",dtv_associations[["Verband", "Verein"]].groupby("Verband").count())
     return dtv_associations.sort_index()
 
 
