@@ -2,11 +2,10 @@
 from urllib.parse import quote
 from urllib.request import urlopen
 
+from dtvprocessing import get_dtv_df
 from lxml.etree import _ElementTree
 from lxml.html import parse
 from pandas import DataFrame, read_html, to_numeric  # , option_context
-
-from dtvprocessing import get_dtv_df
 from stringprocessing import cleanevfromentry  # ,clean_number_from_couple
 
 

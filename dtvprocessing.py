@@ -41,13 +41,14 @@ def create_dtv_df() -> DataFrame:
             .xpath(xpath_for_orgs)[0]
             .getchildren()
         ):
-            # thelogger.info(len(tempfound))
+            thelogger.debug(type(tempfound))
+            thelogger.debug(len(tempfound))
             for eintrag in tempfound:
                 if eintrag.tag == "h3":  # Neue Ortsangabe
-                    # thelogger.info("Neuer Ort: " + eintrag.text)
+                    thelogger.debug("Neuer Ort: " + eintrag.text)
                     the_place:str = eintrag.text
                 else:  # Neuer Verein
-                    # thelogger.info(tostring(eintrag))
+                    thelogger.debug(tostring(eintrag))
                     orgdata = eintrag.xpath('div[@class="trigger"]/h3/text()')
                     if tempmatch := re.match(r"(.*)–(.*)\((\d+)\)", orgdata[0]):
                         the_group: str
@@ -59,14 +60,14 @@ def create_dtv_df() -> DataFrame:
                                 the_place.strip(),
                             ]
             login_data["seite"] += 1
-    thelogger.info(dtv_associations.describe())
-    thelogger.info(dtv_associations[["Verband", "Verein"]].groupby("Verband").count())
+    thelogger.debug(dtv_associations.describe())
+    thelogger.debug(dtv_associations[["Verband", "Verein"]].groupby("Verband").count())
     return dtv_associations.sort_index()
 
 
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     """Retrieve dataframe of associations from Cache or Web."""
-    dtv_associations_cache_file = (
+    dtv_associations_cache_file:str = (
         __file__[: __file__.rfind("/")] + "/dtv_associations.parquet"  # noqa: E203
     )
     max_cache_age_in_seconds = 7 * 24 * 60 * 60  # eine Woche
@@ -76,16 +77,15 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
         > max_cache_age_in_seconds
     ):  # Cache-Datei vorhanden
         thelogger.info(
-            "DTV-Vereinsdaten sind vom",
-            time.ctime(os.path.getmtime(dtv_associations_cache_file)),
-            ".",
+            "DTV-Vereinsdaten sind vom %s.",
+            time.ctime(os.path.getmtime(dtv_associations_cache_file))
         )
-        dtv_associations = read_parquet(
+        dtv_associations:DataFrame = read_parquet(
             dtv_associations_cache_file, engine=PARQUETENGINE
         )
     else:  # Keine Cache-Datei vorhanden
         thelogger.info("Aktuelle DTV-Vereinsdaten werden geholt.")
-        dtv_associations = create_dtv_df()
+        dtv_associations:DataFrame = create_dtv_df()
         dtv_associations.to_parquet(dtv_associations_cache_file, engine=PARQUETENGINE)
         thelogger.info("DTV-Vereinsdaten aktualisiert.")
     return dtv_associations
