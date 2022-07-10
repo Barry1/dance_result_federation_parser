@@ -10,16 +10,17 @@ from typing import Callable, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
-from dtvprocessing import get_dtv_df
 from joblib import Parallel, delayed
 from lxml.etree import _ElementTree
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
+from valuefragments import eprint
+
+from dtvprocessing import get_dtv_df
 from stringprocessing import human_comp_info
 from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
-from valuefragments import eprint
 
 PYANNOTATE = False
 thelogger = logging.getLogger("TSH.resultParser")
