@@ -161,7 +161,7 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
     )
 
 
-__all__ = ["interpret_tt_result", "print_tsh_web"]
+__all__: list[str] = ["interpret_tt_result", "print_tsh_web"]
 if __name__ == "__main__":
     # execute only if run as a script
     if PYANNOTATE:
@@ -171,6 +171,9 @@ if __name__ == "__main__":
         collect_types.start()
     import sys
 
+    # Besonders nötig, damit bei ASYNC nur einmal ggf. die DTV-Vereinliste aktualisiert wird
+    _ = get_dtv_df().loc[403:406]
+    #
     if len(sys.argv) > 1:
         for theurl in sys.argv[1:]:
             thelogger.info("Auswertung von %s", theurl)
