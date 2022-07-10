@@ -11,17 +11,19 @@ from pandas import DataFrame, Series, read_parquet
 from requests import Session, urllib3  # type:ignore
 
 from stringprocessing import cleanevfromentry
-
 thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
 PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"
-
-
+MYREGEX: Literal[r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"] = r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
 def create_dtv_df() -> DataFrame:
     """Build dataframe from all organisations taken from DTV-Website."""
     dtv_associations: DataFrame = DataFrame(
         columns=["ID", "Verband", "Verein", "Ort"]
     ).set_index("ID")
     # Maybe better create with <https://stackoverflow.com/a/72784123>
+    # Or <https://numpy.org/doc/stable/user/basics.rec.html>?
+    # np.dtype([('ID',int),('Verband','O'),('Verein','O'),('Ort','O')])
+    # needs to be object type because of variable lenght
+    testdtass = []
     dtv_associations: DataFrame = DataFrame(
         {
             "ID": Series(dtype="int"),
@@ -67,21 +69,31 @@ def create_dtv_df() -> DataFrame:
                     orgdata: list[_ElementUnicodeResult] = eintrag.xpath(
                         'div[@class="trigger"]/h3/text()'
                     )
-                    if tempmatch := re.match(r"(.*)–(.*)\((\d+)\)", orgdata[0]):
-                        the_group: str
+                    # thelogger.debug("orgdata %s",orgdata[0])
+                    if tempmatch := re.match(MYREGEX, orgdata[0]):
                         the_name, the_group, the_id = tempmatch.groups()
+                        tempmatchdict: dict[str, str] = tempmatch.groupdict()
+                        tempmatchdict["Ort"] = the_place
                         if the_group is not None:
+                            testdtass.extend([tempmatchdict])
                             dtv_associations.loc[int(the_id)] = [
                                 the_group.strip(),
                                 cleanevfromentry(the_name),
                                 the_place.strip(),
                             ]
             login_data["seite"] += 1
+    #thelogger.info("WWWWWWWWWWWWWWWWWWWWWWWW %s", testdtass)
+    testdtassdf:DataFrame=DataFrame(testdtass).set_index("ID")
+    #.select_dtypes(['object']).apply(lambda x: x.str.strip())
+    testdtassdf["Verein"]=testdtassdf["Verein"].apply(cleanevfromentry)
+    testdtassdf[["Verband","Ort"]]=testdtassdf[["Verband","Ort"]].apply(str.strip)
+    #thelogger.info("XXXXXXXXXXXXXXXXXXXXXXXXX %s", testdtassdf.sort_index())
     thelogger.debug("%s", dtv_associations.describe())
     thelogger.debug(
         "%s", dtv_associations[["Verband", "Verein"]].groupby("Verband").count()
     )
-    return dtv_associations.sort_index()
+    thelogger.debug("%s", testdtassdf[["Verband", "Verein"]].groupby("Verband").count())
+    return testdtassdf.sort_index()
 
 
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
