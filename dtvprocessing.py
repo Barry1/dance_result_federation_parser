@@ -11,12 +11,15 @@ from pandas import DataFrame, Series, read_parquet
 from requests import Session, urllib3  # type:ignore
 
 from stringprocessing import cleanevfromentry
+
 thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
 MAX_CACHE_AGE_IN_SECONDS = 7 * 24 * 60 * 60  # eine Woche
 MYREGEX = r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
 PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"
 SEARCH_URL = "https://www.tanzsport.de/de/service/vereinssuche"
 XPATH_FOR_ORGS = '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
+
+
 def create_dtv_df() -> DataFrame:
     """Build dataframe from all organisations taken from DTV-Website."""
     # Maybe better create with <https://stackoverflow.com/a/72784123>
@@ -65,11 +68,15 @@ def create_dtv_df() -> DataFrame:
                         tempmatchdict["Ort"] = the_place
                         dtv_assocs_dict_list.extend([tempmatchdict])
             login_data["seite"] += 1
-    dtv_associations:DataFrame=DataFrame(dtv_assocs_dict_list).set_index("ID")
-    dtv_associations["Verein"]=dtv_associations["Verein"].apply(cleanevfromentry)
-    dtv_associations[["Verband","Ort"]]=dtv_associations[["Verband","Ort"]].apply(lambda x:x.str.strip())
+    dtv_associations: DataFrame = DataFrame(dtv_assocs_dict_list).set_index("ID")
+    dtv_associations["Verein"] = dtv_associations["Verein"].apply(cleanevfromentry)
+    dtv_associations[["Verband", "Ort"]] = dtv_associations[["Verband", "Ort"]].apply(
+        lambda x: x.str.strip()
+    )
     thelogger.info("%s", dtv_associations.describe())
-    thelogger.debug("%s", dtv_associations[["Verband", "Verein"]].groupby("Verband").count())
+    thelogger.debug(
+        "%s", dtv_associations[["Verband", "Verein"]].groupby("Verband").count()
+    )
     return dtv_associations.sort_index()
 
 
