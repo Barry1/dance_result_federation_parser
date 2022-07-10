@@ -12,35 +12,25 @@ from requests import Session, urllib3  # type:ignore
 
 from stringprocessing import cleanevfromentry
 thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
+MAX_CACHE_AGE_IN_SECONDS = 7 * 24 * 60 * 60  # eine Woche
+MYREGEX = r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
 PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"
-MYREGEX: Literal[r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"] = r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
+SEARCH_URL = "https://www.tanzsport.de/de/service/vereinssuche"
+XPATH_FOR_ORGS = '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
 def create_dtv_df() -> DataFrame:
     """Build dataframe from all organisations taken from DTV-Website."""
-    dtv_associations: DataFrame = DataFrame(
-        columns=["ID", "Verband", "Verein", "Ort"]
-    ).set_index("ID")
     # Maybe better create with <https://stackoverflow.com/a/72784123>
     # Or <https://numpy.org/doc/stable/user/basics.rec.html>?
     # np.dtype([('ID',int),('Verband','O'),('Verein','O'),('Ort','O')])
     # needs to be object type because of variable lenght
-    testdtass = []
-    dtv_associations: DataFrame = DataFrame(
-        {
-            "ID": Series(dtype="int"),
-            "Verband": Series(dtype="str"),
-            "Verein": Series(dtype="str"),
-            "Ort": Series(dtype="str"),
-        }
-    ).set_index("ID")
-    search_url = "https://www.tanzsport.de/de/service/vereinssuche"
+    dtv_assocs_dict_list = []
     urllib3.disable_warnings()
     xpath_for_token = (
         '//*[@id="mod_vereinssuche_formular"]/input[@name="REQUEST_TOKEN"]/@value'
     )
-    xpath_for_orgs = '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
     with Session() as sess_context:
         sess_context.verify = False
-        rqtoken: str = fromstring(sess_context.get(search_url).content).xpath(
+        rqtoken: str = fromstring(sess_context.get(SEARCH_URL).content).xpath(
             xpath_for_token
         )
         login_data: dict[str, str | int] = {
@@ -54,9 +44,9 @@ def create_dtv_df() -> DataFrame:
         tempfound: list[HtmlElement]
         while (
             tempfound := fromstring(
-                sess_context.post(search_url, data=login_data).content
+                sess_context.post(SEARCH_URL, data=login_data).content
             )
-            .xpath(xpath_for_orgs)[0]
+            .xpath(XPATH_FOR_ORGS)[0]
             .getchildren()
         ):
             thelogger.debug(len(tempfound))
@@ -71,29 +61,16 @@ def create_dtv_df() -> DataFrame:
                     )
                     # thelogger.debug("orgdata %s",orgdata[0])
                     if tempmatch := re.match(MYREGEX, orgdata[0]):
-                        the_name, the_group, the_id = tempmatch.groups()
                         tempmatchdict: dict[str, str] = tempmatch.groupdict()
                         tempmatchdict["Ort"] = the_place
-                        if the_group is not None:
-                            testdtass.extend([tempmatchdict])
-                            dtv_associations.loc[int(the_id)] = [
-                                the_group.strip(),
-                                cleanevfromentry(the_name),
-                                the_place.strip(),
-                            ]
+                        dtv_assocs_dict_list.extend([tempmatchdict])
             login_data["seite"] += 1
-    #thelogger.info("WWWWWWWWWWWWWWWWWWWWWWWW %s", testdtass)
-    testdtassdf:DataFrame=DataFrame(testdtass).set_index("ID")
-    #.select_dtypes(['object']).apply(lambda x: x.str.strip())
-    testdtassdf["Verein"]=testdtassdf["Verein"].apply(cleanevfromentry)
-    testdtassdf[["Verband","Ort"]]=testdtassdf[["Verband","Ort"]].apply(str.strip)
-    #thelogger.info("XXXXXXXXXXXXXXXXXXXXXXXXX %s", testdtassdf.sort_index())
-    thelogger.debug("%s", dtv_associations.describe())
-    thelogger.debug(
-        "%s", dtv_associations[["Verband", "Verein"]].groupby("Verband").count()
-    )
-    thelogger.debug("%s", testdtassdf[["Verband", "Verein"]].groupby("Verband").count())
-    return testdtassdf.sort_index()
+    dtv_associations:DataFrame=DataFrame(dtv_assocs_dict_list).set_index("ID")
+    dtv_associations["Verein"]=dtv_associations["Verein"].apply(cleanevfromentry)
+    dtv_associations[["Verband","Ort"]]=dtv_associations[["Verband","Ort"]].apply(lambda x:x.str.strip())
+    thelogger.info("%s", dtv_associations.describe())
+    thelogger.debug("%s", dtv_associations[["Verband", "Verein"]].groupby("Verband").count())
+    return dtv_associations.sort_index()
 
 
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
@@ -101,11 +78,10 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     dtv_associations_cache_file: str = (
         __file__[: __file__.rfind("/")] + "/dtv_associations.parquet"  # noqa: E203
     )
-    max_cache_age_in_seconds = 7 * 24 * 60 * 60  # eine Woche
     if os.path.exists(dtv_associations_cache_file) and not (
         autoupdate
         and time.time() - os.path.getmtime(dtv_associations_cache_file)
-        > max_cache_age_in_seconds
+        > MAX_CACHE_AGE_IN_SECONDS
     ):  # Cache-Datei vorhanden
         thelogger.info(
             "DTV-Vereinsdaten sind vom %s.",
@@ -114,7 +90,7 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
         dtv_associations: DataFrame = read_parquet(
             dtv_associations_cache_file, engine=PARQUETENGINE
         )
-    else:  # Keine Cache-Datei vorhanden
+    else:  # Keine oder veraltete Cache-Datei vorhanden
         thelogger.info("Aktuelle DTV-Vereinsdaten werden geholt.")
         dtv_associations: DataFrame = create_dtv_df()
         dtv_associations.to_parquet(dtv_associations_cache_file, engine=PARQUETENGINE)
