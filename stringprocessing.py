@@ -2,7 +2,7 @@
 import logging
 from re import sub as re_sub
 
-thelogger:logging.Logger = logging.getLogger("TSH.resultParser")
+thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
 
 
 def cleanevfromentry(singleorg: str) -> str:
@@ -28,7 +28,7 @@ def human_comp_info(turnier_info: str) -> str:
     """Convert URL part to human words."""
     [comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split("_", 2)
     comp_num
-    comp_desc:str = comp_desc.upper()
+    comp_desc: str = comp_desc.upper()
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
     comp_desc = comp_desc.replace("SEN", "Senioren ")
     comp_desc = comp_desc.replace("LAT", " Latein ")
@@ -39,7 +39,7 @@ def human_comp_info(turnier_info: str) -> str:
     comp_desc = comp_desc.replace("4", " IV ")
     comp_desc = comp_desc.replace("5", " V ")
     comp_desc = comp_desc.replace("  ", " ")
-    comp_desc_human:str = f"{comp_date[:2]}.{comp_date[2:]}."  # comp_num+':'+
+    comp_desc_human: str = f"{comp_date[:2]}.{comp_date[2:]}."  # comp_num+':'+
     if comp_desc.startswith("WDSF"):
         comp_desc_human += f" WDSF {comp_desc[4:].strip()}"
     else:
