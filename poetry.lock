@@ -320,7 +320,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "libcst"
-version = "0.4.6"
+version = "0.4.7"
 description = "A concrete syntax tree with AST-like properties for Python 3.5, 3.6, 3.7, 3.8, 3.9, and 3.10 programs."
 category = "main"
 optional = false
@@ -801,7 +801,7 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.258"
+version = "1.1.259"
 description = "Command line wrapper for pyright"
 category = "dev"
 optional = false
@@ -1033,7 +1033,7 @@ test = ["pytest", "typing-extensions", "mypy"]
 
 [[package]]
 name = "types-requests"
-version = "2.28.0"
+version = "2.28.1"
 description = "Typing stubs for requests"
 category = "dev"
 optional = false
@@ -1108,7 +1108,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "8f4a626b406cba1520bbb4a19bd6389185f3f6b0"
+resolved_reference = "ec49f754a885e987439403709f4376645519029d"
 
 [[package]]
 name = "vermin"
@@ -1385,32 +1385,7 @@ lazy-object-proxy = [
     {file = "lazy_object_proxy-1.7.1-cp39-cp39-win_amd64.whl", hash = "sha256:677ea950bef409b47e51e733283544ac3d660b709cfce7b187f5ace137960d61"},
     {file = "lazy_object_proxy-1.7.1-pp37.pp38-none-any.whl", hash = "sha256:d66906d5785da8e0be7360912e99c9188b70f52c422f9fc18223347235691a84"},
 ]
-libcst = [
-    {file = "libcst-0.4.6-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:5b0cf425e2846ccfa80522784a774a2470541c9e402a598f694370e7851f7e6e"},
-    {file = "libcst-0.4.6-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:6016672d9dfc38595bcca9adada9a5e205cf383590544009f8d70b5ef519a449"},
-    {file = "libcst-0.4.6-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d4e31846c31235ccbcebc31e2128f42acd5ebc2d19bd0459df7daad7588f2af0"},
-    {file = "libcst-0.4.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e0ce52dc1c0b493855764b816fe571fe9f64e0c39e321d34db234d23fd247182"},
-    {file = "libcst-0.4.6-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:117dd8a592c182d1bab3834ca102ab3e01d8786cca84736b78e56e8c5446cb80"},
-    {file = "libcst-0.4.6-cp310-cp310-win_amd64.whl", hash = "sha256:6287796070491a18875836ef693cdd5e97be36299259cc9c1cc939ed6843e178"},
-    {file = "libcst-0.4.6-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:b0b40d8686e6611ae0adbcf45f70b08f920156493add2d9913494c96fe7be13a"},
-    {file = "libcst-0.4.6-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:81907e392693c1839263fe5d159b6ebc10d8dd22d077ae6dbfc88866be580fb5"},
-    {file = "libcst-0.4.6-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:00787e3450935a01338358c391ca7d75bc87277b4fe0584a26f23708af43e4f8"},
-    {file = "libcst-0.4.6-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:cf687f0fde63a9fc2c1ce90cd980e5c78eb22bba3d6e0ef71b9f04190b1b90f2"},
-    {file = "libcst-0.4.6-cp37-cp37m-win_amd64.whl", hash = "sha256:80a3c9e379a90ea0edbc9f07a806e2f6d80b84c5be4e4c111022b2d96bb034d0"},
-    {file = "libcst-0.4.6-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:e56f984cf4d964a4cec416f3af23119329d5843d107ea3f99c6abbeba9651100"},
-    {file = "libcst-0.4.6-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:72644b64c722141b4bebfc0f2ce7f8f466456e232ded60fb0413be58df6da20c"},
-    {file = "libcst-0.4.6-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:fc82d8d8a5ee76819ce4d4a6874080e31d8b19ee9107d60a645fba4adb6505a3"},
-    {file = "libcst-0.4.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d5e796de40fe4532f91a8f1dd28faa533fd76a7613c6bbac024428ac441fd809"},
-    {file = "libcst-0.4.6-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:3c0a600c62c22d12c765ad0a7f763c6b58d1dd49c0879db1369f6ab55ed97ee0"},
-    {file = "libcst-0.4.6-cp38-cp38-win_amd64.whl", hash = "sha256:80a166a25a565c07fa0c00794f54d7a227e27afd346428337d55640a09bc8dd4"},
-    {file = "libcst-0.4.6-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:ace049352c6952168dd095086f7f79800c668366944f7c6fafa065b4763b9d23"},
-    {file = "libcst-0.4.6-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:3f01ace9ee8583337a2b2a67eacd415a254b537160b358bbe2ef11ee1b91dcb9"},
-    {file = "libcst-0.4.6-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c3893a97b2d2236a78aa2fcca289c92bf52612865aeaf57206f8974b6ec1e509"},
-    {file = "libcst-0.4.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:45c42ef6abf110b83f3c8ab19a39086bda66d689ca79825d678fe7d70bbdebb8"},
-    {file = "libcst-0.4.6-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:2d2e1fcf35f4aaeb03c8090c3d5ad5c23ebda4cd2fbcd424d80e65c4aea872df"},
-    {file = "libcst-0.4.6-cp39-cp39-win_amd64.whl", hash = "sha256:57ec209dfb8172e0a9796bc0d5fec0d4a7163a76fda94ef5f9c9f3b7a11cb52b"},
-    {file = "libcst-0.4.6.tar.gz", hash = "sha256:80f6982db27907f07d47575c50fc878923646437160fb2680c685b8565590446"},
-]
+libcst = []
 lxml = [
     {file = "lxml-4.9.1-cp27-cp27m-macosx_10_15_x86_64.whl", hash = "sha256:98cafc618614d72b02185ac583c6f7796202062c41d2eeecdf07820bad3295ed"},
     {file = "lxml-4.9.1-cp27-cp27m-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:c62e8dd9754b7debda0c5ba59d34509c4688f853588d75b53c3791983faa96fc"},
@@ -1843,10 +1818,7 @@ typeguard = [
     {file = "typeguard-2.13.3-py3-none-any.whl", hash = "sha256:5e3e3be01e887e7eafae5af63d1f36c849aaa94e3a0112097312aabfa16284f1"},
     {file = "typeguard-2.13.3.tar.gz", hash = "sha256:00edaa8da3a133674796cf5ea87d9f4b4c367d77476e185e80251cc13dfbb8c4"},
 ]
-types-requests = [
-    {file = "types-requests-2.28.0.tar.gz", hash = "sha256:9863d16dfbb3fa55dcda64fa3b989e76e8859033b26c1e1623e30465cfe294d3"},
-    {file = "types_requests-2.28.0-py3-none-any.whl", hash = "sha256:85383b4ef0535f639c3f06c5bbb6494bbf59570c4cd88bbcf540f0b2ac1b49ab"},
-]
+types-requests = []
 types-urllib3 = [
     {file = "types-urllib3-1.26.16.tar.gz", hash = "sha256:8bb3832c684c30cbed40b96e28bc04703becb2b97d82ac65ba4b968783453b0e"},
     {file = "types_urllib3-1.26.16-py3-none-any.whl", hash = "sha256:20588c285e5ca336d908d2705994830a83cfb6bda40fc356bbafaf430a262013"},
