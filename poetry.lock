@@ -801,7 +801,7 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.261"
+version = "1.1.262"
 description = "Command line wrapper for pyright"
 category = "dev"
 optional = false
@@ -1108,7 +1108,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "7cd06d2f7f5ed2f2f34eb93a4404fbba9c6630cf"
+resolved_reference = "0beeda82f4181480e11bc67822e865f63834e208"
 
 [[package]]
 name = "vermin"
