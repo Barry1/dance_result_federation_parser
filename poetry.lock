@@ -1108,11 +1108,11 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "52057e59fecaf6a9dc53026ad5b6a3c83592caa1"
+resolved_reference = "a42951fa837da31f91e9b58d19b8941cc1f954ed"
 
 [[package]]
 name = "vermin"
-version = "1.4.0"
+version = "1.4.1"
 description = "Concurrently detect the minimum Python versions needed to run code"
 category = "dev"
 optional = false
@@ -1797,9 +1797,7 @@ typing-inspect = [
 ]
 urllib3 = []
 valuefragments = []
-vermin = [
-    {file = "vermin-1.4.0-py2.py3-none-any.whl", hash = "sha256:0370f562cfa004a234c2ca33cff3c187fe05741c1c36570ef27a514ad9b7e202"},
-]
+vermin = []
 webencodings = [
     {file = "webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"},
     {file = "webencodings-0.5.1.tar.gz", hash = "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"},
