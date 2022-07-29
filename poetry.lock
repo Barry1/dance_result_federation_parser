@@ -203,7 +203,7 @@ flake8 = "*"
 
 [[package]]
 name = "fsspec"
-version = "2022.7.0"
+version = "2022.7.1"
 description = "File-system specification"
 category = "main"
 optional = false
