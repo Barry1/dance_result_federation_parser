@@ -71,7 +71,6 @@ def create_dtv_df() -> DataFrame:
                     orgdata: list[_ElementUnicodeResult] = eintrag.xpath(
                         'div[@class="trigger"]/h3/text()'
                     )
-                    # thelogger.debug("orgdata %s",orgdata[0])
                     if tempmatch := re.match(MYREGEX, orgdata[0]):
                         tempmatchdict: dict[str, str] = tempmatch.groupdict()
                         tempmatchdict["Ort"] = the_place
