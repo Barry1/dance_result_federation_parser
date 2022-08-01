@@ -9,7 +9,7 @@ jobs = 0
 
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 [tool.black]
-#line-length = 79
+line-length = 79
 target-version = ['py310'] #'py37', 'py38',
 color = true
 safe = true
@@ -43,20 +43,14 @@ warn_return_any = true
 warn_unused_configs = true
 
 [[tool.mypy.overrides]]
-module = [
-    "psutil",
-    "pandas",
-    "joblib",
-    "lxml.*",
-    "bs4.*",
-    "pyannotate_runtime"
-]
+module = ["psutil", "pandas", "joblib", "lxml.*", "bs4.*", "pyannotate_runtime"]
 ignore_missing_imports = true
 
 [tool.isort]
 # https://pycqa.github.io/isort/docs/configuration/options
 py_version = 310
 color_output = true
+line_length = 79
 profile = "black"
 skip = "venv"
 
@@ -125,10 +119,10 @@ prospector = "^1.7.7"
 pyannotate = "^1.2.0"
 pyflakes = "^2.4.0"
 pylama = "*"
-pyre-check = {version="*", platform="linux"}
+pyre-check = { version = "*", platform = "linux" }
 pyright = "^1.1.256"
 pytype = "*"
-retype="*"
+retype = "*"
 types-requests = "*"
 vermin = "^1.4.0"
 
