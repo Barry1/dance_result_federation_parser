@@ -12,7 +12,7 @@ from requests import get as requests_get
 from dtvprocessing import get_dtv_df
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
-thelogger = logging.getLogger("TSH.resultParser")
+thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
 
 
 def checkttontree(the_e_tree: _ElementTree) -> bool:
@@ -60,11 +60,14 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
 
 def tt_from_erg(theresulturl: str) -> DataFrame:
     """Process erg.html from TopTurnier resultpage."""
-    assert theresulturl.endswith("erg.htm"), f"{theresulturl} endet nicht auf erg.htm"
+    assert theresulturl.endswith(
+        "erg.htm"
+    ), f"{theresulturl} endet nicht auf erg.htm"
     tab1tbl: list[DataFrame] = read_html(
         requests_get(theresulturl).text.replace("<BR>", "</td><td>"),
         attrs={"class": "tab1"},
     )
+    erg_df: DataFrame
     try:
         tab2tbl: list[DataFrame] = read_html(
             requests_get(theresulturl).text.replace("<BR>", "</td><td>"),
@@ -102,7 +105,9 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     ), "Es muss die index.htm-URL vom Turnier (nicht Veranstaltung) angegeben werden"
     thelogger.debug(theresulturl)
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
-    ret_df = DataFrame(columns=["Platz", "Paar", "Verein", "Verband", "Ort"])
+    ret_df: DataFrame = DataFrame(
+        columns=["Platz", "Paar", "Verein", "Verband", "Ort"]
+    )
     try:
         ret_df = tt_from_erg(theresulturl)
     except HTTPError as http_error:
@@ -119,7 +124,9 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
         )
     except Exception as general_exception:
         thelogger.exception(
-            "Beim tt_from_erg von %s trat %s auf", theresulturl, general_exception
+            "Beim tt_from_erg von %s trat %s auf",
+            theresulturl,
+            general_exception,
         )
         raise
     return ret_df

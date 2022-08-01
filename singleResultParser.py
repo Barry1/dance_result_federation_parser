@@ -3,11 +3,13 @@ import logging
 
 from resultParser import interpret_tt_result, print_tsh_web
 
-thelogger = logging.getLogger("TSH.singleResultParser")
-logformatter = logging.Formatter(
+thelogger: logging.Logger = logging.getLogger("TSH.singleResultParser")
+logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )  # https://docs.python.org/3/library/logging.html#logrecord-attributes
-logfilehandler = logging.FileHandler("singleResultParser.log")
+logfilehandler: logging.FileHandler = logging.FileHandler(
+    "singleResultParser.log"
+)
 logfilehandler.setFormatter(logformatter)
 thelogger.addHandler(logfilehandler)
 if __debug__:

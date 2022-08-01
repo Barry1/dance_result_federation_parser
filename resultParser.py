@@ -19,23 +19,27 @@ from valuefragments import eprint
 
 from dtvprocessing import get_dtv_df
 from stringprocessing import human_comp_info
-from topturnierprocessing import checkttontree, interpret_tt_result, srparserurl
+from topturnierprocessing import (
+    checkttontree,
+    interpret_tt_result,
+    srparserurl,
+)
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 PYANNOTATE = False
-thelogger = logging.getLogger("TSH.resultParser")
-logformatter = logging.Formatter(
+thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
+logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )  # https://docs.python.org/3/library/logging.html#logrecord-attributes
-logfilehandler = logging.FileHandler("resultParser.log")
+logfilehandler: logging.FileHandler = logging.FileHandler("resultParser.log")
 logfilehandler.setFormatter(logformatter)
 thelogger.addHandler(logfilehandler)
 if __debug__:
     thelogger.setLevel(logging.DEBUG)
 else:
     thelogger.setLevel(logging.INFO)
-RUN_ASYNC = True
-IMG_PREP = False
+RUN_ASYNC: bool = True
+IMG_PREP: bool = False
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
@@ -59,7 +63,8 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             the_interpret_fun = interpret_tt_result
         else:
             thelogger.debug(
-                "Die URL %s kann weder TPS noch TT zugeordnet werden.", eventurl
+                "Die URL %s kann weder TPS noch TT zugeordnet werden.",
+                eventurl,
             )
             return
         allreslinks = theparsefun(eventurl).values()
@@ -94,20 +99,26 @@ def eventurl_to_web(eventurl: str) -> None:
             the_interpret_fun = interpret_tt_result
         else:
             thelogger.debug(
-                "Die URL %s kann weder TPS noch TT zugeordnet werden.", eventurl
+                "Die URL %s kann weder TPS noch TT zugeordnet werden.",
+                eventurl,
             )
             return
         allreslinks = theparsefun(eventurl).values()
         tsh_results: list[DataFrame] = cast(
             list[DataFrame],
-            Parallel(n_jobs=1 if __debug__ else -1, verbose=10 if __debug__ else 0)(
-                delayed(the_interpret_fun)(a) for a in theparsefun(eventurl).values()
+            Parallel(
+                n_jobs=1 if __debug__ else -1, verbose=10 if __debug__ else 0
+            )(
+                delayed(the_interpret_fun)(a)
+                for a in theparsefun(eventurl).values()
             ),
         )
         print_tsh_web(list(allreslinks), tsh_results)
 
 
-def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
+def print_tsh_web(
+    allreslinks: list[str], tsh_results: list[DataFrame]
+) -> None:
     """Export data as HTML for TSH-CMS."""
     print(
         "<p>Einleitende Worte.</p>",
@@ -130,7 +141,9 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
         if value[value.Verband == "TSH"].empty:
             eprint(tournhdr)
             eprint("<p>Leider ohne TSH-Beteiligung.</p>")
-            eprint("<!-- ===================================================== -->")
+            eprint(
+                "<!-- ===================================================== -->"
+            )
         else:
             print(tournhdr)
             if IMG_PREP:
@@ -151,7 +164,9 @@ def print_tsh_web(allreslinks: list[str], tsh_results: list[DataFrame]) -> None:
                     f"<li>{resline[1].Platz} {resline[1].Paar} ({resline[1].Verein})</li>"
                 )
             print("</ul>")
-            print("<!-- ===================================================== -->")
+            print(
+                "<!-- ===================================================== -->"
+            )
     print(
         "<p>Falls ich ein Paar übersehen habe,",
         "bitte ich freundlich um eine",
@@ -184,7 +199,7 @@ if __name__ == "__main__":
     else:
         thelogger.info("Selbsttest des Moduls resultParser")
         thelogger.info(get_dtv_df().loc[403:406])
-        urlszumpruefen = [
+        urlszumpruefen: list[str] = [
             "http://tsa.de.cool/20190914_Senioren/index.htm",
             "http://www.tanzen-in-sh.de/ergebnisse/2019/2019-02-02_GLM_Kin-Jug_D-A_LAT/index.htm",
             "http://blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm",

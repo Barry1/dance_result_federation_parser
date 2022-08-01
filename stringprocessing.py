@@ -26,7 +26,9 @@ def clean_number_from_couple(couple_str_with_num: str) -> str:
 
 def human_comp_info(turnier_info: str) -> str:
     """Convert URL part to human words."""
-    [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split("_", 2)
+    [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split(
+        "_", 2
+    )
     comp_desc = comp_desc.upper()
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
     comp_desc = comp_desc.replace("SEN", "Senioren ")
