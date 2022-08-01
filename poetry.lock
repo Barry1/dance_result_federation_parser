@@ -1052,7 +1052,7 @@ types-urllib3 = "<1.27"
 
 [[package]]
 name = "types-urllib3"
-version = "1.26.19"
+version = "1.26.20"
 description = "Typing stubs for urllib3"
 category = "dev"
 optional = false
