@@ -1101,7 +1101,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
 name = "valuefragments"
-version = "0.1.8"
+version = "0.1.9"
 description = "Testing installation of Package"
 category = "main"
 optional = false
@@ -1116,7 +1116,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "5d652de155e2e83d55e7f57030219795ccbcc246"
+resolved_reference = "73996a15c85aa66f7c4c3e56aada637bd6bbcc9e"
 
 [[package]]
 name = "vermin"
