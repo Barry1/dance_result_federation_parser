@@ -809,7 +809,7 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.264"
+version = "1.1.265"
 description = "Command line wrapper for pyright"
 category = "dev"
 optional = false
@@ -1052,7 +1052,7 @@ types-urllib3 = "<1.27"
 
 [[package]]
 name = "types-urllib3"
-version = "1.26.20"
+version = "1.26.21"
 description = "Typing stubs for urllib3"
 category = "dev"
 optional = false
@@ -1116,7 +1116,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "1906a549f6f3a34f402f714d75dcf6d11c300913"
+resolved_reference = "49f4863004c4fdb58d8b93179822bd823259b976"
 
 [[package]]
 name = "vermin"
