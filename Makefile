@@ -106,5 +106,8 @@ thewholetoolchain: prospector pytype vulture
 prospector:
 	-poetry run prospector -X $(OBJS)
 
+md5sumsave.md5: dtv_associations.parquet
+	md5sum $^ > $@ 
+
 dtv_ass_par_check: dtv_associations.parquet
-	@echo "5e86bc0d7eb6d3ef8b29cd54c11defe4  dtv_associations.parquet" | md5sum --check
+	md5sum --check md5sumsave.md5
