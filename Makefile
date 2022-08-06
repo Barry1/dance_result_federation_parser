@@ -11,7 +11,6 @@ ALL: pylint mypy formatting vulture pytype
 
 testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern2022.txt
 
-
 Enzkloesterle_2022.txt:
 	$(runme) https://www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm > $@ 2> $(@:.txt=.err)
 
@@ -40,7 +39,7 @@ HessenTanzt2022.txt:
 	$(runme) https://www.hessen-tanzt.de/media/ht2022/index.htm > $@ 2> $(@:.txt=.err)
 
 BlauesBand2018.txt:
-	$(runme) http://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm > $@ 2> $(@:.txt=.err)
+	$(runme) http://www.blauesband-berlin.de/Ergebnisse/2018/blauesband2018/index.htm > $@ 2> $(@:.txt=.err)
 
 BlauesBand2019.txt:
 	$(runme) http://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm > $@ 2> $(@:.txt=.err)
@@ -54,7 +53,6 @@ HolmOstern2022.txt:
 	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/sonntag/index.htm >> $@ 2>> $(@:.txt=.err)
 	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/montag/index.htm >> $@ 2>> $(@:.txt=.err)
 
-
 poetryprep:
 	sudo apt install python3-distutils
 	poetry env use $$(which python3)
@@ -64,7 +62,8 @@ poetryprep:
 monkeytype.sqlite3:
 	poetry run monkeytype run ./resultParser.py
 
-
+monkeytypeapply:
+	for a in `poetry run monkeytype list-modules` ; do poetry run monkeytype apply $a ; done
 
 pylint:
 	-poetry run pylint $(OBJS)
@@ -93,3 +92,19 @@ nuitka/resultParser.bin: resultParser.py
 
 vermin:
 	poetry run vermin --eval-annotations --backport asyncio --backport typing *.py
+
+thewholetoolchain: prospector pytype vulture
+	poetry run autopep8 $(OBJS)
+	-poetry run flake8 $(OBJS)
+	-poetry run mypy $(OBJS)
+	-poetry run pycodestyle $(OBJS)
+	poetry run pyflakes $(OBJS)
+	-poetry run pylama $(OBJS)
+	-poetry run pylint $(OBJS)
+	-poetry run pyright $(OBJS)
+
+prospector:
+	-poetry run prospector -X $(OBJS)
+
+dtv_ass_par_check: dtv_associations.parquet
+	@echo "5e86bc0d7eb6d3ef8b29cd54c11defe4  dtv_associations.parquet" | md5sum --check

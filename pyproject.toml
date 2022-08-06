@@ -125,6 +125,7 @@ pytype = "*"
 retype = "*"
 types-requests = "*"
 vermin = "^1.4.0"
+vulture = "^2.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -132,7 +132,7 @@ def print_tsh_web(
     for actreslink, value in zip(allreslinks, tsh_results):
         lastpos: int = actreslink.rfind("/")
         turnier_info: str = human_comp_info(
-            actreslink[actreslink.rfind("/", 0, lastpos) + 1 : lastpos]
+            actreslink[actreslink.rfind("/", 0, lastpos) + 1: lastpos]
         )
         tournhdr: str = (
             f'<h2><a href="{actreslink}" target="_blank" '
