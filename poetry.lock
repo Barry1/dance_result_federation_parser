@@ -1013,7 +1013,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "tomlkit"
-version = "0.11.2"
+version = "0.11.3"
 description = "Style preserving TOML library"
 category = "main"
 optional = false
@@ -1115,7 +1115,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "053eebb778e4c3d935c539efe98a1f76677d9b09"
+resolved_reference = "9330dd433c89271bcf64b2233216c5b28ce83a45"
 
 [[package]]
 name = "vermin"
