@@ -472,7 +472,7 @@ python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*
 
 [[package]]
 name = "nuitka"
-version = "1.0.3"
+version = "1.0.4"
 description = "Python compiler with full language support and CPython compatibility"
 category = "dev"
 optional = false
@@ -480,7 +480,7 @@ python-versions = "*"
 
 [[package]]
 name = "numpy"
-version = "1.23.1"
+version = "1.23.2"
 description = "NumPy is the fundamental package for array computing with Python."
 category = "main"
 optional = false
@@ -911,7 +911,7 @@ astroid = ">=1.4"
 
 [[package]]
 name = "retype"
-version = "21.12.0"
+version = "22.8.0"
 description = "re-apply types from .pyi stub files to your codebase"
 category = "dev"
 optional = false
@@ -923,7 +923,7 @@ pathspec = ">=0.5.9,<1"
 typed-ast = ">=1.3"
 
 [package.extras]
-test = ["covdefaults (>=2)", "pytest (>=6)", "pytest-cov (>=3)"]
+test = ["pytest-cov (>=3)", "pytest (>=6)", "covdefaults (>=2)"]
 
 [[package]]
 name = "setoptconf-tmp"
@@ -1713,10 +1713,7 @@ requests = [
 requirements-detector = [
     {file = "requirements-detector-0.7.tar.gz", hash = "sha256:0d1e13e61ed243f9c3c86e6cbb19980bcb3a0e0619cde2ec1f3af70fdbee6f7b"},
 ]
-retype = [
-    {file = "retype-21.12.0-py3-none-any.whl", hash = "sha256:5b3e123cee018e38cc8e684631b00b6856a5b6be2bc5ec23f5d0fce5c4061fab"},
-    {file = "retype-21.12.0.tar.gz", hash = "sha256:976fded331eea4797f0bfec4ccb1311a78731ec28e07ba330be3db1f4ddd9407"},
-]
+retype = []
 setoptconf-tmp = [
     {file = "setoptconf-tmp-0.3.1.tar.gz", hash = "sha256:e0480addd11347ba52f762f3c4d8afa3e10ad0affbc53e3ffddc0ca5f27d5778"},
     {file = "setoptconf_tmp-0.3.1-py3-none-any.whl", hash = "sha256:76035d5cd1593d38b9056ae12d460eca3aaa34ad05c315b69145e138ba80a745"},
