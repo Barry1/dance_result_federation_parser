@@ -839,7 +839,7 @@ six = ">=1.5"
 
 [[package]]
 name = "pytype"
-version = "2022.8.17"
+version = "2022.8.23"
 description = "Python type inferencer"
 category = "dev"
 optional = false
@@ -1120,7 +1120,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "aeb03fe1241e82386ef50d05b3fdb0ea80f4f362"
+resolved_reference = "e18a3bfaac7dedeab337aaa23d40b187b2b60ba9"
 
 [[package]]
 name = "vermin"
