@@ -1,14 +1,14 @@
 [[package]]
 name = "astroid"
-version = "2.11.7"
+version = "2.12.4"
 description = "An abstract syntax tree for Python with inference support."
 category = "main"
 optional = false
-python-versions = ">=3.6.2"
+python-versions = ">=3.7.2"
 
 [package.dependencies]
 lazy-object-proxy = ">=1.4.0"
-wrapt = ">=1.11,<2"
+wrapt = {version = ">=1.11,<2", markers = "python_version < \"3.11\""}
 
 [[package]]
 name = "async-generator"
@@ -697,14 +697,14 @@ vulture = ["vulture"]
 
 [[package]]
 name = "pylint"
-version = "2.14.5"
+version = "2.15.0"
 description = "python code static checker"
 category = "main"
 optional = false
 python-versions = ">=3.7.2"
 
 [package.dependencies]
-astroid = ">=2.11.6,<=2.12.0-dev0"
+astroid = ">=2.12.4,<=2.14.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = ">=0.2"
 isort = ">=4.2.5,<6"
@@ -1120,7 +1120,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "b7678197d9e5acb64d07c869ce2adb29745b353d"
+resolved_reference = "a31577a677ad52c781a771e9c90f197218b2c02b"
 
 [[package]]
 name = "vermin"
