@@ -162,7 +162,7 @@ python-versions = "*"
 
 [[package]]
 name = "fastparquet"
-version = "0.8.2"
+version = "0.8.3"
 description = "Python support for Parquet file format"
 category = "main"
 optional = false
