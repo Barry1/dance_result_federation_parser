@@ -1,6 +1,6 @@
 [[package]]
 name = "astroid"
-version = "2.12.4"
+version = "2.12.5"
 description = "An abstract syntax tree for Python with inference support."
 category = "main"
 optional = false
@@ -1120,7 +1120,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "c56dba11f0f8dc062e87971f445e85c8451b67e8"
+resolved_reference = "c7413ba3d178cfe38c7f38e4f6b3975b028bb84c"
 
 [[package]]
 name = "vermin"
