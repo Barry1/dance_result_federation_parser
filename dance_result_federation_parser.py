@@ -26,7 +26,7 @@ from topturnierprocessing import (
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
-thefederation: Literal['TSH']='TSH'
+thefederation: Literal['TSH']|Literal['HATV']='TSH'
 PYANNOTATE  = False
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 logformatter: logging.Formatter = logging.Formatter(
