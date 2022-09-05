@@ -7,7 +7,7 @@ from typing import Literal, TypedDict
 
 from lxml.etree import _ElementUnicodeResult
 from lxml.html import HtmlElement, fromstring
-from pandas import DataFrame, concat, read_parquet
+from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
 
 from stringprocessing import cleanevfromentry
@@ -77,7 +77,7 @@ def create_dtv_df() -> DataFrame:
                         dtv_assocs_dict_list.extend([tempmatchdict])
             login_data["seite"] += 1
     dtv_associations: DataFrame = DataFrame.from_records(dtv_assocs_dict_list,index='ID')
-    dtv_associations.index=dtv_associations.index.astype(int)    
+    dtv_associations.index=dtv_associations.index.astype(int)
     dtv_associations["Verein"] = dtv_associations["Verein"].apply(
         cleanevfromentry
     )
