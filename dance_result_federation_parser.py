@@ -6,7 +6,7 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 """
 import asyncio
 import logging
-from typing import Callable, cast
+from typing import Callable, Literal, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
@@ -26,8 +26,9 @@ from topturnierprocessing import (
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
-PYANNOTATE = False
-thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
+thefederation: Literal['TSH']='TSH'
+PYANNOTATE  = False
+thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )  # https://docs.python.org/3/library/logging.html#logrecord-attributes
@@ -138,7 +139,7 @@ def print_tsh_web(
             f'<h2><a href="{actreslink}" target="_blank" '
             f'rel="noopener">{turnier_info}</a></h2>'
         )
-        if value[value.Verband == "TSH"].empty:
+        if value[value.Verband == thefederation].empty:
             eprint(tournhdr)
             eprint("<p>Leider ohne TSH-Beteiligung.</p>")
             eprint(
@@ -157,7 +158,7 @@ def print_tsh_web(
                 )
                 print("<br />Foto: loremflickr.com</div>")
             print("<ul>")
-            for resline in value[value.Verband == "TSH"].iterrows():
+            for resline in value[value.Verband == thefederation].iterrows():
                 # display(resline)
                 # display(resline[1])
                 print(

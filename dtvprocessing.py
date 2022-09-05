@@ -12,7 +12,7 @@ from requests import Session, urllib3  # type:ignore
 
 from stringprocessing import cleanevfromentry
 
-thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
+thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 MAX_CACHE_AGE_IN_SECONDS = 7 * 24 * 60 * 60  # eine Woche
 MYREGEX = r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
 PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"

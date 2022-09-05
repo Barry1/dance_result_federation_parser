@@ -3,7 +3,7 @@ import logging
 
 from resultParser import interpret_tt_result, print_tsh_web
 
-thelogger: logging.Logger = logging.getLogger("TSH.singleResultParser")
+thelogger: logging.Logger = logging.getLogger("Basti.singleResultParser")
 logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )  # https://docs.python.org/3/library/logging.html#logrecord-attributes

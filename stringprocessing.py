@@ -2,7 +2,7 @@
 import logging
 from re import sub as re_sub
 
-thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
+thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 
 
 def cleanevfromentry(singleorg: str) -> str:

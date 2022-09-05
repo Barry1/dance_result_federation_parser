@@ -12,7 +12,7 @@ from requests import get as requests_get
 from dtvprocessing import get_dtv_df
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
-thelogger: logging.Logger = logging.getLogger("TSH.resultParser")
+thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 
 
 def checkttontree(the_e_tree: _ElementTree) -> bool:
