@@ -2,10 +2,10 @@ MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 
 .PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps
 
-OBJS=dtvprocessing.py resultParser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py singleResultParser.py
+OBJS=dtvprocessing.py dance_result_federation_parser.py  stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
 
-runme=poetry run python -OO ./resultParser.py
-runmesingle=poetry run python -OO ./singleResultParser.py
+runme=poetry run python -OO ./dance_result_federation_parser.py 
+runmesingle=poetry run python -OO ./single_result_parser.py 
 
 ALL: pylint mypy formatting vulture pytype
 
@@ -60,7 +60,7 @@ poetryprep:
 	poetry install
 
 monkeytype.sqlite3:
-	poetry run monkeytype run ./resultParser.py
+	poetry run monkeytype run ./dance_result_federation_parser.py 
 
 monkeytypeapply:
 	for a in `poetry run monkeytype list-modules` ; do poetry run monkeytype apply $a ; done
@@ -87,8 +87,8 @@ pytype:
 bindeps:
 	sudo apt-get install --assume-yes libxml2-dev libxslt1-dev patchelf
 
-nuitka/resultParser.bin: resultParser.py
-	niceload poetry run nuitka3 --follow-imports --output-dir=nuitka --show-progress resultParser.py
+nuitka/resultParser.bin: dance_result_federation_parser.py 
+	niceload poetry run nuitka3 --follow-imports --output-dir=nuitka --show-progress dance_result_federation_parser.py 
 
 vermin:
 	poetry run vermin --eval-annotations --backport asyncio --backport typing *.py
