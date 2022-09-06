@@ -18,9 +18,10 @@ jobs:
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
-      - name: Install dependencies
+      - name: Describe file position, dir and so on
         run: |
           pwd
+          env
           ls
           realpath ./pyproject.toml
           ls
