@@ -46,7 +46,7 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Generate requierements.txt from poety
+      - name: Generate requirements.txt from poety
         run: |
           python -m pip install poetry
           poetry export --with dev --without-hashes --output requirements.txt
