@@ -18,8 +18,9 @@ jobs:
           pip install pylint
       - name: Install further dependencies
         run: |
+          python -m pip install poetry
           poetry export --dev --output requirements.txt
-          pip install --requirement requirements.txt
+          pip install --upgrade --requirement requirements.txt
       - name: Analysing the code with pylint
         run: |
           pylint $(git ls-files '*.py')
