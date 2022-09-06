@@ -18,13 +18,9 @@ jobs:
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
-      - name: Describe file position, dir and so on
-        run: |
-          pwd
-          env
-          ls
-          realpath ./pyproject.toml
-          ls
+#      - name: Describe file position, dir and so on
+#        run: |
+#          realpath ./pyproject.toml
       - name: Lint Code Base
         uses: github/super-linter@latest
         env:
