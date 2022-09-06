@@ -74,19 +74,19 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
             attrs={"class": "tab2"},
         )
     except ValueError:
-        erg_df: DataFrame = concat(tab1tbl)
+        erg_df = concat(tab1tbl)
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
         erg_df.dropna(axis=0, subset=erg_df.columns[:3], inplace=True)
         # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
         erg_df.dropna(axis=1, inplace=True)
-        erg_df: DataFrame = erg_df.iloc[:, [0, -2, -1]]
+        erg_df = erg_df.iloc[:, [0, -2, -1]]
     else:
-        erg_df: DataFrame = concat([*tab1tbl, *tab2tbl])
+        erg_df = concat([*tab1tbl, *tab2tbl])
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
         erg_df.dropna(axis=0, subset=erg_df.columns[:3], inplace=True)
         # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
         erg_df.dropna(axis=1, inplace=True)
-        erg_df: DataFrame = erg_df.iloc[:, [0, 1, 2]]
+        erg_df = erg_df.iloc[:, [0, 1, 2]]
     erg_df.columns = ["Platz", "Paar", "Verein"]
     # Nur Zeilen behalten, bei denen ein "." im Platz ist
     erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
