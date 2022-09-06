@@ -62,10 +62,12 @@ def create_dtv_df() -> DataFrame:
             .getchildren()
         ):
             thelogger.debug(len(tempfound))
+            the_place: str = ""
             for eintrag in tempfound:
                 if eintrag.tag == "h3":  # Neue Ortsangabe
-                    thelogger.debug("Neuer Ort: %s", eintrag.text)
-                    the_place: str | None = eintrag.text
+                    if eintrag.text:
+                        thelogger.debug("Neuer Ort: %s", eintrag.text)
+                        the_place: str = eintrag.text
                 else:  # Neuer Verein
                     # thelogger.debug("%s",repr(eintrag))
                     orgdata: list[_ElementUnicodeResult] = eintrag.xpath(
