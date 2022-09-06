@@ -29,7 +29,7 @@ def human_comp_info(turnier_info: str) -> str:
     [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split(
         "_", 2
     )
-    comp_desc: str = comp_desc.upper()
+    comp_desc = comp_desc.upper()
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
     comp_desc = comp_desc.replace("SEN", "Senioren ")
     comp_desc = comp_desc.replace("LAT", " Latein ")
