@@ -1,7 +1,7 @@
 """Module analyzing single competitions not events."""
 import logging
 
-from resultParser import interpret_tt_result, print_tsh_web
+from dance_result_federation_parser import interpret_tt_result, print_tsh_web
 
 thelogger: logging.Logger = logging.getLogger("Basti.singleResultParser")
 logformatter: logging.Formatter = logging.Formatter(
