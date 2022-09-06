@@ -31,5 +31,5 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: "master"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PYTHON_BLACK_CONFIG_FILE: $(GITHUB_WORKSPACE)/dance_result_federation_parser/pyproject.toml
-          PYTHON_ISORT_CONFIG_FILE: $(GITHUB_WORKSPACE)/dance_result_federation_parser/pyproject.toml
+          PYTHON_BLACK_CONFIG_FILE: $(GITHUB_WORKSPACE)/pyproject.toml
+          PYTHON_ISORT_CONFIG_FILE: $(GITHUB_WORKSPACE)/pyproject.toml
