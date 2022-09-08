@@ -67,7 +67,7 @@ def create_dtv_df() -> DataFrame:
                 if eintrag.tag == "h3":  # Neue Ortsangabe
                     if eintrag.text:
                         thelogger.debug("Neuer Ort: %s", eintrag.text)
-                        the_place: str = eintrag.text
+                        the_place = eintrag.text
                 else:  # Neuer Verein
                     # thelogger.debug("%s",repr(eintrag))
                     orgdata: list[_ElementUnicodeResult] = eintrag.xpath(

@@ -44,7 +44,7 @@ thefederation: Literal[
     "TVSA",
     "TTSV",
 ] = "TSH"
-PYANNOTATE: Literal[True,False] = False
+PYANNOTATE: Literal[True, False] = False
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -87,10 +87,8 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                 eventurl,
             )
             return
-        allreslinks: dict_values[str, str] = theparsefun(eventurl).values()
-        compnames: list[str] = [
-            human_comp_info(lnk) for lnk in allreslinks
-        ]
+        allreslinks = theparsefun(eventurl).values()
+        compnames: list[str] = [human_comp_info(lnk) for lnk in allreslinks]
         tsh_results: list[DataFrame] = list(
             await asyncio.gather(
                 *(
@@ -112,7 +110,7 @@ def eventurl_to_web(eventurl: str) -> None:
     else:
         theparsefun: Callable[[str], dict[str, str]]
         the_interpret_fun: Callable[[str], DataFrame]
-        human_comp_info: Callable[[str],str]
+        human_comp_info: Callable[[str], str]
         if checktpsontree(tree):
             thelogger.info("%s ist eine TPS-Veranstaltung", eventurl)
             theparsefun = ogparserurl
@@ -129,10 +127,8 @@ def eventurl_to_web(eventurl: str) -> None:
                 eventurl,
             )
             return
-        allreslinks: dict_values[str, str] = theparsefun(eventurl).values()
-        compnames: list[str] = [
-            human_comp_info(lnk) for lnk in allreslinks
-        ]
+        allreslinks = theparsefun(eventurl).values()
+        compnames: list[str] = [human_comp_info(lnk) for lnk in allreslinks]
         tsh_results: list[DataFrame] = cast(
             list[DataFrame],
             Parallel(
