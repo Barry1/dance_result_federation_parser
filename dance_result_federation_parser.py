@@ -1,4 +1,5 @@
-#!/usr/bin/env -S /usr/bin/time --format "\tDauer %e [s] \t%U [s] User-Zeit\t%S [s] System-Zeit\t%P CPU" python3 -OO
+#!/usr/bin/env -S /usr/bin/time python3 -OO
+# --format "\tDauer %e [s] \t%U [s] User-Zeit\t%S [s] System-Zeit\t%P CPU"
 # coding=utf-8
 """Turnier-Ergebnis-Parser
 urllib.request für https nötig

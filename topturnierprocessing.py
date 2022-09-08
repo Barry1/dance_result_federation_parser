@@ -1,6 +1,6 @@
 """Module for TopTurnier-specific functions."""
 import logging
-from typing import cast
+from typing import Literal, cast
 from urllib.error import HTTPError
 
 from bs4 import BeautifulSoup
@@ -13,6 +13,7 @@ from dtvprocessing import get_dtv_df
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
+MY_TIMEOUT: Literal[3] = 3
 
 
 def checkttontree(the_e_tree: _ElementTree) -> bool:
@@ -46,7 +47,7 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
     for eintrag in cast(
         ResultSet[Tag],
         BeautifulSoup(
-            requests_get(baseurlwith).text,
+            requests_get(baseurlwith, timeout=MY_TIMEOUT).text,
             features="lxml",
             parse_only=SoupStrainer("a"),
         )("span"),
@@ -64,13 +65,17 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
         "erg.htm"
     ), f"{theresulturl} endet nicht auf erg.htm"
     tab1tbl: list[DataFrame] = read_html(
-        requests_get(theresulturl).text.replace("<BR>", "</td><td>"),
+        requests_get(theresulturl, timeout=MY_TIMEOUT).text.replace(
+            "<BR>", "</td><td>"
+        ),
         attrs={"class": "tab1"},
     )
     erg_df: DataFrame
     try:
         tab2tbl: list[DataFrame] = read_html(
-            requests_get(theresulturl).text.replace("<BR>", "</td><td>"),
+            requests_get(theresulturl, timeout=MY_TIMEOUT).text.replace(
+                "<BR>", "</td><td>"
+            ),
             attrs={"class": "tab2"},
         )
     except ValueError:
