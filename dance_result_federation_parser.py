@@ -26,7 +26,27 @@ from topturnierprocessing import (
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
-thefederation: Literal["TSH"] | Literal["HATV"] = "TSH"
+thefederation: Literal["TSH"] | Literal["HATV"] | Literal["TBW"] | Literal[
+    "HTV"
+] | Literal["Bayern"] | Literal["Berlin"] | Literal["Bremen"] | Literal[
+    "NTV"
+] | Literal[
+    "TNW"
+] | Literal[
+    "TRP"
+] | Literal[
+    "SLT"
+] | Literal[
+    "LTV Br"
+] | Literal[
+    "TMV"
+] | Literal[
+    "TVS"
+] | Literal[
+    "TVSA"
+] | Literal[
+    "TTSV"
+] = "TSH"
 PYANNOTATE = False
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 logformatter: logging.Formatter = logging.Formatter(

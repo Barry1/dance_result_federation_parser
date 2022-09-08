@@ -78,8 +78,10 @@ def create_dtv_df() -> DataFrame:
                         tempmatchdict["Ort"] = the_place
                         dtv_assocs_dict_list.extend([tempmatchdict])
             login_data["seite"] += 1
-    dtv_associations: DataFrame = DataFrame.from_records(dtv_assocs_dict_list,index='ID')
-    dtv_associations.index=dtv_associations.index.astype(int)
+    dtv_associations: DataFrame = DataFrame.from_records(
+        dtv_assocs_dict_list, index="ID"
+    )
+    dtv_associations.index = dtv_associations.index.astype(int)
     dtv_associations["Verein"] = dtv_associations["Verein"].apply(
         cleanevfromentry
     )

@@ -59,6 +59,12 @@ poetryprep:
 	poetry update
 	poetry install
 
+black:
+	poetry run black $(OBJS)
+
+isort:
+	poetry run isort $(OBJS)
+
 monkeytype.sqlite3:
 	poetry run monkeytype run ./dance_result_federation_parser.py 
 
