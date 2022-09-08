@@ -1,4 +1,5 @@
 """Module for TPS-specific functions."""
+import logging
 from urllib.parse import quote
 from urllib.request import urlopen
 
@@ -8,6 +9,8 @@ from pandas import DataFrame, read_html, to_numeric  # , option_context
 
 from dtvprocessing import get_dtv_df
 from stringprocessing import cleanevfromentry  # ,clean_number_from_couple
+
+thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 
 
 def checktpsontree(the_e_tree: _ElementTree) -> bool:
@@ -52,6 +55,7 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
         "index.html"
     ), "Es muss die index.html-URL vom Turnier (nicht Veranstaltung) angegeben werden"
     theresulturl = theresulturl.replace("index.html", "result.html")
+    thelogger.debug("Verarbeitung von %s", theresulturl)
     tps_result_df: DataFrame
     try:
         tps_result_df = read_html(

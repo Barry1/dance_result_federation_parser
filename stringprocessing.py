@@ -24,8 +24,12 @@ def clean_number_from_couple(couple_str_with_num: str) -> str:
     )
 
 
-def human_comp_info(turnier_info: str) -> str:
+def sr_human_comp_info(turnier_info: str) -> str:
     """Convert URL part to human words."""
+    lastpos: int = turnier_info.rfind("/")
+    turnier_info: str = turnier_info[
+        turnier_info.rfind("/", 0, lastpos) + 1 : lastpos
+    ]
     [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split(
         "_", 2
     )
@@ -47,5 +51,17 @@ def human_comp_info(turnier_info: str) -> str:
         comp_desc_human += f" WDSF {comp_desc[4:].strip()}"
     else:
         comp_desc_human += f" DTV {comp_desc[3:].strip()}"
+    thelogger.debug("%s ==> %s", turnier_info, comp_desc_human)
+    return comp_desc_human
+
+
+def og_human_comp_info(turnier_info: str) -> str:
+    """Convert URL part to human words."""
+    lastpos: int = turnier_info.rfind("/")
+    turnier_info: str = turnier_info[
+        turnier_info.rfind("/", 0, lastpos) + 1 : lastpos
+    ]
+    comp_desc_human: str = turnier_info[turnier_info.find("%20")+3:]
+    comp_desc_human=comp_desc_human.replace("_"," ")
     thelogger.debug("%s ==> %s", turnier_info, comp_desc_human)
     return comp_desc_human

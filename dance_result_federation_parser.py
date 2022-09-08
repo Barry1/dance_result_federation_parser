@@ -18,7 +18,7 @@ from pandas import set_option as pandas_set_option
 from valuefragments import eprint
 
 from dtvprocessing import get_dtv_df
-from stringprocessing import human_comp_info
+from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
     checkttontree,
     interpret_tt_result,
@@ -44,7 +44,7 @@ thefederation: Literal[
     "TVSA",
     "TTSV",
 ] = "TSH"
-PYANNOTATE = False
+PYANNOTATE: Literal[True,False] = False
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -75,17 +75,22 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             thelogger.info("%s ist eine TPS-Veranstaltung", eventurl)
             theparsefun = ogparserurl
             the_interpret_fun = interpret_tps_result
+            human_comp_info = og_human_comp_info
         elif checkttontree(tree):
             thelogger.info("%s ist eine TT-Veranstaltung", eventurl)
             theparsefun = srparserurl
             the_interpret_fun = interpret_tt_result
+            human_comp_info = sr_human_comp_info
         else:
             thelogger.debug(
                 "Die URL %s kann weder TPS noch TT zugeordnet werden.",
                 eventurl,
             )
             return
-        allreslinks = theparsefun(eventurl).values()
+        allreslinks: dict_values[str, str] = theparsefun(eventurl).values()
+        compnames: list[str] = [
+            human_comp_info(lnk) for lnk in allreslinks
+        ]
         tsh_results: list[DataFrame] = list(
             await asyncio.gather(
                 *(
@@ -94,7 +99,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                 )
             )
         )
-        print_tsh_web(list(allreslinks), tsh_results)
+        print_tsh_web(list(allreslinks), tsh_results, compnames)
 
 
 def eventurl_to_web(eventurl: str) -> None:
@@ -107,21 +112,27 @@ def eventurl_to_web(eventurl: str) -> None:
     else:
         theparsefun: Callable[[str], dict[str, str]]
         the_interpret_fun: Callable[[str], DataFrame]
+        human_comp_info: Callable[[str],str]
         if checktpsontree(tree):
             thelogger.info("%s ist eine TPS-Veranstaltung", eventurl)
             theparsefun = ogparserurl
             the_interpret_fun = interpret_tps_result
+            human_comp_info = og_human_comp_info
         elif checkttontree(tree):
             thelogger.info("%s ist eine TT-Veranstaltung", eventurl)
             theparsefun = srparserurl
             the_interpret_fun = interpret_tt_result
+            human_comp_info = sr_human_comp_info
         else:
             thelogger.debug(
                 "Die URL %s kann weder TPS noch TT zugeordnet werden.",
                 eventurl,
             )
             return
-        allreslinks = theparsefun(eventurl).values()
+        allreslinks: dict_values[str, str] = theparsefun(eventurl).values()
+        compnames: list[str] = [
+            human_comp_info(lnk) for lnk in allreslinks
+        ]
         tsh_results: list[DataFrame] = cast(
             list[DataFrame],
             Parallel(
@@ -131,11 +142,11 @@ def eventurl_to_web(eventurl: str) -> None:
                 for a in theparsefun(eventurl).values()
             ),
         )
-        print_tsh_web(list(allreslinks), tsh_results)
+        print_tsh_web(list(allreslinks), tsh_results, compnames)
 
 
 def print_tsh_web(
-    allreslinks: list[str], tsh_results: list[DataFrame]
+    allreslinks: list[str], tsh_results: list[DataFrame], compnames: list[str]
 ) -> None:
     """Export data as HTML for TSH-CMS."""
     print(
@@ -147,11 +158,9 @@ def print_tsh_web(
         "Die &Uuml;berschriften sind die Links zum Ergebnis.</p>",
         "<!-- ===================================================== -->",
     )
-    for actreslink, value in zip(allreslinks, tsh_results):
-        lastpos: int = actreslink.rfind("/")
-        turnier_info: str = human_comp_info(
-            actreslink[actreslink.rfind("/", 0, lastpos) + 1 : lastpos]
-        )
+    for actreslink, value, turnier_info in zip(
+        allreslinks, tsh_results, compnames
+    ):
         tournhdr: str = (
             f'<h2><a href="{actreslink}" target="_blank" '
             f'rel="noopener">{turnier_info}</a></h2>'

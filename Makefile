@@ -1,6 +1,6 @@
 MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 
-.PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps
+.PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns
 
 OBJS=dtvprocessing.py dance_result_federation_parser.py  stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
 
@@ -9,7 +9,9 @@ runmesingle=poetry run python -OO ./single_result_parser.py
 
 ALL: pylint mypy formatting vulture pytype
 
-testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern2022.txt
+testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern2022.txt tpstestruns
+
+tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt
 
 Enzkloesterle_2022.txt:
 	$(runme) https://www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm > $@ 2> $(@:.txt=.err)
@@ -19,6 +21,9 @@ danceComp_2022.txt:
 
 BalSen_2022.txt:
 	$(runme) https://tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm > $@ 2> $(@:.txt=.err)
+
+GLM_Sen_IV_und_Sen_V_2022.txt:
+	$(runme) https://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V > $@ 2> $(@:.txt=.err)
 
 DC_HGR-A_LAT_2022.txt:
 	$(runmesingle) https://www.boston-club.de/ergebnis/dchgralat2022/index.htm > $@ 2> $(@:.txt=.err)
