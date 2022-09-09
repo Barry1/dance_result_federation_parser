@@ -2,7 +2,8 @@ MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 
 .PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns
 
-OBJS=dtvprocessing.py dance_result_federation_parser.py  stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
+#OBJS=dtvprocessing.py dance_result_federation_parser.py  stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
+OBJS=$(shell git ls-files *.py)
 
 runme=poetry run python -OO ./dance_result_federation_parser.py 
 runmesingle=poetry run python -OO ./single_result_parser.py 
