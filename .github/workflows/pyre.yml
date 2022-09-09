@@ -24,7 +24,7 @@ on:
     branches: ["master"]
 
 permissions:
-    contents: read
+  contents: read
 
 jobs:
   pyre:
@@ -36,9 +36,9 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.10"]
-        #working but prj needs 3.10
-        #not working "3.11beta","3.11dev"
-        #https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json
+        # working but prj needs 3.10
+        # not working "3.11beta","3.11dev"
+        # https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json
     steps:
       - uses: actions/checkout@v3
         with:
@@ -56,5 +56,5 @@ jobs:
         with:
           # To customize these inputs:
           # See https://github.com/facebook/pyre-action#inputs
-          repo-directory: './'
-          requirements-path: 'requirements.txt'
+          repo-directory: "./"
+          requirements-path: "requirements.txt"
