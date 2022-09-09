@@ -94,7 +94,8 @@ vulture:
 	-poetry run vulture $(OBJS)
 
 pytype:
-	-poetry run pytype --keep-going --protocols --precise-return $(OBJS)
+	echo "not supportes fo python >3.7"
+#	-poetry run pytype --keep-going --protocols --precise-return $(OBJS)
 
 bindeps:
 	sudo apt-get install --assume-yes libxml2-dev libxslt1-dev patchelf
