@@ -23,4 +23,4 @@ jobs:
           poetry export --with dev --without-hashes --output requirements.txt
           pip install --upgrade --requirement requirements.txt
       - name: Analysing the code with pylint
-        run: pylint $(git ls-files '*.py')
+        run: pylint "$(git ls-files '*.py')"
