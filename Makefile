@@ -114,6 +114,12 @@ thewholetoolchain: prospector pytype vulture
 	-poetry run pylint $(OBJS)
 	-poetry run pyright $(OBJS)
 
+pyre:
+	poetry run pyre --source-directory . check
+
+pysa:
+	poetry run pyre --source-directory . analyze
+
 prospector:
 	-poetry run prospector -X $(OBJS)
 
