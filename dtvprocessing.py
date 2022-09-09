@@ -63,6 +63,7 @@ def create_dtv_df() -> DataFrame:
         ):
             thelogger.debug(len(tempfound))
             the_place: str = ""
+            orgdata: list[_ElementUnicodeResult]
             for eintrag in tempfound:
                 if eintrag.tag == "h3":  # Neue Ortsangabe
                     if eintrag.text:
@@ -70,7 +71,7 @@ def create_dtv_df() -> DataFrame:
                         the_place = eintrag.text
                 else:  # Neuer Verein
                     # thelogger.debug("%s",repr(eintrag))
-                    orgdata: list[_ElementUnicodeResult] = eintrag.xpath(
+                    orgdata = eintrag.xpath(
                         'div[@class="trigger"]/h3/text()'
                     )
                     if tempmatch := re.match(MYREGEX, orgdata[0]):
