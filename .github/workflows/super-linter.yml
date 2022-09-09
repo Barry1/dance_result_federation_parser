@@ -6,9 +6,9 @@
 name: Lint Code Base
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 jobs:
   run-lint:
     runs-on: ubuntu-latest
@@ -18,9 +18,9 @@ jobs:
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
-#      - name: Describe file position, dir and so on
-#        run: |
-#          realpath ./pyproject.toml
+      #      - name: Describe file position, dir and so on
+      #        run: |
+      #          realpath ./pyproject.toml
       - name: Lint Code Base
         uses: github/super-linter@latest
         env:
@@ -28,5 +28,6 @@ jobs:
           DEFAULT_BRANCH: "master"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # $(GITHUB_WORKSPACE) not working as in this action
-          #PYTHON_BLACK_CONFIG_FILE: /home/runner/work/dance_result_federation_parser/dance_result_federation_parser/pyproject.toml
-          #PYTHON_ISORT_CONFIG_FILE: /home/runner/work/dance_result_federation_parser/dance_result_federation_parser/pyproject.toml
+          LINTER_RULES_PATH: /
+          PYTHON_BLACK_CONFIG_FILE: ./pyproject.toml
+          PYTHON_ISORT_CONFIG_FILE: ./pyproject.toml
