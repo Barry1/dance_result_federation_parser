@@ -105,7 +105,10 @@ radon = "*"
 requests = "*"
 typing = "*"
 typing-extensions = "*"
-valuefragments = { git = "https://github.com/Barry1/PyValueFragments.git", rev = "main" }
+
+[tool.poetry.dependencies.valuefragments]
+git = "https://github.com/Barry1/PyValueFragments.git"
+rev = "main"
 
 [tool.poetry.dev-dependencies]
 black = "*"
@@ -118,7 +121,6 @@ prospector = "^1.7.7"
 pyannotate = "^1.2.0"
 pyflakes = "^2.4.0"
 pylama = "*"
-pyre-check = { version = "*", platform = "linux" }
 pyright = "^1.1.256"
 pytype = "*"
 retype = "*"
@@ -126,6 +128,10 @@ types-requests = "*"
 vermin = "^1.4.0"
 vulture = "^2.5"
 colorama = "^0.4.5"
+
+[tool.poetry.dev-dependencies.pyre-check]
+version = "*"
+platform = "linux"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
