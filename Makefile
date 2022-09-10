@@ -1,11 +1,11 @@
 MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 
-.PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns
+.PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
 
 #OBJS=dtvprocessing.py dance_result_federation_parser.py  stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
 OBJS=$(shell git ls-files *.py)
 
-runme=poetry run python -OO ./dance_result_federation_parser.py 
+runme=poetry run python -OO ./dance_result_federation_parser.py
 runmesingle=poetry run python -OO ./single_result_parser.py 
 
 ALL: pylint mypy formatting vulture pytype
@@ -14,35 +14,38 @@ testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern202
 
 tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt
 
+GLM_SEN_II+III_D-B_STD_2022.txt: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 Enzkloesterle_2022.txt:
-	$(runme) https://www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm > $@ 2> $(@:.txt=.err)
+	$(runme) http://www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm > $@ 2> $(@:.txt=.err)
 
 danceComp_2022.txt:
-	$(runme) https://ergebnisse.dancecomp.de/2022/index.htm > $@ 2> $(@:.txt=.err)
+	$(runme) http://ergebnisse.dancecomp.de/2022/index.htm > $@ 2> $(@:.txt=.err)
 
 BalSen_2022.txt:
-	$(runme) https://tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm > $@ 2> $(@:.txt=.err)
+	$(runme) http://tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm > $@ 2> $(@:.txt=.err)
 
 GLM_Sen_IV_und_Sen_V_2022.txt:
-	$(runme) https://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V > $@ 2> $(@:.txt=.err)
+	$(runme) http://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V > $@ 2> $(@:.txt=.err)
 
 DC_HGR-A_LAT_2022.txt:
-	$(runmesingle) https://www.boston-club.de/ergebnis/dchgralat2022/index.htm > $@ 2> $(@:.txt=.err)
+	$(runmesingle) http://www.boston-club.de/ergebnis/dchgralat2022/index.htm > $@ 2> $(@:.txt=.err)
 
 DM_SENII_STD_2022.txt:
-	$(runmesingle) https://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/0-dm_sen2sstd/index.htm > $@ 2> $(@:.txt=.err)
+	$(runmesingle) http://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/0-dm_sen2sstd/index.htm > $@ 2> $(@:.txt=.err)
 
 BadBevensen_2022.txt:
-	$(runme) https://www.tanzsport-biedermann.de/results/pfingsten22/index.html > $@ 2> $(@:.txt=.err)
+	$(runme) http://www.tanzsport-biedermann.de/results/pfingsten22/index.html > $@ 2> $(@:.txt=.err)
 
 DSF_2022.txt:
-	$(runme) https://ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm > $@ 2> $(@:.txt=.err)
+	$(runme) http://ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm > $@ 2> $(@:.txt=.err)
 
 GLM_HGR_SENI_D-B_STD_2022.txt:
 	$(runme) http://tps.1sc-norderstedt-tsa.de/20220528/index.htm > $@ 2> $(@:.txt=.err)
 
 HessenTanzt2022.txt:
-	$(runme) https://www.hessen-tanzt.de/media/ht2022/index.htm > $@ 2> $(@:.txt=.err)
+	$(runme) http://www.hessen-tanzt.de/media/ht2022/index.htm > $@ 2> $(@:.txt=.err)
 
 BlauesBand2018.txt:
 	$(runme) http://www.blauesband-berlin.de/Ergebnisse/2018/blauesband2018/index.htm > $@ 2> $(@:.txt=.err)
@@ -51,13 +54,13 @@ BlauesBand2019.txt:
 	$(runme) http://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm > $@ 2> $(@:.txt=.err)
 
 BlauesBand2022.txt:
-	$(runme) https://turniere.btc-gruen-gold.de/bb2022/index.htm > $@ 2> $(@:.txt=.err)
+	$(runme) http://turniere.btc-gruen-gold.de/bb2022/index.htm > $@ 2> $(@:.txt=.err)
 
 HolmOstern2022.txt:
-	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/freitag/index.htm > $@ 2> $(@:.txt=.err)
-	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/samstag/index.htm >> $@ 2>> $(@:.txt=.err)
-	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/sonntag/index.htm >> $@ 2>> $(@:.txt=.err)
-	$(runme) https://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/montag/index.htm >> $@ 2>> $(@:.txt=.err)
+	$(runme) http://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/freitag/index.htm > $@ 2> $(@:.txt=.err)
+	$(runme) http://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/samstag/index.htm >> $@ 2>> $(@:.txt=.err)
+	$(runme) http://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/sonntag/index.htm >> $@ 2>> $(@:.txt=.err)
+	$(runme) http://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/montag/index.htm >> $@ 2>> $(@:.txt=.err)
 
 poetryprep:
 	sudo apt install python3-distutils
