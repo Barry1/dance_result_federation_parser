@@ -26,5 +26,5 @@ jobs:
           python -m pip install poetry
           poetry export --with dev --without-hashes --output requirements.txt
           pip install --upgrade --requirement requirements.txt
-      - name: Analysing the code with pylint
+      - name: Analysing the code with pytest
         run: pytest $(git ls-files '*.py')
