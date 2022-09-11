@@ -21,10 +21,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pytest
-      - name: Install further (poety) dependencies
+      - name: Install further (poetry) dependencies
         run: |
           python -m pip install poetry
           poetry export --with dev --without-hashes --output requirements.txt
           pip install --upgrade --requirement requirements.txt
       - name: Analysing the code with pylint
-        run: pytest "$(git ls-files '*.py')"
+        run: pytest $(git ls-files '*.py')
