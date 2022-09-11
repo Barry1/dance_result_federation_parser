@@ -1,6 +1,6 @@
 MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 
-.PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
+.PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns 
 
 #OBJS=dtvprocessing.py dance_result_federation_parser.py  stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
 OBJS=$(shell git ls-files *.py)
@@ -14,6 +14,8 @@ testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern202
 
 tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt
 
+# https://www.gnu.org/software/make/manual/make.html#Double_002dColon
+.PHONY: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
 GLM_SEN_II+III_D-B_STD_2022.txt: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
 	$(runme) $< > $@ 2> $(@:.txt=.err)
 
