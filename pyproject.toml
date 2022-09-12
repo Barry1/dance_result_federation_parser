@@ -92,7 +92,6 @@ authors = ["Ebeling, Dr. Bastian <bastian.ebeling@web.de>"]
 
 [tool.poetry.dependencies]
 bs4 = "*"
-colorama = "*"
 fastparquet = "*"
 html5lib = "*"
 joblib = "*"
