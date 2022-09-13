@@ -76,7 +76,7 @@ beautifulsoup4 = "*"
 
 [[package]]
 name = "certifi"
-version = "2022.6.15.1"
+version = "2022.6.15.2"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
 optional = false
@@ -1089,7 +1089,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
 name = "valuefragments"
-version = "0.1.12"
+version = "0.1.13"
 description = "Testing installation of Package"
 category = "main"
 optional = false
@@ -1103,7 +1103,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "99e7e5f3e5d9669c2b35dc2fb9310f43b8a3bc77"
+resolved_reference = "1c84e14e7e75a03a77d7b1fe0e2a209fe54808e0"
 
 [[package]]
 name = "vermin"
