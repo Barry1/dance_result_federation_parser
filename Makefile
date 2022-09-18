@@ -19,6 +19,10 @@ tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt
 GLM_SEN_II+III_D-B_STD_2022.txt: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
 	$(runme) $< > $@ 2> $(@:.txt=.err)
 
+.PHONY: https\://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
+GLM_KIN-JUG_STD_2022.txt: https\://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 Enzkloesterle_2022.txt:
 	$(runme) http://www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm > $@ 2> $(@:.txt=.err)
 
