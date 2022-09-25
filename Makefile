@@ -15,6 +15,12 @@ testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern202
 tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt
 
 # https://www.gnu.org/software/make/manual/make.html#Double_002dColon
+
+.PHONY: https\://tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
+DP_SEN_III_S_STD_2022.txt: https\://tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
+	$(runmesingle) $< > $@ 2> $(@:.txt=.err)
+
+
 .PHONY: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
 GLM_SEN_II+III_D-B_STD_2022.txt: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
 	$(runme) $< > $@ 2> $(@:.txt=.err)
