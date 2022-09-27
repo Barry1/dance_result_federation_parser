@@ -16,6 +16,10 @@ tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt
 
 # https://www.gnu.org/software/make/manual/make.html#Double_002dColon
 
+.PHONY: https\://tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
+GLM_SEN_II_A-S_STD_2022.txt: https\://tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 .PHONY: https\://tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
 DP_SEN_III_S_STD_2022.txt: https\://tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
 	$(runmesingle) $< > $@ 2> $(@:.txt=.err)
