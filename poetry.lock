@@ -411,11 +411,11 @@ mypy-extensions = "*"
 
 [[package]]
 name = "mypy"
-version = "0.971"
+version = "0.981"
 description = "Optional static typing for Python"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.dependencies]
 mypy-extensions = ">=0.4.3"
@@ -1040,7 +1040,7 @@ types-urllib3 = "<1.27"
 
 [[package]]
 name = "types-urllib3"
-version = "1.26.24"
+version = "1.26.25"
 description = "Typing stubs for urllib3"
 category = "dev"
 optional = false
