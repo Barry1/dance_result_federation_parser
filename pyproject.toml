@@ -49,7 +49,7 @@ ignore_missing_imports = true
 [tool.isort]
 # https://pycqa.github.io/isort/docs/configuration/options
 py_version = 310
-color_output = true
+# color_output = true
 line_length = 79
 profile = "black"
 skip = "venv"
@@ -105,10 +105,6 @@ requests = "*"
 typing = "*"
 typing-extensions = "*"
 
-[tool.poetry.dependencies.isort]
-extras = ["colors"]
-version = "*"
-
 [tool.poetry.dependencies.valuefragments]
 git = "https://github.com/Barry1/PyValueFragments.git"
 rev = "main"
@@ -130,6 +126,10 @@ types-requests = "*"
 vermin = "^1.4.0"
 vulture = "^2.5"
 colorama = "^0.4.5"
+
+[tool.poetry.dev-dependencies.isort]
+extras = ["colors"]
+version = "*"
 
 [tool.poetry.dev-dependencies.pyre-check]
 version = "*"
