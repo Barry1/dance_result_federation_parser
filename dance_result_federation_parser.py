@@ -83,7 +83,6 @@ async def async_eventurl_to_web(eventurl: str) -> None:
     except HTTPError as http_error:
         thelogger.exception(http_error)
     else:
-        thelogger.info("Verarbeitung von %s.", eventurl)
         try:
             theparsefun: Callable[[str], dict[str, str]]
             the_interpret_fun: Callable[[str], DataFrame]
@@ -122,7 +121,6 @@ def eventurl_to_web(eventurl: str) -> None:
     except HTTPError as http_error:
         thelogger.exception(http_error)
     else:
-        thelogger.info("Verarbeitung von %s.", eventurl)
         try:
             theparsefun: Callable[[str], dict[str, str]]
             the_interpret_fun: Callable[[str], DataFrame]
