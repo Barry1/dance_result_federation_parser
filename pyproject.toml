@@ -54,13 +54,13 @@ line_length = 79
 profile = "black"
 skip = "venv"
 
-[pylama.pep8]
+[tool.pylama.pep8]
 max_line_length = 88
 
-[pylama.pycodestyle]
+[tool.pylama.pycodestyle]
 max_line_length = 88
 
-[pylama.pylint]
+[tool.pylama.pylint]
 max_line_length = 88
 
 [tool.pylint.MASTER]
