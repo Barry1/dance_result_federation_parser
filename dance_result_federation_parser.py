@@ -62,6 +62,19 @@ IMG_PREP: bool = False
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
+def reslinks_interpreter(tree: _ElementTree):
+    """Handle difference of TT and TPS."""
+    if checktpsontree(tree):
+        thelogger.info("Es ist eine TPS-Veranstaltung")
+        return ogparserurl, interpret_tps_result, og_human_comp_info
+    elif checkttontree(tree):
+        thelogger.info("Es ist eine TT-Veranstaltung")
+        return srparserurl, interpret_tt_result, sr_human_comp_info
+    else:
+        thelogger.debug("Die URL kann weder TPS noch TT zugeordnet werden.")
+        raise NotImplementedError("Don't know how to parse.")
+
+
 async def async_eventurl_to_web(eventurl: str) -> None:
     """Async convert URL from Event to HTML for TSH CMS."""
     try:
@@ -70,35 +83,35 @@ async def async_eventurl_to_web(eventurl: str) -> None:
     except HTTPError as http_error:
         thelogger.exception(http_error)
     else:
-        theparsefun: Callable[[str], dict[str, str]]
-        the_interpret_fun: Callable[[str], DataFrame]
-        if checktpsontree(tree):
-            thelogger.info("%s ist eine TPS-Veranstaltung", eventurl)
-            theparsefun = ogparserurl
-            the_interpret_fun = interpret_tps_result
-            human_comp_info = og_human_comp_info
-        elif checkttontree(tree):
-            thelogger.info("%s ist eine TT-Veranstaltung", eventurl)
-            theparsefun = srparserurl
-            the_interpret_fun = interpret_tt_result
-            human_comp_info = sr_human_comp_info
-        else:
-            thelogger.debug(
-                "Die URL %s kann weder TPS noch TT zugeordnet werden.",
+        thelogger.info("Verarbeitung von %s.", eventurl)
+        try:
+            theparsefun: Callable[[str], dict[str, str]]
+            the_interpret_fun: Callable[[str], DataFrame]
+            human_comp_info: Callable[[str], str]
+            (
+                theparsefun,
+                the_interpret_fun,
+                human_comp_info,
+            ) = reslinks_interpreter(tree)
+        except NotImplementedError:
+            thelogger.exception(
+                "%s kann nicht verarbeitet werden: Weder TT noch TPS.",
                 eventurl,
             )
-            return
-        allreslinks = theparsefun(eventurl).values()
-        compnames: list[str] = [human_comp_info(lnk) for lnk in allreslinks]
-        tsh_results: list[DataFrame] = list(
-            await asyncio.gather(
-                *(
-                    asyncio.to_thread(the_interpret_fun, a)
-                    for a in theparsefun(eventurl).values()
+        else:
+            allreslinks = theparsefun(eventurl).values()
+            compnames: list[str] = [
+                human_comp_info(lnk) for lnk in allreslinks
+            ]
+            tsh_results: list[DataFrame] = list(
+                await asyncio.gather(
+                    *(
+                        asyncio.to_thread(the_interpret_fun, a)
+                        for a in allreslinks
+                    )
                 )
             )
-        )
-        print_tsh_web(list(allreslinks), tsh_results, compnames)
+            print_tsh_web(list(allreslinks), tsh_results, compnames)
 
 
 def eventurl_to_web(eventurl: str) -> None:
@@ -109,37 +122,34 @@ def eventurl_to_web(eventurl: str) -> None:
     except HTTPError as http_error:
         thelogger.exception(http_error)
     else:
-        theparsefun: Callable[[str], dict[str, str]]
-        the_interpret_fun: Callable[[str], DataFrame]
-        human_comp_info: Callable[[str], str]
-        if checktpsontree(tree):
-            thelogger.info("%s ist eine TPS-Veranstaltung", eventurl)
-            theparsefun = ogparserurl
-            the_interpret_fun = interpret_tps_result
-            human_comp_info = og_human_comp_info
-        elif checkttontree(tree):
-            thelogger.info("%s ist eine TT-Veranstaltung", eventurl)
-            theparsefun = srparserurl
-            the_interpret_fun = interpret_tt_result
-            human_comp_info = sr_human_comp_info
-        else:
-            thelogger.debug(
-                "Die URL %s kann weder TPS noch TT zugeordnet werden.",
+        thelogger.info("Verarbeitung von %s.", eventurl)
+        try:
+            theparsefun: Callable[[str], dict[str, str]]
+            the_interpret_fun: Callable[[str], DataFrame]
+            human_comp_info: Callable[[str], str]
+            (
+                theparsefun,
+                the_interpret_fun,
+                human_comp_info,
+            ) = reslinks_interpreter(tree)
+        except NotImplementedError:
+            thelogger.exception(
+                "%s kann nicht verarbeitet werden: Weder TT noch TPS.",
                 eventurl,
             )
-            return
-        allreslinks = theparsefun(eventurl).values()
-        compnames: list[str] = [human_comp_info(lnk) for lnk in allreslinks]
-        tsh_results: list[DataFrame] = cast(
-            list[DataFrame],
-            Parallel(
-                n_jobs=1 if __debug__ else -1, verbose=10 if __debug__ else 0
-            )(
-                delayed(the_interpret_fun)(a)
-                for a in theparsefun(eventurl).values()
-            ),
-        )
-        print_tsh_web(list(allreslinks), tsh_results, compnames)
+        else:
+            allreslinks = theparsefun(eventurl).values()
+            compnames: list[str] = [
+                human_comp_info(lnk) for lnk in allreslinks
+            ]
+            tsh_results: list[DataFrame] = cast(
+                list[DataFrame],
+                Parallel(
+                    n_jobs=1 if __debug__ else -1,
+                    verbose=10 if __debug__ else 0,
+                )(delayed(the_interpret_fun)(a) for a in allreslinks),
+            )
+            print_tsh_web(list(allreslinks), tsh_results, compnames)
 
 
 def print_tsh_web(
