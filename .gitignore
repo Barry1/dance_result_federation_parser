@@ -7,3 +7,5 @@ out/
 nuitka
 resultParser.log
 singleResultParser.log
+.pyre
+.dccache
