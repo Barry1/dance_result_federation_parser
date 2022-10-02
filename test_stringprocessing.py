@@ -8,10 +8,13 @@ from stringprocessing import (
 
 def test_cleanevfromentry() -> None:
     """Remove e.V. oder e. V. from association."""
-    assert cleanevfromentry(
-        "TSA im VfL Pinneberg e. V.") == "TSA im VfL Pinneberg"
-    assert cleanevfromentry(
-        "TSA im VfL Pinneberg e.V.") == "TSA im VfL Pinneberg"
+    assert (
+        cleanevfromentry("TSA im VfL Pinneberg e. V.")
+        == "TSA im VfL Pinneberg"
+    )
+    assert (
+        cleanevfromentry("TSA im VfL Pinneberg e.V.") == "TSA im VfL Pinneberg"
+    )
 
 
 def test_cleanevfrom_dtv_tsh_entry() -> None:
@@ -21,8 +24,8 @@ def test_cleanevfrom_dtv_tsh_entry() -> None:
         == "TSA im VfL Pinneberg"
     )
     assert (
-        cleanevfrom_dtv_tsh_entry(
-            "TSA im VfL Pinneberg e.V.") == "TSA im VfL Pinneberg"
+        cleanevfrom_dtv_tsh_entry("TSA im VfL Pinneberg e.V.")
+        == "TSA im VfL Pinneberg"
     )
     assert (
         cleanevfrom_dtv_tsh_entry("Rhythm & Dance e.V., Börnsen – TSH (3768)")

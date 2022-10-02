@@ -71,9 +71,7 @@ def create_dtv_df() -> DataFrame:
                         the_place = eintrag.text
                 else:  # Neuer Verein
                     # thelogger.debug("%s",repr(eintrag))
-                    orgdata = eintrag.xpath(
-                        'div[@class="trigger"]/h3/text()'
-                    )
+                    orgdata = eintrag.xpath('div[@class="trigger"]/h3/text()')
                     if tempmatch := re.match(MYREGEX, orgdata[0]):
                         tempmatchdict: dict[str, str] = tempmatch.groupdict()
                         tempmatchdict["Ort"] = the_place

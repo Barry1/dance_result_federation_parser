@@ -28,7 +28,7 @@ def sr_human_comp_info(turnier_info: str) -> str:
     """Convert URL part to human words."""
     lastpos: int = turnier_info.rfind("/")
     turnier_info = turnier_info[
-        turnier_info.rfind("/", 0, lastpos) + 1: lastpos
+        turnier_info.rfind("/", 0, lastpos) + 1 : lastpos
     ]
     [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split(
         "_", 2
@@ -59,9 +59,9 @@ def og_human_comp_info(turnier_info: str) -> str:
     """Convert URL part to human words."""
     lastpos: int = turnier_info.rfind("/")
     turnier_info = turnier_info[
-        turnier_info.rfind("/", 0, lastpos) + 1: lastpos
+        turnier_info.rfind("/", 0, lastpos) + 1 : lastpos
     ]
-    comp_desc_human: str = turnier_info[turnier_info.find("%20") + 3:]
+    comp_desc_human: str = turnier_info[turnier_info.find("%20") + 3 :]
     comp_desc_human = comp_desc_human.replace("_", " ")
     thelogger.debug("%s ==> %s", turnier_info, comp_desc_human)
     return comp_desc_human
