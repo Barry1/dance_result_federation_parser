@@ -1,4 +1,4 @@
-#! poetry run python -OO timing_test.py
+#! /home/ebeling/.local/bin/poetry run python -OO timing_test.py
 import asyncio
 
 from valuefragments import TimingCM
