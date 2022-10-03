@@ -3,10 +3,10 @@ import asyncio
 import logging
 import os
 import resource
-import sys
+#import sys
 from typing import Literal
 
-import psutil
+#import psutil
 from valuefragments import NoOutput, TimingCM
 
 from dance_result_federation_parser import (
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     #    print(os.times())
     before = os.times()
     with TimingCM():
-        with nooutput():
+        with NoOutput():
             asyncio.run(async_eventurl_to_web(theurl))
     after = os.times()
     print([a - b for (a, b) in zip(after, before)])
