@@ -133,18 +133,18 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             print_tsh_web(list(allreslinks), tsh_results, compnames)
 
 
-def eventurl_to_web(eventurl: str) -> None:
+def eventurl_to_web(synceventurl: str) -> None:
     """Convert URL from Event to HTML for TSH CMS."""
     try:
-        with urlopen(eventurl) as openedurl:
+        with urlopen(synceventurl) as openedurl:
             tree: _ElementTree = parse(openedurl)
-    except HTTPError as http_error:
-        thelogger.exception(http_error)
+    except HTTPError as sync_http_error:
+        thelogger.exception(sync_http_error)
     else:
         try:
-            theparsefun: Callable[[str], dict[str, str]]
-            the_interpret_fun: Callable[[str], DataFrame]
             human_comp_info: Callable[[str], str]
+            the_interpret_fun: Callable[[str], DataFrame]
+            theparsefun: Callable[[str], dict[str, str]]
             (
                 theparsefun,
                 the_interpret_fun,
@@ -153,12 +153,12 @@ def eventurl_to_web(eventurl: str) -> None:
         except NotImplementedError:
             thelogger.exception(
                 "%s kann nicht verarbeitet werden: Weder TT noch TPS.",
-                eventurl,
+                synceventurl,
             )
         else:
-            allreslinks = theparsefun(eventurl).values()
+            allreslinks = theparsefun(synceventurl).values()
             compnames: list[str] = [
-                human_comp_info(lnk) for lnk in allreslinks
+                human_comp_info(thelink) for thelink in allreslinks
             ]
             tsh_results: list[DataFrame] = cast(
                 list[DataFrame],
