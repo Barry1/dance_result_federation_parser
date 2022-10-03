@@ -72,9 +72,8 @@ def reslinks_interpreter(tree: _ElementTree):
     if checkttontree(tree):
         thelogger.info("Es ist eine TT-Veranstaltung")
         return srparserurl, interpret_tt_result, sr_human_comp_info
-    else:
-        thelogger.debug("Die URL kann weder TPS noch TT zugeordnet werden.")
-        raise NotImplementedError("Don't know how to parse.")
+    thelogger.debug("Die URL kann weder TPS noch TT zugeordnet werden.")
+    raise NotImplementedError("Don't know how to parse.")
 
 
 async def async_eventurl_to_web(eventurl: str) -> None:
