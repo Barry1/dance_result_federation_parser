@@ -104,6 +104,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             compnames: list[str] = [
                 human_comp_info(lnk) for lnk in allreslinks
             ]
+            # <https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor>
             if TOTHREAD:
                 tsh_results: list[DataFrame] = list(
                     await asyncio.gather(
@@ -114,7 +115,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                     )
                 )
             else:
-                loop = asyncio.get_running_loop()
+                loop: asyncio.AbstractEventLoop = asyncio.get_running_loop()
                 with concurrent.futures.ThreadPoolExecutor() as pool:
                     tsh_results: list[DataFrame] = list(
                         await asyncio.gather(
