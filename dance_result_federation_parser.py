@@ -6,6 +6,7 @@ urllib.request für https nötig
 https://www.w3schools.com/xml/xpath_syntax.asp
 """
 import asyncio
+import concurrent.futures
 import logging
 from typing import Callable, Literal, cast
 from urllib.error import HTTPError
@@ -46,6 +47,7 @@ thefederation: Literal[
     "TTSV",
 ] = "TSH"
 PYANNOTATE: Literal[True, False] = False
+TOTHREAD: Literal[True, False] = True
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -102,14 +104,31 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             compnames: list[str] = [
                 human_comp_info(lnk) for lnk in allreslinks
             ]
-            tsh_results: list[DataFrame] = list(
-                await asyncio.gather(
-                    *(
-                        asyncio.to_thread(the_interpret_fun, a)
-                        for a in allreslinks
+            if TOTHREAD:
+                tsh_results: list[DataFrame] = list(
+                    await asyncio.gather(
+                        *(
+                            asyncio.to_thread(the_interpret_fun, a)
+                            for a in allreslinks
+                        )
                     )
                 )
-            )
+            else:
+                loop = asyncio.get_running_loop()
+                with concurrent.futures.ThreadPoolExecutor() as pool:
+                    tsh_results: list[DataFrame] = list(
+                        await asyncio.gather(
+                            *(
+                                loop.run_in_executor(
+                                    pool, the_interpret_fun, a
+                                )
+                                for a in allreslinks
+                            )
+                        )
+                    )
+
+            ###############
+
             print_tsh_web(list(allreslinks), tsh_results, compnames)
 
 
@@ -145,6 +164,8 @@ def eventurl_to_web(eventurl: str) -> None:
                 Parallel(
                     n_jobs=1 if __debug__ else -1,
                     verbose=10 if __debug__ else 0,
+                    backend="multiprocessing",  # loki seems slower and timing problem
+                    #                    prefer='processes',
                 )(delayed(the_interpret_fun)(a) for a in allreslinks),
             )
             print_tsh_web(list(allreslinks), tsh_results, compnames)
