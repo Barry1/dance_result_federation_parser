@@ -6,10 +6,8 @@ import asyncio
 import logging
 import os
 import resource
-#import sys
 from typing import Literal
 
-#import psutil
 from valuefragments import NoOutput, TimingCM
 
 from dance_result_federation_parser import (
@@ -30,11 +28,9 @@ if __name__ == "__main__":
     print("Running Sync")
     before = os.times()
     befr = resource.getrusage(resource.RUSAGE_SELF)
-    #    print(psutil.Process().cpu_times())
     with TimingCM():
         with NoOutput():
             eventurl_to_web(theurl)
-    #    print(psutil.Process().cpu_times())
     after = os.times()
     aftr = resource.getrusage(resource.RUSAGE_SELF)
     print("=========================")
