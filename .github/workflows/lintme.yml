@@ -28,8 +28,8 @@ jobs:
           poetry export --with dev --without-hashes --output requirements.txt
           pip install --upgrade --requirement requirements.txt
       - name: Analysing the code with pylint
-        # shellcheck disable=SC2035,2046
-        run: pylint --verbose --jobs 0 $(git ls-files *.py|xargs)
+        # shellcheck disable=SC2046
+        run: pylint --verbose --jobs 0 $(git ls-files ./*.py|xargs)
   SuperLinter:
     runs-on: ubuntu-latest
     steps:
