@@ -69,7 +69,7 @@ def reslinks_interpreter(tree: _ElementTree):
     if checktpsontree(tree):
         thelogger.info("Es ist eine TPS-Veranstaltung")
         return ogparserurl, interpret_tps_result, og_human_comp_info
-    elif checkttontree(tree):
+    if checkttontree(tree):
         thelogger.info("Es ist eine TT-Veranstaltung")
         return srparserurl, interpret_tt_result, sr_human_comp_info
     else:
@@ -104,9 +104,10 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             compnames: list[str] = [
                 human_comp_info(lnk) for lnk in allreslinks
             ]
+            tsh_results: list[DataFrame]
             # <https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor>
             if TOTHREAD:
-                tsh_results: list[DataFrame] = list(
+                tsh_results = list(
                     await asyncio.gather(
                         *(
                             asyncio.to_thread(the_interpret_fun, a)
@@ -117,7 +118,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             else:
                 loop: asyncio.AbstractEventLoop = asyncio.get_running_loop()
                 with concurrent.futures.ThreadPoolExecutor() as pool:
-                    tsh_results: list[DataFrame] = list(
+                    tsh_results = list(
                         await asyncio.gather(
                             *(
                                 loop.run_in_executor(
