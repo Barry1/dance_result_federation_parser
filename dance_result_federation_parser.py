@@ -47,7 +47,8 @@ thefederation: Literal[
     "TTSV",
 ] = "TSH"
 PYANNOTATE: Literal[True, False] = False
-TOTHREAD: Literal[True, False] = True
+RUN_ASYNC: Literal[True, False] = True
+TOTHREAD: Literal[True, False] = False
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -59,7 +60,6 @@ if __debug__:
     thelogger.setLevel(logging.DEBUG)
 else:
     thelogger.setLevel(logging.INFO)
-RUN_ASYNC: bool = True
 IMG_PREP: bool = False
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
