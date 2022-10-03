@@ -4,8 +4,6 @@ to find out, what would be the best implementation.
 """
 import asyncio
 import logging
-import os
-import resource
 from typing import Literal
 
 from valuefragments import NoOutput, TimingCM
@@ -26,28 +24,13 @@ if __name__ == "__main__":
     print("============================================================")
     RUN_ASYNC: Literal[False, True] = False
     print("Running Sync")
-    before = os.times()
-    befr = resource.getrusage(resource.RUSAGE_SELF)
     with TimingCM():
         with NoOutput():
             eventurl_to_web(theurl)
-    after = os.times()
-    aftr = resource.getrusage(resource.RUSAGE_SELF)
     print("=========================")
-    #    print(before)
-    #    print(after)
-    print([a - b for (a, b) in zip(after, before)])
-    #    print(befr)
-    #    print(aftr)
-    #    print("============================================================")
     RUN_ASYNC = True
     print("Running ASync")
-    #    print(os.times())
-    before = os.times()
     with TimingCM():
         with NoOutput():
             asyncio.run(async_eventurl_to_web(theurl))
-    after = os.times()
-    print([a - b for (a, b) in zip(after, before)])
-#    print(os.times())
-#    print("============================================================")
+    print("============================================================")
