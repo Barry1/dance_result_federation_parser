@@ -116,7 +116,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                 )
             else:
                 loop: asyncio.AbstractEventLoop = asyncio.get_running_loop()
-                with concurrent.futures.ThreadPoolExecutor() as pool:
+                with concurrent.futures.ProcessPoolExecutor() as pool:
                     tsh_results = list(
                         await asyncio.gather(
                             *(
