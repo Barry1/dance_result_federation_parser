@@ -164,7 +164,10 @@ def eventurl_to_web(eventurl: str) -> None:
                 Parallel(
                     n_jobs=1 if __debug__ else -1,
                     verbose=10 if __debug__ else 0,
-                    backend="multiprocessing",  # loki seems slower and timing problem
+                    backend="multiprocessing",
+                    # Testrun multiprocessing 2.899999998509884 (25,661 für 5)
+                    # Testrun threading 4.420000001788139 (29,347 für 5)
+                    # Testrun loky 4.8099999986588955 (30,918 für 5)
                     #                    prefer='processes',
                 )(delayed(the_interpret_fun)(a) for a in allreslinks),
             )
