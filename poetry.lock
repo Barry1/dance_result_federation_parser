@@ -1029,7 +1029,7 @@ test = ["pytest", "typing-extensions", "mypy"]
 
 [[package]]
 name = "types-requests"
-version = "2.28.11.1"
+version = "2.28.11.2"
 description = "Typing stubs for requests"
 category = "dev"
 optional = false
@@ -1103,7 +1103,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "8cbc2ce0289fff3b3b82b0ee6c20f77a9e8406b8"
+resolved_reference = "a4f93d8e4490927b8aa89085c372b8f3b2196ed3"
 
 [[package]]
 name = "vermin"
