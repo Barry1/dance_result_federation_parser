@@ -1,9 +1,11 @@
 """Module for processing of DTV details."""
+from __future__ import annotations
+
 import logging
 import os
 import re
 import time
-from typing import Literal, TypedDict
+from typing import Literal, Type, TypedDict
 
 from lxml.etree import (
     _ElementUnicodeResult,  # type: ignore[reportPrivateUsage]

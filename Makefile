@@ -3,7 +3,7 @@ MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 .PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns pyright
 
 #OBJS=dtvprocessing.py dance_result_federation_parser.py  stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
-OBJS=$(shell git ls-files *.py)
+OBJS=$(shell git ls-files *.py *.pyi)
 
 runme=poetry run python -OO ./dance_result_federation_parser.py
 runmesingle=poetry run python -OO ./single_result_parser.py 
@@ -139,16 +139,16 @@ thewholetoolchain: prospector pytype vulture pyright
 	-poetry run pylint $(OBJS)
 
 typings/joblib:
-	-poetry run pyright --lib $(OBJS) --createstub joblib
+	-poetry run pyright $(OBJS) --createstub joblib
 
 typings/pandas:
-	-poetry run pyright --lib $(OBJS) --createstub pandas
+	-poetry run pyright $(OBJS) --createstub pandas
 
 typings/lxml:
-	-poetry run pyright --lib $(OBJS) --createstub lxml
+	-poetry run pyright $(OBJS) --createstub lxml
 
 pyright:
-	-poetry run pyright --lib $(OBJS)
+	-poetry run pyright $(OBJS)
 
 pyre:
 	poetry run pyre --source-directory . check
