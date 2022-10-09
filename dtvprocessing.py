@@ -132,3 +132,13 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
         )
         thelogger.info("DTV-Vereinsdaten aktualisiert.")
     return dtv_associations
+
+
+if __name__ == "__main__":
+    dtv_assocs_df: DataFrame = get_dtv_df()
+    print(
+        dtv_assocs_df.pivot_table(
+            index="Verband", values="Verein", aggfunc="count"
+        )
+    )
+    print(dtv_assocs_df[dtv_assocs_df.Verband == "TSH"])
