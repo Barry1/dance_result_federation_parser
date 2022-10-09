@@ -5,7 +5,9 @@ import re
 import time
 from typing import Literal, TypedDict
 
-from lxml.etree import _ElementUnicodeResult
+from lxml.etree import (
+    _ElementUnicodeResult,  # type: ignore[reportPrivateUsage]
+)
 from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
@@ -13,11 +15,17 @@ from requests import Session, urllib3  # type:ignore
 from stringprocessing import cleanevfromentry
 
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
-MAX_CACHE_AGE_IN_SECONDS = 7 * 24 * 60 * 60  # eine Woche
-MYREGEX = r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
+MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
+MYREGEX: Literal[
+    "(?P<Verein>.*)–(?P<Verband>.*)\\((?P<ID>\\d+)\\)"
+] = r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
 PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"
-SEARCH_URL = "https://www.tanzsport.de/de/service/vereinssuche"
-XPATH_FOR_ORGS = '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
+SEARCH_URL: Literal[
+    "https://www.tanzsport.de/de/service/vereinssuche"
+] = "https://www.tanzsport.de/de/service/vereinssuche"
+XPATH_FOR_ORGS: Literal[
+    '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
+] = '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
 
 
 def create_dtv_df() -> DataFrame:
@@ -28,7 +36,7 @@ def create_dtv_df() -> DataFrame:
     # needs to be object type because of variable lenght
     dtv_assocs_dict_list: list[dict[str, str]] = []
     urllib3.disable_warnings()
-    xpath_for_token = '//*[@id="mod_vereinssuche_formular"]/input[@name="REQUEST_TOKEN"]/@value'
+    xpath_for_token: str = '//*[@id="mod_vereinssuche_formular"]/input[@name="REQUEST_TOKEN"]/@value'
     with Session() as sess_context:
         sess_context.verify = False
         rqtoken: str = fromstring(sess_context.get(SEARCH_URL).content).xpath(
