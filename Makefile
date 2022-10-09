@@ -1,6 +1,6 @@
 MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 
-.PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns 
+.PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns pyright
 
 #OBJS=dtvprocessing.py dance_result_federation_parser.py  stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
 OBJS=$(shell git ls-files *.py)
@@ -129,7 +129,7 @@ nuitka/resultParser.bin: dance_result_federation_parser.py
 vermin:
 	poetry run vermin --eval-annotations --backport asyncio --backport typing *.py
 
-thewholetoolchain: prospector pytype vulture
+thewholetoolchain: prospector pytype vulture pyright
 	poetry run autopep8 $(OBJS)
 	-poetry run flake8 $(OBJS)
 	-poetry run mypy $(OBJS)
@@ -137,7 +137,18 @@ thewholetoolchain: prospector pytype vulture
 	poetry run pyflakes $(OBJS)
 	-poetry run pylama $(OBJS)
 	-poetry run pylint $(OBJS)
-	-poetry run pyright $(OBJS)
+
+typings/joblib:
+	-poetry run pyright --lib $(OBJS) --createstub joblib
+
+typings/pandas:
+	-poetry run pyright --lib $(OBJS) --createstub pandas
+
+typings/lxml:
+	-poetry run pyright --lib $(OBJS) --createstub lxml
+
+pyright:
+	-poetry run pyright --lib $(OBJS)
 
 pyre:
 	poetry run pyre --source-directory . check

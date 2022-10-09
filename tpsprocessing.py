@@ -1,9 +1,11 @@
 """Module for TPS-specific functions."""
 import logging
+
+# from __future__ import annotations
 from urllib.parse import quote
 from urllib.request import urlopen
 
-from lxml.etree import _ElementTree
+from lxml.etree import _ElementTree  # type: ignore[reportPrivateUsage]
 from lxml.html import parse
 from pandas import DataFrame, read_html, to_numeric  # , option_context
 
@@ -29,7 +31,7 @@ def ogparserurl(baseurl: str) -> dict[str, str]:
     assert not baseurl.endswith(
         ("/", "index.htm", "index.html")
     ), '"/" und index.htm[l] weglassen'
-    tournmtsdict = {}
+    tournmtsdict: dict[str, str] = {}
     with urlopen(baseurl) as urlrequest:
         for entry in parse(urlrequest).xpath("/html/body/div/main/a[*]"):
             tournmtsdict[

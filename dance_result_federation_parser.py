@@ -127,9 +127,6 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                             )
                         )
                     )
-
-            ###############
-
             print_tsh_web(list(allreslinks), tsh_results, compnames)
 
 
