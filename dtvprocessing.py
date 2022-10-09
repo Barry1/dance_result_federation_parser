@@ -1,12 +1,14 @@
 """Module for processing of DTV details."""
 from __future__ import annotations
 
+import asyncio
 import logging
 import os
 import re
 import time
-from typing import Literal, Type, TypedDict
+from typing import Literal, TypedDict
 
+import aiofiles
 from lxml.etree import (
     _ElementUnicodeResult,  # type: ignore[reportPrivateUsage]
 )
@@ -134,7 +136,8 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     return dtv_associations
 
 
-if __name__ == "__main__":
+async def outputassocfiles() -> None:
+    """Write file for each association."""
     dtv_assocs_df: DataFrame = get_dtv_df()
     print(
         dtv_assocs_df.pivot_table(
@@ -143,11 +146,17 @@ if __name__ == "__main__":
     )
     print(dtv_assocs_df[dtv_assocs_df.Verband == "TSH"])
     for verbandsvereine in dtv_assocs_df.groupby(by="Verband"):
-        with open(f"{verbandsvereine[0]}.txt", "w") as ausgabedatei:
-            ausgabedatei.write(
+        async with aiofiles.open(
+            f"{verbandsvereine[0]}.txt", "w"
+        ) as ausgabedatei:
+            await ausgabedatei.write(
                 f"{len(verbandsvereine[1])} Vereine im {verbandsvereine[0]}:\n"
             )
-            ausgabedatei.write(
+            await ausgabedatei.write(
                 verbandsvereine[1][["Verein", "Ort"]].to_string()
             )
-            ausgabedatei.write("\n")
+            await ausgabedatei.write("\n")
+
+
+if __name__ == "__main__":
+    asyncio.run(outputassocfiles())
