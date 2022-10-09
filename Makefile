@@ -117,8 +117,10 @@ vulture:
 	-poetry run vulture $(OBJS)
 
 pytype:
-	echo "not supportes fo python >3.7"
-#	-poetry run pytype --keep-going --protocols --precise-return $(OBJS)
+	-poetry run pytype --keep-going --protocols --precise-return $(OBJS)
+
+pytypediffcheck:
+	for a in *.py ; do echo $$a ; poetry run merge-pyi --diff $$a .pytype/pyi/$${a}i ; done
 
 bindeps:
 	sudo apt-get install --assume-yes libxml2-dev libxslt1-dev patchelf
