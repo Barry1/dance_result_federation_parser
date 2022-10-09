@@ -8,10 +8,7 @@ python-versions = ">=3.7.2"
 
 [package.dependencies]
 lazy-object-proxy = ">=1.4.0"
-wrapt = [
-    {version = ">=1.11,<2", markers = "python_version < \"3.11\""},
-    {version = ">=1.14,<2", markers = "python_version >= \"3.11\""},
-]
+wrapt = {version = ">=1.11,<2", markers = "python_version < \"3.11\""}
 
 [[package]]
 name = "attrs"
@@ -437,7 +434,7 @@ python-versions = "*"
 
 [[package]]
 name = "networkx"
-version = "2.8.7"
+version = "2.8.3"
 description = "Python package for creating and manipulating graphs and networks"
 category = "dev"
 optional = false
@@ -445,8 +442,8 @@ python-versions = ">=3.8"
 
 [package.extras]
 default = ["numpy (>=1.19)", "scipy (>=1.8)", "matplotlib (>=3.4)", "pandas (>=1.3)"]
-developer = ["pre-commit (>=2.20)", "mypy (>=0.981)"]
-doc = ["sphinx (>=5)", "pydata-sphinx-theme (>=0.9)", "sphinx-gallery (>=0.10)", "numpydoc (>=1.4)", "pillow (>=9.1)", "nb2plots (>=0.6)", "texext (>=0.6.6)"]
+developer = ["pre-commit (>=2.19)", "mypy (>=0.960)"]
+doc = ["sphinx (>=4.5)", "pydata-sphinx-theme (>=0.8.1)", "sphinx-gallery (>=0.10)", "numpydoc (>=1.3)", "pillow (>=9.1)", "nb2plots (>=0.6)", "texext (>=0.6.6)"]
 extra = ["lxml (>=4.6)", "pygraphviz (>=1.9)", "pydot (>=1.4.2)", "sympy (>=1.10)"]
 test = ["pytest (>=7.1)", "pytest-cov (>=3.0)", "codecov (>=2.1)"]
 
@@ -641,6 +638,17 @@ snowballstemmer = "*"
 toml = ["toml"]
 
 [[package]]
+name = "pydot"
+version = "1.4.2"
+description = "Python interface to Graphviz's Dot"
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[package.dependencies]
+pyparsing = ">=2.1.4"
+
+[[package]]
 name = "pyflakes"
 version = "2.5.0"
 description = "passive checker of Python programs"
@@ -825,19 +833,22 @@ six = ">=1.5"
 
 [[package]]
 name = "pytype"
-version = "2020.2.6"
+version = "2022.9.27"
 description = "Python type inferencer"
 category = "dev"
 optional = false
-python-versions = "*"
+python-versions = "<3.11,>=3.7"
 
 [package.dependencies]
-attrs = "*"
-importlab = ">=0.5.1"
-ninja = "*"
-pyyaml = ">=3.11"
-six = "*"
-typed_ast = "*"
+attrs = ">=21.4.0"
+importlab = ">=0.8"
+libcst = ">=0.4.5"
+networkx = "<2.8.4"
+ninja = ">=1.10.0.post2"
+pydot = ">=1.4.2"
+tabulate = ">=0.8.10"
+toml = ">=0.10.2"
+typing-extensions = ">=4.3.0"
 
 [[package]]
 name = "pytz"
@@ -1142,8 +1153,8 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
 [metadata]
 lock-version = "1.1"
-python-versions = ">=3.10,<4.0"
-content-hash = "fccc11daece8d357ae4c5711969d8643b06d2ed9ab450b5c5a80931724d022d6"
+python-versions = "~3.10"
+content-hash = "e7692fd3b32b4c2e79b8a3e1f94d369d1ecef5971d01c9d56df9e9bdb755ea56"
 
 [metadata.files]
 astroid = []
@@ -1406,7 +1417,10 @@ mypy-extensions = [
     {file = "mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
 ]
-networkx = []
+networkx = [
+    {file = "networkx-2.8.3-py3-none-any.whl", hash = "sha256:f151edac6f9b0cf11fecce93e236ac22b499bb9ff8d6f8393b9fef5ad09506cc"},
+    {file = "networkx-2.8.3.tar.gz", hash = "sha256:67fab04a955a73eb660fe7bf281b6fa71a003bc6e23a92d2f6227654c5223dbe"},
+]
 ninja = []
 nodeenv = [
     {file = "nodeenv-1.7.0-py2.py3-none-any.whl", hash = "sha256:27083a7b96a25f2f5e1d8cb4b6317ee8aeda3bdd121394e5ac54e498028a042e"},
@@ -1452,6 +1466,10 @@ pycodestyle = [
 pydocstyle = [
     {file = "pydocstyle-6.1.1-py3-none-any.whl", hash = "sha256:6987826d6775056839940041beef5c08cc7e3d71d63149b48e36727f70144dc4"},
     {file = "pydocstyle-6.1.1.tar.gz", hash = "sha256:1d41b7c459ba0ee6c345f2eb9ae827cab14a7533a88c5c6f7e94923f72df92dc"},
+]
+pydot = [
+    {file = "pydot-1.4.2-py2.py3-none-any.whl", hash = "sha256:66c98190c65b8d2e2382a441b4c0edfdb4f4c025ef9cb9874de478fb0793a451"},
+    {file = "pydot-1.4.2.tar.gz", hash = "sha256:248081a39bcb56784deb018977e428605c1c758f10897a339fce1dd728ff007d"},
 ]
 pyflakes = []
 pygments = []
