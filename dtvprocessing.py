@@ -142,3 +142,12 @@ if __name__ == "__main__":
         )
     )
     print(dtv_assocs_df[dtv_assocs_df.Verband == "TSH"])
+    for verbandsvereine in dtv_assocs_df.groupby(by="Verband"):
+        with open(f"{verbandsvereine[0]}.txt", "w") as ausgabedatei:
+            ausgabedatei.write(
+                f"{len(verbandsvereine[1])} Vereine im {verbandsvereine[0]}:\n"
+            )
+            ausgabedatei.write(
+                verbandsvereine[1][["Verein", "Ort"]].to_string()
+            )
+            ausgabedatei.write("\n")
