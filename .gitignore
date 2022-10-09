@@ -9,3 +9,4 @@ resultParser.log
 singleResultParser.log
 .pyre
 .dccache
+monkeytype.sqlite3
