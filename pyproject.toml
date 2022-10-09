@@ -71,9 +71,12 @@ extension-pkg-whitelist = "lxml"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
-typeCheckingMode = "strict"
+#useLibraryCodeForTypes = true
+pythonPlatform = "All"
+pythonVerions = "3.10"
 reportMissingImports = true
-reportMissingTypeStubs = false
+reportMissingTypeStubs = true
+typeCheckingMode = "strict"
 
 [tool.pylint."MESSAGES CONTROL"]
 disable = "duplicate-code"
