@@ -4,7 +4,6 @@ to find out, what would be the best implementation.
 """
 import asyncio
 import logging
-from typing import Literal
 
 from valuefragments import NoOutput, TimingCM
 
@@ -21,16 +20,14 @@ if __name__ == "__main__":
     theurl: str = (
         "http://blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm"
     )
-    print("============================================================")
-    RUN_ASYNC: Literal[False, True] = False
+    print(60 * "=")
     print("Running Sync")
     with TimingCM():
         with NoOutput():
             eventurl_to_web(theurl)
-    print("=========================")
-    RUN_ASYNC = True
+    print(60 * "=")
     print("Running ASync")
     with TimingCM():
         with NoOutput():
             asyncio.run(async_eventurl_to_web(theurl))
-    print("============================================================")
+    print(60 * "=")
