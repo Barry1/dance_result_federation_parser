@@ -124,7 +124,6 @@ pyannotate = ">=1.2.0"
 pyflakes = ">=2.4.0"
 pylama = "*"
 pyright = ">=1.1.256"
-pytype = "*"
 retype = "*"
 types-requests = "*"
 vermin = ">=1.4.0"
@@ -138,6 +137,10 @@ version = "*"
 [tool.poetry.dev-dependencies.pyre-check]
 version = "*"
 platform = "linux"
+
+[tool.poetry.dev-dependencies.pytype]
+version = ">=2022.09.27"
+python = "~3.10"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
