@@ -8,7 +8,7 @@ python-versions = ">=3.7,<4.0"
 
 [[package]]
 name = "astroid"
-version = "2.12.11"
+version = "2.12.12"
 description = "An abstract syntax tree for Python with inference support."
 category = "main"
 optional = false
@@ -204,7 +204,7 @@ flake8 = "*"
 
 [[package]]
 name = "fsspec"
-version = "2022.8.2"
+version = "2022.10.0"
 description = "File-system specification"
 category = "main"
 optional = false
@@ -476,7 +476,7 @@ python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*
 
 [[package]]
 name = "nuitka"
-version = "1.1.3"
+version = "1.1.6"
 description = "Python compiler with full language support and CPython compatibility"
 category = "dev"
 optional = false
@@ -484,7 +484,7 @@ python-versions = "*"
 
 [[package]]
 name = "numpy"
-version = "1.23.3"
+version = "1.23.4"
 description = "NumPy is the fundamental package for array computing with Python."
 category = "main"
 optional = false
@@ -514,7 +514,7 @@ pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
 
 [[package]]
 name = "pandas"
-version = "1.5.0"
+version = "1.5.1"
 description = "Powerful data structures for data analysis, time series, and statistics"
 category = "main"
 optional = false
@@ -602,7 +602,7 @@ with_vulture = ["vulture (>=1.5)"]
 
 [[package]]
 name = "psutil"
-version = "5.9.2"
+version = "5.9.3"
 description = "Cross-platform lib for process and system monitoring in Python."
 category = "dev"
 optional = false
@@ -700,14 +700,14 @@ vulture = ["vulture"]
 
 [[package]]
 name = "pylint"
-version = "2.15.4"
+version = "2.15.5"
 description = "python code static checker"
 category = "main"
 optional = false
 python-versions = ">=3.7.2"
 
 [package.dependencies]
-astroid = ">=2.12.11,<=2.14.0-dev0"
+astroid = ">=2.12.12,<=2.14.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = ">=0.2"
 isort = ">=4.2.5,<6"
@@ -803,7 +803,7 @@ typing-extensions = "*"
 
 [[package]]
 name = "pyre-extensions"
-version = "0.0.29"
+version = "0.0.30"
 description = "Type system extensions for use with the pyre type checker"
 category = "dev"
 optional = false
@@ -815,7 +815,7 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.274"
+version = "1.1.276"
 description = "Command line wrapper for pyright"
 category = "dev"
 optional = false
@@ -841,7 +841,7 @@ six = ">=1.5"
 
 [[package]]
 name = "pytype"
-version = "2022.9.27"
+version = "2022.10.13"
 description = "Python type inferencer"
 category = "dev"
 optional = false
@@ -860,7 +860,7 @@ typing-extensions = ">=4.3.0"
 
 [[package]]
 name = "pytz"
-version = "2022.4"
+version = "2022.5"
 description = "World timezone definitions, modern and historical"
 category = "main"
 optional = false
@@ -1059,7 +1059,7 @@ types-urllib3 = "<1.27"
 
 [[package]]
 name = "types-urllib3"
-version = "1.26.25"
+version = "1.26.25.1"
 description = "Typing stubs for urllib3"
 category = "dev"
 optional = false
@@ -1506,10 +1506,7 @@ pyparsing = [
     {file = "pyparsing-3.0.9.tar.gz", hash = "sha256:2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb"},
 ]
 pyre-check = []
-pyre-extensions = [
-    {file = "pyre-extensions-0.0.29.tar.gz", hash = "sha256:4113600706c47306a156dcc9c405f4d458c505be432699571e357ef20e2d5d77"},
-    {file = "pyre_extensions-0.0.29-py3-none-any.whl", hash = "sha256:f4fef9089872c0656f82de7e8f357af0377dcbb6c2deadc1a7d3037aaf43757e"},
-]
+pyre-extensions = []
 pyright = []
 python-dateutil = [
     {file = "python-dateutil-2.8.2.tar.gz", hash = "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"},
