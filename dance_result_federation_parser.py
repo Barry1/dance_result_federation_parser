@@ -127,7 +127,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                             )
                         )
                     )
-            print_tsh_web(list(allreslinks), tsh_results, compnames)
+            print_tsh_web(eventurl, list(allreslinks), tsh_results, compnames)
 
 
 def eventurl_to_web(synceventurl: str) -> None:
@@ -169,11 +169,16 @@ def eventurl_to_web(synceventurl: str) -> None:
                     #                    prefer='processes',
                 )(delayed(the_interpret_fun)(a) for a in allreslinks),
             )
-            print_tsh_web(list(allreslinks), tsh_results, compnames)
+            print_tsh_web(
+                synceventurl, list(allreslinks), tsh_results, compnames
+            )
 
 
 def print_tsh_web(
-    allreslinks: list[str], tsh_results: list[DataFrame], compnames: list[str]
+    wholereslink: str,
+    allreslinks: list[str],
+    tsh_results: list[DataFrame],
+    compnames: list[str],
 ) -> None:
     """Export data as HTML for TSH-CMS."""
     print(
@@ -182,7 +187,7 @@ def print_tsh_web(
         "<p>Hier folgend die Ergebnisse",
         "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",
         "der TSH-Paare.",
-        "Die &Uuml;berschriften sind die Links zum Ergebnis.</p>",
+        #        "Die &Uuml;berschriften sind die Links zum Ergebnis.</p>",
         "<!-- ===================================================== -->",
     )
     for actreslink, value, turnier_info in zip(
@@ -221,6 +226,9 @@ def print_tsh_web(
             print(
                 "<!-- ===================================================== -->"
             )
+    print(
+        f'<p>Das Gesamtergebnis ist unter dem <a href="{wholereslink}" target="_blank">Link</a> zu finden.</p>'
+    )
     print(
         "<p>Falls ich ein Paar übersehen habe,",
         "bitte ich freundlich um eine",

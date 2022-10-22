@@ -23,7 +23,10 @@ if __name__ == "__main__":
         for theurl in sys.argv[1:]:
             thelogger.info("Auswertung von %s", theurl)
             print_tsh_web(
-                [theurl], [interpret_tt_result(theurl)], ["Turniername"]
+                theurl,
+                [theurl],
+                [interpret_tt_result(theurl)],
+                ["Turniername"],
             )
     else:
         THEURL = (
@@ -31,4 +34,6 @@ if __name__ == "__main__":
             + "/2021_11_06_Boeblingen/index.htm"
         )
         thelogger.info("Auswertung von %s", THEURL)
-        print_tsh_web([THEURL], [interpret_tt_result(THEURL)], ["Turniername"])
+        print_tsh_web(
+            THEURL, [THEURL], [interpret_tt_result(THEURL)], ["Turniername"]
+        )
