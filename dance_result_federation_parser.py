@@ -227,7 +227,9 @@ def print_tsh_web(
                 "<!-- ===================================================== -->"
             )
     print(
-        f'<p>Das Gesamtergebnis ist unter dem <a href="{wholereslink}" target="_blank">Link</a> zu finden.</p>'
+        '<p>Das Gesamtergebnis ist unter dem <a href="',
+        wholereslink,
+        '" target="_blank">Link</a> zu finden.</p>',
     )
     print(
         "<p>Falls ich ein Paar übersehen habe,",
