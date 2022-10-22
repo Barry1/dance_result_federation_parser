@@ -57,11 +57,9 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
         )[0]
     except IndexError as index_error:
         thelogger.exception(
-            "Bei interpret_tps_result von",
+            "Bei interpret_tps_result von %s trag der IndexError %s auf.",
             theresulturl,
-            "trag der IndexError",
             index_error,
-            "auf.",
         )
         tps_result_df = DataFrame(
             columns=["Platz", "Startnummer", "Paar", "Verein"]
