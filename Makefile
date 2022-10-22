@@ -12,9 +12,13 @@ ALL: pylint mypy formatting vulture pytype
 
 testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern2022.txt tpstestruns
 
-tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt
+tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt GLM_KIN-JUG_LAT_2022.txt
 
 # https://www.gnu.org/software/make/manual/make.html#Double_002dColon
+
+.PHONY: https\://www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
+GLM_KIN-JUG_LAT_2022.txt: https\://www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
+	$(runme) $< > $@ 2> $(@:.txt=.err)
 
 .PHONY: https\://tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
 GLM_SEN_II_A-S_STD_2022.txt: https\://tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
@@ -23,7 +27,6 @@ GLM_SEN_II_A-S_STD_2022.txt: https\://tsc-casino-oberalster.de/wp-content/upload
 .PHONY: https\://tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
 DP_SEN_III_S_STD_2022.txt: https\://tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
 	$(runmesingle) $< > $@ 2> $(@:.txt=.err)
-
 
 .PHONY: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
 GLM_SEN_II+III_D-B_STD_2022.txt: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
@@ -46,8 +49,9 @@ danceComp_2022.txt:
 BalSen_2022.txt:
 	$(runme) http://tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm > $@ 2> $(@:.txt=.err)
 
-GLM_Sen_IV_und_Sen_V_2022.txt:
-	$(runme) http://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V > $@ 2> $(@:.txt=.err)
+.PHONY: http\://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
+GLM_Sen_IV_und_Sen_V_2022.txt: http\://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
+	$(runme) $< > $@ 2> $(@:.txt=.err)
 
 DC_HGR-A_LAT_2022.txt:
 	$(runmesingle) http://www.boston-club.de/ergebnis/dchgralat2022/index.htm > $@ 2> $(@:.txt=.err)

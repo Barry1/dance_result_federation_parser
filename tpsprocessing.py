@@ -28,20 +28,18 @@ def checktpsontree(the_e_tree: _ElementTree) -> bool:
 
 def ogparserurl(baseurl: str) -> dict[str, str]:
     """Parse results from O. Gröhns competition software."""
-    assert not baseurl.endswith(
-        ("/", "index.htm", "index.html")
-    ), '"/" und index.htm[l] weglassen'
     tournmtsdict: dict[str, str] = {}
+    base: str = baseurl[: baseurl.rfind("/")]
     with urlopen(baseurl) as urlrequest:
         for entry in parse(urlrequest).xpath("/html/body/div/main/a[*]"):
             tournmtsdict[
                 entry.xpath("div/div/h4/text()")[0]
-            ] = f'{baseurl}/{quote(entry.xpath("@href")[0])}'
+            ] = f'{base}/{quote(entry.xpath("@href")[0])}'
     if not tournmtsdict:  # keine in Main gefunden, jetzt DropDown nutzen
         for entry in parse(baseurl).xpath(
             "/html/body/nav/div[2]/ul/li[1]/ul/li[*]/a"
         ):
-            tournmtsdict[entry.text] = f'{baseurl}/{quote(entry.get("href"))}'
+            tournmtsdict[entry.text] = f'{base}/{quote(entry.get("href"))}'
     return tournmtsdict
 
 
@@ -58,7 +56,7 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
             theresulturl, attrs={"class": "table fa-lg"}
         )[0]
     except IndexError as index_error:
-        print(
+        thelogger.exception(
             "Bei interpret_tps_result von",
             theresulturl,
             "trag der IndexError",

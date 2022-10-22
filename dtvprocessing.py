@@ -40,9 +40,7 @@ def create_dtv_df() -> DataFrame:
     # needs to be object type because of variable lenght
     dtv_assocs_dict_list: list[dict[str, str]] = []
     urllib3.disable_warnings()
-    xpath_for_token: str = (
-        '//*[@id="mod_vereinssuche_formular"]/input[@name="REQUEST_TOKEN"]/@value'
-    )
+    xpath_for_token: str = '//*[@id="mod_vereinssuche_formular"]/input[@name="REQUEST_TOKEN"]/@value'
     with Session() as sess_context:
         sess_context.verify = False
         rqtoken: str = fromstring(sess_context.get(SEARCH_URL).content).xpath(
