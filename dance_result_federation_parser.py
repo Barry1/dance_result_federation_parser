@@ -8,18 +8,16 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 import asyncio
 import concurrent.futures
 import logging
-from typing import Callable, Literal, cast
+from typing import Callable, cast, Literal
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
-from joblib import Parallel, delayed
+from dtvprocessing import get_dtv_df
+
+from joblib import delayed, Parallel
 from lxml.etree import _ElementTree
 from lxml.html import parse
-from pandas import DataFrame
-from pandas import set_option as pandas_set_option
-from valuefragments import eprint
-
-from dtvprocessing import get_dtv_df
+from pandas import DataFrame, set_option as pandas_set_option
 from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
     checkttontree,
@@ -27,6 +25,7 @@ from topturnierprocessing import (
     srparserurl,
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
+from valuefragments import eprint
 
 thefederation: Literal[
     "TSH",

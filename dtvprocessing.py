@@ -12,7 +12,7 @@ import aiofiles
 from lxml.etree import (
     _ElementUnicodeResult,  # type: ignore[reportPrivateUsage]
 )
-from lxml.html import HtmlElement, fromstring
+from lxml.html import fromstring, HtmlElement
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
 

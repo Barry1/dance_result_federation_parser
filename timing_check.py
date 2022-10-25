@@ -5,12 +5,12 @@ to find out, what would be the best implementation.
 import asyncio
 import logging
 
-from valuefragments import NoOutput, TimingCM
-
 from dance_result_federation_parser import (
     async_eventurl_to_web,
     eventurl_to_web,
 )
+
+from valuefragments import NoOutput, TimingCM
 
 if __name__ == "__main__":
     logger: logging.Logger = logging.getLogger("Basti.resultParser")

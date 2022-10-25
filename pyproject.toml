@@ -129,6 +129,7 @@ types-requests = "*"
 vermin = ">=1.4.0"
 vulture = ">=2.5"
 colorama = ">=0.4.5"
+ufmt = "^2.0.1"
 
 [tool.poetry.dev-dependencies.isort]
 extras = ["colors"]
