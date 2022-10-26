@@ -99,9 +99,7 @@ fastparquet = "*"
 html5lib = "*"
 joblib = "*"
 lxml = "*"
-mypy = "*"
 pandas = "*"
-pylint = "*"
 python = "^3.10"
 radon = "*"
 requests = "*"
@@ -114,8 +112,9 @@ git = "https://github.com/Barry1/PyValueFragments.git"
 rev = "main"
 
 [tool.poetry.dev-dependencies]
+pylint = "*"
 black = "*"
-#MonkeyType = ">=22.2.0"
+MonkeyType = ">=22.2.0"
 mypy = "*"
 nuitka = "*"
 ordered-set = "*"
@@ -129,15 +128,15 @@ types-requests = "*"
 vermin = ">=1.4.0"
 vulture = ">=2.5"
 colorama = ">=0.4.5"
-#ufmt = "^2.0.1"
+ufmt = "^2.0.1"
 
 [tool.poetry.dev-dependencies.isort]
 extras = ["colors"]
 version = "*"
 
-#[tool.poetry.dev-dependencies.pyre-check]
-#version = "*"
-#platform = "linux"
+[tool.poetry.dev-dependencies.pyre-check]
+version = "*"
+platform = "linux"
 
 [tool.poetry.dev-dependencies.pytype]
 version = ">=2022.09.27"
