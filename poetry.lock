@@ -1190,7 +1190,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "e60056860d990a3eb4a20e81a044c2eb44753650"
+resolved_reference = "bc0cf2613d909d559c7a9ec4f0d874450b290a2d"
 
 [[package]]
 name = "vermin"
