@@ -104,6 +104,8 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             ]
             tsh_results: list[DataFrame]
             # <https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor>
+            # python >=3.11 TaskGroup instead of gather
+            # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if TOTHREAD:
                 tsh_results = list(
                     await asyncio.gather(
