@@ -8,6 +8,7 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 import asyncio
 import concurrent.futures
 import logging
+from functools import partial
 from typing import Callable, Literal, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
@@ -17,7 +18,7 @@ from lxml.etree import _ElementTree
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
-from valuefragments import eprint
+from valuefragments import eprint, run_grouped_in_pce
 
 from dtvprocessing import get_dtv_df
 from stringprocessing import og_human_comp_info, sr_human_comp_info
@@ -109,7 +110,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if TOTHREAD:
                 async with asyncio.TaskGroup() as my_task_group:
-                    tsh_results_tasks:list[asyncio.Task] = [
+                    tsh_results_tasks: list[asyncio.Task] = [
                         my_task_group.create_task(
                             asyncio.to_thread(the_interpret_fun, onelink)
                         )
@@ -119,18 +120,9 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                     ready_task.result() for ready_task in tsh_results_tasks
                 ]
             else:
-                loop: asyncio.AbstractEventLoop = asyncio.get_running_loop()
-                with concurrent.futures.ProcessPoolExecutor() as pool:
-                    tsh_results = list(
-                        await asyncio.gather(
-                            *(
-                                loop.run_in_executor(
-                                    pool, the_interpret_fun, a
-                                )
-                                for a in allreslinks
-                            )
-                        )
-                    )
+                tsh_results = await run_grouped_in_pce(
+                    [partial(the_interpret_fun, a) for a in allreslinks]
+                )
             print_tsh_web(eventurl, list(allreslinks), tsh_results, compnames)
 
 
