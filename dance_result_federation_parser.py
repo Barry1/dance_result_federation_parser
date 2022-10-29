@@ -8,16 +8,18 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 import asyncio
 import concurrent.futures
 import logging
-from typing import Callable, cast, Literal
+from typing import Callable, Literal, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
-from dtvprocessing import get_dtv_df
-
-from joblib import delayed, Parallel
+from joblib import Parallel, delayed
 from lxml.etree import _ElementTree
 from lxml.html import parse
-from pandas import DataFrame, set_option as pandas_set_option
+from pandas import DataFrame
+from pandas import set_option as pandas_set_option
+from valuefragments import eprint
+
+from dtvprocessing import get_dtv_df
 from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
     checkttontree,
@@ -25,7 +27,6 @@ from topturnierprocessing import (
     srparserurl,
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
-from valuefragments import eprint
 
 thefederation: Literal[
     "TSH",
@@ -107,14 +108,14 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # python >=3.11 TaskGroup instead of gather
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if TOTHREAD:
-                tsh_results = list(
-                    await asyncio.gather(
-                        *(
+                async with asyncio.TaskGroup() as tg:
+                    tsh_results_tasks = [
+                        tg.create_task(
                             asyncio.to_thread(the_interpret_fun, a)
                             for a in allreslinks
                         )
-                    )
-                )
+                    ]
+                tsh_results = [await a.results() for a in tsh_results_tasks]
             else:
                 loop: asyncio.AbstractEventLoop = asyncio.get_running_loop()
                 with concurrent.futures.ProcessPoolExecutor() as pool:

@@ -1,15 +1,15 @@
 """Module for TopTurnier-specific functions."""
 import logging
-from typing import cast, Literal
+from typing import Literal, cast
 from urllib.error import HTTPError
 
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, SoupStrainer, Tag
+from lxml.etree import _ElementTree
+from pandas import DataFrame, concat, read_html
+from requests import get as requests_get
 
 from dtvprocessing import get_dtv_df
-from lxml.etree import _ElementTree
-from pandas import concat, DataFrame, read_html
-from requests import get as requests_get
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
