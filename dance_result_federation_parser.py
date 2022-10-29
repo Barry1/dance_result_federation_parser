@@ -108,12 +108,16 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # python >=3.11 TaskGroup instead of gather
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if TOTHREAD:
-                async with asyncio.TaskGroup() as tg:
+                async with asyncio.TaskGroup() as my_task_group:
                     tsh_results_tasks = [
-                        tg.create_task(asyncio.to_thread(the_interpret_fun, a))
-                        for a in allreslinks
+                        my_task_group.create_task(
+                            asyncio.to_thread(the_interpret_fun, onelink)
+                        )
+                        for onelink in allreslinks
                     ]
-                tsh_results = [a.result() for a in tsh_results_tasks]
+                tsh_results = [
+                    ready_task.result() for ready_task in tsh_results_tasks
+                ]
             else:
                 loop: asyncio.AbstractEventLoop = asyncio.get_running_loop()
                 with concurrent.futures.ProcessPoolExecutor() as pool:
