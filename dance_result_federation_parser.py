@@ -109,7 +109,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if TOTHREAD:
                 async with asyncio.TaskGroup() as my_task_group:
-                    tsh_results_tasks = [
+                    tsh_results_tasks:list[asyncio.Task] = [
                         my_task_group.create_task(
                             asyncio.to_thread(the_interpret_fun, onelink)
                         )
