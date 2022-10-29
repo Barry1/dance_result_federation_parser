@@ -110,12 +110,10 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             if TOTHREAD:
                 async with asyncio.TaskGroup() as tg:
                     tsh_results_tasks = [
-                        tg.create_task(
-                            asyncio.to_thread(the_interpret_fun, a)
-                            for a in allreslinks
-                        )
+                        tg.create_task(asyncio.to_thread(the_interpret_fun, a))
+                        for a in allreslinks
                     ]
-                tsh_results = [await a.results() for a in tsh_results_tasks]
+                tsh_results = [a.result() for a in tsh_results_tasks]
             else:
                 loop: asyncio.AbstractEventLoop = asyncio.get_running_loop()
                 with concurrent.futures.ProcessPoolExecutor() as pool:
