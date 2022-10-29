@@ -65,7 +65,13 @@ IMG_PREP: bool = False
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
-def reslinks_interpreter(tree: _ElementTree):
+def reslinks_interpreter(
+    tree: _ElementTree,
+) -> tuple[
+    Callable[[str], dict[str, str]],
+    Callable[[str], DataFrame],
+    Callable[[str], str],
+]:
     """Handle difference of TT and TPS."""
     if checktpsontree(tree):
         thelogger.info("Es ist eine TPS-Veranstaltung")
@@ -110,7 +116,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if TOTHREAD:
                 async with asyncio.TaskGroup() as my_task_group:
-                    tsh_results_tasks: list[asyncio.Task] = [
+                    tsh_results_tasks: list[asyncio.Task[DataFrame]] = [
                         my_task_group.create_task(
                             asyncio.to_thread(the_interpret_fun, onelink)
                         )
