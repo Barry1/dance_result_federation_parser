@@ -27,5 +27,10 @@ jobs:
           python -m pip install poetry
           poetry export --with dev --without-hashes --output requirements.txt
           pip install --upgrade --requirement requirements.txt
+      - name: Remove Pylama as it crashes 
+        run: |
+          echo Pylama crashes with AttributeError:
+          echo module 'pyflakes.messages' has no attribute 'RedefinedInListComp'
+          python -m pip uninstall pylama
       - name: Analysing the code with pytest
         run: pytest
