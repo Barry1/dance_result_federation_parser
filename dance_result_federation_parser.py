@@ -18,7 +18,7 @@ from lxml.etree import _ElementTree
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
-from valuefragments import eprint, run_grouped_in_pce
+from valuefragments import eprint, run_grouped_in_tpe
 
 from dtvprocessing import get_dtv_df
 from stringprocessing import og_human_comp_info, sr_human_comp_info
@@ -126,7 +126,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                     ready_task.result() for ready_task in tsh_results_tasks
                 ]
             else:
-                tsh_results = await run_grouped_in_pce(
+                tsh_results = await run_grouped_in_tpe(
                     [partial(the_interpret_fun, a) for a in allreslinks]
                 )
             print_tsh_web(eventurl, list(allreslinks), tsh_results, compnames)
