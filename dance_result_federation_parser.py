@@ -6,7 +6,6 @@ urllib.request für https nötig
 https://www.w3schools.com/xml/xpath_syntax.asp
 """
 import asyncio
-import concurrent.futures
 import logging
 from functools import partial
 from typing import Callable, Literal, cast
