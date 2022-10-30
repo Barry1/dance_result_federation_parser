@@ -10,7 +10,7 @@ jobs = 0
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 [tool.black]
 line-length = 79
-target-version = ['py310'] #'py37', 'py38',
+target-version = ['py311'] #'py37', 'py38',
 color = true
 safe = true
 
@@ -35,7 +35,7 @@ verbose = 2
 [tool.mypy]
 disallow_untyped_defs = true
 pretty = true
-python_version = "3.10"
+python_version = "3.11"
 show_error_codes = true
 show_error_context = true
 strict = true
@@ -48,7 +48,7 @@ ignore_missing_imports = true
 
 [tool.isort]
 # https://pycqa.github.io/isort/docs/configuration/options
-py_version = 310
+py_version = 311
 # color_output = true
 line_length = 79
 profile = "black"
@@ -73,7 +73,7 @@ extension-pkg-whitelist = "lxml"
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
 #useLibraryCodeForTypes = true
 pythonPlatform = "All"
-pythonVersions = "3.10"
+pythonVersions = "3.11"
 reportMissingImports = true
 reportMissingTypeStubs = true
 typeCheckingMode = "strict"
@@ -82,14 +82,14 @@ typeCheckingMode = "strict"
 disable = "duplicate-code"
 
 [tool.pytest.ini_options]
-minversion = "6.2"
+minversion = "7.0"
 addopts = ["--verbose"]
 
 [tool.towncrier]
 
 [tool.poetry]
 name = "dance_result_federation_parser"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["Ebeling, Dr. Bastian <bastian.ebeling@web.de>"]
 
@@ -144,7 +144,7 @@ version = "*"
 python = "<3.11"
 
 [tool.poetry.dev-dependencies.pytype]
-version = ">=2022.09.27"
+version = ">=2022.10.26"
 python = "~3.10"
 
 [build-system]
