@@ -27,7 +27,7 @@ jobs:
           python -m pip install poetry
           poetry export --with dev --without-hashes --output requirements.txt
           set STATIC_DEPS=true
-          set STATICBUILDS=true
+          set STATICBUILD=true
           pip install --upgrade --requirement requirements.txt
       - name: Analysing the code with pytest
         run: pytest # -p no:pylama
