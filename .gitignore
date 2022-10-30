@@ -10,3 +10,4 @@ singleResultParser.log
 .pyre
 .dccache
 monkeytype.sqlite3
+results.sarif
