@@ -121,7 +121,6 @@ ordered-set = "*"
 prospector = ">=1.7.7"
 pyannotate = ">=1.2.0"
 pyflakes = ">=2.4.0"
-pylama = "*"
 pyright = ">=1.1.256"
 retype = "*"
 types-requests = "*"
@@ -139,6 +138,10 @@ version = "*"
 [tool.poetry.dev-dependencies.pyre-check]
 version = "*"
 platform = "linux"
+
+[tool.poetry.dev-dependencies.pylama]
+version = "*"
+python = "<3.11"
 
 [tool.poetry.dev-dependencies.pytype]
 version = ">=2022.09.27"
