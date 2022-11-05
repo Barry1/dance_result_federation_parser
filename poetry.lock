@@ -1015,7 +1015,7 @@ test = ["pytest", "typing-extensions", "mypy"]
 
 [[package]]
 name = "types-aiofiles"
-version = "22.1.0"
+version = "22.1.0.1"
 description = "Typing stubs for aiofiles"
 category = "dev"
 optional = false
