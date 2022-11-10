@@ -118,11 +118,11 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7
 
 [[package]]
 name = "cramjam"
-version = "2.6.1"
+version = "2.6.2"
 description = "Thin Python bindings to de/compression algorithms in Rust"
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.7"
 
 [[package]]
 name = "dataclasses-json"
@@ -203,7 +203,7 @@ flake8 = "*"
 
 [[package]]
 name = "fsspec"
-version = "2022.10.0"
+version = "2022.11.0"
 description = "File-system specification"
 category = "main"
 optional = false
@@ -320,7 +320,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "libcst"
-version = "0.4.7"
+version = "0.4.8"
 description = "A concrete syntax tree with AST-like properties for Python 3.5, 3.6, 3.7, 3.8, 3.9, and 3.10 programs."
 category = "dev"
 optional = false
@@ -332,7 +332,7 @@ typing-extensions = ">=3.7.4.2"
 typing-inspect = ">=0.4.0"
 
 [package.extras]
-dev = ["black (==22.3.0)", "coverage (>=4.5.4)", "fixit (==0.1.1)", "flake8 (>=3.7.8)", "hypothesis (>=4.36.0)", "hypothesmith (>=0.0.4)", "jupyter (>=1.0.0)", "maturin (>=0.8.3,<0.9)", "nbsphinx (>=0.4.2)", "prompt-toolkit (>=2.0.9)", "setuptools-scm (>=6.0.1)", "sphinx-rtd-theme (>=0.4.3)", "ufmt (==1.3)", "usort (==1.0.0rc1)", "setuptools-rust (>=0.12.1)", "slotscheck (>=0.7.1)", "jinja2 (==3.0.3)", "pyre-check (==0.9.9)"]
+dev = ["black (==22.10.0)", "coverage (>=4.5.4)", "fixit (==0.1.1)", "flake8 (>=3.7.8,<5)", "Sphinx (>=5.1.1)", "hypothesis (>=4.36.0)", "hypothesmith (>=0.0.4)", "jupyter (>=1.0.0)", "maturin (>=0.8.3,<0.14)", "nbsphinx (>=0.4.2)", "prompt-toolkit (>=2.0.9)", "setuptools-scm (>=6.0.1)", "sphinx-rtd-theme (>=0.4.3)", "ufmt (==2.0.1)", "usort (==1.0.5)", "setuptools-rust (>=0.12.1)", "slotscheck (>=0.7.1)", "jinja2 (==3.1.2)", "pyre-check (==0.9.9)"]
 
 [[package]]
 name = "lxml"
@@ -457,7 +457,7 @@ python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*
 
 [[package]]
 name = "nuitka"
-version = "1.1.8"
+version = "1.2"
 description = "Python compiler with full language support and CPython compatibility"
 category = "dev"
 optional = false
@@ -742,11 +742,11 @@ diagrams = ["railroad-diagrams", "jinja2"]
 
 [[package]]
 name = "pyre-check"
-version = "0.9.16"
+version = "0.9.17"
 description = "A performant type checker for Python"
 category = "dev"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.dependencies]
 click = ">=8.0"
@@ -773,7 +773,7 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.278"
+version = "1.1.279"
 description = "Command line wrapper for pyright"
 category = "dev"
 optional = false
@@ -1016,7 +1016,7 @@ test = ["pytest", "typing-extensions", "mypy"]
 
 [[package]]
 name = "types-aiofiles"
-version = "22.1.0.1"
+version = "22.1.0.2"
 description = "Typing stubs for aiofiles"
 category = "dev"
 optional = false
@@ -1024,7 +1024,7 @@ python-versions = "*"
 
 [[package]]
 name = "types-requests"
-version = "2.28.11.2"
+version = "2.28.11.4"
 description = "Typing stubs for requests"
 category = "dev"
 optional = false
@@ -1035,7 +1035,7 @@ types-urllib3 = "<1.27"
 
 [[package]]
 name = "types-urllib3"
-version = "1.26.25.1"
+version = "1.26.25.3"
 description = "Typing stubs for urllib3"
 category = "dev"
 optional = false
@@ -1133,7 +1133,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "722d0632b64a51756252ae42e41d934fd3eba097"
+resolved_reference = "8624aa07f3d3ae23849eb22ca65bf76a5195631d"
 
 [[package]]
 name = "vermin"
