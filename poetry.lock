@@ -1016,7 +1016,7 @@ test = ["pytest", "typing-extensions", "mypy"]
 
 [[package]]
 name = "types-aiofiles"
-version = "22.1.0.2"
+version = "22.1.0.3"
 description = "Typing stubs for aiofiles"
 category = "dev"
 optional = false
@@ -1133,7 +1133,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "75043ce11314b8cce6f2e9b0208bec3a36d20c81"
+resolved_reference = "f909ee0d9ccc5fa99ba35428ccbecee8406f2891"
 
 [[package]]
 name = "vermin"
