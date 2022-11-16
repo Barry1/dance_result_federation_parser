@@ -457,7 +457,7 @@ python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*
 
 [[package]]
 name = "nuitka"
-version = "1.2"
+version = "1.2.1"
 description = "Python compiler with full language support and CPython compatibility"
 category = "dev"
 optional = false
@@ -1133,7 +1133,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "f909ee0d9ccc5fa99ba35428ccbecee8406f2891"
+resolved_reference = "5c7492dd4f655ac2bc1f7d0bb71b6bde6cdc1144"
 
 [[package]]
 name = "vermin"
