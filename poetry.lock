@@ -423,7 +423,7 @@ click = "*"
 
 [[package]]
 name = "mypy"
-version = "0.990"
+version = "0.991"
 description = "Optional static typing for Python"
 category = "dev"
 optional = false
@@ -773,7 +773,7 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.279"
+version = "1.1.280"
 description = "Command line wrapper for pyright"
 category = "dev"
 optional = false
@@ -1035,7 +1035,7 @@ types-urllib3 = "<1.27"
 
 [[package]]
 name = "types-urllib3"
-version = "1.26.25.3"
+version = "1.26.25.4"
 description = "Typing stubs for urllib3"
 category = "dev"
 optional = false
