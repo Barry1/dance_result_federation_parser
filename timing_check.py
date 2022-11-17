@@ -1,4 +1,4 @@
-#!/bin/env -S poetry run python -OO timing_test.py
+#!/bin/env -S poetry run python -OO
 """Try to run methods with and without ASYNC
 to find out, what would be the best implementation.
 """
