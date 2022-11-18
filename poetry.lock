@@ -161,18 +161,18 @@ python-versions = "*"
 
 [[package]]
 name = "fastparquet"
-version = "0.8.3"
+version = "2022.11.0"
 description = "Python support for Parquet file format"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 
 [package.dependencies]
-cramjam = ">=2.3.0"
+cramjam = ">=2.3"
 fsspec = "*"
-numpy = ">=1.18"
+numpy = ">=1.20.3"
 packaging = "*"
-pandas = ">=1.1.0"
+pandas = ">=1.5.0"
 
 [package.extras]
 lzo = ["python-lzo"]
