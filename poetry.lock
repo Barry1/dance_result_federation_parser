@@ -465,7 +465,7 @@ python-versions = "*"
 
 [[package]]
 name = "numpy"
-version = "1.23.4"
+version = "1.23.5"
 description = "NumPy is the fundamental package for array computing with Python."
 category = "main"
 optional = false
@@ -1133,7 +1133,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "e3376c48b4275ae3711ce84f78fe409f063aca4b"
+resolved_reference = "f280343b7c31e4e10e87ddae2f7535670a8098e2"
 
 [[package]]
 name = "vermin"
