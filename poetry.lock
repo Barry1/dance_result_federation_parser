@@ -1122,7 +1122,7 @@ trailrunner = ">=1.0"
 
 [[package]]
 name = "valuefragments"
-version = "0.1.21"
+version = "0.1.22"
 description = "Testing installation of Package"
 category = "main"
 optional = false
@@ -1136,7 +1136,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "21d74fe5ede5659df3be490f3ef9ef912728824f"
+resolved_reference = "27263ec02d7c6b4f9a074fc397525f80c5615515"
 
 [[package]]
 name = "vermin"
