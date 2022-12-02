@@ -598,7 +598,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "prospector"
-version = "1.8.1"
+version = "1.8.2"
 description = ""
 category = "dev"
 optional = false
@@ -1193,7 +1193,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "70c750fda62effbad79d07a70e26ccee95cdf2e7"
+resolved_reference = "1753daf1fe526fb883c2c52a1520e01d23f9ce18"
 
 [[package]]
 name = "vermin"
@@ -1724,8 +1724,8 @@ poetry-semver = [
     {file = "poetry_semver-0.1.0-py2.py3-none-any.whl", hash = "sha256:4e6349bd7231cc657f0e1930f7b204e87e33dfd63eef5cac869363969515083a"},
 ]
 prospector = [
-    {file = "prospector-1.8.1-py3-none-any.whl", hash = "sha256:eca55a1674b2cd8f907129f7efdd7304d734e447c20a1c4cbceabcd0d493ba95"},
-    {file = "prospector-1.8.1.tar.gz", hash = "sha256:ad2cda56a6fac864cb441d41c0f0f73cf697059d339e28ecae7643e7fd02e4c3"},
+    {file = "prospector-1.8.2-py3-none-any.whl", hash = "sha256:3afabfce9b013796dc83edba86e83d84f6069c43da9ec5bf18b88e10e0facf05"},
+    {file = "prospector-1.8.2.tar.gz", hash = "sha256:931003914c2df58aebf3c026c3c2f1c9d1c3eb6115599dfecd06e99516486f88"},
 ]
 psutil = [
     {file = "psutil-5.9.4-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:c1ca331af862803a42677c120aff8a814a804e09832f166f226bfd22b56feee8"},
