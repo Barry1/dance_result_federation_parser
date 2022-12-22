@@ -105,7 +105,7 @@ radon = "*"
 requests = "*"
 typing = "*"
 typing-extensions = "*"
-aiofiles = "^22.1.0"
+aiofiles = ">=22.1.0"
 
 [tool.poetry.dependencies.valuefragments]
 git = "https://github.com/Barry1/PyValueFragments.git"
@@ -127,8 +127,8 @@ types-requests = "*"
 vermin = ">=1.4.0"
 vulture = ">=2.5"
 colorama = ">=0.4.5"
-ufmt = "^2.0.1"
-types-aiofiles = "^22.1.0"
+ufmt = ">=2.0.1"
+types-aiofiles = ">=22.1.0"
 pytest = ">=7"
 
 [tool.poetry.dev-dependencies.isort]
