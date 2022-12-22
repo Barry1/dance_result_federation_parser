@@ -1952,7 +1952,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "1653e8b876fd35d471d479fa89b56a41d37e2b4f"
+resolved_reference = "3ab0c5ff9fb7488df5a109f3d5d98fb794f3d658"
 
 [[package]]
 name = "vermin"
@@ -2069,4 +2069,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "111e57457ff26bdae5059d1fe5379c1c9a755c23cc93161f8662f22a3ea90529"
+content-hash = "3545f4b4d132f196f850b76fcdfab18fba909a778a88d6489d2e16c61d5e8f0a"
