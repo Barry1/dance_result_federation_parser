@@ -18,10 +18,10 @@ name: Pyre
 
 on:
   workflow_dispatch:
-  push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
+#  push:
+#    branches: ["main", "master"]
+#  pull_request:
+#    branches: ["main", "master"]
 
 permissions:
   contents: read
