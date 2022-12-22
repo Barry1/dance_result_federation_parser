@@ -16,13 +16,13 @@
 name: Pysa
 
 on:
-  workflow_dispatch:
-#  push:
-#    branches: ["main", "master"]
-#  pull_request:
-#    branches: ["main", "master"]
   schedule:
     - cron: "37 13 * * 1"
+  workflow_dispatch:
+  #  push:
+  #    branches: ["main", "master"]
+  #  pull_request:
+  #    branches: ["main", "master"]
 
 permissions:
   contents: read
