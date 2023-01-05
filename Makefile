@@ -92,12 +92,6 @@ poetryprep:
 	poetry update
 	poetry install
 
-black:
-	poetry run black $(OBJS)
-
-isort:
-	poetry run isort $(OBJS)
-
 monkeytype.sqlite3:
 	poetry run monkeytype run ./dance_result_federation_parser.py 
 
@@ -113,8 +107,12 @@ mypy:
 out/%.pyi: %.py
 	poetry run stubgen $^
 
-formatting:
+formatting: isort black
+
+isort:
 	poetry run isort --python-version 311 --profile black $(OBJS)
+
+black:
 	poetry run black $(OBJS)
 
 vulture:
