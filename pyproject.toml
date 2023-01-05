@@ -139,13 +139,13 @@ version = "*"
 version = "*"
 platform = "linux"
 
-[tool.poetry.dev-dependencies.pylama]
-version = "*"
-python = "<3.11"
-
 [tool.poetry.dev-dependencies.pytype]
 version = ">=2022.10.26"
 python = "~3.10"
+
+[tool.poetry.group.dev.dependencies.pylama]
+extras = ["all"]
+version = ">8.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
