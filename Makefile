@@ -114,7 +114,7 @@ out/%.pyi: %.py
 	poetry run stubgen $^
 
 formatting:
-	poetry run isort --python-version 310 --profile black $(OBJS)
+	poetry run isort --python-version 311 --profile black $(OBJS)
 	poetry run black $(OBJS)
 
 vulture:
