@@ -45,9 +45,10 @@ def ogparserurl(baseurl: str) -> dict[str, str]:
 
 def interpret_tps_result(theresulturl: str) -> DataFrame:
     """Extract results from tps-made result-website."""
-    assert theresulturl.endswith(
-        "index.html"
-    ), "Es muss die index.html-URL vom Turnier (nicht Veranstaltung) angegeben werden"
+    assert theresulturl.endswith("index.html"), (
+        "Es muss die index.html-URL vom Turnier"
+        " (nicht der Veranstaltung) angegeben werden"
+    )
     theresulturl = theresulturl.replace("index.html", "result.html")
     thelogger.debug("Verarbeitung von %s", theresulturl)
     tps_result_df: DataFrame
