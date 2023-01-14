@@ -42,6 +42,7 @@ show_error_context = true
 strict = true
 warn_return_any = true
 warn_unused_configs = true
+install_types = true
 
 [[tool.mypy.overrides]]
 module = ["psutil", "pandas", "joblib", "lxml.*", "bs4.*", "pyannotate_runtime"]
@@ -136,6 +137,7 @@ vulture = ">=2.5"
 [tool.poetry.group.dev.dependencies]
 types-aiofiles = "^22.1.0.4"
 types-requests = "^2.28.11.7"
+
 [tool.poetry.group.dev.dependencies.isort]
 extras = ["colors"]
 version = "*"

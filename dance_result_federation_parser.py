@@ -190,7 +190,7 @@ def print_tsh_web(
         "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",
         "der TSH-Paare.",
         #        "Die &Uuml;berschriften sind die Links zum Ergebnis.</p>",
-        "<!-- ===================================================== -->",
+        "<!-- =================================================== -->",
     )
     for actreslink, value, turnier_info in zip(
         allreslinks, tsh_results, compnames
@@ -203,7 +203,7 @@ def print_tsh_web(
             eprint(tournhdr)
             eprint("<p>Leider ohne TSH-Beteiligung.</p>")
             eprint(
-                "<!-- ===================================================== -->"
+                "<!-- =================================================== -->"
             )
         else:
             print(tournhdr)
@@ -213,7 +213,8 @@ def print_tsh_web(
                     ' text-align: center;font-size: 8pt;">'
                 )
                 print(
-                    '<img src="https://loremflickr.com/150/200/ballroom-dancing"'
+                    '<img'
+                    ' src="https://loremflickr.com/150/200/ballroom-dancing"'
                     ' alt="Beispielfoto" height="200" />'
                 )
                 print("<br />Foto: loremflickr.com</div>")
@@ -222,11 +223,12 @@ def print_tsh_web(
                 # display(resline)
                 # display(resline[1])
                 print(
-                    f"<li>{resline[1].Platz} {resline[1].Paar} ({resline[1].Verein})</li>"
+                    f"<li>{resline[1].Platz}"
+                    f"{resline[1].Paar} ({resline[1].Verein})</li>"
                 )
             print("</ul>")
             print(
-                "<!-- ===================================================== -->"
+                "<!-- =================================================== -->"
             )
     print(
         '<p>Das Gesamtergebnis ist unter dem <a href="',
@@ -252,8 +254,9 @@ if __name__ == "__main__":
         collect_types.start()
     import sys
 
-    # Besonders nötig, damit bei ASYNC nur einmal ggf. die DTV-Vereinliste aktualisiert wird
-    _ = get_dtv_df().loc[403:406]
+    # Besonders nötig, damit bei ASYNC nur einmal
+    # ggf. die DTV-Vereinliste aktualisiert wird
+    _: DataFrame = get_dtv_df().loc[403:406]
     #
     if len(sys.argv) > 1:
         for theurl in sys.argv[1:]:
@@ -265,7 +268,7 @@ if __name__ == "__main__":
     else:
         thelogger.info("Selbsttest des Moduls resultParser")
         thelogger.info(get_dtv_df().loc[403:406])
-        urlszumpruefen: list[str] = [
+        urlszumpruefen: list[str] = [  # type:ignore[E501]
             "http://tsa.de.cool/20190914_Senioren/index.htm",
             "http://www.tanzen-in-sh.de/ergebnisse/2019/2019-02-02_GLM_Kin-Jug_D-A_LAT/index.htm",
             "http://blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm",
