@@ -133,6 +133,9 @@ ufmt = ">=2.0.1"
 vermin = ">=1.4.0"
 vulture = ">=2.5"
 
+[tool.poetry.group.dev.dependencies]
+types-aiofiles = "^22.1.0.4"
+types-requests = "^2.28.11.7"
 [tool.poetry.group.dev.dependencies.isort]
 extras = ["colors"]
 version = "*"
