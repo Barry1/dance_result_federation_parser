@@ -21,7 +21,8 @@ def checkttontree(the_e_tree: _ElementTree) -> bool:
     ob das eine HTML-Seite von TopTurnier von Stefan Rath ist.
     Konkret wird nach einem Link auf die Homepage topturnier.de gesucht.
     Da die Schreibweise TopTurnier auch gefunden werden soll und lower-case
-    nicht mit lxml funktioniert (XPATH2.0-Funktion) wird mit translate gearbeitet.
+    nicht mit lxml funktioniert (XPATH2.0-Funktion) wird
+    mit translate gearbeitet.
     """
     return bool(
         the_e_tree.xpath(
@@ -105,9 +106,10 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
 
 def interpret_tt_result(theresulturl: str) -> DataFrame:
     """Process TopTurnier URL."""
-    assert theresulturl.endswith(
-        "index.htm"
-    ), "Es muss die index.htm-URL vom Turnier (nicht Veranstaltung) angegeben werden"
+    assert theresulturl.endswith("index.htm"), (
+        "Es muss die index.htm-URL vom Turnier"
+        "(nicht der Veranstaltung) angegeben werden"
+    )
     thelogger.debug(theresulturl)
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
     ret_df: DataFrame = DataFrame(
