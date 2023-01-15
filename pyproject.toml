@@ -6,6 +6,7 @@ max_line_length = 79
 in-place = true
 recursive = true
 jobs = 0
+ignore = ["E203"]
 
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 [tool.black]
@@ -35,6 +36,8 @@ verbose = 2
 
 [tool.mypy]
 disallow_untyped_defs = true
+install_types = true
+non_interactive = true
 pretty = true
 python_version = "3.11"
 show_error_codes = true
@@ -42,7 +45,6 @@ show_error_context = true
 strict = true
 warn_return_any = true
 warn_unused_configs = true
-install_types = true
 
 [[tool.mypy.overrides]]
 module = ["psutil", "pandas", "joblib", "lxml.*", "bs4.*", "pyannotate_runtime"]
@@ -114,7 +116,6 @@ git = "https://github.com/Barry1/PyValueFragments.git"
 rev = "main"
 
 [tool.poetry.dev-dependencies]
-black = "*"
 colorama = ">=0.4.5"
 flake8 = ">5"
 MonkeyType = ">=22.2.0"
@@ -137,6 +138,10 @@ vulture = ">=2.5"
 [tool.poetry.group.dev.dependencies]
 types-aiofiles = "^22.1.0.4"
 types-requests = "^2.28.11.7"
+
+[tool.poetry.group.dev.dependencies.black]
+version = ">22"
+allow-prereleases = true
 
 [tool.poetry.group.dev.dependencies.isort]
 extras = ["colors"]
