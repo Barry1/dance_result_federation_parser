@@ -213,7 +213,7 @@ def print_tsh_web(
                     ' text-align: center;font-size: 8pt;">'
                 )
                 print(
-                    '<img'
+                    "<img"
                     ' src="https://loremflickr.com/150/200/ballroom-dancing"'
                     ' alt="Beispielfoto" height="200" />'
                 )
