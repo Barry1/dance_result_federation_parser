@@ -16,6 +16,10 @@ tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt GLM_KIN-JUG_LAT_2022.txt
 
 # https://www.gnu.org/software/make/manual/make.html#Double_002dColon
 
+.PHONY: https\://hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
+RL_GLINDE_2023.txt: https\://hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 .PHONY: https\://www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
 GLM_KIN-JUG_LAT_2022.txt: https\://www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
 	$(runme) $< > $@ 2> $(@:.txt=.err)
