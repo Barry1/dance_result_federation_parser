@@ -26,8 +26,8 @@ SEARCH_URL: Literal[
     "https://www.tanzsport.de/de/service/vereinssuche"
 ] = "https://www.tanzsport.de/de/service/vereinssuche"
 XPATH_FOR_ORGS: Literal[
-    '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
-] = '//div[@id="service-vereinssuche"]//div[@class="result_body"]'
+    '//div[@id="container_grid"]//div[@class="result_body"]'
+] = '//div[@id="container_grid"]//div[@class="result_body"]'
 
 
 def create_dtv_df() -> DataFrame:
@@ -67,6 +67,9 @@ def create_dtv_df() -> DataFrame:
             "seite": 0,
         }
         tempfound: list[HtmlElement]
+        thelogger.debug(
+            "%s", sess_context.post(SEARCH_URL, data=login_data).content
+        )
         while (
             tempfound := fromstring(
                 sess_context.post(SEARCH_URL, data=login_data).content
