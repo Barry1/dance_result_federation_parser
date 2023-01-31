@@ -49,6 +49,7 @@ thefederation: Literal[
 PYANNOTATE: Literal[True, False] = False
 RUN_ASYNC: Literal[True, False] = True
 TOTHREAD: Literal[True, False] = False
+HEADLINELINKS: Literal[True, False] = False
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -196,8 +197,12 @@ def print_tsh_web(
         allreslinks, tsh_results, compnames
     ):
         tournhdr: str = (
-            f'<h2><a href="{actreslink}" target="_blank" '
-            f'rel="noopener">{turnier_info}</a></h2>'
+            (
+                f'<h2><a href="{actreslink}" target="_blank" '
+                f'rel="noopener">{turnier_info}</a></h2>'
+            )
+            if HEADLINELINKS
+            else f"<h2>{turnier_info}</h2>"
         )
         if value[value.Verband == thefederation].empty:
             eprint(tournhdr)
@@ -234,6 +239,7 @@ def print_tsh_web(
         '<p>Das Gesamtergebnis ist unter dem <a href="',
         wholereslink,
         '" target="_blank">Link</a> zu finden.</p>',
+        sep="",
     )
     print(
         "<p>Falls ich ein Paar übersehen habe,",
@@ -241,6 +247,7 @@ def print_tsh_web(
         "<a href=",
         '"mailto:ebeling@tanzen-in-sh.de?subject=&Uuml;bersehenes%20Ergebnis"',
         ">Email</a>.</p>",
+        sep="",
     )
 
 
