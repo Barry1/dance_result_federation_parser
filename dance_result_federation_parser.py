@@ -8,11 +8,10 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 import asyncio
 import logging
 from functools import partial
-from typing import Any, Callable, Literal, TypedDict, cast
+from typing import Callable, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
-import tomllib
 from joblib import Parallel, delayed
 from lxml.etree import _ElementTree
 from lxml.html import parse
@@ -20,6 +19,7 @@ from pandas import DataFrame
 from pandas import set_option as pandas_set_option
 from valuefragments import eprint, run_grouped_in_tpe
 
+from configprocessing import myConfig, readconfig, setuplogger
 from dtvprocessing import get_dtv_df
 from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
@@ -36,67 +36,9 @@ URLSZUMPRUEFEN: list[str] = [
     "http://www.ergebnisse-tanzsport-glinde.de/mediapool/Turniere-2019/2019.09.28%20GLM",
     "http://tsk-buchholz.de/images/Tanzclub/Sparten/Turniertanz/GLM%202020.02.29",
 ]
-thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
-logformatter: logging.Formatter = logging.Formatter(
-    "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)  # https://docs.python.org/3/library/logging.html#logrecord-attributes
-logfilehandler: logging.FileHandler = logging.FileHandler("resultParser.log")
-logfilehandler.setFormatter(logformatter)
-thelogger.addHandler(logfilehandler)
-if __debug__:
-    thelogger.setLevel(logging.DEBUG)
-else:
-    thelogger.setLevel(logging.INFO)
-pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
-
-
-class myConfig(TypedDict):
-    HEADLINELINKS: Literal[True, False]
-    IMG_PREP: Literal[True, False]
-    PYANNOTATE: Literal[True, False]
-    RUN_ASYNC: Literal[True, False]
-    TOTHREAD: Literal[True, False]
-    THEFEDERATION: Literal[
-        "TSH",
-        "HATV",
-        "TBW",
-        "HTV",
-        "Bayern",
-        "Berlin",
-        "Bremen",
-        "NTV",
-        "TNW",
-        "TRP",
-        "SLT",
-        "LTV Br",
-        "TMV",
-        "TVS",
-        "TVSA",
-        "TTSV",
-    ]
-
-
-def readconfig() -> myConfig:
-    """Load config.toml or default configuration."""
-    theconfig: myConfig = myConfig()  # type: ignore
-    try:
-        with open("config.toml", "rb") as f:
-            cfg: dict[str, Any] = tomllib.load(f)
-    except FileNotFoundError:
-        thelogger.info(
-            "No file config.toml found, default configuration used."
-        )
-        cfg: dict[str, Any] = {}
-    theconfig["HEADLINELINKS"] = cfg.get("HEADLINELINKS", False)
-    theconfig["IMG_PREP"] = cfg.get("IMG_PREP", False)
-    theconfig["PYANNOTATE"] = cfg.get("PYANNOTATE", False)
-    theconfig["RUN_ASYNC"] = cfg.get("RUN_ASYNC", True)
-    theconfig["TOTHREAD"] = cfg.get("TOTHREAD", False)
-    theconfig["THEFEDERATION"] = cfg.get("THEFEDERATION", "TSH")
-    return theconfig
-
-
+thelogger: logging.Logger = setuplogger("resultParser")
 _CFG_DICT: myConfig = readconfig()
+pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
 def reslinks_interpreter(
