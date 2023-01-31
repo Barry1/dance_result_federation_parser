@@ -29,13 +29,6 @@ from topturnierprocessing import (
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
-URLSZUMPRUEFEN: list[str] = [
-    "http://tsa.de.cool/20190914_Senioren/index.htm",
-    "http://www.tanzen-in-sh.de/ergebnisse/2019/2019-02-02_GLM_Kin-Jug_D-A_LAT/index.htm",
-    "http://blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm",
-    "http://www.ergebnisse-tanzsport-glinde.de/mediapool/Turniere-2019/2019.09.28%20GLM",
-    "http://tsk-buchholz.de/images/Tanzclub/Sparten/Turniertanz/GLM%202020.02.29",
-]
 thelogger: logging.Logger = setuplogger("resultParser")
 _CFG_DICT: myConfig = readconfig()
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
@@ -253,7 +246,7 @@ if __name__ == "__main__":
     else:
         thelogger.info("Selbsttest des Moduls resultParser")
         thelogger.info(get_dtv_df().loc[403:406])
-        for theurl in URLSZUMPRUEFEN:
+        for theurl in _CFG_DICT["CHECKINGURLS"]:
             thelogger.info("Geprüft wird die Funktion anhand von %s", theurl)
             if _CFG_DICT["RUN_ASYNC"]:
                 asyncio.run(async_eventurl_to_web(theurl))

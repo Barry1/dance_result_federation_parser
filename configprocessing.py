@@ -1,10 +1,10 @@
 import logging
-from typing import Any, Literal, TypedDict
+from typing import Any, Literal, Optional, TypedDict
 
 import tomllib
 
 
-def setuplogger(descriptor: str):
+def setuplogger(descriptor: str) -> logging.Logger:
     thelogger: logging.Logger = logging.getLogger(f"Basti.{descriptor}")
     # https://docs.python.org/3/library/logging.html#logrecord-attributes
     logformatter: logging.Formatter = logging.Formatter(
@@ -46,6 +46,7 @@ class myConfig(TypedDict):
         "TVSA",
         "TTSV",
     ]
+    CHECKINGURLS: Optional[list[str]]
 
 
 def readconfig() -> myConfig:
@@ -59,6 +60,7 @@ def readconfig() -> myConfig:
             "No file config.toml found, default configuration used."
         )
         cfg: dict[str, Any] = {}
+    theconfig["CHECKINGURLS"] = cfg.get("CHECKINGURLS", [])
     theconfig["HEADLINELINKS"] = cfg.get("HEADLINELINKS", False)
     theconfig["IMG_PREP"] = cfg.get("IMG_PREP", False)
     theconfig["PYANNOTATE"] = cfg.get("PYANNOTATE", False)
