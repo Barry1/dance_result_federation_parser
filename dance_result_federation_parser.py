@@ -8,10 +8,11 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 import asyncio
 import logging
 from functools import partial
-from typing import Callable, Literal, cast
+from typing import Any, Callable, Literal, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
+import tomllib
 from joblib import Parallel, delayed
 from lxml.etree import _ElementTree
 from lxml.html import parse
@@ -28,28 +29,6 @@ from topturnierprocessing import (
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
-thefederation: Literal[
-    "TSH",
-    "HATV",
-    "TBW",
-    "HTV",
-    "Bayern",
-    "Berlin",
-    "Bremen",
-    "NTV",
-    "TNW",
-    "TRP",
-    "SLT",
-    "LTV Br",
-    "TMV",
-    "TVS",
-    "TVSA",
-    "TTSV",
-] = "TSH"
-PYANNOTATE: Literal[True, False] = False
-RUN_ASYNC: Literal[True, False] = True
-TOTHREAD: Literal[True, False] = False
-HEADLINELINKS: Literal[True, False] = False
 URLSZUMPRUEFEN: list[str] = [
     "http://tsa.de.cool/20190914_Senioren/index.htm",
     "http://www.tanzen-in-sh.de/ergebnisse/2019/2019-02-02_GLM_Kin-Jug_D-A_LAT/index.htm",
@@ -68,8 +47,45 @@ if __debug__:
     thelogger.setLevel(logging.DEBUG)
 else:
     thelogger.setLevel(logging.INFO)
-IMG_PREP: bool = False
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
+
+
+def readconfig() -> dict[str, Any]:
+    theconfig: dict[str, Any] = {}
+    try:
+        with open("config.toml") as f:
+            cfg: dict[str, Any] = tomllib.load(f)
+    except FileNotFoundError:
+        cfg: dict[str, Any] = {}
+    theconfig["HEADLINELINKS"] = cfg.get("HEADLINELINKS", False)
+    theconfig["IMG_PREP"] = cfg.get("IMG_PREP", False)
+    theconfig["PYANNOTATE"] = cfg.get("PYANNOTATE", False)
+    theconfig["RUN_ASYNC"] = cfg.get("RUN_ASYNC", True)
+    theconfig["TOTHREAD"] = cfg.get("TOTHREAD", False)
+    theconfig["THEFEDERATION"] = cfg.get("THEFEDERATION", "TSH")
+    """    thefederation: Literal[
+            "TSH",
+            "HATV",
+            "TBW",
+            "HTV",
+            "Bayern",
+            "Berlin",
+            "Bremen",
+            "NTV",
+            "TNW",
+            "TRP",
+            "SLT",
+            "LTV Br",
+            "TMV",
+            "TVS",
+            "TVSA",
+            "TTSV",
+        ] = "TSH"
+    """
+    return theconfig
+
+
+CFG_DICT: dict[str, Any] = readconfig()
 
 
 def reslinks_interpreter(
@@ -121,7 +137,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # <https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor>
             # python >=3.11 TaskGroup instead of gather
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
-            if TOTHREAD:
+            if CFG_DICT["TOTHREAD"]:
                 # type: ignore[attr-defined]
                 async with asyncio.TaskGroup() as my_task_group:
                     tsh_results_tasks: list[asyncio.Task[DataFrame]] = [
@@ -208,10 +224,10 @@ def print_tsh_web(
                 f'<h2><a href="{actreslink}" target="_blank" '
                 f'rel="noopener">{turnier_info}</a></h2>'
             )
-            if HEADLINELINKS
+            if CFG_DICT["HEADLINELINKS"]
             else f"<h2>{turnier_info}</h2>"
         )
-        if value[value.Verband == thefederation].empty:
+        if value[value.Verband == CFG_DICT["THEFEDERATION"]].empty:
             eprint(tournhdr)
             eprint("<p>Leider ohne TSH-Beteiligung.</p>")
             eprint(
@@ -219,7 +235,7 @@ def print_tsh_web(
             )
         else:
             print(tournhdr)
-            if IMG_PREP:
+            if CFG_DICT["IMG_PREP"]:
                 print(
                     '<div style="float: right; margin-left: 10px;'
                     ' text-align: center;font-size: 8pt;">'
@@ -231,7 +247,9 @@ def print_tsh_web(
                 )
                 print("<br />Foto: loremflickr.com</div>")
             print("<ul>")
-            for resline in value[value.Verband == thefederation].iterrows():
+            for resline in value[
+                value.Verband == CFG_DICT["THEFEDERATION"]
+            ].iterrows():
                 # display(resline)
                 # display(resline[1])
                 print(
@@ -261,7 +279,7 @@ def print_tsh_web(
 __all__: list[str] = ["interpret_tt_result", "print_tsh_web"]
 if __name__ == "__main__":
     # execute only if run as a script
-    if PYANNOTATE:
+    if CFG_DICT["PYANNOTATE"]:
         from pyannotate_runtime import collect_types
 
         collect_types.init_types_collection()
@@ -275,7 +293,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         for theurl in sys.argv[1:]:
             thelogger.info("Auswertung von %s", theurl)
-            if RUN_ASYNC:
+            if CFG_DICT["RUN_ASYNC"]:
                 asyncio.run(async_eventurl_to_web(theurl))
             else:
                 eventurl_to_web(theurl)
@@ -284,10 +302,10 @@ if __name__ == "__main__":
         thelogger.info(get_dtv_df().loc[403:406])
         for theurl in URLSZUMPRUEFEN:
             thelogger.info("Geprüft wird die Funktion anhand von %s", theurl)
-            if RUN_ASYNC:
+            if CFG_DICT["RUN_ASYNC"]:
                 asyncio.run(async_eventurl_to_web(theurl))
             else:
                 eventurl_to_web(theurl)
-    if PYANNOTATE:
+    if CFG_DICT["PYANNOTATE"]:
         collect_types.stop()
         collect_types.dump_stats("type_info.json")
