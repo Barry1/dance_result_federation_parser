@@ -77,7 +77,7 @@ class myConfig(TypedDict):
 
 
 def readconfig() -> myConfig:
-    theconfig: myConfig = {}
+    theconfig: myConfig = myConfig()  # type: ignore
     try:
         with open("config.toml", "rb") as f:
             cfg: dict[str, Any] = tomllib.load(f)
