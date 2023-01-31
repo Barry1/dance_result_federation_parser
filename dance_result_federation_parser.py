@@ -8,7 +8,7 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 import asyncio
 import logging
 from functools import partial
-from typing import Any, Callable, Literal, cast
+from typing import Any, Callable, Literal, TypedDict, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
@@ -50,8 +50,34 @@ else:
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
-def readconfig() -> dict[str, Any]:
-    theconfig: dict[str, Any] = {}
+class myConfig(TypedDict):
+    HEADLINELINKS: Literal[True, False]
+    IMG_PREP: Literal[True, False]
+    PYANNOTATE: Literal[True, False]
+    RUN_ASYNC: Literal[True, False]
+    TOTHREAD: Literal[True, False]
+    THEFEDERATION: Literal[
+        "TSH",
+        "HATV",
+        "TBW",
+        "HTV",
+        "Bayern",
+        "Berlin",
+        "Bremen",
+        "NTV",
+        "TNW",
+        "TRP",
+        "SLT",
+        "LTV Br",
+        "TMV",
+        "TVS",
+        "TVSA",
+        "TTSV",
+    ]
+
+
+def readconfig() -> myConfig:
+    theconfig: myConfig = {}
     try:
         with open("config.toml") as f:
             cfg: dict[str, Any] = tomllib.load(f)
@@ -63,25 +89,6 @@ def readconfig() -> dict[str, Any]:
     theconfig["RUN_ASYNC"] = cfg.get("RUN_ASYNC", True)
     theconfig["TOTHREAD"] = cfg.get("TOTHREAD", False)
     theconfig["THEFEDERATION"] = cfg.get("THEFEDERATION", "TSH")
-    """    thefederation: Literal[
-            "TSH",
-            "HATV",
-            "TBW",
-            "HTV",
-            "Bayern",
-            "Berlin",
-            "Bremen",
-            "NTV",
-            "TNW",
-            "TRP",
-            "SLT",
-            "LTV Br",
-            "TMV",
-            "TVS",
-            "TVSA",
-            "TTSV",
-        ] = "TSH"
-    """
     return theconfig
 
 
