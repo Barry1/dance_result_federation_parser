@@ -50,6 +50,13 @@ PYANNOTATE: Literal[True, False] = False
 RUN_ASYNC: Literal[True, False] = True
 TOTHREAD: Literal[True, False] = False
 HEADLINELINKS: Literal[True, False] = False
+URLSZUMPRUEFEN: list[str] = [
+    "http://tsa.de.cool/20190914_Senioren/index.htm",
+    "http://www.tanzen-in-sh.de/ergebnisse/2019/2019-02-02_GLM_Kin-Jug_D-A_LAT/index.htm",
+    "http://blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm",
+    "http://www.ergebnisse-tanzsport-glinde.de/mediapool/Turniere-2019/2019.09.28%20GLM",
+    "http://tsk-buchholz.de/images/Tanzclub/Sparten/Turniertanz/GLM%202020.02.29",
+]
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 logformatter: logging.Formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -275,14 +282,7 @@ if __name__ == "__main__":
     else:
         thelogger.info("Selbsttest des Moduls resultParser")
         thelogger.info(get_dtv_df().loc[403:406])
-        urlszumpruefen: list[str] = [  # type:ignore[E501]
-            "http://tsa.de.cool/20190914_Senioren/index.htm",
-            "http://www.tanzen-in-sh.de/ergebnisse/2019/2019-02-02_GLM_Kin-Jug_D-A_LAT/index.htm",
-            "http://blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm",
-            "http://www.ergebnisse-tanzsport-glinde.de/mediapool/Turniere-2019/2019.09.28%20GLM",
-            "http://tsk-buchholz.de/images/Tanzclub/Sparten/Turniertanz/GLM%202020.02.29",
-        ]
-        for theurl in urlszumpruefen:
+        for theurl in URLSZUMPRUEFEN:
             thelogger.info("Geprüft wird die Funktion anhand von %s", theurl)
             if RUN_ASYNC:
                 asyncio.run(async_eventurl_to_web(theurl))
