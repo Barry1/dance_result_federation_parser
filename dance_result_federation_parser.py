@@ -77,6 +77,7 @@ class myConfig(TypedDict):
 
 
 def readconfig() -> myConfig:
+    """Load config.toml or default configuration."""
     theconfig: myConfig = myConfig()  # type: ignore
     try:
         with open("config.toml", "rb") as f:
