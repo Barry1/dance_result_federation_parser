@@ -20,6 +20,10 @@ tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt GLM_KIN-JUG_LAT_2022.txt
 RL_GLINDE_2023.txt: https\://hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
 	$(runme) $< > $@ 2> $(@:.txt=.err)
 
+.PHONY: https\://tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
+GLM_HGR-MAS_A-S_LAT_2023.txt: https\://tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 .PHONY: https\://www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
 GLM_KIN-JUG_LAT_2022.txt: https\://www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
 	$(runme) $< > $@ 2> $(@:.txt=.err)
