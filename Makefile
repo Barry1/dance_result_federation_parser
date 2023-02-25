@@ -16,6 +16,10 @@ tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt GLM_KIN-JUG_LAT_2022.txt
 
 # https://www.gnu.org/software/make/manual/make.html#Double_002dColon
 
+.PHONY: http\://hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
+GLM_HGR_MASI_D-B_STD_2023.txt: http\://hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 .PHONY: https\://hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
 RL_GLINDE_2023.txt: https\://hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
 	$(runme) $< > $@ 2> $(@:.txt=.err)
