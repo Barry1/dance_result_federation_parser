@@ -9,7 +9,7 @@ plugins:
 lint:
   enabled:
     - markdownlint@0.33.0
-    - autopep8@2.0.1
+    - autopep8@2.0.2
     - flake8@6.0.0
     - gitleaks@8.16.0
     - taplo@0.7.0
