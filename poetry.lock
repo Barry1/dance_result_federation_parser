@@ -992,14 +992,18 @@ setuptools = "*"
 
 [[package]]
 name = "nuitka"
-version = "1.4.8"
+version = "1.5"
 description = "Python compiler with full language support and CPython compatibility"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "Nuitka-1.4.8.tar.gz", hash = "sha256:5867dd7fb481be50c5244fede2e21d3b73593d32d9853cf15fc87222c30fe67e"},
+    {file = "Nuitka-1.5.tar.gz", hash = "sha256:bf7cc483f8518ff04e1e7a98f65c05efebfb267406b2af8f285a63878790dc5e"},
 ]
+
+[package.dependencies]
+orderedset = ">=2.0.3"
+subprocess32 = "*"
 
 [[package]]
 name = "numpy"
@@ -1053,6 +1057,17 @@ files = [
 
 [package.extras]
 dev = ["black", "mypy", "pytest"]
+
+[[package]]
+name = "orderedset"
+version = "2.0.3"
+description = "An Ordered Set implementation in Cython."
+category = "dev"
+optional = false
+python-versions = "*"
+files = [
+    {file = "orderedset-2.0.3.tar.gz", hash = "sha256:b2f5ccfb5a86e7b3b3ddf18b29779cc18b24653abf9d6da4bebecf33780a6e29"},
+]
 
 [[package]]
 name = "packaging"
@@ -1787,6 +1802,19 @@ files = [
 ]
 
 [[package]]
+name = "subprocess32"
+version = "3.5.4"
+description = "A backport of the subprocess module from Python 3 for use on 2.x."
+category = "dev"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*, <4"
+files = [
+    {file = "subprocess32-3.5.4-cp27-cp27m-macosx_10_6_intel.whl", hash = "sha256:88e37c1aac5388df41cc8a8456bb49ebffd321a3ad4d70358e3518176de3a56b"},
+    {file = "subprocess32-3.5.4-cp27-cp27mu-manylinux2014_x86_64.whl", hash = "sha256:e45d985aef903c5b7444d34350b05da91a9e0ea015415ab45a21212786c649d0"},
+    {file = "subprocess32-3.5.4.tar.gz", hash = "sha256:eb2937c80497978d181efa1b839ec2d9622cf9600a039a79d0e108d1f9aec79d"},
+]
+
+[[package]]
 name = "tabulate"
 version = "0.9.0"
 description = "Pretty-print tabular data"
@@ -1846,18 +1874,22 @@ files = [
 
 [[package]]
 name = "trailrunner"
-version = "1.2.1"
+version = "1.3.0"
 description = "Run things on paths"
 category = "dev"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "trailrunner-1.2.1-py3-none-any.whl", hash = "sha256:dff4ee07cf079bcd388585ee6f14911e2c9292d58bf7cc6047912e082ec21283"},
-    {file = "trailrunner-1.2.1.tar.gz", hash = "sha256:157de2b2d82139d9583ec1dbc1981c33b39e24c420bb5294f86083f1f4b44311"},
+    {file = "trailrunner-1.3.0-py3-none-any.whl", hash = "sha256:ed14aa9fef4f7394297d2ecc20b398016d3a520fdc34db111febf897d3a41dbb"},
+    {file = "trailrunner-1.3.0.tar.gz", hash = "sha256:f16eb26c7da6f74158cb69b8f2c756139cedb53f01d7562ea0a3564380b67275"},
 ]
 
 [package.dependencies]
 pathspec = ">=0.8.1"
+
+[package.extras]
+dev = ["attribution (==1.6.2)", "black (==22.3.0)", "coverage (==6.5)", "flake8 (==4.0.1)", "flake8-bugbear (==23.2.13)", "flit (==3.7.1)", "mypy (==1.1.1)", "ufmt (==2.0.1)", "usort (==1.0.5)"]
+docs = ["sphinx (==6.1.3)", "sphinx-mdinclude (==0.5.3)"]
 
 [[package]]
 name = "typed-ast"
@@ -2065,7 +2097,7 @@ typing-extensions = "*"
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "e495af939c92343fa94202f87890d2464478cda4"
+resolved_reference = "26c2ef7ff3a47c8fba930addb4f2e7e585011abf"
 
 [[package]]
 name = "vermin"
