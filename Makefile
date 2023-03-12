@@ -16,6 +16,10 @@ tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt GLM_KIN-JUG_LAT_2022.txt
 
 # https://www.gnu.org/software/make/manual/make.html#Double_002dColon
 
+.PHONY: https\://tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
+GBM_Kombi_2023.txt: https\://tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 
 .PHONY: http\://hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
 GLM4_MASII_AS_MASV_S_STD_2023.txt: http\://hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
