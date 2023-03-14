@@ -10,7 +10,7 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
-name: "CodeQL"
+name: CodeQL
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ on:
   #  pull_request:
   #    branches: ["main", "master"]
   schedule:
-    - cron: "39 15 * * 6"
+    - cron: 39 15 * * 6
 
 jobs:
   analyze:
@@ -33,7 +33,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["python"]
+        language: [python]
         # CodeQL supports
         # [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at

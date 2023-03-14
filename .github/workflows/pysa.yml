@@ -17,7 +17,7 @@ name: Pysa
 
 on:
   schedule:
-    - cron: "37 13 * * 1"
+    - cron: 37 13 * * 1
   workflow_dispatch:
   #  push:
   #    branches: ["main", "master"]
@@ -59,7 +59,7 @@ jobs:
         with:
           # To customize these inputs:
           # See https://github.com/facebook/pysa-action#inputs
-          repo-directory: "./"
-          requirements-path: "requirements.txt"
+          repo-directory: ./
+          requirements-path: requirements.txt
           infer-types: true
           include-default-sapp-filters: true
