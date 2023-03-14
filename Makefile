@@ -65,6 +65,10 @@ GLM_KIN-JUG_STD_2022.txt: https\://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse
 DM-DP_KIN-JUG_STD_2022.txt: https\://www.htv.de/media/22_10_02/index.htm
 	$(runme) $< > $@ 2> $(@:.txt=.err)
 
+.PHONY: https\://tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
+GLM4_MASIV_STD_2023.txt: https\://tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 Enzkloesterle_2022.txt:
 	$(runme) http://www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm > $@ 2> $(@:.txt=.err)
 
