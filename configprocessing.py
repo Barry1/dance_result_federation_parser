@@ -53,14 +53,15 @@ class myConfig(TypedDict):
 def readconfig() -> myConfig:
     """Load config.toml or default configuration."""
     theconfig: myConfig = myConfig()  # type: ignore
+    cfg: dict[str, Any]
     try:
         with open("config.toml", "rb") as f:
-            cfg: dict[str, Any] = tomllib.load(f)
+            cfg = tomllib.load(f)
     except FileNotFoundError:
         setuplogger("Configuration").info(
             "No file config.toml found, default configuration used."
         )
-        cfg: dict[str, Any] = {}
+        cfg = {}
     theconfig["CHECKINGURLS"] = cfg.get("CHECKINGURLS", [])
     theconfig["HEADLINELINKS"] = cfg.get("HEADLINELINKS", False)
     theconfig["IMG_PREP"] = cfg.get("IMG_PREP", False)
