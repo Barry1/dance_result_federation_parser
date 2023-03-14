@@ -28,6 +28,7 @@ class myConfig(TypedDict):
     PYANNOTATE: Literal[True, False]
     RUN_ASYNC: Literal[True, False]
     TOTHREAD: Literal[True, False]
+    RESULTTABLE: Literal[True, False]
     THEFEDERATION: Literal[
         "TSH",
         "HATV",
@@ -66,5 +67,6 @@ def readconfig() -> myConfig:
     theconfig["PYANNOTATE"] = cfg.get("PYANNOTATE", False)
     theconfig["RUN_ASYNC"] = cfg.get("RUN_ASYNC", True)
     theconfig["TOTHREAD"] = cfg.get("TOTHREAD", False)
+    theconfig["RESULTTABLE"] = cfg.get("RESULTTABLE", True)
     theconfig["THEFEDERATION"] = cfg.get("THEFEDERATION", "TSH")
     return theconfig

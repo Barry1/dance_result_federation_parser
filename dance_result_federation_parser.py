@@ -192,17 +192,39 @@ def print_tsh_web(
                     ' alt="Beispielfoto" height="200" />'
                 )
                 print("<br />Foto: loremflickr.com</div>")
-            print("<ul>")
-            for resline in value[
-                value.Verband == _CFG_DICT["THEFEDERATION"]
-            ].iterrows():
-                # display(resline)
-                # display(resline[1])
+            if _CFG_DICT["RESULTTABLE"]:
+                print("<table>")
                 print(
-                    f"<li>{resline[1].Platz}"
-                    f"{resline[1].Paar} ({resline[1].Verein})</li>"
+                    "<thead><tr><th>&nbsp;</th>",
+                    '<th style="text-align: right;">Platz</th>',
+                    '<th style="text-align: right;">Paar</th>',
+                    '<th style="text-align: right;">Verein</th></tr></thead><tbody>',
                 )
-            print("</ul>")
+                for resline in value[
+                    value.Verband == _CFG_DICT["THEFEDERATION"]
+                ].iterrows():
+                    print(
+                        '<tr><td><strong>&nbsp</strong></td><td style="text-align: right;">',
+                        resline[1].Platz,
+                        '</td><td style="text-align: right;">',
+                        resline[1].Paar,
+                        '</td><td style="text-align: right;">',
+                        resline[1].Verein,
+                        "</td></tr>",
+                    )
+                print("</tbody></table>")
+            else:
+                print("<ul>")
+                for resline in value[
+                    value.Verband == _CFG_DICT["THEFEDERATION"]
+                ].iterrows():
+                    # display(resline)
+                    # display(resline[1])
+                    print(
+                        f"<li>{resline[1].Platz}"
+                        f"{resline[1].Paar} ({resline[1].Verein})</li>"
+                    )
+                print("</ul>")
             print(
                 "<!-- =================================================== -->"
             )
