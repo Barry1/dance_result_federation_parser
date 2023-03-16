@@ -47,7 +47,7 @@ class myConfig(TypedDict):
         "TVSA",
         "TTSV",
     ]
-    CHECKINGURLS: Optional[list[str]]
+    CHECKINGURLS: list[str]
 
 
 def readconfig() -> myConfig:
