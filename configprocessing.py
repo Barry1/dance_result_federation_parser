@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Literal, Optional, TypedDict
+from typing import Any, Literal, TypedDict
 
 import tomllib
 
