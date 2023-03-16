@@ -138,6 +138,8 @@ vulture = ">=2.5"
 [tool.poetry.group.dev.dependencies]
 types-aiofiles = "^22.1.0.4"
 types-requests = "^2.28.11.7"
+pyanalyze = "^0.9.0"
+importlib-resources = "^5.12.0"
 
 [tool.poetry.group.dev.dependencies.black]
 version = ">22"
