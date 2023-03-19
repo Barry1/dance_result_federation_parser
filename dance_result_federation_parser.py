@@ -236,7 +236,7 @@ def print_tsh_web(
     )
     print(
         "<p>Falls ich ein Paar übersehen habe,",
-        "bitte ich freundlich um eine",
+        "bitte ich freundlich um eine ",
         "<a href=",
         '"mailto:ebeling@tanzen-in-sh.de?subject=&Uuml;bersehenes%20Ergebnis"',
         ">Email</a>.</p>",
