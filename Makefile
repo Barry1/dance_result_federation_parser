@@ -14,6 +14,11 @@ testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern202
 
 tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt GLM_KIN-JUG_LAT_2022.txt
 
+
+.PHONY: https\://www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
+Kamen_2023.txt: https\://www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 # https://www.gnu.org/software/make/manual/make.html#Double_002dColon
 
 .PHONY: https\://tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
