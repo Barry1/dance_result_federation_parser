@@ -1620,14 +1620,14 @@ vulture = ["vulture"]
 
 [[package]]
 name = "pylint"
-version = "2.17.0"
+version = "2.17.1"
 description = "python code static checker"
 category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 files = [
-    {file = "pylint-2.17.0-py3-none-any.whl", hash = "sha256:e097d8325f8c88e14ad12844e3fe2d963d3de871ea9a8f8ad25ab1c109889ddc"},
-    {file = "pylint-2.17.0.tar.gz", hash = "sha256:1460829b6397cb5eb0cdb0b4fc4b556348e515cdca32115f74a1eb7c20b896b4"},
+    {file = "pylint-2.17.1-py3-none-any.whl", hash = "sha256:8660a54e3f696243d644fca98f79013a959c03f979992c1ab59c24d3f4ec2700"},
+    {file = "pylint-2.17.1.tar.gz", hash = "sha256:d4d009b0116e16845533bc2163493d6681846ac725eab8ca8014afb520178ddd"},
 ]
 
 [package.dependencies]
@@ -1750,14 +1750,14 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.299"
+version = "1.1.300"
 description = "Command line wrapper for pyright"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pyright-1.1.299-py3-none-any.whl", hash = "sha256:f34dfd0c2fcade34f9878b1fc69cb9456476dc78227e0a2fa046107ec55c0235"},
-    {file = "pyright-1.1.299.tar.gz", hash = "sha256:b3a9a6affa1252c52793e8663ade59ff966f8495ecfad6328deffe59cfc5a9a9"},
+    {file = "pyright-1.1.300-py3-none-any.whl", hash = "sha256:2ff0a21337d1d369e930143f1eed61ba4f225f59ae949631f512722bc9e61e4e"},
+    {file = "pyright-1.1.300.tar.gz", hash = "sha256:1874009c372bb2338e0696d99d915a152977e4ecbef02d3e4a3fd700da699993"},
 ]
 
 [package.dependencies]
@@ -2238,14 +2238,14 @@ files = [
 
 [[package]]
 name = "types-requests"
-version = "2.28.11.15"
+version = "2.28.11.16"
 description = "Typing stubs for requests"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-requests-2.28.11.15.tar.gz", hash = "sha256:fc8eaa09cc014699c6b63c60c2e3add0c8b09a410c818b5ac6e65f92a26dde09"},
-    {file = "types_requests-2.28.11.15-py3-none-any.whl", hash = "sha256:a05e4c7bc967518fba5789c341ea8b0c942776ee474c7873129a61161978e586"},
+    {file = "types-requests-2.28.11.16.tar.gz", hash = "sha256:9d4002056df7ebc4ec1f28fd701fba82c5c22549c4477116cb2656aa30ace6db"},
+    {file = "types_requests-2.28.11.16-py3-none-any.whl", hash = "sha256:a86921028335fdcc3aaf676c9d3463f867db6af2303fc65aa309b13ae1e6dd53"},
 ]
 
 [package.dependencies]
