@@ -204,7 +204,7 @@ def print_tsh_web(
                     value.Verband == _CFG_DICT["THEFEDERATION"]
                 ].iterrows():
                     print(
-                        '<tr><td><strong>&nbsp</strong></td><td style="text-align: right;">',
+                        '<tr><td><strong>&nbsp;</strong></td><td style="text-align: right;">',
                         resline[1].Platz,
                         '</td><td style="text-align: right;">',
                         resline[1].Paar,
