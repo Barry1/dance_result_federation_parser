@@ -14,6 +14,13 @@ testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern202
 
 tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt GLM_KIN-JUG_LAT_2022.txt
 
+.PHONY: https\://berlin-dance-festival.de/files/bdf/results/2023/index.htm
+BeDaFe_2023.txt: https\://berlin-dance-festival.de/files/bdf/results/2023/index.htm
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
+.PHONY: https\://turniere.btc-gruen-gold.de/bb2023/index.htm
+BlauesBand2023.txt: https\://turniere.btc-gruen-gold.de/bb2023/index.htm
+	$(runme) $< > $@ 2> $(@:.txt=.err)
 
 .PHONY: https\://www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
 Kamen_2023.txt: https\://www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
