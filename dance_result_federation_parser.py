@@ -13,7 +13,7 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 
 from joblib import Parallel, delayed
-from lxml.etree import _ElementTree
+from lxml.etree import ElementTree
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
@@ -35,7 +35,7 @@ pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
 def reslinks_interpreter(
-    tree: _ElementTree,
+    tree: ElementTree,
 ) -> tuple[
     Callable[[str], dict[str, str]],
     Callable[[str], DataFrame],
@@ -56,7 +56,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
     """Async convert URL from Event to HTML for TSH CMS."""
     try:
         with urlopen(eventurl) as openedurl:
-            tree: _ElementTree = await asyncio.to_thread(parse, openedurl)
+            tree: ElementTree = await asyncio.to_thread(parse, openedurl)
     except HTTPError as http_error:
         thelogger.exception(http_error)
     else:
@@ -106,7 +106,7 @@ def eventurl_to_web(synceventurl: str) -> None:
     """Convert URL from Event to HTML for TSH CMS."""
     try:
         with urlopen(synceventurl) as openedurl:
-            tree: _ElementTree = parse(openedurl)
+            tree: ElementTree = parse(openedurl)
     except HTTPError as sync_http_error:
         thelogger.exception(sync_http_error)
     else:

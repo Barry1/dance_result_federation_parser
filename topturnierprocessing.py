@@ -5,7 +5,7 @@ from urllib.error import HTTPError
 
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, SoupStrainer, Tag
-from lxml.etree import _ElementTree
+from lxml.etree import ElementTree
 from pandas import DataFrame, concat, read_html
 from requests import get as requests_get
 
@@ -16,7 +16,7 @@ thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 MY_TIMEOUT: Literal[3] = 3
 
 
-def checkttontree(the_e_tree: _ElementTree) -> bool:
+def checkttontree(the_e_tree: ElementTree) -> bool:
     """Sucht in einem lxml-Tree nach Hinweisen dafür,
     ob das eine HTML-Seite von TopTurnier von Stefan Rath ist.
     Konkret wird nach einem Link auf die Homepage topturnier.de gesucht.

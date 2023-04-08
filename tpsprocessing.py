@@ -5,7 +5,7 @@ import logging
 from urllib.parse import quote
 from urllib.request import urlopen
 
-from lxml.etree import _ElementTree  # type: ignore[reportPrivateUsage]
+from lxml.etree import ElementTree  # type: ignore[reportPrivateUsage]
 from lxml.html import parse
 from pandas import DataFrame, read_html, to_numeric  # , option_context
 
@@ -15,7 +15,7 @@ from stringprocessing import cleanevfromentry  # ,clean_number_from_couple
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 
 
-def checktpsontree(the_e_tree: _ElementTree) -> bool:
+def checktpsontree(the_e_tree: ElementTree) -> bool:
     """Search lxml-Tree for indicator if TPS."""
     return bool(
         the_e_tree.xpath(
