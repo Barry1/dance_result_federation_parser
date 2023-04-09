@@ -1,4 +1,3 @@
----
 # 🪄 This is your project's Sourcery configuration file.
 
 # You can use it to get Sourcery working in the way you want, such as
@@ -69,5 +68,4 @@ rule_settings:
 #   url:
 #   ssl_certs_file:
 #   no_ssl_verify: false
----
 

@@ -11,7 +11,7 @@ runmesingle=poetry run python -OO ./single_result_parser.py
 ALL: pylint mypy formatting vulture pytype sourcery
 
 sourcery:
-	poetry run sourcery review *.py
+	poetry run sourcery review $(OBJS) --summary --fix --verbose
 
 testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern2022.txt tpstestruns
 
