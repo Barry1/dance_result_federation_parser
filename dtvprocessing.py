@@ -7,9 +7,7 @@ import time
 from typing import Literal, TypedDict
 
 import aiofiles
-from lxml.etree import (
-    _ElementUnicodeResult,  # type: ignore[reportPrivateUsage]
-)
+from lxml.etree import _ElementUnicodeResult
 from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
@@ -43,7 +41,7 @@ def create_dtv_df() -> DataFrame:
         'input[@name="REQUEST_TOKEN"]/@value'
     )
     with Session() as sess_context:
-        sess_context.verify = False
+        # sess_context.verify = False
         rqtoken: str = fromstring(sess_context.get(SEARCH_URL).content).xpath(
             xpath_token
         )
