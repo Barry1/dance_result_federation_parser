@@ -1,10 +1,10 @@
 {
   "site_package_search_strategy": "all",
-  "ignore_all_errors": [".venv"],
   "taint_models_path": ".venv/lib/pyre_check",
   "site_roots": [
     "./.venv/lib/python3.11/site-packages/"
   ],
+  "ignore_all_errors": [".venv"],
   "source_directories": [
     "."
   ]

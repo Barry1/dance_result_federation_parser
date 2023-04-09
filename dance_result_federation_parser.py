@@ -13,7 +13,9 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 
 from joblib import Parallel, delayed
-from lxml.etree import ElementTree
+from lxml.etree import _ElementTree as ElementTree
+
+# import lxml.etree
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
@@ -84,7 +86,6 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # python >=3.11 TaskGroup instead of gather
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if _CFG_DICT["TOTHREAD"]:
-                # type: ignore[attr-defined]
                 async with asyncio.TaskGroup() as my_task_group:
                     tsh_results_tasks: list[asyncio.Task[DataFrame]] = [
                         my_task_group.create_task(

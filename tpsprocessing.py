@@ -5,7 +5,7 @@ import logging
 from urllib.parse import quote
 from urllib.request import urlopen
 
-from lxml.etree import ElementTree  # type: ignore[reportPrivateUsage]
+from lxml.etree import ElementTree
 from lxml.html import parse
 from pandas import DataFrame, read_html, to_numeric  # , option_context
 

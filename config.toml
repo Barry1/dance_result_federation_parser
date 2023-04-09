@@ -6,3 +6,4 @@ CHECKINGURLS = [
   "http://www.ergebnisse-tanzsport-glinde.de/mediapool/Turniere-2019/2019.09.28%20GLM",
   "http://tsk-buchholz.de/images/Tanzclub/Sparten/Turniertanz/GLM%202020.02.29",
 ]
+PYANNOTATE = true
