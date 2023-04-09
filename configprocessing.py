@@ -1,3 +1,4 @@
+"""Module for reading configuration from config.toml."""
 import logging
 from typing import Any, Literal, TypedDict
 
@@ -5,6 +6,7 @@ import tomllib
 
 
 def setuplogger(descriptor: str) -> logging.Logger:
+    """Setup Logging environment."""
     thelogger: logging.Logger = logging.getLogger(f"Basti.{descriptor}")
     # https://docs.python.org/3/library/logging.html#logrecord-attributes
     logformatter: logging.Formatter = logging.Formatter(
@@ -22,7 +24,9 @@ def setuplogger(descriptor: str) -> logging.Logger:
     return thelogger
 
 
-class myConfig(TypedDict):
+class MyConfigT(TypedDict):
+    """Typing-Class for configuration."""
+
     HEADLINELINKS: Literal[True, False]
     IMG_PREP: Literal[True, False]
     PYANNOTATE: Literal[True, False]
@@ -50,13 +54,13 @@ class myConfig(TypedDict):
     CHECKINGURLS: list[str]
 
 
-def readconfig() -> myConfig:
+def readconfig() -> MyConfigT:
     """Load config.toml or default configuration."""
-    theconfig: myConfig = myConfig()  # type: ignore
+    theconfig: MyConfigT = MyConfigT()  # type: ignore
     cfg: dict[str, Any]
     try:
-        with open("config.toml", "rb") as f:
-            cfg = tomllib.load(f)
+        with open("config.toml", "rb") as buffered_config_file:
+            cfg = tomllib.load(buffered_config_file)
     except FileNotFoundError:
         setuplogger("Configuration").info(
             "No file config.toml found, default configuration used."

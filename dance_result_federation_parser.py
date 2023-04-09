@@ -21,7 +21,7 @@ from pandas import DataFrame
 from pandas import set_option as pandas_set_option
 from valuefragments import eprint, run_grouped_in_tpe
 
-from configprocessing import myConfig, readconfig, setuplogger
+from configprocessing import MyConfigT, readconfig, setuplogger
 from dtvprocessing import get_dtv_df
 from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
@@ -32,7 +32,7 @@ from topturnierprocessing import (
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 thelogger: logging.Logger = setuplogger("resultParser")
-_CFG_DICT: myConfig = readconfig()
+_CFG_DICT: MyConfigT = readconfig()
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 

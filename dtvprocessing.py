@@ -36,9 +36,17 @@ def create_dtv_df() -> DataFrame:
     # needs to be object type because of variable lenght
     urllib3.disable_warnings()
     with Session() as sess_context:
+        # sess_context.verify = False
         dtv_assocs_dict_list = parse_dtv_to_list_dict(sess_context)
+    return assocsdf_from_list_dict(dtv_assocs_dict_list)
+
+
+def assocsdf_from_list_dict(
+    input_list_dict: list[dict[str, str]]
+) -> DataFrame:
+    """Convert assosiations list of dicts to DataFrame."""
     dtv_associations: DataFrame = DataFrame.from_records(
-        dtv_assocs_dict_list, index="ID"
+        input_list_dict, index="ID"
     )
     dtv_associations.index = dtv_associations.index.astype(int)
     dtv_associations["Verein"] = dtv_associations["Verein"].apply(
@@ -55,13 +63,13 @@ def create_dtv_df() -> DataFrame:
     return dtv_associations.sort_index()
 
 
-def parse_dtv_to_list_dict(sess_context) -> list[dict[str, str]]:
+def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
+    """Parse DTV Homepage for associations, return aus list of dicts."""
     xpath_token: str = (
         '//*[@id="mod_vereinssuche_formular"]/'
         'input[@name="REQUEST_TOKEN"]/@value'
     )
     dtv_assocs_dict_list: list[dict[str, str]] = []
-    # sess_context.verify = False
     rqtoken: str = fromstring(sess_context.get(SEARCH_URL).content).xpath(
         xpath_token
     )
