@@ -1,3 +1,6 @@
+# yamllint disable rule:document-start
+# sourcery expects one single yaml in this file
+# and thus does not accept --- as opening
 # 🪄 This is your project's Sourcery configuration file.
 
 # You can use it to get Sourcery working in the way you want, such as
