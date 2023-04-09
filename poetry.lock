@@ -593,14 +593,14 @@ flake8 = "*"
 
 [[package]]
 name = "fsspec"
-version = "2023.3.0"
+version = "2023.4.0"
 description = "File-system specification"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "fsspec-2023.3.0-py3-none-any.whl", hash = "sha256:bf57215e19dbfa4fe7edae53040cc1deef825e3b1605cca9a8d2c2fadd2328a0"},
-    {file = "fsspec-2023.3.0.tar.gz", hash = "sha256:24e635549a590d74c6c18274ddd3ffab4753341753e923408b1904eaabafe04d"},
+    {file = "fsspec-2023.4.0-py3-none-any.whl", hash = "sha256:f398de9b49b14e9d84d2c2d11b7b67121bc072fe97b930c4e5668ac3917d8307"},
+    {file = "fsspec-2023.4.0.tar.gz", hash = "sha256:bf064186cd8808f0b2f6517273339ba0a0c8fb1b7048991c28bc67f58b8b67cd"},
 ]
 
 [package.extras]
@@ -608,7 +608,9 @@ abfs = ["adlfs"]
 adl = ["adlfs"]
 arrow = ["pyarrow (>=1)"]
 dask = ["dask", "distributed"]
+devel = ["pytest", "pytest-cov"]
 dropbox = ["dropbox", "dropboxdrivefs", "requests"]
+full = ["adlfs", "aiohttp (!=4.0.0a0,!=4.0.0a1)", "dask", "distributed", "dropbox", "dropboxdrivefs", "fusepy", "gcsfs", "libarchive-c", "ocifs", "panel", "paramiko", "pyarrow (>=1)", "pygit2", "requests", "s3fs", "smbprotocol", "tqdm"]
 fuse = ["fusepy"]
 gcs = ["gcsfs"]
 git = ["pygit2"]
@@ -1699,25 +1701,24 @@ dev = ["twine (>=3.4.1)"]
 
 [[package]]
 name = "pytest"
-version = "7.2.2"
+version = "7.3.0"
 description = "pytest: simple powerful testing with Python"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pytest-7.2.2-py3-none-any.whl", hash = "sha256:130328f552dcfac0b1cec75c12e3f005619dc5f874f0a06e8ff7263f0ee6225e"},
-    {file = "pytest-7.2.2.tar.gz", hash = "sha256:c99ab0c73aceb050f68929bc93af19ab6db0558791c6a0715723abe9d0ade9d4"},
+    {file = "pytest-7.3.0-py3-none-any.whl", hash = "sha256:933051fa1bfbd38a21e73c3960cebdad4cf59483ddba7696c48509727e17f201"},
+    {file = "pytest-7.3.0.tar.gz", hash = "sha256:58ecc27ebf0ea643ebfdf7fb1249335da761a00c9f955bcd922349bcb68ee57d"},
 ]
 
 [package.dependencies]
-attrs = ">=19.2.0"
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
 iniconfig = "*"
 packaging = "*"
 pluggy = ">=0.12,<2.0"
 
 [package.extras]
-testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
+testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
 
 [[package]]
 name = "python-dateutil"
@@ -2171,14 +2172,14 @@ test = ["mypy", "pytest", "typing-extensions"]
 
 [[package]]
 name = "types-aiofiles"
-version = "22.1.0.9"
+version = "23.1.0.1"
 description = "Typing stubs for aiofiles"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-aiofiles-22.1.0.9.tar.gz", hash = "sha256:d46712556746cb4c9b63f86217c8cc0e9c54b5cf228ed9d8c1c21e38c2d9de99"},
-    {file = "types_aiofiles-22.1.0.9-py3-none-any.whl", hash = "sha256:d0bdc4d978528c6df37816879b7ff9dc0096dd70483d885e9c8624a560f31cc5"},
+    {file = "types-aiofiles-23.1.0.1.tar.gz", hash = "sha256:be8030019f7be67f4b0f0c00acd28f4942b34cf719e1715f5d99d868c7b1a776"},
+    {file = "types_aiofiles-23.1.0.1-py3-none-any.whl", hash = "sha256:9f04650092b1f3423bd6834c850f20916d499e3b59ea5bab64d8de95b9e6b196"},
 ]
 
 [[package]]
@@ -2487,4 +2488,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "0bceb051a69b6117858e594d0ed893aa517c0e839b3959577b89f6d2723f61d9"
+content-hash = "15644632974288601768b252a1d52ec71d290a6d87e1837d8c61392086740add"
