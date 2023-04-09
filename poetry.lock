@@ -2007,6 +2007,19 @@ files = [
 ]
 
 [[package]]
+name = "sourcery"
+version = "1.1.0"
+description = "Magically refactor Python"
+category = "dev"
+optional = false
+python-versions = "*"
+files = [
+    {file = "sourcery-1.1.0-py2.py3-none-macosx_10_9_universal2.whl", hash = "sha256:ca87384c1705edf34c00ad6c3de34a1de07031761ff05253df809a2b6a701201"},
+    {file = "sourcery-1.1.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:2054e9c61d5c36c04b047b7245a3715be9ad437d52fff796f9c295a2d24a426f"},
+    {file = "sourcery-1.1.0-py2.py3-none-win_amd64.whl", hash = "sha256:63ae11a15b73e19114da0c1a85a3ae07ca7bf52486949549e5fcf790a8e183cf"},
+]
+
+[[package]]
 name = "stdlibs"
 version = "2022.10.9"
 description = "List of packages in the stdlib"
@@ -2488,4 +2501,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "15644632974288601768b252a1d52ec71d290a6d87e1837d8c61392086740add"
+content-hash = "ae37e368efb9a6d7bebfdc0ec6b89427794e1100fe8d227a46df905d57af8a57"

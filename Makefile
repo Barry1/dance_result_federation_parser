@@ -8,7 +8,10 @@ OBJS=$(shell git ls-files *.py *.pyi)
 runme=poetry run python -OO ./dance_result_federation_parser.py
 runmesingle=poetry run python -OO ./single_result_parser.py 
 
-ALL: pylint mypy formatting vulture pytype
+ALL: pylint mypy formatting vulture pytype sourcery
+
+sourcery:
+	poetry run sourcery review *.py
 
 testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern2022.txt tpstestruns
 
