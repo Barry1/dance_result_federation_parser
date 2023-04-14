@@ -2008,15 +2008,15 @@ files = [
 
 [[package]]
 name = "sourcery"
-version = "1.1.0"
+version = "1.2.0"
 description = "Magically refactor Python"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "sourcery-1.1.0-py2.py3-none-macosx_10_9_universal2.whl", hash = "sha256:ca87384c1705edf34c00ad6c3de34a1de07031761ff05253df809a2b6a701201"},
-    {file = "sourcery-1.1.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:2054e9c61d5c36c04b047b7245a3715be9ad437d52fff796f9c295a2d24a426f"},
-    {file = "sourcery-1.1.0-py2.py3-none-win_amd64.whl", hash = "sha256:63ae11a15b73e19114da0c1a85a3ae07ca7bf52486949549e5fcf790a8e183cf"},
+    {file = "sourcery-1.2.0-py2.py3-none-macosx_10_9_universal2.whl", hash = "sha256:311f635327bff4cfaaadd28eb52aadc7a8d8b37e563bdaa16691fba6dd411e36"},
+    {file = "sourcery-1.2.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:ef0a64f0c5bb6f54ae34e48a3c11871a52b719695356875880dafeb29ce04bae"},
+    {file = "sourcery-1.2.0-py2.py3-none-win_amd64.whl", hash = "sha256:f44ea946afc06f3e1d1d1f882a84a544c2605e013ddb327e8da8dae0f9dd7525"},
 ]
 
 [[package]]
@@ -2373,7 +2373,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "9b90910e05546ee3eb9c2471e9724fc32937628f"
+resolved_reference = "2b1425dc4f2f5561744e91a439f2fcd1b008ebfa"
 
 [[package]]
 name = "vermin"
