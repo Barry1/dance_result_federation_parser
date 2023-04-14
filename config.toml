@@ -7,3 +7,4 @@ CHECKINGURLS = [
   "http://tsk-buchholz.de/images/Tanzclub/Sparten/Turniertanz/GLM%202020.02.29",
 ]
 PYANNOTATE = true
+TOTHREAD = false

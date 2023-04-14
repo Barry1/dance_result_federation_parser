@@ -13,13 +13,15 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 
 from joblib import Parallel, delayed
-from lxml.etree import _ElementTree as ElementTree
+
+# noinspection PyProtectedMember
+from lxml.etree import _ElementTree
 
 # import lxml.etree
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
-from valuefragments import eprint, run_grouped_in_tpe
+from valuefragments import eprint, run_grouped
 
 from configprocessing import MyConfigT, readconfig, setuplogger
 from dtvprocessing import get_dtv_df
@@ -37,7 +39,7 @@ pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
 def reslinks_interpreter(
-    tree: ElementTree,
+    tree: _ElementTree,
 ) -> tuple[
     Callable[[str], dict[str, str]],
     Callable[[str], DataFrame],
@@ -58,7 +60,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
     """Async convert URL from Event to HTML for TSH CMS."""
     try:
         with urlopen(eventurl) as openedurl:
-            tree: ElementTree = await asyncio.to_thread(parse, openedurl)
+            tree: _ElementTree = await asyncio.to_thread(parse, openedurl)
     except HTTPError as http_error:
         thelogger.exception(http_error)
     else:
@@ -86,19 +88,20 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # python >=3.11 TaskGroup instead of gather
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if _CFG_DICT["TOTHREAD"]:
-                async with asyncio.TaskGroup() as my_task_group:
-                    tsh_results_tasks: list[asyncio.Task[DataFrame]] = [
-                        my_task_group.create_task(
-                            asyncio.to_thread(the_interpret_fun, onelink)
-                        )
+                tsh_results = await run_grouped(
+                    [
+                        partial(the_interpret_fun, onelink)
                         for onelink in allreslinks
-                    ]
-                tsh_results = [
-                    ready_task.result() for ready_task in tsh_results_tasks
-                ]
+                    ],
+                    "thread",
+                )
             else:
-                tsh_results = await run_grouped_in_tpe(
-                    [partial(the_interpret_fun, a) for a in allreslinks]
+                tsh_results = await run_grouped(
+                    [
+                        partial(the_interpret_fun, onelink)
+                        for onelink in allreslinks
+                    ],
+                    "tpe",
                 )
             print_tsh_web(eventurl, list(allreslinks), tsh_results, compnames)
 
@@ -107,7 +110,7 @@ def eventurl_to_web(synceventurl: str) -> None:
     """Convert URL from Event to HTML for TSH CMS."""
     try:
         with urlopen(synceventurl) as openedurl:
-            tree: ElementTree = parse(openedurl)
+            tree: _ElementTree = parse(openedurl)
     except HTTPError as sync_http_error:
         thelogger.exception(sync_http_error)
     else:
