@@ -2355,7 +2355,7 @@ trailrunner = ">=1.0"
 
 [[package]]
 name = "valuefragments"
-version = "0.3.27"
+version = "0.3.28"
 description = "Testing installation of Package"
 category = "main"
 optional = false
@@ -2373,7 +2373,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "a62f4320cccb4d9ac566f968a7cc715d46343130"
+resolved_reference = "7af6e78178f2585e537f4854d83b47aa39c92014"
 
 [[package]]
 name = "vermin"
