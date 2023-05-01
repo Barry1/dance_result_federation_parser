@@ -2276,26 +2276,26 @@ types-urllib3 = "<1.27"
 
 [[package]]
 name = "types-urllib3"
-version = "1.26.25.11"
+version = "1.26.25.12"
 description = "Typing stubs for urllib3"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-urllib3-1.26.25.11.tar.gz", hash = "sha256:697102ddf4f781eed6f692353f40cee1098643526f5a8b99f49d2ede90fd3754"},
-    {file = "types_urllib3-1.26.25.11-py3-none-any.whl", hash = "sha256:04235e792139cf3624b25d38faab593456738fbdb7439634046172e3b1339400"},
+    {file = "types-urllib3-1.26.25.12.tar.gz", hash = "sha256:a1557355ce8d350a555d142589f3001903757d2d36c18a66f588d9659bbc917d"},
+    {file = "types_urllib3-1.26.25.12-py3-none-any.whl", hash = "sha256:3ba3d3a8ee46e0d5512c6bd0594da4f10b2584b47a470f8422044a2ab462f1df"},
 ]
 
 [[package]]
 name = "typeshed-client"
-version = "2.2.0"
+version = "2.3.0"
 description = "A library for accessing stubs in typeshed."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "typeshed_client-2.2.0-py3-none-any.whl", hash = "sha256:6f5a5841a0cf664ac66ea05f1ed3372a191d307b146f8b9aaa09719d1156626e"},
-    {file = "typeshed_client-2.2.0.tar.gz", hash = "sha256:57baebdd5312486e438393e2971043d487c0c331404b73fe72d1f22ba0a5992d"},
+    {file = "typeshed_client-2.3.0-py3-none-any.whl", hash = "sha256:27976287e0682be3005233f08f6f3cedf0c496413bcb213378f46e08798988c4"},
+    {file = "typeshed_client-2.3.0.tar.gz", hash = "sha256:e2734755f93a0b6c1da8daad11670c75a36583d889d4d7b110eb882765b8bced"},
 ]
 
 [package.dependencies]
