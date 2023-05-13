@@ -17,6 +17,14 @@ testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern202
 
 tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt GLM_KIN-JUG_LAT_2022.txt
 
+.PHONY: https\://www.hessen-tanzt.de/media/ht2023/index.htm
+HessenTanzt_2023.txt: https\://www.hessen-tanzt.de/media/ht2023/index.htm
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
+.PHONY: https\://ltvb.de/wp-content/uploads/results/13347/index.htm
+Nuernberg_2023.txt: https\://ltvb.de/wp-content/uploads/results/13347/index.htm
+	$(runme) $< > $@ 2> $(@:.txt=.err)
+
 .PHONY: https\://berlin-dance-festival.de/files/bdf/results/2023/index.htm
 BeDaFe_2023.txt: https\://berlin-dance-festival.de/files/bdf/results/2023/index.htm
 	$(runme) $< > $@ 2> $(@:.txt=.err)
