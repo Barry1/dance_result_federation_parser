@@ -1204,13 +1204,13 @@ setuptools = "*"
 
 [[package]]
 name = "nuitka"
-version = "1.5.7"
+version = "1.5.8"
 description = "Python compiler with full language support and CPython compatibility"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "Nuitka-1.5.7.tar.gz", hash = "sha256:aa9cd2a34d64abb929e69aca4ec2018bad562c950fcac0fad2d28b61a4d522e4"},
+    {file = "Nuitka-1.5.8.tar.gz", hash = "sha256:729806f45d8a7cf45a843a92752f392e6a821653ba72d46505b6c154be0d3853"},
 ]
 
 [package.dependencies]
