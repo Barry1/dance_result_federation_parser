@@ -10,6 +10,10 @@ runmesingle=poetry run python -OO ./single_result_parser.py
 
 ALL: pylint mypy formatting vulture pytype sourcery
 
+.PHONY: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/index.htm
+DSF_2023.txt: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 sourcery:
 	poetry run sourcery review $(OBJS) --summary --fix --verbose
 
