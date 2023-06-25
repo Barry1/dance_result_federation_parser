@@ -1189,12 +1189,12 @@ setuptools = "*"
 
 [[package]]
 name = "nuitka"
-version = "1.6.4"
+version = "1.6.5"
 description = "Python compiler with full language support and CPython compatibility"
 optional = false
 python-versions = "*"
 files = [
-    {file = "Nuitka-1.6.4.tar.gz", hash = "sha256:079efd9586b27802fdaf47cf8d568fa5e11e105df984cb6e696e36d36b9f3118"},
+    {file = "Nuitka-1.6.5.tar.gz", hash = "sha256:0c78add11f62fe3e8251114f5a446e199a732614614f693ed1a9c71acbfaa0fc"},
 ]
 
 [package.dependencies]
@@ -2385,7 +2385,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "f7909111c003d469532dc33cadbfb3d6fd915bc6"
+resolved_reference = "89f6cd9689178efb5b768440a4f7045f775f9786"
 
 [[package]]
 name = "vermin"
