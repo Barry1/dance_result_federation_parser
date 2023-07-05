@@ -79,6 +79,8 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
             ),
             attrs={"class": "tab2"},
         )
+        # for a in tab2tbl:
+        # thelogger.debug(a.to_string())
     except ValueError:
         erg_df = concat(tab1tbl)
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
@@ -92,6 +94,9 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
         erg_df.dropna(axis=0, subset=erg_df.columns[:3], inplace=True)
         # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
         erg_df.dropna(axis=1, inplace=True)
+        if len(erg_df.columns) == 2:
+            # Solisten haben keine Vereine
+            erg_df["Verein"] = "∅"
         erg_df = erg_df.iloc[:, [0, 1, 2]]
     erg_df.columns = ["Platz", "Paar", "Verein"]
     # Nur Zeilen behalten, bei denen ein "." im Platz ist

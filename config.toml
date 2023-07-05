@@ -8,3 +8,4 @@ CHECKINGURLS = [
 ]
 PYANNOTATE = true
 TOTHREAD = false
+RUN_ASYNC = true

@@ -19,6 +19,10 @@ DC_HGR-A-LAT_2023.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2023/3-1006
 dm_mas2sstd_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-06-10_DM_MAS-II_S_STD/0-dm_mas2sstd/index.htm
 	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
 
+.PHONY: ergebnisse.dancecomp.de/2023/index.htm
+danceComp_2023.txt: ergebnisse.dancecomp.de/2023/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/index.htm
 DSF_2023.txt: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
