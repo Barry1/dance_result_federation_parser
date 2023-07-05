@@ -14,7 +14,6 @@ ALL: pylint mypy formatting vulture pytype sourcery
 DC_HGR-A-LAT_2023.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2023/3-1006_dc_hgralat/3-1006_dc_hgralat/index.htm
 	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
 
-
 .PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-06-10_DM_MAS-II_S_STD/0-dm_mas2sstd/index.htm
 dm_mas2sstd_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-06-10_DM_MAS-II_S_STD/0-dm_mas2sstd/index.htm
 	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
@@ -34,80 +33,80 @@ testruns: BlauesBand2018.txt BlauesBand2019.txt BlauesBand2022.txt HolmOstern202
 
 tpstestruns: GLM_Sen_IV_und_Sen_V_2022.txt GLM_KIN-JUG_LAT_2022.txt
 
-.PHONY: https\://www.hessen-tanzt.de/media/ht2023/index.htm
-HessenTanzt_2023.txt: https\://www.hessen-tanzt.de/media/ht2023/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: www.hessen-tanzt.de/media/ht2023/index.htm
+HessenTanzt_2023.txt: www.hessen-tanzt.de/media/ht2023/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://ltvb.de/wp-content/uploads/results/13347/index.htm
-Nuernberg_2023.txt: https\://ltvb.de/wp-content/uploads/results/13347/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: ltvb.de/wp-content/uploads/results/13347/index.htm
+Nuernberg_2023.txt: ltvb.de/wp-content/uploads/results/13347/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://berlin-dance-festival.de/files/bdf/results/2023/index.htm
-BeDaFe_2023.txt: https\://berlin-dance-festival.de/files/bdf/results/2023/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: berlin-dance-festival.de/files/bdf/results/2023/index.htm
+BeDaFe_2023.txt: berlin-dance-festival.de/files/bdf/results/2023/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://turniere.btc-gruen-gold.de/bb2023/index.htm
-BlauesBand2023.txt: https\://turniere.btc-gruen-gold.de/bb2023/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: turniere.btc-gruen-gold.de/bb2023/index.htm
+BlauesBand2023.txt: turniere.btc-gruen-gold.de/bb2023/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
-Kamen_2023.txt: https\://www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
+Kamen_2023.txt: www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
 # https://www.gnu.org/software/make/manual/make.html#Double_002dColon
 
-.PHONY: https\://tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
-GBM_Kombi_2023.txt: https\://tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
+GBM_Kombi_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
 
-.PHONY: http\://hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
-GLM4_MASII_AS_MASV_S_STD_2023.txt: http\://hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
+GLM4_MASII_AS_MASV_S_STD_2023.txt: hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: http\://hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
-GLM_HGR_MASI_D-B_STD_2023.txt: http\://hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
+GLM_HGR_MASI_D-B_STD_2023.txt: hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://ergebnisse.tnw.de/vereine/912/2023-02-25/index.htm
-RL_DUS_2023.txt: https\://ergebnisse.tnw.de/vereine/912/2023-02-25/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: ergebnisse.tnw.de/vereine/912/2023-02-25/index.htm
+RL_DUS_2023.txt: ergebnisse.tnw.de/vereine/912/2023-02-25/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
-RL_GLINDE_2023.txt: https\://hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
+RL_GLINDE_2023.txt: hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
-GLM_HGR-MAS_A-S_LAT_2023.txt: https\://tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
+GLM_HGR-MAS_A-S_LAT_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
-GLM_KIN-JUG_LAT_2022.txt: https\://www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
+GLM_KIN-JUG_LAT_2022.txt: www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
-GLM_SEN_II_A-S_STD_2022.txt: https\://tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
+GLM_SEN_II_A-S_STD_2022.txt: tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
-DP_SEN_III_S_STD_2022.txt: https\://tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
+.PHONY: tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
+DP_SEN_III_S_STD_2022.txt: tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
 	$(runmesingle) $< > $@ 2> $(@:.txt=.err)
 
-.PHONY: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
-GLM_SEN_II+III_D-B_STD_2022.txt: http\://www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
+GLM_SEN_II+III_D-B_STD_2022.txt: www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
-GLM_KIN-JUG_STD_2022.txt: https\://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
+GLM_KIN-JUG_STD_2022.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://www.htv.de/media/22_10_02/index.htm
-DM-DP_KIN-JUG_STD_2022.txt: https\://www.htv.de/media/22_10_02/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: www.htv.de/media/22_10_02/index.htm
+DM-DP_KIN-JUG_STD_2022.txt: www.htv.de/media/22_10_02/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-.PHONY: https\://tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
-GLM4_MASIV_STD_2023.txt: https\://tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
+GLM4_MASIV_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
 Enzkloesterle_2022.txt:
 	$(runme) http://www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm > $@ 2> $(@:.txt=.err)
@@ -118,9 +117,9 @@ danceComp_2022.txt:
 BalSen_2022.txt:
 	$(runme) http://tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm > $@ 2> $(@:.txt=.err)
 
-.PHONY: http\://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
-GLM_Sen_IV_und_Sen_V_2022.txt: http\://tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
-	$(runme) $< > $@ 2> $(@:.txt=.err)
+.PHONY: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
+GLM_Sen_IV_und_Sen_V_2022.txt: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
 DC_HGR-A_LAT_2022.txt:
 	$(runmesingle) http://www.boston-club.de/ergebnis/dchgralat2022/index.htm > $@ 2> $(@:.txt=.err)
