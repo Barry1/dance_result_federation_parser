@@ -5,6 +5,7 @@ from urllib.error import HTTPError
 
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, SoupStrainer, Tag
+from esvprocessing import get_couples_df
 from lxml.etree import _ElementTree as ElementTree
 from pandas import DataFrame, concat, read_html
 from requests import get as requests_get
@@ -106,7 +107,13 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     # erg_df['ordercol']=erg_df['Platz'].apply(lambda x:int(x[:x.find('.')]))
     # erg_df=erg_df.sort_values(by='ordercol').drop('ordercol', axis=1)
     # "inner" ging, sortiere falsch#.sort_values(by="Platz")
-    return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")
+
+    # return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")
+    # print(erg_df)
+    cpldf: pandas.DataFrame = get_couples_df()
+    cpldf["Verband"] = "NAMEDCOUPLE"
+    resultdf: pandas.DataFrame = erg_df.merge(cpldf, on="Paar", how="inner")
+    return resultdf
 
 
 def interpret_tt_result(theresulturl: str) -> DataFrame:

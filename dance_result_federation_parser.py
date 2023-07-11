@@ -162,7 +162,7 @@ def print_tsh_web(
         '<hr id="system-readmore" />',
         "<p>Hier folgend die Ergebnisse",
         "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",
-        "der TSH-Paare.",
+        f"der {_CFG_DICT['THEFEDERATION']}-Paare.",
         #        "Die &Uuml;berschriften sind die Links zum Ergebnis.</p>",
         "<!-- =================================================== -->",
     )
@@ -177,9 +177,16 @@ def print_tsh_web(
             if _CFG_DICT["HEADLINELINKS"]
             else f"<h2>{turnier_info}</h2>"
         )
+        # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
+        # wird der Verband künstlich gesetzt:
+        value.Verband[value.Verband == "NAMEDCOUPLE"] = _CFG_DICT[
+            "THEFEDERATION"
+        ]
         if value[value.Verband == _CFG_DICT["THEFEDERATION"]].empty:
             eprint(tournhdr)
-            eprint("<p>Leider ohne TSH-Beteiligung.</p>")
+            eprint(
+                f"<p>Leider ohne {_CFG_DICT['THEFEDERATION']}-Beteiligung.</p>"
+            )
             eprint(
                 "<!-- =================================================== -->"
             )
