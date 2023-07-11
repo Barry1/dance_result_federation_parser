@@ -11,3 +11,4 @@ singleResultParser.log
 .dccache
 monkeytype.sqlite3
 results.sarif
+.credentials
