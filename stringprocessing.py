@@ -5,6 +5,25 @@ from re import sub as re_sub
 thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
 
 
+def correcttitleposition(couplestring: str) -> str:
+    """cdcd"""
+    #        couplesdf.replace(
+    #        to_replace=r"(.*),(.*)Dr\. (/)",
+    #        value=r"\1, Dr.\2\3",
+    #        regex=True,
+    #        inplace=True,
+    #    )
+    #    couplesdf.replace(
+    #        to_replace=r"(/)(.*),(.*)Dr\.",
+    #        value=r"\1\2, Dr.\3",
+    #        regex=True,
+    #        inplace=True,
+    #    )
+    return re_sub(
+        r"(^.*,\s)(.*\s)(.*\.\s)(\/ )", r"\1\3\2\4", couplestring
+    ).strip()
+
+
 def cleanevfromentry(singleorg: str) -> str:
     """Remove ev after name of association/club."""
     return re_sub(r"\s+", " ", re_sub(r" e\. ?V\.", "", singleorg)).strip()

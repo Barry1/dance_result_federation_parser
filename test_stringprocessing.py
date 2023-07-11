@@ -3,7 +3,16 @@ from stringprocessing import (
     clean_number_from_couple,
     cleanevfrom_dtv_tsh_entry,
     cleanevfromentry,
+    correcttitleposition,
 )
+
+
+def test_correcttitleposition() -> None:
+    """Moves title to correct position."""
+    assert (
+        correcttitleposition("Ebeling, Bastian Dr. / Schmidt, Claudia")
+        == "Ebeling, Dr. Bastian / Schmidt, Claudia"
+    )
 
 
 def test_cleanevfromentry() -> None:

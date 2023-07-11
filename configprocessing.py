@@ -30,6 +30,7 @@ class MyConfigT(TypedDict):
     HEADLINELINKS: Literal[True, False]
     IMG_PREP: Literal[True, False]
     PYANNOTATE: Literal[True, False]
+    ESVCOUPLES: Literal[True, False]
     RUN_ASYNC: Literal[True, False]
     TOTHREAD: Literal[True, False]
     RESULTTABLE: Literal[True, False]
@@ -69,6 +70,7 @@ def readconfig() -> MyConfigT:
     theconfig["CHECKINGURLS"] = cfg.get("CHECKINGURLS", [])
     theconfig["HEADLINELINKS"] = cfg.get("HEADLINELINKS", False)
     theconfig["IMG_PREP"] = cfg.get("IMG_PREP", False)
+    theconfig["ESVCOUPLES"] = cfg.get("ESVCOUPLES", False)
     theconfig["PYANNOTATE"] = cfg.get("PYANNOTATE", False)
     theconfig["RUN_ASYNC"] = cfg.get("RUN_ASYNC", True)
     theconfig["TOTHREAD"] = cfg.get("TOTHREAD", False)

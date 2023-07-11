@@ -5,6 +5,8 @@ import pandas
 import requests
 from valuefragments import memoize
 
+from stringprocessing import correcttitleposition
+
 
 @memoize
 def get_esvcredentials() -> dict[str, str]:
@@ -37,18 +39,9 @@ def get_couples_df() -> pandas.DataFrame:
     couplesdf: pandas.DataFrame = pandas.read_csv(
         StringIO(whatweneed.text), **readopts
     )
-    couplesdf.replace(
-        to_replace=r"(.*),(.*)Dr\. (/)",
-        value=r"\1, Dr.\2\3",
-        regex=True,
-        inplace=True,
-    )
-    couplesdf.replace(
-        to_replace=r"(/)(.*),(.*)Dr\.",
-        value=r"\1\2, Dr.\3",
-        regex=True,
-        inplace=True,
-    )
+    print(couplesdf)
+    couplesdf["Paar"] = couplesdf["Paar"].apply(correcttitleposition)
+    print(couplesdf)
     return couplesdf
 
 
