@@ -1152,12 +1152,12 @@ setuptools = "*"
 
 [[package]]
 name = "nuitka"
-version = "1.7.3"
+version = "1.7.4"
 description = "Python compiler with full language support and CPython compatibility"
 optional = false
 python-versions = "*"
 files = [
-    {file = "Nuitka-1.7.3.tar.gz", hash = "sha256:cab5c9d277c8979005e538998310d30e7e73db8e73020099410072dddb6a6cb5"},
+    {file = "Nuitka-1.7.4.tar.gz", hash = "sha256:bc4920474c0e5a8f993a3e99ee841f5b272c363a9fb6d70e0da17cb3bc825da2"},
 ]
 
 [package.dependencies]
@@ -1667,13 +1667,13 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.316"
+version = "1.1.317"
 description = "Command line wrapper for pyright"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pyright-1.1.316-py3-none-any.whl", hash = "sha256:7259d73287c882f933d8cd88c238ef02336e172171ae95117a963a962a1fed4a"},
-    {file = "pyright-1.1.316.tar.gz", hash = "sha256:bac1baf8567b90f2082ec95b61fc1cb50a68917119212c5608a72210870c6a9a"},
+    {file = "pyright-1.1.317-py3-none-any.whl", hash = "sha256:9cf24f83fe8f2cf00773068e06ce771f03331590c7d5e771546f81d7f60efaba"},
+    {file = "pyright-1.1.317.tar.gz", hash = "sha256:74da4d3e2dcfe66a2d1d1001e16431ec17aac0ad35b03c0410f7379c2cb5c7f0"},
 ]
 
 [package.dependencies]
@@ -2365,7 +2365,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "1745369497333feca90c1ad844fd3b3affbb4c8f"
+resolved_reference = "c4d2de8c4f512909b9def2531ca7daffb3fb40e9"
 
 [[package]]
 name = "vermin"
