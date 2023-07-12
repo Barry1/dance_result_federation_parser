@@ -110,12 +110,9 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     # erg_df=erg_df.sort_values(by='ordercol').drop('ordercol', axis=1)
     # "inner" ging, sortiere falsch#.sort_values(by="Platz")
     if _CFG_DICT["ESVCOUPLES"]:
-        cpldf: pandas.DataFrame = get_couples_df()
+        cpldf: DataFrame = get_couples_df()
         cpldf["Verband"] = "NAMEDCOUPLE"
-        resultdf: pandas.DataFrame = erg_df.merge(
-            cpldf, on="Paar", how="inner"
-        )
-        return resultdf
+        return erg_df.merge(cpldf, on="Paar", how="inner")
     return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")
 
 
