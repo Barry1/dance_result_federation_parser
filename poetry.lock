@@ -384,13 +384,13 @@ files = [
 
 [[package]]
 name = "click"
-version = "8.1.4"
+version = "8.1.5"
 description = "Composable command line interface toolkit"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "click-8.1.4-py3-none-any.whl", hash = "sha256:2739815aaa5d2c986a88f1e9230c55e17f0caad3d958a5e13ad0797c166db9e3"},
-    {file = "click-8.1.4.tar.gz", hash = "sha256:b97d0c74955da062a7d4ef92fadb583806a585b2ea81958a81bd72726cbb8e37"},
+    {file = "click-8.1.5-py3-none-any.whl", hash = "sha256:e576aa487d679441d7d30abb87e1b43d24fc53bffb8758443b1a9e1cee504548"},
+    {file = "click-8.1.5.tar.gz", hash = "sha256:4be4b1af8d665c6d942909916d31a213a106800c47d0eeba73d34da3cbc11367"},
 ]
 
 [package.dependencies]
@@ -2017,14 +2017,14 @@ files = [
 
 [[package]]
 name = "sourcery"
-version = "1.5.0"
+version = "1.6.0"
 description = "Magically refactor Python"
 optional = false
 python-versions = "*"
 files = [
-    {file = "sourcery-1.5.0-py2.py3-none-macosx_10_9_universal2.whl", hash = "sha256:7e30ad51560fa0a89895097f4f7eb8e82aa2a58443fbbc7f3de6a2718403e8d0"},
-    {file = "sourcery-1.5.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:928b637694475e0a144bf568179f178639f8596bfa627921512f9150ac819063"},
-    {file = "sourcery-1.5.0-py2.py3-none-win_amd64.whl", hash = "sha256:a28ef9f00922b11993e730718cdd60f8cecc45762d0e80b7d9a94f27c46dbc3b"},
+    {file = "sourcery-1.6.0-py2.py3-none-macosx_10_9_universal2.whl", hash = "sha256:fc8706cfd1d5f15deb76b8662b76ddaeb7b6bed5e4794081a671d39fc61b33ad"},
+    {file = "sourcery-1.6.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:c1c50553de6c5bda05ce49e2b8156a47c75eb2700a02a92fb25ca6cda30a451f"},
+    {file = "sourcery-1.6.0-py2.py3-none-win_amd64.whl", hash = "sha256:1f860bb6933d43809498599532e6582324b7a480e5c1f6cde68edb0bb9d40f18"},
 ]
 
 [[package]]
@@ -2365,7 +2365,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "c4d2de8c4f512909b9def2531ca7daffb3fb40e9"
+resolved_reference = "d5c0342311c681b66823e8dd4d291364e582e2dd"
 
 [[package]]
 name = "vermin"
