@@ -2244,24 +2244,24 @@ test = ["mypy", "pytest", "typing-extensions"]
 
 [[package]]
 name = "types-aiofiles"
-version = "23.1.0.4"
+version = "23.1.0.5"
 description = "Typing stubs for aiofiles"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-aiofiles-23.1.0.4.tar.gz", hash = "sha256:89a58cd0ae93b37a22c323c22d250bd65dde6833f6c6f3c1824784e56f47109f"},
-    {file = "types_aiofiles-23.1.0.4-py3-none-any.whl", hash = "sha256:65a862f0d36e6b8e1b2df601ba7aeeb2eba8e2f9764ba9d0989bdd498ed8c857"},
+    {file = "types-aiofiles-23.1.0.5.tar.gz", hash = "sha256:8acf2c847eb474a1397e88ac6e981484c5211715ceba1b41f6431cdc95094e7d"},
+    {file = "types_aiofiles-23.1.0.5-py3-none-any.whl", hash = "sha256:4106aa867fb8d3ded9b21ca4a9dbe3f8580f756cf90973d2b863f2cbb9c29995"},
 ]
 
 [[package]]
 name = "types-requests"
-version = "2.31.0.1"
+version = "2.31.0.2"
 description = "Typing stubs for requests"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-requests-2.31.0.1.tar.gz", hash = "sha256:3de667cffa123ce698591de0ad7db034a5317457a596eb0b4944e5a9d9e8d1ac"},
-    {file = "types_requests-2.31.0.1-py3-none-any.whl", hash = "sha256:afb06ef8f25ba83d59a1d424bd7a5a939082f94b94e90ab5e6116bd2559deaa3"},
+    {file = "types-requests-2.31.0.2.tar.gz", hash = "sha256:6aa3f7faf0ea52d728bb18c0a0d1522d9bfd8c72d26ff6f61bfc3d06a411cf40"},
+    {file = "types_requests-2.31.0.2-py3-none-any.whl", hash = "sha256:56d181c85b5925cbc59f4489a57e72a8b2166f18273fd8ba7b6fe0c0b986f12a"},
 ]
 
 [package.dependencies]
@@ -2269,13 +2269,13 @@ types-urllib3 = "*"
 
 [[package]]
 name = "types-urllib3"
-version = "1.26.25.13"
+version = "1.26.25.14"
 description = "Typing stubs for urllib3"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-urllib3-1.26.25.13.tar.gz", hash = "sha256:3300538c9dc11dad32eae4827ac313f5d986b8b21494801f1bf97a1ac6c03ae5"},
-    {file = "types_urllib3-1.26.25.13-py3-none-any.whl", hash = "sha256:5dbd1d2bef14efee43f5318b5d36d805a489f6600252bb53626d4bfafd95e27c"},
+    {file = "types-urllib3-1.26.25.14.tar.gz", hash = "sha256:229b7f577c951b8c1b92c1bc2b2fdb0b49847bd2af6d1cc2a2e3dd340f3bda8f"},
+    {file = "types_urllib3-1.26.25.14-py3-none-any.whl", hash = "sha256:9683bbb7fb72e32bfe9d2be6e04875fbe1b3eeec3cbb4ea231435aa7fd6b4f0e"},
 ]
 
 [[package]]
