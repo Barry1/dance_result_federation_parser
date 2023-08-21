@@ -2070,14 +2070,14 @@ files = [
 
 [[package]]
 name = "sourcery"
-version = "1.7.0"
+version = "1.8.0"
 description = "Magically refactor Python"
 optional = false
 python-versions = "*"
 files = [
-    {file = "sourcery-1.7.0-py2.py3-none-macosx_10_9_universal2.whl", hash = "sha256:c6a3259b80fe7bbd9138562fb8a57cb077e9076c8113444c671e6cdfe43435aa"},
-    {file = "sourcery-1.7.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:7ccb7ecb0fc6ca88346e1ecb590f77b8d60bb5781523a19da6eb26ffa8655e9d"},
-    {file = "sourcery-1.7.0-py2.py3-none-win_amd64.whl", hash = "sha256:485d3115300c29da80bae2909051b25a233164311c0e59e2c03add7a488e7a10"},
+    {file = "sourcery-1.8.0-py2.py3-none-macosx_10_9_universal2.whl", hash = "sha256:6e2d04c05083fd9e0cf350ae148cd4cb4d0269854b3affb2e22ce6704706fe1a"},
+    {file = "sourcery-1.8.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:14c8d9da9eb0afd258bdd0cee79301902be744dcbd49ed328139a9a336b02953"},
+    {file = "sourcery-1.8.0-py2.py3-none-win_amd64.whl", hash = "sha256:32d13513469cb2dc323e2ea16e1f1e4f3d431d07116cec400026da13498699bb"},
 ]
 
 [[package]]
@@ -2432,13 +2432,13 @@ files = [
 
 [[package]]
 name = "vulture"
-version = "2.9"
+version = "2.9.1"
 description = "Find dead code"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "vulture-2.9-py2.py3-none-any.whl", hash = "sha256:08247d2fc3fe75e710ccd9bd244942e6fab34e77beb564486dad80d58a2aac58"},
-    {file = "vulture-2.9.tar.gz", hash = "sha256:0f4d86ba515e67db2860539894edb4e387b25696f831234826dd72c636f0331f"},
+    {file = "vulture-2.9.1-py2.py3-none-any.whl", hash = "sha256:a46857014619bd4b785a506b9ddb738cd4621043558309b03a879d18f86e2d72"},
+    {file = "vulture-2.9.1.tar.gz", hash = "sha256:b6a2aa632b6fd51488a8eeac650ab4a509bb1a032e81943817a8a2e6a63a30b3"},
 ]
 
 [package.dependencies]
