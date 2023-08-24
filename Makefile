@@ -60,6 +60,11 @@ GBM_Kombi_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.h
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
 
+.PHONY: www.goc-stuttgart.de/programm/ergebnis-archiv-kopie-1
+GOC_ALLTIME.txt: www.goc-stuttgart.de/programm/ergebnis-archiv-kopie-1
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
+
 .PHONY: hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
 GLM4_MASII_AS_MASV_S_STD_2023.txt: hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
