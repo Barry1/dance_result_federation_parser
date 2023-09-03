@@ -18,6 +18,15 @@ DC_HGR-A-LAT_2023.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2023/3-1006
 dm_mas2sstd_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-06-10_DM_MAS-II_S_STD/0-dm_mas2sstd/index.htm
 	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
 
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-02_GLM_HGRII_D-S_STD/index.htm
+GLM_HGRII_D-S_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-02_GLM_HGRII_D-S_STD/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-03_GLM4_MASII-III_D-B_STD/index.htm
+GLM4_MASII-III_D-B_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-03_GLM4_MASII-III_D-B_STD/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: ergebnisse.dancecomp.de/2023/index.htm
 danceComp_2023.txt: ergebnisse.dancecomp.de/2023/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
