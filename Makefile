@@ -10,6 +10,10 @@ runmesingle=poetry run python -OO ./single_result_parser.py
 
 ALL: pylint mypy formatting vulture pytype sourcery
 
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-16_GLM5_Kin-Jug_STD/index.html
+GLM5_Kin-Jug_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-16_GLM5_Kin-Jug_STD/index.html
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2023/3-1006_dc_hgralat/3-1006_dc_hgralat/index.htm
 DC_HGR-A-LAT_2023.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2023/3-1006_dc_hgralat/3-1006_dc_hgralat/index.htm
 	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
@@ -18,6 +22,9 @@ DC_HGR-A-LAT_2023.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2023/3-1006
 dm_mas2sstd_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-06-10_DM_MAS-II_S_STD/0-dm_mas2sstd/index.htm
 	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
 
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-09_GLM4_HGR_D-B_LAT/index.htm
+GLM4_HGR_D-B_LAT_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-09_GLM4_HGR_D-B_LAT/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
 .PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-02_GLM_HGRII_D-S_STD/index.htm
 GLM_HGRII_D-S_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-02_GLM_HGRII_D-S_STD/index.htm
