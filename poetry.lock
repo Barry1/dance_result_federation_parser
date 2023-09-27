@@ -1808,13 +1808,13 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.327"
+version = "1.1.328"
 description = "Command line wrapper for pyright"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pyright-1.1.327-py3-none-any.whl", hash = "sha256:3462cda239e9140276238bbdbd0b59d77406f1c2e14d8cb8c20c8e25639c6b3c"},
-    {file = "pyright-1.1.327.tar.gz", hash = "sha256:ba74148ad64f22020dbbed6781c4bdb38ecb8a7ca90dc3c87a4f08d1c0e11592"},
+    {file = "pyright-1.1.328-py3-none-any.whl", hash = "sha256:a1861885419a5f0a19e44421d2541ad6bf0b328b1af00a24e014cb5e99d13ef4"},
+    {file = "pyright-1.1.328.tar.gz", hash = "sha256:24efd38220c195c75d4cda94764c4137e0e6034ca9e9707ec1852ca48503251c"},
 ]
 
 [package.dependencies]
@@ -2337,13 +2337,13 @@ files = [
 
 [[package]]
 name = "types-requests"
-version = "2.31.0.5"
+version = "2.31.0.6"
 description = "Typing stubs for requests"
 optional = false
-python-versions = "*"
+python-versions = ">=3.7"
 files = [
-    {file = "types-requests-2.31.0.5.tar.gz", hash = "sha256:e4153c2a4e48dcc661600fa5f199b483cdcbd21965de0b5e2df26e93343c0f57"},
-    {file = "types_requests-2.31.0.5-py3-none-any.whl", hash = "sha256:e2523825754b2832e04cdc1e731423390e731457890113a201ebca8ad9b40427"},
+    {file = "types-requests-2.31.0.6.tar.gz", hash = "sha256:cd74ce3b53c461f1228a9b783929ac73a666658f223e28ed29753771477b3bd0"},
+    {file = "types_requests-2.31.0.6-py3-none-any.whl", hash = "sha256:a2db9cb228a81da8348b49ad6db3f5519452dd20a9c1e1a868c83c5fe88fd1a9"},
 ]
 
 [package.dependencies]
@@ -2503,7 +2503,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "5c70bd34aa0be6917cdd8d314b1006c176cac673"
+resolved_reference = "40f2162c6626ea4074ba1a779a290686869b3e06"
 
 [[package]]
 name = "vermin"
