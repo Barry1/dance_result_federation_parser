@@ -10,6 +10,15 @@ runmesingle=poetry run python -OO ./single_result_parser.py
 
 ALL: pylint mypy formatting vulture pytype sourcery
 
+.PHONY: ltvb.de/wp-content/uploads/results/13941/index.htm
+DM_Kin-Jug_STD_2023.txt: ltvb.de/wp-content/uploads/results/13941/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-24_GLM5_HGR_A-S_STD/
+GLM5_HgrMasI_AS_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-24_GLM5_HGR_A-S_STD/
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-16_GLM5_Kin-Jug_STD/index.html
 GLM5_Kin-Jug_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-16_GLM5_Kin-Jug_STD/index.html
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
