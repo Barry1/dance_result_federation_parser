@@ -23,6 +23,11 @@ GLM5_HgrMasI_AS_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-24_GLM5_HG
 GLM5_Kin-Jug_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-16_GLM5_Kin-Jug_STD/index.html
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-11-04_DM_HGR_S_STD/index.htm
+DM_HGRSSTD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-11-04_DM_HGR_S_STD/index.htm
+	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
+
+
 .PHONY: www.hatv.de/wrapper/2023/dm_mas_iii_s_std_2023/0-dm_mas3sstd/index.htm
 DM_MAS3SSTD_2023.txt: www.hatv.de/wrapper/2023/dm_mas_iii_s_std_2023/0-dm_mas3sstd/index.htm
 	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
