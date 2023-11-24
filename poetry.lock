@@ -791,13 +791,13 @@ lxml = ["lxml"]
 
 [[package]]
 name = "idna"
-version = "3.4"
+version = "3.5"
 description = "Internationalized Domain Names in Applications (IDNA)"
 optional = false
 python-versions = ">=3.5"
 files = [
-    {file = "idna-3.4-py3-none-any.whl", hash = "sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2"},
-    {file = "idna-3.4.tar.gz", hash = "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"},
+    {file = "idna-3.5-py3-none-any.whl", hash = "sha256:79b8f0ac92d2351be5f6122356c9a592c96d81c9a79e4b488bf2a6a15f88057a"},
+    {file = "idna-3.5.tar.gz", hash = "sha256:27009fe2735bf8723353582d48575b23c533cc2c2de7b5a68908d91b5eb18d08"},
 ]
 
 [[package]]
@@ -1223,12 +1223,12 @@ setuptools = "*"
 
 [[package]]
 name = "nuitka"
-version = "1.9"
+version = "1.9.1"
 description = "Python compiler with full language support and CPython compatibility"
 optional = false
 python-versions = "*"
 files = [
-    {file = "Nuitka-1.9.tar.gz", hash = "sha256:8ef3bac402de4fd48df7c4530f8484d0bf19539cb4a980f36642c7d3c08b3b33"},
+    {file = "Nuitka-1.9.1.tar.gz", hash = "sha256:250b76903eaa836637eed07d70f0e764e40991f0ce9566669b0026afa171da6f"},
 ]
 
 [package.dependencies]
@@ -2451,7 +2451,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "8c14a3ad5d43cd25e7ebac6434dd7b9c1f14eda4"
+resolved_reference = "285e2759a9efdbdf52972442e476fff085d3d7df"
 
 [[package]]
 name = "vermin"
