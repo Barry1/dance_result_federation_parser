@@ -10,6 +10,10 @@ runmesingle=poetry run python -OO ./single_result_parser.py
 
 ALL: pylint mypy formatting vulture pytype sourcery
 
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-11-25-26_BYO/
+BYO_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-11-25-26_BYO/
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: www.owl-tanzt.de/turniere/2023/
 OWL_2023.txt: www.owl-tanzt.de/turniere/2023/
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
