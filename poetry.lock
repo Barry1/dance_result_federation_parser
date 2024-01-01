@@ -1181,12 +1181,12 @@ setuptools = "*"
 
 [[package]]
 name = "nuitka"
-version = "1.9.5"
+version = "1.9.6"
 description = "Python compiler with full language support and CPython compatibility"
 optional = false
 python-versions = "*"
 files = [
-    {file = "Nuitka-1.9.5.tar.gz", hash = "sha256:ceb0a90f33089b643809d6e3a58fc553f531972282c205476f1cd480db6b2073"},
+    {file = "Nuitka-1.9.6.tar.gz", hash = "sha256:a45b218f75ebcc65deb283ecc264397e7120744c25fe17ca1dc95195e55c12b9"},
 ]
 
 [package.dependencies]
@@ -1730,13 +1730,13 @@ dev = ["twine (>=3.4.1)"]
 
 [[package]]
 name = "pytest"
-version = "7.4.3"
+version = "7.4.4"
 description = "pytest: simple powerful testing with Python"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pytest-7.4.3-py3-none-any.whl", hash = "sha256:0d009c083ea859a71b76adf7c1d502e4bc170b80a8ef002da5806527b9591fac"},
-    {file = "pytest-7.4.3.tar.gz", hash = "sha256:d989d136982de4e3b29dabcc838ad581c64e8ed52c11fbe86ddebd9da0818cd5"},
+    {file = "pytest-7.4.4-py3-none-any.whl", hash = "sha256:b090cdf5ed60bf4c45261be03239c2c1c22df034fbffe691abe93cd80cea01d8"},
+    {file = "pytest-7.4.4.tar.gz", hash = "sha256:2cf0005922c6ace4a3e2ec8b4080eb0d9753fdc93107415332f50ce9e7994280"},
 ]
 
 [package.dependencies]
@@ -2409,7 +2409,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "b648e5e84ad9324641dfe9e0939c53459aca01cf"
+resolved_reference = "7b0b3f4b50c2f75e95f90e5da4910d23d66ace82"
 
 [[package]]
 name = "vermin"
