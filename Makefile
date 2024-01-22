@@ -11,8 +11,8 @@ runmesingle=poetry run python -OO ./single_result_parser.py
 ALL: pylint mypy formatting vulture pytype sourcery
 
 
-.PHONY: hatv.de/wrapper/2024/RL_Glinde/4-2101_rl_mas2sstd/index.htm
-RL_GLINDE_2024.txt: hatv.de/wrapper/2024/RL_Glinde/4-2101_rl_mas2sstd/index.htm
+.PHONY: hatv.de/wrapper/2024/RL_Glinde/index.htm
+RL_GLINDE_2024.txt: hatv.de/wrapper/2024/RL_Glinde/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
 .PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-11-25-26_BYO/
