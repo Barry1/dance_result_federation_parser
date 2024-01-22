@@ -14,7 +14,7 @@ from requests import Session, urllib3  # type:ignore
 
 from stringprocessing import cleanevfromentry
 
-thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
+thelogger: logging.Logger = logging.getLogger("resultParser")
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
 MYREGEX: Literal[
     "(?P<Verein>.*)–(?P<Verband>.*)\\((?P<ID>\\d+)\\)"

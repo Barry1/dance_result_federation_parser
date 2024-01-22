@@ -12,7 +12,7 @@ from pandas import DataFrame, read_html, to_numeric  # , option_context
 from dtvprocessing import get_dtv_df
 from stringprocessing import cleanevfromentry  # ,clean_number_from_couple
 
-thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
+thelogger: logging.Logger = logging.getLogger("resultParser")
 
 
 def checktpsontree(the_e_tree: ElementTree) -> bool:

@@ -14,7 +14,7 @@ from dtvprocessing import get_dtv_df
 from esvprocessing import get_couples_df
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
-thelogger: logging.Logger = setuplogger("Basti.resultParser")
+thelogger: logging.Logger = setuplogger("resultParser")
 _CFG_DICT: MyConfigT = readconfig()
 MY_TIMEOUT: Literal[3] = 3
 

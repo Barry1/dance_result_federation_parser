@@ -2,7 +2,7 @@
 import logging
 from re import sub as re_sub
 
-thelogger: logging.Logger = logging.getLogger("Basti.resultParser")
+thelogger: logging.Logger = logging.getLogger("resultParser")
 
 
 def correcttitleposition(couplestring: str) -> str:
