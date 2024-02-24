@@ -10,6 +10,12 @@ runmesingle=poetry run python -OO ./single_result_parser.py
 
 ALL: pylint mypy formatting vulture pytype sourcery
 
+.PHONY: tanzen-in-sh.de/ergebnisse/2024/2024-02-24_GLM_MasIV_STD/
+GLM_MasIV_STD_2024.txt: tanzen-in-sh.de/ergebnisse/2024/2024-02-24_GLM_MasIV_STD/
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
+
+
 .PHONY: app.ceronne.de/ergebnisse/994_Landesmeisterschaft%20Nord%20Latein/
 GLM_HGR_A+S_MAS_S_LAT_2024.txt: app.ceronne.de/ergebnisse/994_Landesmeisterschaft%20Nord%20Latein/
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
