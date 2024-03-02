@@ -14,7 +14,9 @@ ALL: pylint mypy formatting vulture pytype sourcery
 GLM_MasIV_STD_2024.txt: tanzen-in-sh.de/ergebnisse/2024/2024-02-24_GLM_MasIV_STD/
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-
+.PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/2024_lm_mas_ii_b-s_std/2024_lm_mas_ii_b-s_std/index.htm
+GLM_MasII_BAS_STD_2024.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/2024_lm_mas_ii_b-s_std/2024_lm_mas_ii_b-s_std/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
 .PHONY: app.ceronne.de/ergebnisse/994_Landesmeisterschaft%20Nord%20Latein/
 GLM_HGR_A+S_MAS_S_LAT_2024.txt: app.ceronne.de/ergebnisse/994_Landesmeisterschaft%20Nord%20Latein/
