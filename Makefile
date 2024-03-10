@@ -22,6 +22,9 @@ GLM_MasII_BAS_STD_2024.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/2
 GLM_HGR_A+S_MAS_S_LAT_2024.txt: app.ceronne.de/ergebnisse/994_Landesmeisterschaft%20Nord%20Latein/
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
+.PHONY: app.ceronne.de/ergebnisse/993_GM_Nord_2024/
+GBM_Kombi_2024.txt: app.ceronne.de/ergebnisse/993_GM_Nord_2024/
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
 .PHONY: hatv.de/wrapper/2024/RL_Glinde/index.htm
 RL_GLINDE_2024.txt: hatv.de/wrapper/2024/RL_Glinde/index.htm
