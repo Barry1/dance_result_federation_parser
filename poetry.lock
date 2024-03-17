@@ -2467,7 +2467,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "6d5cf3a91b8c26eed6f3e05575a560e4051eaeea"
+resolved_reference = "bca0a7643452901be5b23e7ff8dd00759bd67f65"
 
 [[package]]
 name = "vermin"
