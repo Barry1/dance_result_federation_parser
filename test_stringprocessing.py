@@ -1,4 +1,5 @@
 """pytest module for stringprocessing."""
+
 from stringprocessing import (
     clean_number_from_couple,
     cleanevfrom_dtv_tsh_entry,

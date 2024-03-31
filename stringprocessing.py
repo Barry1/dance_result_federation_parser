@@ -1,4 +1,5 @@
 """Helpers for String processing."""
+
 import logging
 from re import sub as re_sub
 

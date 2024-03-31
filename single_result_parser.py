@@ -1,4 +1,5 @@
 """Module analyzing single competitions not events."""
+
 import logging
 
 from dance_result_federation_parser import interpret_tt_result, print_tsh_web

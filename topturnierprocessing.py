@@ -1,4 +1,5 @@
 """Module for TopTurnier-specific functions."""
+
 import logging
 from typing import Literal, cast
 from urllib.error import HTTPError
