@@ -1,4 +1,5 @@
 """Module for reading configuration from config.toml."""
+
 import logging
 from typing import Any, Literal, TypedDict
 
