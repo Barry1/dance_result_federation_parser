@@ -111,6 +111,7 @@ typing = "*"
 typing-extensions = "*"
 aiofiles = ">=22.1.0"
 pyarrow = "*"
+pytype = "^2024.3.11"
 
 [tool.poetry.dependencies.valuefragments]
 git = "https://github.com/Barry1/PyValueFragments.git"

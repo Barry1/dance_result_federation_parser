@@ -1,4 +1,5 @@
 """Module for TPS-specific functions."""
+
 import logging
 
 # from __future__ import annotations
@@ -32,9 +33,9 @@ def ogparserurl(baseurl: str) -> dict[str, str]:
     base: str = baseurl[: baseurl.rfind("/")]
     with urlopen(baseurl) as urlrequest:
         for entry in parse(urlrequest).xpath("/html/body/div/main/a[*]"):
-            tournmtsdict[
-                entry.xpath("div/div/h4/text()")[0]
-            ] = f'{base}/{quote(entry.xpath("@href")[0])}'
+            tournmtsdict[entry.xpath("div/div/h4/text()")[0]] = (
+                f'{base}/{quote(entry.xpath("@href")[0])}'
+            )
     if not tournmtsdict:  # keine in Main gefunden, jetzt DropDown nutzen
         for entry in parse(baseurl).xpath(
             "/html/body/nav/div[2]/ul/li[1]/ul/li[*]/a"
