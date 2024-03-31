@@ -106,11 +106,9 @@ Nuernberg_2023.txt: ltvb.de/wp-content/uploads/results/13347/index.htm
 BeDaFe_2023.txt: berlin-dance-festival.de/files/bdf/results/2023/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
-
 .PHONY: turniere.btc-gruen-gold.de/bb2024/index.htm
 BlauesBand2024.txt: turniere.btc-gruen-gold.de/bb2024/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
-
 
 .PHONY: turniere.btc-gruen-gold.de/bb2023/index.htm
 BlauesBand2023.txt: turniere.btc-gruen-gold.de/bb2023/index.htm
