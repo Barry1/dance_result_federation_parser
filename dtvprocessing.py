@@ -1,4 +1,5 @@
 """Module for processing of DTV details."""
+
 import asyncio
 import logging
 import os
@@ -16,13 +17,13 @@ from stringprocessing import cleanevfromentry
 
 thelogger: logging.Logger = logging.getLogger("resultParser")
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
-MYREGEX: Literal[
-    "(?P<Verein>.*)–(?P<Verband>.*)\\((?P<ID>\\d+)\\)"
-] = r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
+MYREGEX: Literal["(?P<Verein>.*)–(?P<Verband>.*)\\((?P<ID>\\d+)\\)"] = (
+    r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
+)
 PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"
-SEARCH_URL: Literal[
+SEARCH_URL: Literal["https://www.tanzsport.de/de/service/vereinssuche"] = (
     "https://www.tanzsport.de/de/service/vereinssuche"
-] = "https://www.tanzsport.de/de/service/vereinssuche"
+)
 XPATH_FOR_ORGS: Literal[
     '//div[@id="container_grid"]//div[@class="result_body"]'
 ] = '//div[@id="container_grid"]//div[@class="result_body"]'
