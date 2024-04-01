@@ -179,7 +179,8 @@ def print_tsh_web(
         )
         # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
         # wird der Verband künstlich gesetzt:
-        value.Verband[value.Verband == "NAMEDCOUPLE"] = _CFG_DICT[
+        # value.Verband[value.Verband == "NAMEDCOUPLE"]
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = _CFG_DICT[
             "THEFEDERATION"
         ]
         if value[value.Verband == _CFG_DICT["THEFEDERATION"]].empty:
