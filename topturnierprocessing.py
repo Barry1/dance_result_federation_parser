@@ -1,6 +1,7 @@
 """Module for TopTurnier-specific functions."""
 
 import logging
+from io import StringIO
 from typing import Literal, cast
 from urllib.error import HTTPError
 
@@ -70,16 +71,20 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
         "erg.htm"
     ), f"{theresulturl} endet nicht auf erg.htm"
     tab1tbl: list[DataFrame] = read_html(
-        requests_get(theresulturl, timeout=MY_TIMEOUT).text.replace(
-            "<BR>", "</td><td>"
+        StringIO(
+            requests_get(theresulturl, timeout=MY_TIMEOUT).text.replace(
+                "<BR>", "</td><td>"
+            )
         ),
         attrs={"class": "tab1"},
     )
     erg_df: DataFrame
     try:
         tab2tbl: list[DataFrame] = read_html(
-            requests_get(theresulturl, timeout=MY_TIMEOUT).text.replace(
-                "<BR>", "</td><td>"
+            StringIO(
+                requests_get(theresulturl, timeout=MY_TIMEOUT).text.replace(
+                    "<BR>", "</td><td>"
+                )
             ),
             attrs={"class": "tab2"},
         )
