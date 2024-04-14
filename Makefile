@@ -10,6 +10,10 @@ runmesingle=poetry run python -OO ./single_result_parser.py
 
 ALL: pylint mypy formatting vulture pytype sourcery
 
+.PHONY: berlin-dance-festival.de/files/bdf/results/2024/index.htm
+BDF_2024.txt: berlin-dance-festival.de/files/bdf/results/2024/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: www.tanzclub-bernau.de/Tunierergebnisse/DM2024/16032024/index.htm
 DM_Latein_2024.txt: www.tanzclub-bernau.de/Tunierergebnisse/DM2024/16032024/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
