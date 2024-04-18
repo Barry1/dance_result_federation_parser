@@ -10,12 +10,12 @@ plugins:
 lint:
   enabled:
     - bandit@1.7.8
-    - checkov@3.2.49
+    - checkov@3.2.66
     - osv-scanner@1.7.0
     - trivy@0.50.1
     - trufflehog@3.71.0
-    - pyright@1.1.356
-    - ruff@0.3.4
+    - pyright@1.1.358
+    - ruff@0.3.7
     - yamllint@1.35.1
     - markdownlint@0.39.0
     - autopep8@2.1.0
@@ -24,7 +24,7 @@ lint:
     - taplo@0.8.1
     - prettier@3.2.5
     - mypy@1.9.0
-    - black@24.3.0
+    - black@24.4.0
     - isort@5.13.2
     - actionlint@1.6.27
     - git-diff-check
