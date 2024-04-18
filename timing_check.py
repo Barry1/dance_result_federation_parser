@@ -2,6 +2,7 @@
 """Try to run methods with and without ASYNC
 to find out, what would be the best implementation.
 """
+
 import asyncio
 import logging
 
