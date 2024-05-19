@@ -13,6 +13,10 @@ ALL: pylint mypy formatting vulture pytype sourcery
 pylyze:
 	poetry run pylyzer $(OBJS)
 
+.PHONY: www.tsz-stuttgart.de/fileadmin/01_TSZ_Stuttgart/ergebnisse/2024_DM_MAS_U21/index.htm
+DM_Kombi_U18MASIV_STD_2024.txt: www.tsz-stuttgart.de/fileadmin/01_TSZ_Stuttgart/ergebnisse/2024_DM_MAS_U21/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: www.hessen-tanzt.de/media/ht2024/index.htm
 HessenTanzt_2024.txt: www.hessen-tanzt.de/media/ht2024/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
