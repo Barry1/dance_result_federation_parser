@@ -13,6 +13,14 @@ ALL: pylint mypy formatting vulture pytype sourcery
 pylyze:
 	poetry run pylyzer $(OBJS)
 
+.PHONY: ltvb.de/wp-content/uploads/results/15138/index.htm
+RL_Fuerth_2024.txt: ltvb.de/wp-content/uploads/results/15138/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
+.PHONY: www.equalitydancing.de/files/Ergebnisse/240518u19_DM2024-Koeln/index.htm
+DM_Equality_2024.txt: www.equalitydancing.de/files/Ergebnisse/240518u19_DM2024-Koeln/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: www.tsz-stuttgart.de/fileadmin/01_TSZ_Stuttgart/ergebnisse/2024_DM_MAS_U21/index.htm
 DM_Kombi_U18MASIV_STD_2024.txt: www.tsz-stuttgart.de/fileadmin/01_TSZ_Stuttgart/ergebnisse/2024_DM_MAS_U21/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
