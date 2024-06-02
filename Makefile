@@ -13,6 +13,10 @@ ALL: pylint mypy formatting vulture pytype sourcery
 pylyze:
 	poetry run pylyzer $(OBJS)
 
+.PHONY: ergebnisse.ggcbremen.de/2024-05-31.DSF/
+DSF_2024.txt: ergebnisse.ggcbremen.de/2024-05-31.DSF/
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: ltvb.de/wp-content/uploads/results/15138/index.htm
 RL_Fuerth_2024.txt: ltvb.de/wp-content/uploads/results/15138/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
