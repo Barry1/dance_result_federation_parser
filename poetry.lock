@@ -1866,12 +1866,13 @@ numpy = ">=1.16.6"
 
 [[package]]
 name = "pycnite"
-version = "2024.5.27"
+version = "2024.6.13"
 description = "Python bytecode utilities"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pycnite-2024.5.27-py3-none-any.whl", hash = "sha256:9274c95373663749323714bfc7e845d6ea0a793abc0d33dfc6932d660b7669a9"},
+    {file = "pycnite-2024.6.13-py3-none-any.whl", hash = "sha256:7346099b2313894db65ffca177f9e6eb3251fdfedb019eb6da02822c2ff8c1e1"},
+    {file = "pycnite-2024.6.13.tar.gz", hash = "sha256:301c5d7e2e2f61e5535d0af7c4486f3ea4f5083c4808a7645a55ddb45cb25027"},
 ]
 
 [[package]]
