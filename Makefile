@@ -13,6 +13,16 @@ ALL: pylint mypy formatting vulture pytype sourcery
 pylyze:
 	poetry run pylyzer $(OBJS)
 
+.PHONY: www.gruen-weiss-aachen.de/files/ergebnisse/3le-2024/3le-2024/3-1506_dm_mas2sstd/index.htm#www.gruen-weiss-aachen.de/files/ergebnisse/3le-2024/3le-2024/index.htm
+DM_MASII_S_STD_2024.txt: www.gruen-weiss-aachen.de/files/ergebnisse/3le-2024/3le-2024/3-1506_dm_mas2sstd/index.htm
+#	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
+
+
+.PHONY: hatv.de/wrapper/2024/GLM-Savoy/index.html
+GLM_HGRII_MASI-III_LAT_2024.txt: hatv.de/wrapper/2024/GLM-Savoy/index.html
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: ergebnisse.ggcbremen.de/2024-05-31.DSF/
 DSF_2024.txt: ergebnisse.ggcbremen.de/2024-05-31.DSF/
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
