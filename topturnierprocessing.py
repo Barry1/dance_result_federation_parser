@@ -73,7 +73,11 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     # requests-Rückmeldung mit .ok abfragen und if
     try:
         if (
-            tempifinternal := requests_get(theresulturl, timeout=MY_TIMEOUT)
+            tempifinternal := requests_get(
+                theresulturl,
+                timeout=MY_TIMEOUT,
+                headers={"User-agent": "Mozilla"},
+            )
         ).ok:
             tab1tbl: list[DataFrame] = read_html(
                 StringIO(tempifinternal.text.replace("<BR>", "</td><td>")),
@@ -89,9 +93,11 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     try:
         tab2tbl: list[DataFrame] = read_html(
             StringIO(
-                requests_get(theresulturl, timeout=MY_TIMEOUT).text.replace(
-                    "<BR>", "</td><td>"
-                )
+                requests_get(
+                    theresulturl,
+                    timeout=MY_TIMEOUT,
+                    headers={"User-agent": "Mozilla"},
+                ).text.replace("<BR>", "</td><td>")
             ),
             attrs={"class": "tab2"},
         )
