@@ -70,6 +70,7 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     assert theresulturl.endswith(
         "erg.htm"
     ), f"{theresulturl} endet nicht auf erg.htm"
+    # requests-Rückmeldung mit .ok abfragen und if
     tab1tbl: list[DataFrame] = read_html(
         StringIO(
             requests_get(theresulturl, timeout=MY_TIMEOUT).text.replace(
@@ -88,8 +89,6 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
             ),
             attrs={"class": "tab2"},
         )
-        # for a in tab2tbl:
-        # thelogger.debug(a.to_string())
     except ValueError:
         erg_df = concat(tab1tbl)
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen

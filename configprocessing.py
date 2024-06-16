@@ -22,6 +22,7 @@ def setuplogger(descriptor: str) -> logging.Logger:
         thelogger.setLevel(logging.DEBUG)
     else:
         thelogger.setLevel(logging.INFO)
+    # thelogger.log(logging.INFO,thelogger.getEffectiveLevel())
     return thelogger
 
 

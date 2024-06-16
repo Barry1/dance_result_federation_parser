@@ -2,21 +2,10 @@
 
 import logging
 
+from configprocessing import setuplogger
 from dance_result_federation_parser import interpret_tt_result, print_tsh_web
 
-thelogger: logging.Logger = logging.getLogger("Basti.singleResultParser")
-logformatter: logging.Formatter = logging.Formatter(
-    "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)  # https://docs.python.org/3/library/logging.html#logrecord-attributes
-logfilehandler: logging.FileHandler = logging.FileHandler(
-    "singleResultParser.log"
-)
-logfilehandler.setFormatter(logformatter)
-thelogger.addHandler(logfilehandler)
-if __debug__:
-    thelogger.setLevel(logging.DEBUG)
-else:
-    thelogger.setLevel(logging.INFO)
+thelogger: logging.Logger = setuplogger("singleResultParser")
 if __name__ == "__main__":
     import sys
 
