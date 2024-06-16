@@ -162,6 +162,7 @@ async def outputassocfiles() -> None:
     )
     print(dtv_assocs_df[dtv_assocs_df.Verband == "TSH"])
     for verbandsvereine in dtv_assocs_df.groupby(by="Verband"):
+        # make folder associations mabye
         async with aiofiles.open(
             f"{verbandsvereine[0]}.txt", "w"
         ) as ausgabedatei:
