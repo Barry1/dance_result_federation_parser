@@ -14,7 +14,7 @@ def get_esvcredentials() -> dict[str, str]:
     mycredentialsconf.read(".credentials")
     return {
         "action": "login",
-        "module": "DefaultMod",
+        #"module": "DefaultMod",
         "user": mycredentialsconf["ESV-LOGIN"]["user"],
         "pass": mycredentialsconf["ESV-LOGIN"]["pass"],
     }
@@ -25,15 +25,17 @@ def get_couples_df() -> pandas.DataFrame:
     """Login to esv and retrieve csv file of couples."""
     readopts = {"encoding": "iso8859_15", "sep": ";", "usecols": ["Paar"]}
     login_url = "https://ev.tanzsport-portal.de"
-    couples_url: str = f"{login_url}/Auswertungen/showAuswertung/id/57"
+    couples_url: str = f"{login_url}/Auswertungen/showAuswertung/id/55"
+    #couples_url: str = f"{login_url}/Auswertungen/showAuswertung/id/57"
     logout_url: str = f"{login_url}/DefaultMod/logout"
     with requests.Session() as esvsession:
         loginreq: requests.Response = esvsession.post(
-            login_url, data=get_esvcredentials()
+            login_url+"/DefaultMod", data=get_esvcredentials()
         )
         assert loginreq.status_code == 200
         whatweneed: requests.Response = esvsession.post(
-            couples_url, data={"execute": 1, "export": 1, "print": 0}
+            couples_url , data={"execute": 1, "export": 1, "print": 0, "jahr": 2024}
+            #couples_url , data={"execute": 1, "export": 1, "print": 0}
         )
         esvsession.get(logout_url)
     couplesdf: pandas.DataFrame = pandas.read_csv(
