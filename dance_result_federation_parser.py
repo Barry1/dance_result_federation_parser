@@ -34,7 +34,7 @@ from topturnierprocessing import (
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
-thelogger: logging.Logger = setuplogger("resultParser")
+thelogger: logging.Logger = setuplogger(__name__)  # "resultParser"
 _CFG_DICT: MyConfigT = readconfig()
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
