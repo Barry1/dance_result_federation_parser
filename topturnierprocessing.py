@@ -71,14 +71,20 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
         "erg.htm"
     ), f"{theresulturl} endet nicht auf erg.htm"
     # requests-Rückmeldung mit .ok abfragen und if
-    tab1tbl: list[DataFrame] = read_html(
-        StringIO(
-            requests_get(theresulturl, timeout=MY_TIMEOUT).text.replace(
-                "<BR>", "</td><td>"
+    try:
+        if (
+            tempifinternal := requests_get(theresulturl, timeout=MY_TIMEOUT)
+        ).ok:
+            tab1tbl: list[DataFrame] = read_html(
+                StringIO(tempifinternal.text.replace("<BR>", "</td><td>")),
+                attrs={"class": "tab1"},
             )
-        ),
-        attrs={"class": "tab1"},
-    )
+        else:
+            thelogger.error(
+                "HTTP-Fehler bei tab1tbl Nummer %s", tempifinternal.status_code
+            )
+    except BaseException as e:
+        thelogger.error("tab1tbl mit Fehler %s", e)
     erg_df: DataFrame
     try:
         tab2tbl: list[DataFrame] = read_html(
