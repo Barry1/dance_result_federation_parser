@@ -75,25 +75,24 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
         "erg.htm"
     ), f"{theresulturl} endet nicht auf erg.htm"
     # requests-Rückmeldung mit .ok abfragen und if
-    try:
-        if (
-            tempifinternal := requests_get(
-                theresulturl,
-                timeout=MY_TIMEOUT,
-                headers={"User-agent": "Mozilla"},
-            )
-        ).ok:
-            tab1tbl: list[DataFrame] = read_html(
-                StringIO(tempifinternal.text.replace("<BR>", "</td><td>")),
-                attrs={"class": "tab1"},
-            )
-        else:
-            thelogger.error(
-                "HTTP-Fehler bei tab1tbl Nummer %s", tempifinternal.status_code
-            )
-            return DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
-    except BaseException as e:
-        thelogger.error("tab1tbl mit Fehler %s", e)
+    if (
+        tempifinternal := requests_get(
+            theresulturl,
+            timeout=MY_TIMEOUT,
+            headers={"User-agent": "Mozilla"},
+        )
+    ).ok:
+        tab1tbl: list[DataFrame] = read_html(
+            StringIO(tempifinternal.text.replace("<BR>", "</td><td>")),
+            attrs={"class": "tab1"},
+        )
+    else:
+        thelogger.error(
+            "HTTP-Fehler bei tab1tbl Nummer %s. Wenn es die %s-Datei nicht gibt, ist das Turnier evtl. ausgefallen?",
+            tempifinternal.status_code,
+            theresulturl,
+        )
+        return DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
     erg_df: DataFrame
     try:
         tab2tbl: list[DataFrame] = read_html(
