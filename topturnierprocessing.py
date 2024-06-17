@@ -87,7 +87,7 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
             attrs={"class": "tab1"},
         )
     else:
-        thelogger.error(
+        thelogger.debug(
             "HTTP-Fehler bei tab1tbl Nummer %s. Wenn es die %s-Datei nicht gibt, ist das Turnier evtl. ausgefallen?",
             tempifinternal.status_code,
             theresulturl,

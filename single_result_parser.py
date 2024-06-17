@@ -5,7 +5,9 @@ import logging
 from configprocessing import setuplogger
 from dance_result_federation_parser import interpret_tt_result, print_tsh_web
 
-thelogger: logging.Logger = setuplogger(__name__)  # "singleResultParser"
+thelogger: logging.Logger = setuplogger(
+    "Basti." + __name__
+)  # "singleResultParser"
 if __name__ == "__main__":
     import sys
 
