@@ -13,6 +13,10 @@ ALL: pylint mypy formatting vulture pytype sourcery
 pylyze:
 	poetry run pylyzer $(OBJS)
 
+.PHONY: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/hatatas2024/index.htm
+HaTaTa2024.txt: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/hatatas2024/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: www.gruen-weiss-aachen.de/files/ergebnisse/3le-2024/3le-2024/3-1506_dm_mas2sstd/index.htm#www.gruen-weiss-aachen.de/files/ergebnisse/3le-2024/3le-2024/index.htm
 DM_MASII_S_STD_2024.txt: www.gruen-weiss-aachen.de/files/ergebnisse/3le-2024/3le-2024/3-1506_dm_mas2sstd/index.htm
 #	$(runme) https\://$< > $@ 2> $(@:.txt=.err)

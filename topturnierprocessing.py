@@ -53,7 +53,11 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
     for eintrag in cast(
         ResultSet[Tag],
         BeautifulSoup(
-            requests_get(baseurlwith, timeout=MY_TIMEOUT).text,
+            requests_get(
+                baseurlwith,
+                timeout=MY_TIMEOUT,
+                headers={"User-agent": "Mozilla"},
+            ).text,
             features="lxml",
             parse_only=SoupStrainer("a"),
         )("span"),
@@ -87,6 +91,7 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
             thelogger.error(
                 "HTTP-Fehler bei tab1tbl Nummer %s", tempifinternal.status_code
             )
+            return DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
     except BaseException as e:
         thelogger.error("tab1tbl mit Fehler %s", e)
     erg_df: DataFrame
