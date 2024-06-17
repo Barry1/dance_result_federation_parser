@@ -8,6 +8,7 @@ import time
 from typing import Literal, TypedDict
 
 import aiofiles
+import aiofiles.os
 from lxml.etree import _ElementUnicodeResult
 from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
@@ -163,8 +164,10 @@ async def outputassocfiles() -> None:
     print(dtv_assocs_df[dtv_assocs_df.Verband == "TSH"])
     for verbandsvereine in dtv_assocs_df.groupby(by="Verband"):
         # make folder associations mabye
+        if not await aiofiles.os.path.isdir("associations"):
+            await aiofiles.os.mkdir("associations")
         async with aiofiles.open(
-            f"{verbandsvereine[0]}.txt", "w"
+            f"associations/{verbandsvereine[0]}.txt", "w"
         ) as ausgabedatei:
             await ausgabedatei.write(
                 f"{len(verbandsvereine[1])} Vereine im {verbandsvereine[0]}:\n"
