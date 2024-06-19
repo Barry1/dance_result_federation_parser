@@ -19,12 +19,10 @@ jobs:
       - name: Prepare python environment
         run: python3 -m pip install aiofiles lxml pandas fastparquet
       - name: Run the Python Module
-        run: python3 -verbose -OO dtvprocessing.py
+        run: python3 -h && python3 -OO dtvprocessing.py
       - name: Show the files
         run: ls -lah associations
-      #- name: Convert to svg
-      #  run: dvisvgm --no-fonts exampleRoadmap.dvi exampleRoadmap.svg
-      #- name: Push to orphan branch exampleoutput
+      - name: Push to orphan branch associations
       #  run: |
       #    git checkout --orphan exampleoutput
       #    git config --global user.name "Dr. Bastian Ebeling"
