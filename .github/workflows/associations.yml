@@ -1,0 +1,32 @@
+---
+name: Build Associations Overviews
+permissions: read-all
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  my_job:
+    name: TestJob
+    # inspired by <https://archive.ph/8Qidh>
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      #- name: Install TeXlive and utils
+      #  run: sudo apt-get update && sudo apt-get install texlive-latex-base dvisvgm texlive-luatex texlive-latex-extra texlive-fonts-extra
+      - name: Run the Python Module
+        run: python3 dtvprocessing.py && ls -lahr
+      #- name: Convert to svg
+      #  run: dvisvgm --no-fonts exampleRoadmap.dvi exampleRoadmap.svg
+      #- name: Push to orphan branch exampleoutput
+      #  run: |
+      #    git checkout --orphan exampleoutput
+      #    git config --global user.name "Dr. Bastian Ebeling"
+      #    git config --global user.email 230051+Barry1@users.noreply.github.com
+      #    git add -f exampleRoadmap.svg
+      #    git commit -m "exampleRoadmap updated" exampleRoadmap.svg
+      #    git push --force --set-upstream origin exampleoutput
+      #    git checkout main
+      #    git branch -D exampleoutput
