@@ -17,18 +17,18 @@ jobs:
       #- name: Install TeXlive and utils
       #  run: sudo apt-get update && sudo apt-get install texlive-latex-base dvisvgm texlive-luatex texlive-latex-extra texlive-fonts-extra
       - name: Prepare python environment
-        run: python3 -m pip install aiofiles lxml pandas fastparquet
+        run: python3 -m pip install aiofiles fastparquet lxml pandas 
       - name: Run the Python Module
         run: python3 -v -OO dtvprocessing.py
       - name: Show the files
         run: ls -lah associations
-      # - name: Push to orphan branch associations
-      #  run: |
-      #    git checkout --orphan exampleoutput
-      #    git config --global user.name "Dr. Bastian Ebeling"
-      #    git config --global user.email 230051+Barry1@users.noreply.github.com
-      #    git add -f exampleRoadmap.svg
-      #    git commit -m "exampleRoadmap updated" exampleRoadmap.svg
-      #    git push --force --set-upstream origin exampleoutput
+      - name: Push to orphan branch associations
+        run: |
+          git checkout --orphan associations
+          git config --global user.name "Dr. Bastian Ebeling"
+          git config --global user.email 230051+Barry1@users.noreply.github.com
+          git add -f associations/*.txt
+          git commit -m "association files updated" associations/*.txt
+          git push --force --set-upstream origin associations
       #    git checkout main
       #    git branch -D exampleoutput
