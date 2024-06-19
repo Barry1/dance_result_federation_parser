@@ -17,7 +17,7 @@ jobs:
       #- name: Install TeXlive and utils
       #  run: sudo apt-get update && sudo apt-get install texlive-latex-base dvisvgm texlive-luatex texlive-latex-extra texlive-fonts-extra
       - name: Prepare python environment
-        run: python3 -m pip install aiofiles lxml pandas
+        run: python3 -m pip install aiofiles lxml pandas fastparquet
       - name: Run the Python Module
         run: python3 dtvprocessing.py && ls -lahr
       #- name: Convert to svg
