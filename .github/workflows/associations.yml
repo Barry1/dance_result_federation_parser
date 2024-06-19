@@ -3,7 +3,9 @@ name: Build Associations Overviews
 permissions: read-all
 on:
   workflow_dispatch:
-  push:
+  #push:
+  schedule:
+    - cron: '23 01 * * *'
 jobs:
   my_job:
     name: Run dtvprocessing.py
