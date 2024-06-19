@@ -22,7 +22,7 @@ jobs:
         run: python3 -h && python3 -OO dtvprocessing.py
       - name: Show the files
         run: ls -lah associations
-      - name: Push to orphan branch associations
+      # - name: Push to orphan branch associations
       #  run: |
       #    git checkout --orphan exampleoutput
       #    git config --global user.name "Dr. Bastian Ebeling"
