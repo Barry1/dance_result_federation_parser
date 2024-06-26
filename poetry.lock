@@ -2201,13 +2201,13 @@ typing-inspect = "*"
 
 [[package]]
 name = "pyright"
-version = "1.1.368"
+version = "1.1.369"
 description = "Command line wrapper for pyright"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pyright-1.1.368-py3-none-any.whl", hash = "sha256:4a86e34b61c755b43b367af7fbf927fc6466fff6b81a9dcea07d42416c640af3"},
-    {file = "pyright-1.1.368.tar.gz", hash = "sha256:9b2aa48142d9d9fc9a6aedff743c76873cc4e615f3297cdbf893d5793f75b306"},
+    {file = "pyright-1.1.369-py3-none-any.whl", hash = "sha256:06d5167a8d7be62523ced0265c5d2f1e022e110caf57a25d92f50fb2d07bcda0"},
+    {file = "pyright-1.1.369.tar.gz", hash = "sha256:ad290710072d021e213b98cc7a2f90ae3a48609ef5b978f749346d1a47eb9af8"},
 ]
 
 [package.dependencies]
@@ -2761,13 +2761,13 @@ test = ["mypy", "pytest", "typing-extensions"]
 
 [[package]]
 name = "types-aiofiles"
-version = "23.2.0.20240623"
+version = "24.1.0.20240626"
 description = "Typing stubs for aiofiles"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "types-aiofiles-23.2.0.20240623.tar.gz", hash = "sha256:d515b2fa46bf894aff45a364a704f050de3898344fd6c5994d58dc8b59ab71e6"},
-    {file = "types_aiofiles-23.2.0.20240623-py3-none-any.whl", hash = "sha256:70597b29fc40c8583b6d755814b2cd5fcdb6785622e82d74ef499f9066316e08"},
+    {file = "types-aiofiles-24.1.0.20240626.tar.gz", hash = "sha256:48604663e24bc2d5038eac05ccc33e75799b0779e93e13d6a8f711ddc306ac08"},
+    {file = "types_aiofiles-24.1.0.20240626-py3-none-any.whl", hash = "sha256:7939eca4a8b4f9c6491b6e8ef160caee9a21d32e18534a57d5ed90aee47c66b4"},
 ]
 
 [[package]]
@@ -2930,7 +2930,7 @@ allfeatures = ["cpu-load-generator", "hashlib", "icecream", "psutil"]
 type = "git"
 url = "https://github.com/Barry1/PyValueFragments.git"
 reference = "main"
-resolved_reference = "35715a682dd9ebde9853db9741b1ffd7485e58ef"
+resolved_reference = "c1e42d3f7fb288382b496acabdf8ce1b879299ee"
 
 [[package]]
 name = "vermin"
