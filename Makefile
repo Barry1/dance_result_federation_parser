@@ -13,6 +13,14 @@ ALL: pylint mypy formatting vulture pytype sourcery
 pylyze:
 	poetry run pylyzer $(OBJS)
 
+.PHONY: ltvb.de/wp-content/uploads/results/15209/index.htm
+DM_HGR_S_Kombi_2024.txt: ltvb.de/wp-content/uploads/results/15209/index.htm
+	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
+
+.PHONY: ltvb.de/wp-content/uploads/results/15218/index.htm
+DC_HGR_A_LAT_2024.txt: ltvb.de/wp-content/uploads/results/15218/index.htm
+	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/hatatas2024/index.htm
 HaTaTa2024.txt: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/hatatas2024/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
