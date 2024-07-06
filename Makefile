@@ -137,6 +137,10 @@ GLM_HGRII_D-S_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-02_GLM_HGRII
 GLM4_MASII-III_D-B_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-03_GLM4_MASII-III_D-B_STD/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
 
+.PHONY: ergebnisse.dancecomp.de/2024/index.htm
+danceComp_2024.txt: ergebnisse.dancecomp.de/2024/index.htm
+	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
+
 .PHONY: ergebnisse.dancecomp.de/2023/index.htm
 danceComp_2023.txt: ergebnisse.dancecomp.de/2023/index.htm
 	$(runme) https\://$< > $@ 2> $(@:.txt=.err)
