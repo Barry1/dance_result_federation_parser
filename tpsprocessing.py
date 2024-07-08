@@ -10,10 +10,11 @@ from lxml.etree import ElementTree
 from lxml.html import parse
 from pandas import DataFrame, read_html, to_numeric  # , option_context
 
+from configprocessing import setuplogger
 from dtvprocessing import get_dtv_df
 from stringprocessing import cleanevfromentry  # ,clean_number_from_couple
 
-thelogger: logging.Logger = logging.getLogger("resultParser")
+thelogger: logging.Logger = setuplogger(f"Basti.{__name__}")
 
 
 def checktpsontree(the_e_tree: ElementTree) -> bool:
