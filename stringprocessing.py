@@ -49,13 +49,15 @@ def sr_human_comp_info(turnier_info: str) -> str:
     lastpos: int = turnier_info.rfind("/")
     firstpos: int = turnier_info.rfind("/", 0, lastpos) + 1
     turnier_info = turnier_info[firstpos:lastpos]
+    comp_desc: str
     [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split(
         "_", 2
     )
     comp_desc = comp_desc.upper()
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
-    comp_desc = comp_desc.replace("SEN", "Senioren ")
     comp_desc = comp_desc.replace("LAT", " Latein ")
+    comp_desc = comp_desc.replace("MAS", "Masters ")
+    comp_desc = comp_desc.replace("SEN", "Senioren ")
     comp_desc = comp_desc.replace("STD", " Standard ")
     comp_desc = comp_desc.replace("1", " I ")
     comp_desc = comp_desc.replace("2", " II ")
@@ -65,7 +67,7 @@ def sr_human_comp_info(turnier_info: str) -> str:
     comp_desc = comp_desc.replace("5", " V ")
     comp_desc = comp_desc.replace(" %% ", " 55 ")  # G55
     comp_desc = comp_desc.replace("  ", " ")
-    comp_desc_human = f"{comp_date[:2]}.{comp_date[2:]}."  # comp_num+':'+
+    comp_desc_human: str = f"{comp_date[:2]}.{comp_date[2:]}."  # comp_num+':'+
     if comp_desc.startswith("WDSF"):
         comp_desc_human += f" WDSF {comp_desc[4:].strip()}"
     else:
