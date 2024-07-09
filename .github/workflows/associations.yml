@@ -14,6 +14,11 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
+      - name: Install python 3.11
+        run: |
+          sudo add-apt-repository ppa:deadsnakes/ppa
+          sudo apt update
+          sudo apt install python3.11
       - name: checkout
         uses: actions/checkout@v4
       #- name: Install TeXlive and utils
