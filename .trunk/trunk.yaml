@@ -10,12 +10,12 @@ plugins:
 lint:
   enabled:
     - bandit@1.7.9
-    - checkov@3.2.174
+    - checkov@3.2.176
     - osv-scanner@1.8.1
     - trivy@0.52.2
     - trufflehog@3.79.0
     - pyright@1.1.370
-    - ruff@0.5.0
+    - ruff@0.5.1
     - yamllint@1.35.1
     - markdownlint@0.41.0
     - autopep8@2.3.1
