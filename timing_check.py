@@ -17,7 +17,7 @@ if __name__ == "__main__":
     from configprocessing import LOGGERNAME
 
     thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
-    logger.disabled = True
+    thelogger.disabled = True
     print("For best results invoke with")
     print("==> ./timing_test.py & sudo renice -20 $! ;fg <==")
     theurl: str = (
