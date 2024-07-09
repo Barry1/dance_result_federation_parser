@@ -22,7 +22,7 @@ from lxml.etree import _ElementTree
 from lxml.html import parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
-from valuefragments import eprint, run_grouped
+from valuefragments import run_grouped
 
 from configprocessing import MyConfigT, readconfig, setuplogger
 from dtvprocessing import get_dtv_df
@@ -105,7 +105,9 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                     ],
                     "tpe",
                 )
-            print_tsh_web(eventurl, list(allreslinks), tsh_results, compnames)
+            print_tsh_web(
+                eventurl, list(allreslinks), tsh_results, compnames, _CFG_DICT
+            )
 
 
 def eventurl_to_web(synceventurl: str) -> None:
@@ -148,7 +150,11 @@ def eventurl_to_web(synceventurl: str) -> None:
                 )(delayed(the_interpret_fun)(a) for a in allreslinks),
             )
             print_tsh_web(
-                synceventurl, list(allreslinks), tsh_results, compnames
+                synceventurl,
+                list(allreslinks),
+                tsh_results,
+                compnames,
+                _CFG_DICT,
             )
 
 
