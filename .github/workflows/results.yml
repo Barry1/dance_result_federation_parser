@@ -27,6 +27,8 @@ jobs:
         run: python3 -m pip install aiofiles bs4 fastparquet lxml html5lib git+https://github.com/Barry1/PyValueFragments.git pyannotate
       - name: create results folder
         run: mkdir results
+      - name: remove config
+        run: rm config.toml
       - name: danceComp 2014
         run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2014/index.htm > danceComp_2014.md 2> danceComp_2014.err
       - name: danceComp 2015
