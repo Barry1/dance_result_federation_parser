@@ -29,6 +29,14 @@ jobs:
         run: mkdir results
       - name: remove config
         run: rm config.toml
+      - name: BlauesBand 2023
+        run: python -OO ./dance_result_federation_parser.py https://turniere.btc-gruen-gold.de/bb2023/index.htm > BlauesBand_2023.md 2> BlauesBand_2023.err
+      - name: BlauesBand 2024
+        run: python -OO ./dance_result_federation_parser.py https://turniere.btc-gruen-gold.de/bb2024/index.htm > BlauesBand_2024.md 2> BlauesBand_2024.err
+      - name: BerlinDanceFestival 2023
+        run: python -OO ./dance_result_federation_parser.py https://berlin-dance-festival.de/files/bdf/results/2023/index.htm > BDF_2023.md 2> BDR_2023.err
+      - name: BerlinDanceFestival 2024
+        run: python -OO ./dance_result_federation_parser.py https://berlin-dance-festival.de/files/bdf/results/2024/index.htm > BDF_2024.md 2> BDR_2024.err
       - name: danceComp 2014
         run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2014/index.htm > danceComp_2014.md 2> danceComp_2014.err
       - name: danceComp 2015
