@@ -14,10 +14,10 @@ from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
 
-from configprocessing import setuplogger
+from configprocessing import LOGGERNAME
 from stringprocessing import cleanevfromentry
 
-thelogger: logging.Logger = setuplogger(f"Basti.{__name__}")
+thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
 MYREGEX: Literal["(?P<Verein>.*)–(?P<Verband>.*)\\((?P<ID>\\d+)\\)"] = (
     r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"

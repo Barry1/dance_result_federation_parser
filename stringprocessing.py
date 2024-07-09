@@ -3,9 +3,9 @@
 import logging
 from re import sub as re_sub
 
-from configprocessing import setuplogger
+from configprocessing import LOGGERNAME
 
-thelogger: logging.Logger = setuplogger(f"Basti.{__name__}")
+thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 
 
 def correcttitleposition(couplestring: str) -> str:

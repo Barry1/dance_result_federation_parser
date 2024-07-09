@@ -5,16 +5,18 @@ from typing import Any, Literal, TypedDict
 
 import tomllib
 
+LOGGERNAME = "resultParser"
 
-def setuplogger(descriptor: str) -> logging.Logger:
+
+def setuplogger() -> logging.Logger:
     """Setup Logging environment."""
-    thelogger: logging.Logger = logging.getLogger(f"Basti.{descriptor}")
+    thelogger: logging.Logger = logging.getLogger(LOGGERNAME)
     # https://docs.python.org/3/library/logging.html#logrecord-attributes
     logformatter: logging.Formatter = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     )
     logfilehandler: logging.FileHandler = logging.FileHandler(
-        f"{descriptor}.log"
+        f"{LOGGERNAME}.log"
     )
     logfilehandler.setFormatter(logformatter)
     thelogger.addHandler(logfilehandler)
@@ -60,13 +62,14 @@ class MyConfigT(TypedDict):
 
 def readconfig() -> MyConfigT:
     """Load config.toml or default configuration."""
+    thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
     theconfig: MyConfigT = MyConfigT()  # type: ignore
     cfg: dict[str, Any]
     try:
         with open("config.toml", "rb") as buffered_config_file:
             cfg = tomllib.load(buffered_config_file)
     except FileNotFoundError:
-        setuplogger("Configuration").info(
+        thelogger.info(
             "No file config.toml found, default configuration used."
         )
         cfg = {}
@@ -79,5 +82,6 @@ def readconfig() -> MyConfigT:
     theconfig["TOTHREAD"] = cfg.get("TOTHREAD", False)
     theconfig["RESULTTABLE"] = cfg.get("RESULTTABLE", True)
     theconfig["THEFEDERATION"] = cfg.get("THEFEDERATION", "TSH")
-    theconfig["RESULTFORMAT"] = cfg.get("RESULTFORMAT", "TSH")
+    theconfig["RESULTFORMAT"] = cfg.get("RESULTFORMAT", "MARKDOWN")
+    thelogger.debug(theconfig)
     return theconfig

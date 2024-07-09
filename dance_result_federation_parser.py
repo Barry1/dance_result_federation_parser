@@ -35,7 +35,7 @@ from topturnierprocessing import (
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
-thelogger: logging.Logger = setuplogger("Basti." + __name__)  # "resultParser"
+thelogger: logging.Logger = setuplogger()
 _CFG_DICT: MyConfigT = readconfig()
 
 match _CFG_DICT["RESULTFORMAT"]:

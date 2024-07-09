@@ -11,12 +11,12 @@ from lxml.etree import _ElementTree as ElementTree
 from pandas import DataFrame, concat, read_html
 from requests import get as requests_get
 
-from configprocessing import MyConfigT, readconfig, setuplogger
+from configprocessing import LOGGERNAME, MyConfigT, readconfig
 from dtvprocessing import get_dtv_df
 from esvprocessing import get_couples_df
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
-thelogger: logging.Logger = setuplogger("Basti." + __name__)
+thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 _CFG_DICT: MyConfigT = readconfig()
 MY_TIMEOUT: Literal[3] = 3
 

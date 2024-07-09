@@ -1,13 +1,13 @@
 """Module for the presentation Layer of the results."""
 
-from logging import Logger
+import logging
 
 from pandas import DataFrame
 from valuefragments import eprint
 
-from configprocessing import MyConfigT, setuplogger
+from configprocessing import LOGGERNAME, MyConfigT
 
-thelogger: Logger = setuplogger("Basti." + __name__)
+thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 
 
 def print_tsh_web(

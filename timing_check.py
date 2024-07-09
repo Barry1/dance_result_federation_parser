@@ -14,9 +14,9 @@ from dance_result_federation_parser import (
 )
 
 if __name__ == "__main__":
-    from configprocessing import setuplogger
+    from configprocessing import LOGGERNAME
 
-    logger: logging.Logger = setuplogger(f"Basti.{__name__}")
+    thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
     logger.disabled = True
     print("For best results invoke with")
     print("==> ./timing_test.py & sudo renice -20 $! ;fg <==")
