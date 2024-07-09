@@ -72,19 +72,23 @@ def print_tsh_web(
                     "<thead><tr><th>&nbsp;</th>",
                     '<th style="text-align: right;">Platz</th>',
                     '<th style="text-align: right;">Paar</th>',
-                    '<th style="text-align: right;">Verein</th></tr></thead><tbody>',
+                    '<th style="text-align: right;">Verein</th>',
+                    "</tr></thead><tbody>",
+                    sep="",
                 )
                 for resline in value[
                     value.Verband == cfg_dict["THEFEDERATION"]
                 ].iterrows():
                     print(
-                        '<tr><td><strong>&nbsp;</strong></td><td style="text-align: right;">',
+                        "<tr><td><strong>&nbsp;</strong></td>",
+                        '<td style="text-align: right;">',
                         resline[1].Platz,
                         '</td><td style="text-align: right;">',
                         resline[1].Paar,
                         '</td><td style="text-align: right;">',
                         resline[1].Verein,
                         "</td></tr>",
+                        sep="",
                     )
                 print("</tbody></table>")
             else:
@@ -95,8 +99,9 @@ def print_tsh_web(
                     # display(resline)
                     # display(resline[1])
                     print(
-                        f"<li>{resline[1].Platz}"
-                        f"{resline[1].Paar} ({resline[1].Verein})</li>"
+                        f"<li>{resline[1].Platz}",
+                        f"{resline[1].Paar} ({resline[1].Verein})</li>",
+                        sep="",
                     )
                 print("</ul>")
             print(
