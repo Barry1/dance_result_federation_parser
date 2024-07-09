@@ -81,6 +81,8 @@ pythonVersions = "3.11"
 reportMissingImports = true
 reportMissingTypeStubs = true
 typeCheckingMode = "strict"
+venvPath = "."
+venv = ".venv"
 
 [tool.pylint."MESSAGES CONTROL"]
 disable = "duplicate-code"
