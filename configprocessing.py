@@ -55,6 +55,7 @@ class MyConfigT(TypedDict):
         "TTSV",
     ]
     CHECKINGURLS: list[str]
+    RESULTFORMAT: Literal["TSH", "MARKDOWN"]
 
 
 def readconfig() -> MyConfigT:
@@ -78,4 +79,5 @@ def readconfig() -> MyConfigT:
     theconfig["TOTHREAD"] = cfg.get("TOTHREAD", False)
     theconfig["RESULTTABLE"] = cfg.get("RESULTTABLE", True)
     theconfig["THEFEDERATION"] = cfg.get("THEFEDERATION", "TSH")
+    theconfig["RESULTFORMAT"] = cfg.get("RESULTFORMAT", "TSH")
     return theconfig

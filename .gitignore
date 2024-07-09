@@ -2,6 +2,7 @@ dtv_associations.parquet
 __pycache__/
 *.out
 out/
+*.log
 *.txt
 *.err
 nuitka

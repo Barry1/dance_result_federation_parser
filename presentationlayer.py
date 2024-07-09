@@ -121,3 +121,91 @@ def print_tsh_web(
         ">Email</a>.</p>",
         sep="",
     )
+
+
+def print_markdown(
+    wholereslink: str,
+    allreslinks: list[str],
+    tsh_results: list[DataFrame],
+    compnames: list[str],
+    cfg_dict: MyConfigT,
+) -> None:
+    """Export data as Markdown."""
+    thelogger.debug("PresentationLayer Markdown")
+    print(
+        "Die folgenden Inhalte sind die Auswertung der [Turnierergebnisse](",
+        wholereslink,
+        ") für den Verband ",
+        cfg_dict["THEFEDERATION"],
+        ".",
+        sep="",
+    )
+    print(
+        "Hier folgend die Ergebnisse (nach Verfügbarkeit fortlaufend gepflegt) ",
+        f"der {cfg_dict['THEFEDERATION']}-Paare.",
+        sep="",
+    )
+    for actreslink, value, turnier_info in zip(
+        allreslinks, tsh_results, compnames
+    ):
+        tournhdr: str = (
+            "\n"
+            + (
+                f"## [{turnier_info}]({actreslink})"
+                if cfg_dict["HEADLINELINKS"]
+                else f"## {turnier_info}"
+            )
+            + "\n"
+        )
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
+            "THEFEDERATION"
+        ]
+        if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
+            eprint(tournhdr)
+            eprint(
+                f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
+            )
+            eprint(
+                "<!-- =================================================== -->"
+            )
+        else:
+            print(tournhdr)
+            if cfg_dict["IMG_PREP"]:
+                print(
+                    '<div style="float: right; margin-left: 10px;'
+                    ' text-align: center;font-size: 8pt;">'
+                )
+                print(
+                    "<img"
+                    ' src="https://loremflickr.com/150/200/ballroom-dancing"'
+                    ' alt="Beispielfoto" height="200" />'
+                )
+                print("<br />Foto: loremflickr.com</div>")
+            if cfg_dict["RESULTTABLE"]:
+                print("|Platz|Paar|Verein|")
+                print("|---:|---:|---:|")
+                for resline in value[
+                    value.Verband == cfg_dict["THEFEDERATION"]
+                ].iterrows():
+                    print(
+                        f"|{resline[1].Platz}|{resline[1].Paar}|{resline[1].Verein}|"
+                    )
+            else:
+                for resline in value[
+                    value.Verband == cfg_dict["THEFEDERATION"]
+                ].iterrows():
+                    print(
+                        f" - {resline[1].Platz} {resline[1].Paar} ({resline[1].Verein}"
+                    )
+    print(
+        "\n",
+        "Das Gesamtergebnis ist unter dem [Link](",
+        wholereslink,
+        "}) zu finden.",
+        sep="",
+    )
+    print(
+        "Falls ich ein Paar übersehen habe, bitte ich freundlich um eine ",
+        "[Email](mailto:ebeling@tanzen-in-sh.de?subject=&Uuml;bersehenes%20Ergebnis)",
+        sep="",
+    )

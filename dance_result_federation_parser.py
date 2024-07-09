@@ -26,7 +26,7 @@ from valuefragments import run_grouped
 
 from configprocessing import MyConfigT, readconfig, setuplogger
 from dtvprocessing import get_dtv_df
-from presentationlayer import print_tsh_web
+from presentationlayer import print_markdown, print_tsh_web
 from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
     checkttontree,
@@ -37,6 +37,16 @@ from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 thelogger: logging.Logger = setuplogger("Basti." + __name__)  # "resultParser"
 _CFG_DICT: MyConfigT = readconfig()
+
+match _CFG_DICT["RESULTFORMAT"]:
+    case "TSH":
+        presentationfunction = print_tsh_web
+    case "MARKDOWN":
+        presentationfunction = print_markdown
+    case _:
+        presentationfunction = None
+        thelogger.debug("Missing or invalid RESULTFORMAT")
+
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
@@ -105,7 +115,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                     ],
                     "tpe",
                 )
-            print_tsh_web(
+            presentationfunction(
                 eventurl, list(allreslinks), tsh_results, compnames, _CFG_DICT
             )
 
@@ -149,7 +159,7 @@ def eventurl_to_web(synceventurl: str) -> None:
                     #                    prefer='processes',
                 )(delayed(the_interpret_fun)(a) for a in allreslinks),
             )
-            print_tsh_web(
+            presentationfunction(
                 synceventurl,
                 list(allreslinks),
                 tsh_results,
