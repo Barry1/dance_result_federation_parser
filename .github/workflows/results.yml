@@ -27,8 +27,13 @@ jobs:
         run: python3 -m pip install aiofiles bs4 fastparquet lxml html5lib git+https://github.com/Barry1/PyValueFragments.git pyannotate
       - name: create results folder
         run: mkdir results
-      - name: danceComp2024
-        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2024/index.htm > danceComp_2024.md 2> danceComp_2024.err
+      - name: danceComp
+        run: |
+          python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2019/index.htm > danceComp_2019.md 2> danceComp_2019.err
+          python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2020/index.htm > danceComp_2020.md 2> danceComp_2020.err
+          python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2022/index.htm > danceComp_2022.md 2> danceComp_2022.err
+          python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2023/index.htm > danceComp_2023.md 2> danceComp_2023.err
+          python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2024/index.htm > danceComp_2024.md 2> danceComp_2024.err
       - name: Push to orphan branch results
         run: |
           git checkout --orphan results
