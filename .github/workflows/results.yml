@@ -2,7 +2,7 @@
 name: Build some results
 permissions: read-all
 on:
-  workflow_dispatch:
+  workflow_dispatch
   #push:
   #schedule:
   #  - cron: "23 01 * * *"
@@ -26,7 +26,7 @@ jobs:
       - name: Prepare python environment
         run: python3 -m pip install aiofiles fastparquet lxml
       - name: danceComp2024
-        run: python -OO ./dance_result_federation_parser.py https\://ergebnisse.dancecomp.de/2024/index.htm > results/danceComp_2024.md 2> danceComp_2024.err
+        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2024/index.htm > results/danceComp_2024.md 2> danceComp_2024.err
       - name: Push to orphan branch results
         run: |
           git checkout --orphan results
