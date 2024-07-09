@@ -27,6 +27,16 @@ jobs:
         run: python3 -m pip install aiofiles bs4 fastparquet lxml html5lib git+https://github.com/Barry1/PyValueFragments.git pyannotate
       - name: create results folder
         run: mkdir results
+      - name: danceComp 2014
+        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2019/index.htm > danceComp_2014.md 2> danceComp_2014.err
+      - name: danceComp 2015
+        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2019/index.htm > danceComp_2015.md 2> danceComp_2015.err
+      - name: danceComp 2016
+        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2019/index.htm > danceComp_2016.md 2> danceComp_2016.err
+      - name: danceComp 2017
+        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2019/index.htm > danceComp_2017.md 2> danceComp_2017.err
+      - name: danceComp 2018
+        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2019/index.htm > danceComp_2018.md 2> danceComp_2018.err
       - name: danceComp 2019
         run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2019/index.htm > danceComp_2019.md 2> danceComp_2019.err
       - name: danceComp 2020
