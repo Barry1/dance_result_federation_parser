@@ -1,9 +1,7 @@
 from pandas import DataFrame
 from valuefragments import eprint
 
-from configprocessing import MyConfigT, readconfig
-
-_CFG_DICT: MyConfigT = readconfig()
+from configprocessing import MyConfigT
 
 
 def print_tsh_web(
@@ -11,6 +9,7 @@ def print_tsh_web(
     allreslinks: list[str],
     tsh_results: list[DataFrame],
     compnames: list[str],
+    the_cfg_dict: MyConfigT,
 ) -> None:
     """Export data as HTML for TSH-CMS."""
     print(
@@ -18,7 +17,7 @@ def print_tsh_web(
         '<hr id="system-readmore" />',
         "<p>Hier folgend die Ergebnisse",
         "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",
-        f"der {_CFG_DICT['THEFEDERATION']}-Paare.",
+        f"der {the_cfg_dict['THEFEDERATION']}-Paare.",
         #        "Die &Uuml;berschriften sind die Links zum Ergebnis.</p>",
         "<!-- =================================================== -->",
     )
@@ -30,26 +29,26 @@ def print_tsh_web(
                 f'<h2><a href="{actreslink}" target="_blank" '
                 f'rel="noopener">{turnier_info}</a></h2>'
             )
-            if _CFG_DICT["HEADLINELINKS"]
+            if the_cfg_dict["HEADLINELINKS"]
             else f"<h2>{turnier_info}</h2>"
         )
         # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
         # wird der Verband künstlich gesetzt:
         # value.Verband[value.Verband == "NAMEDCOUPLE"]
-        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = _CFG_DICT[
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = the_cfg_dict[
             "THEFEDERATION"
         ]
-        if value[value.Verband == _CFG_DICT["THEFEDERATION"]].empty:
+        if value[value.Verband == the_cfg_dict["THEFEDERATION"]].empty:
             eprint(tournhdr)
             eprint(
-                f"<p>Leider ohne {_CFG_DICT['THEFEDERATION']}-Beteiligung.</p>"
+                f"<p>Leider ohne {the_cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
             )
             eprint(
                 "<!-- =================================================== -->"
             )
         else:
             print(tournhdr)
-            if _CFG_DICT["IMG_PREP"]:
+            if the_cfg_dict["IMG_PREP"]:
                 print(
                     '<div style="float: right; margin-left: 10px;'
                     ' text-align: center;font-size: 8pt;">'
@@ -60,7 +59,7 @@ def print_tsh_web(
                     ' alt="Beispielfoto" height="200" />'
                 )
                 print("<br />Foto: loremflickr.com</div>")
-            if _CFG_DICT["RESULTTABLE"]:
+            if the_cfg_dict["RESULTTABLE"]:
                 print("<table>")
                 print(
                     "<thead><tr><th>&nbsp;</th>",
@@ -69,7 +68,7 @@ def print_tsh_web(
                     '<th style="text-align: right;">Verein</th></tr></thead><tbody>',
                 )
                 for resline in value[
-                    value.Verband == _CFG_DICT["THEFEDERATION"]
+                    value.Verband == the_cfg_dict["THEFEDERATION"]
                 ].iterrows():
                     print(
                         '<tr><td><strong>&nbsp;</strong></td><td style="text-align: right;">',
@@ -84,7 +83,7 @@ def print_tsh_web(
             else:
                 print("<ul>")
                 for resline in value[
-                    value.Verband == _CFG_DICT["THEFEDERATION"]
+                    value.Verband == the_cfg_dict["THEFEDERATION"]
                 ].iterrows():
                     # display(resline)
                     # display(resline[1])
