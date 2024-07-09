@@ -20,8 +20,8 @@ jobs:
           sudo apt update
           sudo apt install python3.11
           alias python3="python3.11"
-          sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 99
-          sudo update-alternatives --display python3
+        #  sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 99
+        #  sudo update-alternatives --display python3
       # from <https://ubuntuhandbook.org/index.php/2022/10/python-3-11-released-how-install-ubuntu/>    
       - name: checkout
         uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
       - name: Show python3 version
         run: python3 --version
       - name: Prepare python environment
-        run: python3 -m pip install aiofiles fastparquet lxml pandas tomllib
+        run: python3 -m pip install aiofiles fastparquet lxml pandas
       - name: Run the Python Module
         run: python3 -OO dtvprocessing.py
       # - name: Show the files
