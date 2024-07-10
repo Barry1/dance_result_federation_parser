@@ -1,5 +1,5 @@
 .PHONY: ltvb.de/wp-content/uploads/results/15209/index.htm
-DM_HGR_S_Kombi_2024.md: ltvb.de/wp-content/uploads/results/15209/index.htm
+DM_HGR_S_Kombi_2024.txt: ltvb.de/wp-content/uploads/results/15209/index.htm
 	$(runmesingle) 
 
 .PHONY: ltvb.de/wp-content/uploads/results/15218/index.htm
