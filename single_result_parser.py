@@ -2,21 +2,37 @@
 
 import logging
 
-from configprocessing import setuplogger
-from dance_result_federation_parser import interpret_tt_result, print_tsh_web
+from configprocessing import MyConfigT, readconfig, setuplogger
+from dance_result_federation_parser import (
+    interpret_tt_result,
+    print_markdown,
+    print_tsh_web,
+)
 
 thelogger: logging.Logger = setuplogger()
+_CFG_DICT: MyConfigT = readconfig()
+
+match _CFG_DICT["RESULTFORMAT"]:
+    case "TSH":
+        presentationfunction = print_tsh_web
+    case "MARKDOWN":
+        presentationfunction = print_markdown
+    case _:
+        presentationfunction = None
+        thelogger.debug("Missing or invalid RESULTFORMAT")
+
 if __name__ == "__main__":
     import sys
 
     if len(sys.argv) > 1:
         for theurl in sys.argv[1:]:
             thelogger.info("Auswertung von %s", theurl)
-            print_tsh_web(
+            presentationfunction(
                 theurl,
                 [theurl],
                 [interpret_tt_result(theurl)],
                 ["Turniername"],
+                _CFG_DICT,
             )
     else:
         THEURL = (
