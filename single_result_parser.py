@@ -40,6 +40,10 @@ if __name__ == "__main__":
             + "/2021_11_06_Boeblingen/index.htm"
         )
         thelogger.info("Auswertung von %s", THEURL)
-        print_tsh_web(
-            THEURL, [THEURL], [interpret_tt_result(THEURL)], ["Turniername"]
+        presentationfunction(
+            THEURL,
+            [THEURL],
+            [interpret_tt_result(THEURL)],
+            ["Turniername"],
+            _CFG_DICT,
         )
