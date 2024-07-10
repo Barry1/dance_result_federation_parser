@@ -32,6 +32,7 @@ jobs:
       - name: Results creation by Makefile
         run: |
           make --file=Makefile.githubworkflow FIRST
+          make --file=Makefile.githubworkflow OTHERS
       #      - name: BlauesBand 2023
       #        run: python -OO ./dance_result_federation_parser.py https://turniere.btc-gruen-gold.de/bb2023/index.htm > BlauesBand_2023.md 2> BlauesBand_2023.err
       #      - name: BlauesBand 2024
