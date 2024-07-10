@@ -8,13 +8,17 @@ plugins:
       ref: v1.6.0
       uri: https://github.com/trunk-io/plugins
 lint:
+  disabled:
+    - yapf
+    - sourcery
+    - bandit
   enabled:
-    - bandit@1.7.9
-    - checkov@3.2.178
-    - osv-scanner@1.8.1
+    - pylint@3.2.5
+    - checkov@3.2.182
+    - osv-scanner@1.8.2
     - trivy@0.52.2
     - trufflehog@3.79.0
-    - pyright@1.1.370
+    - pyright@1.1.371
     - ruff@0.5.1
     - yamllint@1.35.1
     - markdownlint@0.41.0
@@ -30,6 +34,8 @@ lint:
     - git-diff-check
 actions:
   enabled:
+    - poetry-check
+    - poetry-export
     - trunk-announce
     - trunk-check-pre-push
     - trunk-fmt-pre-commit
@@ -38,6 +44,6 @@ runtimes:
   enabled:
     - go@1.21.0
     - node@18.12.1
-    - python@3.10.8
+    - python@>=3.11.0
 ---
 
