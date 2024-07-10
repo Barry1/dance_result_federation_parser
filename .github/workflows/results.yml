@@ -32,7 +32,7 @@ jobs:
       - name: Results creation by Makefile - first run only for one URL
         run: make --jobs=1 --file=Makefile.githubworkflow FIRST
       - name: Results creation by Makefile - all others parallel
-        run: make --file=Makefile.githubworkflow OTHERS
+        run: make --keep-going --file=Makefile.githubworkflow OTHERS
       - name: Push to orphan branch results
         run: |
           git checkout --orphan results
