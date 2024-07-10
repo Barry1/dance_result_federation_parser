@@ -29,38 +29,10 @@ jobs:
         run: mkdir results
       - name: remove config
         run: rm config.toml
-      - name: Results creation by Makefile
-        run: |
-          make --file=Makefile.githubworkflow FIRST
-          make --file=Makefile.githubworkflow OTHERS
-      #      - name: BlauesBand 2023
-      #        run: python -OO ./dance_result_federation_parser.py https://turniere.btc-gruen-gold.de/bb2023/index.htm > BlauesBand_2023.md 2> BlauesBand_2023.err
-      #      - name: BlauesBand 2024
-      #        run: python -OO ./dance_result_federation_parser.py https://turniere.btc-gruen-gold.de/bb2024/index.htm > BlauesBand_2024.md 2> BlauesBand_2024.err
-      #      - name: BerlinDanceFestival 2023
-      #        run: python -OO ./dance_result_federation_parser.py https://berlin-dance-festival.de/files/bdf/results/2023/index.htm > BDF_2023.md 2> BDR_2023.err
-      #      - name: BerlinDanceFestival 2024
-      #        run: python -OO ./dance_result_federation_parser.py https://berlin-dance-festival.de/files/bdf/results/2024/index.htm > BDF_2024.md 2> BDR_2024.err
-      #      - name: danceComp 2014
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2014/index.htm > danceComp_2014.md 2> danceComp_2014.err
-      #      - name: danceComp 2015
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2015/index.htm > danceComp_2015.md 2> danceComp_2015.err
-      #      - name: danceComp 2016
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2016/index.htm > danceComp_2016.md 2> danceComp_2016.err
-      #      - name: danceComp 2017
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2017/index.htm > danceComp_2017.md 2> danceComp_2017.err
-      #      - name: danceComp 2018
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2018/index.htm > danceComp_2018.md 2> danceComp_2018.err
-      #      - name: danceComp 2019
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2019/index.htm > danceComp_2019.md 2> danceComp_2019.err
-      #      - name: danceComp 2020
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2020/index.htm > danceComp_2020.md 2> danceComp_2020.err
-      #      - name: danceComp 2022
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2022/index.htm > danceComp_2022.md 2> danceComp_2022.err
-      #      - name: danceComp 2023
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2023/index.htm > danceComp_2023.md 2> danceComp_2023.err
-      #      - name: danceComp 2024
-      #        run: python -OO ./dance_result_federation_parser.py https://ergebnisse.dancecomp.de/2024/index.htm > danceComp_2024.md 2> danceComp_2024.err
+      - name: Results creation by Makefile - first run only for one URL
+        run: make --jobs=1 --file=Makefile.githubworkflow FIRST
+      - name: Results creation by Makefile - all others parallel
+        run: make --file=Makefile.githubworkflow OTHERS
       - name: Push to orphan branch results
         run: |
           git checkout --orphan results
