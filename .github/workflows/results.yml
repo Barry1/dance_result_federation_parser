@@ -30,7 +30,7 @@ jobs:
       - name: remove config
         run: rm config.toml
       - name: remove config
-        run: make --file Makefile.githubaction FIRST
+        run: make --file=Makefile.githubaction FIRST
 
         #      - name: BlauesBand 2023
       #        run: python -OO ./dance_result_federation_parser.py https://turniere.btc-gruen-gold.de/bb2023/index.htm > BlauesBand_2023.md 2> BlauesBand_2023.err

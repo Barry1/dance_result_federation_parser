@@ -7,7 +7,7 @@ FIRST: DM_HGR_S_Kombi_2024.md
 
 .PHONY: ltvb.de/wp-content/uploads/results/15209/index.htm
 DM_HGR_S_Kombi_2024.md: ltvb.de/wp-content/uploads/results/15209/index.htm
-	$(runmesingle) https\://$< > $@ 2> $(@:.txt=.err)
+	$(runmesingle) https\://$< > $@ 2> $(@:.md=.err)
 
 
 #OBJS=dtvprocessing.py dance_result_federation_parser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
