@@ -1,6 +1,9 @@
 """Module analyzing single competitions not events."""
 
 import logging
+from typing import Callable
+
+from pandas import DataFrame
 
 from configprocessing import MyConfigT, readconfig, setuplogger
 from dance_result_federation_parser import (
@@ -11,7 +14,9 @@ from dance_result_federation_parser import (
 
 thelogger: logging.Logger = setuplogger()
 _CFG_DICT: MyConfigT = readconfig()
-
+presentationfunction: Callable[
+    [str, list[str], list[DataFrame], list[str], MyConfigT], None
+]
 match _CFG_DICT["RESULTFORMAT"]:
     case "TSH":
         presentationfunction = print_tsh_web

@@ -37,7 +37,9 @@ from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 thelogger: logging.Logger = setuplogger()
 _CFG_DICT: MyConfigT = readconfig()
-
+presentationfunction: Callable[
+    [str, list[str], list[DataFrame], list[str], MyConfigT], None
+]
 match _CFG_DICT["RESULTFORMAT"]:
     case "TSH":
         presentationfunction = print_tsh_web
