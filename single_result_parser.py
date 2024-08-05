@@ -6,11 +6,8 @@ from typing import Callable
 from pandas import DataFrame
 
 from configprocessing import MyConfigT, readconfig, setuplogger
-from dance_result_federation_parser import (
-    interpret_tt_result,
-    print_markdown,
-    print_tsh_web,
-)
+from dance_result_federation_parser import interpret_tt_result
+from presentationlayer import print_markdown, print_tsh_web
 
 thelogger: logging.Logger = setuplogger()
 _CFG_DICT: MyConfigT = readconfig()
