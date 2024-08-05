@@ -19,9 +19,9 @@ match _CFG_DICT["RESULTFORMAT"]:
         presentationfunction = print_tsh_web
     case "MARKDOWN":
         presentationfunction = print_markdown
-    case _:
-        presentationfunction = None
-        thelogger.debug("Missing or invalid RESULTFORMAT")
+#    case _:
+#        presentationfunction = None
+#        thelogger.debug("Missing or invalid RESULTFORMAT")
 
 if __name__ == "__main__":
     import sys
