@@ -13,7 +13,7 @@ ignore = ["E203"]
 line-length = 79
 target-version = ['py311'] #'py37', 'py38',
 color = true
-safe = true
+#safe = true
 
 #force-exlude = ".*/venv/.*"
 [tool.darker]

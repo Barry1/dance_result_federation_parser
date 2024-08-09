@@ -37,16 +37,16 @@ from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 thelogger: logging.Logger = setuplogger()
 _CFG_DICT: MyConfigT = readconfig()
-presentationfunction: Callable[
+presentation_function: Callable[
     [str, list[str], list[DataFrame], list[str], MyConfigT], None
 ]
 match _CFG_DICT["RESULTFORMAT"]:
     case "TSH":
-        presentationfunction = print_tsh_web
+        presentation_function = print_tsh_web
     case "MARKDOWN":
-        presentationfunction = print_markdown
+        presentation_function = print_markdown
     case _:
-        presentationfunction = None
+        presentation_function = None
         thelogger.debug("Missing or invalid RESULTFORMAT")
 
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
@@ -117,7 +117,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                     ],
                     "tpe",
                 )
-            presentationfunction(
+            presentation_function(
                 eventurl, list(allreslinks), tsh_results, compnames, _CFG_DICT
             )
 
@@ -161,7 +161,7 @@ def eventurl_to_web(synceventurl: str) -> None:
                     #                    prefer='processes',
                 )(delayed(the_interpret_fun)(a) for a in allreslinks),
             )
-            presentationfunction(
+            presentation_function(
                 synceventurl,
                 list(allreslinks),
                 tsh_results,
