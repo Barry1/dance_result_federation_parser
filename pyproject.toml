@@ -109,7 +109,7 @@ lxml = ">=5.2"
 pyarrow = ">=16"
 python = "^3.11"
 pytype = "^2024"
-requests = "^2.32.0"
+requests = "^2.32.2"
 typing = "^3.7.4"
 typing-extensions = ">=4.3"
 
