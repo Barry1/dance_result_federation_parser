@@ -65,7 +65,7 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
         if (the_parent := eintrag.parent) is not None and not isinstance(
             href_val := the_parent["href"], list
         ):
-            tournmtsdict[eintrag.text] = f"{baseurl}/" + href_val
+            tournmtsdict[eintrag.text] = f"{baseurl}/{href_val}"
     return tournmtsdict
 
 

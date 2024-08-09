@@ -38,8 +38,7 @@ if __name__ == "__main__":
             )
     else:
         THEURL = (
-            "https://www.tbw.de/turnierergebnisse/2021"
-            + "/2021_11_06_Boeblingen/index.htm"
+            f"https://www.tbw.de/turnierergebnisse/2021/2021_11_06_Boeblingen/index.htm"
         )
         thelogger.info("Auswertung von %s", THEURL)
         presentationfunction(
