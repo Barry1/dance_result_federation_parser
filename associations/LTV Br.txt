@@ -1,0 +1,34 @@
+31 Vereine im LTV Br:
+                                              Verein                  Ort
+ID                                                                       
+1639                            TSC Rot-Gold Potsdam              Potsdam
+1641                      Tanzsportclub Schwedt/Oder              Schwedt
+1871            TSC Take it easy Königs Wusterhausen  Königs Wusterhausen
+1979                    TSC Sängerstadt Finsterwalde         Finsterwalde
+1988            TSA Grün-Gold d. SV Motor Eberswalde           Eberswalde
+2038                   TSA d. ESV Lokomotive Potsdam              Potsdam
+2120                                Tanz-Club Luckau               Luckau
+2124                           1. TSC Frankfurt/Oder       Frankfurt/Oder
+2164                          TSC Potsblitz, Potsdam              Potsdam
+2283                   Tanzsportclub Lausitz Cottbus              Cottbus
+2549                        Tanzsportclub Rose Forst                Forst
+2686                      Jazz Dance Club Cottbus 99              Cottbus
+2873                           TSC Smaragd Forst (L)                Forst
+2911        Tanzsportclub Arriba, Mittenwalde-Motzen             Heidesee
+2966                                 Tanzclub Bernau               Bernau
+3306                                      TTK Barnim               Barnim
+3412                                  KSC Strausberg           Strausberg
+3437  TSC-Imperial-Neuruppin - Club für Amateurtanz-            Neuruppin
+3610                               TanzForUM Schwedt              Schwedt
+3751                             Buckower Linedancer               Buckow
+3809                        TSA im TSV Schönwalde 03           Schönwalde
+3814                      TC Schwarz Silber Wandlitz             Wandlitz
+3892                                Elegance Potsdam              Potsdam
+3933                             SV 1919 Woltersdorf          Woltersdorf
+4009                        TC Schwarz-Rot Neuruppin            Neuruppin
+4044              TSA d. Erkneraner Woltersdorfer KG          Woltersdorf
+4059               TSA d. SV Blau Gelb 90 Sonnewalde           Sonnewalde
+4191     Tanz Sport Acad. Allround, Dallgow-Döberitz     Dallgow-Döberitz
+4213                     TSC Keep Dancing , Heidesee             Heidesee
+4224                          TSC Wackerdance Motzen               Motzen
+4298                            TSA d. SV Dallgow 47     Dallgow-Döberitz
