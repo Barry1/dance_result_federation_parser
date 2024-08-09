@@ -148,6 +148,7 @@ types-requests = "^2.28.11.7"
 ufmt = ">=2.0.1"
 vermin = ">=1.4.0"
 vulture = ">=2.5"
+flynt = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies.black]
 version = ">22"
@@ -172,3 +173,9 @@ version = ">8.4"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.flynt]
+aggressive = true
+transform_concats = true
+transform_joins = true
+fail_on_change = true
