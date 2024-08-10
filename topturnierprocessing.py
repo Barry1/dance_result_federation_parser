@@ -8,8 +8,9 @@ from urllib.error import HTTPError
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, SoupStrainer, Tag
 from lxml.etree import _ElementTree as ElementTree
-from pandas import DataFrame, concat, read_html
+from pandas import concat, read_html
 from requests import get as requests_get
+from strictly_typed_pandas import DataSet as DataFrame
 
 from configprocessing import LOGGERNAME, MyConfigT, readconfig
 from dtvprocessing import get_dtv_df

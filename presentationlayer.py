@@ -2,7 +2,8 @@
 
 import logging
 
-from pandas import DataFrame
+# from pandas import DataFrame
+from strictly_typed_pandas import DataSet as DataFrame
 from valuefragments import eprint
 
 from configprocessing import LOGGERNAME, MyConfigT
@@ -42,9 +43,17 @@ def print_tsh_web(
         # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
         # wird der Verband künstlich gesetzt:
         # value.Verband[value.Verband == "NAMEDCOUPLE"]
-        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
-            "THEFEDERATION"
-        ]
+        try:
+            value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
+                "THEFEDERATION"
+            ]
+        except NotImplementedError as nie:
+            eprint(
+                f"HIER {__file__} muss Basti noch etwas tun @TODO inplace DataSet geht nicht."
+            )
+            eprint("error: ", nie)
+            eprint("error file info: ", nie.__traceback__.tb_frame)
+            eprint("error line#: ", nie.__traceback__.tb_lineno)
         if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
             eprint(tournhdr)
             eprint(

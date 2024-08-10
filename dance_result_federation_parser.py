@@ -20,8 +20,8 @@ from lxml.etree import _ElementTree
 
 # import lxml.etree
 from lxml.html import parse
-from pandas import DataFrame
 from pandas import set_option as pandas_set_option
+from strictly_typed_pandas import DataSet as DataFrame
 from valuefragments import run_grouped
 
 from configprocessing import MyConfigT, readconfig, setuplogger
