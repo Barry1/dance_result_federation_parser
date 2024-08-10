@@ -8,7 +8,8 @@ from urllib.request import urlopen
 
 from lxml.etree import ElementTree
 from lxml.html import parse
-from pandas import DataFrame, read_html, to_numeric  # , option_context
+from pandas import read_html, to_numeric  # , option_context
+from strictly_typed_pandas import DataSet as DataFrame
 
 from configprocessing import LOGGERNAME
 from dtvprocessing import get_dtv_df

@@ -1,8 +1,11 @@
 import configparser
 from io import StringIO
 
-import pandas
 import requests
+from pandas import read_csv
+
+# import pandas
+from strictly_typed_pandas import DataSet as DataFrame
 from valuefragments import memoize
 
 from stringprocessing import correcttitleposition
@@ -21,7 +24,7 @@ def get_esvcredentials() -> dict[str, str]:
 
 
 @memoize
-def get_couples_df() -> pandas.DataFrame:
+def get_couples_df() -> DataFrame:
     """Login to esv and retrieve csv file of couples."""
     readopts = {"encoding": "iso8859_15", "sep": ";", "usecols": ["Paar"]}
     login_url = "https://ev.tanzsport-portal.de"
@@ -36,9 +39,7 @@ def get_couples_df() -> pandas.DataFrame:
             couples_url, data={"execute": 1, "export": 1, "print": 0}
         )
         esvsession.get(logout_url)
-    couplesdf: pandas.DataFrame = pandas.read_csv(
-        StringIO(whatweneed.text), **readopts
-    )
+    couplesdf: DataFrame = read_csv(StringIO(whatweneed.text), **readopts)
     print(couplesdf)
     couplesdf["Paar"] = couplesdf["Paar"].apply(correcttitleposition)
     print(couplesdf)
