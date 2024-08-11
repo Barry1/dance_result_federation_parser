@@ -29,7 +29,7 @@ jobs:
       - name: Show python3 version
         run: python3 --version
       - name: Prepare python environment
-        run: python3 -m pip install aiofiles fastparquet lxml
+        run: python3 -m pip install aiofiles fastparquet lxml strictly-typed-pandas
       # pandas comes with fastparquet
       - name: Run the Python Module
         run: python3 -OO dtvprocessing.py
