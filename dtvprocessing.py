@@ -43,7 +43,9 @@ def create_dtv_df() -> DataFrame:
     urllib3.disable_warnings()
     with Session() as sess_context:
         # sess_context.verify = False
-        dtv_assocs_dict_list = parse_dtv_to_list_dict(sess_context)
+        dtv_assocs_dict_list: list[dict[str, str]] = parse_dtv_to_list_dict(
+            sess_context
+        )
     return assocsdf_from_list_dict(dtv_assocs_dict_list)
 
 
@@ -131,7 +133,7 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     """Retrieve dataframe of associations from Cache or Web."""
     dtv_associations_cache_file: str = (
-        f"{__file__[:__file__.rfind('/')]}/dtv_associations.parquet"  # noqa: E203
+        f"{__file__[:__file__.rfind('/')]}/dtv_associations.parquet"
     )
     dtv_associations: DataFrame
     if os.path.exists(dtv_associations_cache_file) and not (
@@ -166,7 +168,7 @@ async def outputassocfiles() -> None:
     )
     print(dtv_assocs_df[dtv_assocs_df.Verband == "TSH"])
     for verbandsvereine in dtv_assocs_df.groupby(by="Verband"):
-        # make folder associations mabye
+        # make folder associations if needed
         if not await aiofiles.os.path.isdir("associations"):
             await aiofiles.os.mkdir("associations")
         async with aiofiles.open(
