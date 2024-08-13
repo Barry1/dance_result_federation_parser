@@ -24,12 +24,14 @@ jobs:
       # from <https://ubuntuhandbook.org/index.php/2022/10/python-3-11-released-how-install-ubuntu/>
       - name: checkout
         uses: actions/checkout@v4
-      #- name: Install TeXlive and utils
-      #  run: sudo apt-get update && sudo apt-get install texlive-latex-base dvisvgm texlive-luatex texlive-latex-extra texlive-fonts-extra
       - name: Show python3 version
         run: python3 --version
       - name: Prepare python environment
-        run: python3 -m pip install aiofiles fastparquet lxml strictly-typed-pandas
+        run: python3 -m pip install poetry
+      - name: Get dependencies from poetry
+        run: poetry export --output=requirements.txt
+      - name: Install dependencies from poetry
+        run: python3 -m pip install -r requirements.txt
       # pandas comes with fastparquet
       - name: Run the Python Module
         run: python3 -OO dtvprocessing.py

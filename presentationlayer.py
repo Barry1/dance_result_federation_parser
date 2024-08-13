@@ -3,7 +3,9 @@
 import logging
 
 # from pandas import DataFrame
-from strictly_typed_pandas import DataSet as DataFrame
+from pandas import DataFrame
+
+# from strictly_typed_pandas import DataSet as DataFrame
 from valuefragments import eprint
 
 from configprocessing import LOGGERNAME, MyConfigT

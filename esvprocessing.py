@@ -2,10 +2,11 @@ import configparser
 from io import StringIO
 
 import requests
-from pandas import read_csv
 
 # import pandas
-from strictly_typed_pandas import DataSet as DataFrame
+from pandas import DataFrame, read_csv
+
+# from strictly_typed_pandas import DataSet as DataFrame
 from valuefragments import memoize
 
 from stringprocessing import correcttitleposition

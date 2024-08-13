@@ -11,12 +11,14 @@ import aiofiles
 import aiofiles.os
 from lxml.etree import _ElementUnicodeResult
 from lxml.html import HtmlElement, fromstring
-from pandas import read_parquet
+from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
-from strictly_typed_pandas import DataSet as DataFrame
 
 from configprocessing import LOGGERNAME
 from stringprocessing import cleanevfromentry
+
+# from strictly_typed_pandas import DataSet as DataFrame
+
 
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
