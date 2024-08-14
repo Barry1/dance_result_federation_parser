@@ -133,7 +133,7 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     """Retrieve dataframe of associations from Cache or Web."""
     dtv_associations_cache_file: str = (
-        f"{__file__[:__file__.rfind('/')]}/dtv_associations.parquet"
+        f"{__file__[:__file__.rfind(os.sep)]}/dtv_associations.parquet"
     )
     dtv_associations: DataFrame
     if os.path.exists(dtv_associations_cache_file) and not (
