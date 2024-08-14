@@ -1620,8 +1620,8 @@ files = [
 
 [package.dependencies]
 numpy = [
-    {version = ">=1.23.2", markers = "python_version == \"3.11\""},
     {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1.23.2", markers = "python_version == \"3.11\""},
 ]
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
@@ -1654,20 +1654,17 @@ xml = ["lxml (>=4.9.2)"]
 
 [[package]]
 name = "pandas-stubs"
-version = "2.2.2.240603"
+version = "2.2.2.240807"
 description = "Type annotations for pandas"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "pandas_stubs-2.2.2.240603-py3-none-any.whl", hash = "sha256:e08ce7f602a4da2bff5a67475ba881c39f2a4d4f7fccc1cba57c6f35a379c6c0"},
-    {file = "pandas_stubs-2.2.2.240603.tar.gz", hash = "sha256:2dcc86e8fa6ea41535a4561c1f08b3942ba5267b464eff2e99caeee66f9e4cd1"},
+    {file = "pandas_stubs-2.2.2.240807-py3-none-any.whl", hash = "sha256:893919ad82be4275f0d07bb47a95d08bae580d3fdea308a7acfcb3f02e76186e"},
+    {file = "pandas_stubs-2.2.2.240807.tar.gz", hash = "sha256:64a559725a57a449f46225fbafc422520b7410bff9252b661a225b5559192a93"},
 ]
 
 [package.dependencies]
-numpy = [
-    {version = ">=1.23.5", markers = "python_version >= \"3.9\" and python_version < \"3.12\""},
-    {version = ">=1.26.0", markers = "python_version >= \"3.12\" and python_version < \"3.13\""},
-]
+numpy = ">=1.23.5"
 types-pytz = ">=2022.1.1"
 
 [[package]]
@@ -2000,8 +1997,8 @@ files = [
 astroid = ">=3.2.4,<=3.3.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = [
-    {version = ">=0.3.6", markers = "python_version >= \"3.11\" and python_version < \"3.12\""},
     {version = ">=0.3.7", markers = "python_version >= \"3.12\""},
+    {version = ">=0.3.6", markers = "python_version >= \"3.11\" and python_version < \"3.12\""},
 ]
 isort = ">=4.2.5,<5.13.0 || >5.13.0,<6"
 mccabe = ">=0.6,<0.8"
@@ -2487,22 +2484,6 @@ files = [
 [package.extras]
 dev = ["attribution (==1.7.1)", "black (==24.4.2)", "coverage (==7.5.1)", "flake8 (==7.0.0)", "flit (==3.9.0)", "mypy (==1.10.0)", "packaging (==24.0)", "ufmt (==2.6.0)", "usort (==1.0.8.post1)"]
 docs = ["sphinx (==7.3.7)", "sphinx-mdinclude (==0.6.0)"]
-
-[[package]]
-name = "strictly-typed-pandas"
-version = "0.3.4"
-description = "Static type checking of pandas DataFrames"
-optional = false
-python-versions = ">=3.8.0"
-files = [
-    {file = "strictly_typed_pandas-0.3.4-py3-none-any.whl", hash = "sha256:9356c57ab78437093be68d35862ebea5c02c1d42e5809d52364e9d05989dd33e"},
-    {file = "strictly_typed_pandas-0.3.4.tar.gz", hash = "sha256:ea74bd3af273294749e41a26866e2f9d13f61489cf508ba61f303aaca586ad8a"},
-]
-
-[package.dependencies]
-numpy = "<=2.0.1"
-pandas = "<=2.2.2"
-pandas-stubs = "<=2.2.2.240603"
 
 [[package]]
 name = "tabulate"
@@ -3039,4 +3020,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "720db74eb5f241c09015af03a54ba9881083e03d0761c5303187b42b607cc89d"
+content-hash = "aecc4146be1817b672e328397ddb42d22315e3a2e52d66830f0792322ac82544"

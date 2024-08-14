@@ -110,7 +110,7 @@ pyarrow = ">=16"
 python = "^3.11"
 pytype = ">=2024"
 requests = "^2.32.0"
-strictly-typed-pandas = "^0.3.4"
+#strictly-typed-pandas = "^0.3.4"
 typing = "^3.7.4"
 typing-extensions = ">=4.3"
 
