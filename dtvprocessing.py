@@ -20,7 +20,7 @@ from stringprocessing import cleanevfromentry
 # from strictly_typed_pandas import DataSet as DataFrame
 
 
-thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
+thelogger: logging.Logger = logging.getLogger(name=f"{LOGGERNAME}.{__name__}")
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
 MYREGEX: Literal["(?P<Verein>.*)–(?P<Verband>.*)\\((?P<ID>\\d+)\\)"] = (
     r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
@@ -41,12 +41,12 @@ def create_dtv_df() -> DataFrame:
     # np.dtype([('ID',int),('Verband','O'),('Verein','O'),('Ort','O')])
     # needs to be object type because of variable lenght
     urllib3.disable_warnings()
-    with Session() as sess_context:
+    with Session() as the_sess_context:
         # sess_context.verify = False
         dtv_assocs_dict_list: list[dict[str, str]] = parse_dtv_to_list_dict(
-            sess_context
+            sess_context=the_sess_context
         )
-    return assocsdf_from_list_dict(dtv_assocs_dict_list)
+    return assocsdf_from_list_dict(input_list_dict=dtv_assocs_dict_list)
 
 
 def assocsdf_from_list_dict(
@@ -54,19 +54,19 @@ def assocsdf_from_list_dict(
 ) -> DataFrame:
     """Convert assosiations list of dicts to DataFrame."""
     dtv_associations: DataFrame = DataFrame.from_records(
-        input_list_dict, index="ID"
+        data=input_list_dict, index="ID"
     )
-    dtv_associations.index = dtv_associations.index.astype(int)
+    dtv_associations.index = dtv_associations.index.astype(dtype=int)
     dtv_associations["Verein"] = dtv_associations["Verein"].apply(
-        cleanevfromentry
+        func=cleanevfromentry
     )
     dtv_associations[["Verband", "Ort"]] = dtv_associations[
         ["Verband", "Ort"]
-    ].apply(lambda x: x.str.strip())
+    ].apply(f=lambda x: x.str.strip())
     thelogger.info("%s", dtv_associations.describe())
     thelogger.debug(
         "%s",
-        dtv_associations[["Verband", "Verein"]].groupby("Verband").count(),
+        dtv_associations[["Verband", "Verein"]].groupby(by="Verband").count(),
     )
     return dtv_associations.sort_index()
 
@@ -78,9 +78,9 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
         'input[@name="REQUEST_TOKEN"]/@value'
     )
     dtv_assocs_dict_list: list[dict[str, str]] = []
-    rqtoken: str = fromstring(sess_context.get(SEARCH_URL).content).xpath(
-        xpath_token
-    )
+    rqtoken: str = fromstring(
+        html=sess_context.get(url=SEARCH_URL).content
+    ).xpath(xpath_token)
     login_data_type = TypedDict(
         "login_data_type",
         {
@@ -102,16 +102,16 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
     }
     tempfound: list[HtmlElement]
     thelogger.debug(
-        "%s", sess_context.post(SEARCH_URL, data=login_data).content
+        "%s", sess_context.post(url=SEARCH_URL, data=login_data).content
     )
     while (
         tempfound := fromstring(
-            sess_context.post(SEARCH_URL, data=login_data).content
+            html=sess_context.post(url=SEARCH_URL, data=login_data).content
         )
         .xpath(XPATH_FOR_ORGS)[0]
         .getchildren()
     ):
-        thelogger.debug(len(tempfound))
+        thelogger.debug(msg=len(tempfound))
         the_place: str = ""
         orgdata: list[_ElementUnicodeResult]
         for eintrag in tempfound:
@@ -121,7 +121,9 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                     the_place = eintrag.text
             else:  # Neuer Verein
                 # thelogger.debug("%s",repr(eintrag))
-                orgdata = eintrag.xpath('div[@class="trigger"]/h3/text()')
+                orgdata = eintrag.xpath(
+                    _path='div[@class="trigger"]/h3/text()'
+                )
                 if tempmatch := re.match(MYREGEX, orgdata[0]):
                     tempmatchdict: dict[str, str] = tempmatch.groupdict()
                     tempmatchdict["Ort"] = the_place
@@ -136,25 +138,28 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
         f"{__file__[:__file__.rfind(os.sep)]}/dtv_associations.parquet"
     )
     dtv_associations: DataFrame
-    if os.path.exists(dtv_associations_cache_file) and not (
+    if os.path.exists(path=dtv_associations_cache_file) and not (
         autoupdate
-        and time.time() - os.path.getmtime(dtv_associations_cache_file)
+        and time.time()
+        - os.path.getmtime(filename=dtv_associations_cache_file)
         > MAX_CACHE_AGE_IN_SECONDS
     ):  # Cache-Datei vorhanden
         thelogger.info(
             "DTV-Vereinsdaten sind vom %s.",
-            time.ctime(os.path.getmtime(dtv_associations_cache_file)),
+            time.ctime(
+                seconds=os.path.getmtime(filename=dtv_associations_cache_file)
+            ),
         )
         dtv_associations = read_parquet(
-            dtv_associations_cache_file, engine=PARQUETENGINE
+            path=dtv_associations_cache_file, engine=PARQUETENGINE
         )
     else:  # Keine oder veraltete Cache-Datei vorhanden
-        thelogger.info("Aktuelle DTV-Vereinsdaten werden geholt.")
+        thelogger.info(msg="Aktuelle DTV-Vereinsdaten werden geholt.")
         dtv_associations = create_dtv_df()
         dtv_associations.to_parquet(
-            dtv_associations_cache_file, engine=PARQUETENGINE
+            path=dtv_associations_cache_file, engine=PARQUETENGINE
         )
-        thelogger.info("DTV-Vereinsdaten aktualisiert.")
+        thelogger.info(msg="DTV-Vereinsdaten aktualisiert.")
     return dtv_associations
 
 
@@ -170,9 +175,9 @@ async def outputassocfiles() -> None:
     for verbandsvereine in dtv_assocs_df.groupby(by="Verband"):
         # make folder associations if needed
         if not await aiofiles.os.path.isdir("associations"):
-            await aiofiles.os.mkdir("associations")
+            await aiofiles.os.mkdir(path="associations")
         async with aiofiles.open(
-            f"associations/{verbandsvereine[0]}.txt", "w"
+            file=f"associations/{verbandsvereine[0]}.txt", mode="w"
         ) as ausgabedatei:
             await ausgabedatei.write(
                 f"{len(verbandsvereine[1])} Vereine im {verbandsvereine[0]}:\n"
@@ -184,4 +189,4 @@ async def outputassocfiles() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(outputassocfiles())
+    asyncio.run(main=outputassocfiles())
