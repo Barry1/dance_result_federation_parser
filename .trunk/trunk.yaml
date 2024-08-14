@@ -14,11 +14,11 @@ lint:
     - bandit
   enabled:
     - pylint@3.2.6
-    - checkov@3.2.222
+    - checkov@3.2.223
     - osv-scanner@1.8.3
     - trivy@0.54.1
     - trufflehog@3.81.8
-    - pyright@1.1.375
+    - pyright@1.1.376
     - ruff@0.5.7
     - yamllint@1.35.1
     - markdownlint@0.41.0
