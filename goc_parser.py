@@ -4,11 +4,10 @@ from joblib import Parallel, delayed
 from pandas import DataFrame
 from valuefragments import getselectedhreflinks
 
-from configprocessing import MyConfigT, readconfig, setuplogger
+from configprocessing import MyConfigT, readconfig  # , setuplogger
 from presentationlayer import print_tsh_web as presentation_function
 from stringprocessing import sr_human_comp_info as human_comp_info
 from topturnierprocessing import interpret_tt_result as the_interpret_fun
-from topturnierprocessing import srparserurl as theparsefun
 
 _CFG_DICT: MyConfigT = readconfig()
 if __name__ == "__main__":
@@ -27,7 +26,6 @@ if __name__ == "__main__":
             backend="multiprocessing",
         )(delayed(the_interpret_fun)(a) for a in allreslinks),
     )
-    # presentation_function(synceventurl,list(allreslinks),tsh_results,compnames,_CFG_DICT)
     presentation_function(
         "https://www.goc-stuttgart.de/event-guide/ergebnisarchiv",
         list(allreslinks),

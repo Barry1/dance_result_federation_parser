@@ -9,7 +9,8 @@ from typing import Literal, TypedDict
 
 import aiofiles
 import aiofiles.os
-from lxml.etree import _ElementUnicodeResult
+
+# from lxml.etree import _ElementUnicodeResult
 from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
@@ -113,7 +114,7 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
     ):
         thelogger.debug(len(tempfound))
         the_place: str = ""
-        orgdata: list[_ElementUnicodeResult]
+        # orgdata: list[_ElementUnicodeResult]
         for eintrag in tempfound:
             if eintrag.tag == "h3":  # Neue Ortsangabe
                 if eintrag.text:
