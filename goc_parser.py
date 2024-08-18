@@ -1,5 +1,3 @@
-from typing import cast
-
 from joblib import Parallel, delayed
 from pandas import DataFrame
 from valuefragments import getselectedhreflinks
