@@ -1,0 +1,14 @@
+{
+  "makefile.configureOnOpen": false,
+  "python.defaultInterpreterPath": "/home/ebeling/GitHub/dance_result_federation_parser/.venv/bin/python",
+  "debugpy.showPythonInlineValues": true,
+  "pythonIndent.trimLinesWithOnlyWhitespace": true,
+  "pythonTestExplorer.testFramework": "pytest",
+  "python.analysis.inlayHints.callArgumentNames": "all",
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.pytestParameters": true,
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.completeFunctionParens": true
+}
