@@ -108,7 +108,6 @@ joblib = ">=1.4"
 lxml = ">=5.2"
 pyarrow = ">=16"
 python = "^3.11"
-pytype = ">=2024"
 requests = "^2.32.0"
 #strictly-typed-pandas = "^0.3.4"
 typing = "^3.7.4"
@@ -164,8 +163,10 @@ version = "*"
 platform = "linux"
 
 [tool.poetry.group.dev.dependencies.pytype]
-version = ">=2022.10.26"
-python = "~3.10"
+version = ">=2024"
+python = ">=3.10"
+#markers = "sys_platform == 'linux'" 
+platform = "linux"
 
 [tool.poetry.group.dev.dependencies.pylama]
 extras = ["all"]

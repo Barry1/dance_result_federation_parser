@@ -139,7 +139,7 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
         f"{__file__[:__file__.rfind(os.sep)]}/dtv_associations.parquet"
     )
     dtv_associations: DataFrame
-    if os.path.exists(path=dtv_associations_cache_file) and not (
+    if os.path.exists(dtv_associations_cache_file) and not (
         autoupdate
         and time.time()
         - os.path.getmtime(filename=dtv_associations_cache_file)
@@ -148,7 +148,7 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
         thelogger.info(
             "DTV-Vereinsdaten sind vom %s.",
             time.ctime(
-                seconds=os.path.getmtime(filename=dtv_associations_cache_file)
+                os.path.getmtime(filename=dtv_associations_cache_file)
             ),
         )
         dtv_associations = read_parquet(
