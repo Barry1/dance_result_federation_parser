@@ -15,13 +15,13 @@ from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
 
-from configprocessing import LOGGERNAME
+from configprocessing import setuplogger
 from stringprocessing import cleanevfromentry
 
 # from strictly_typed_pandas import DataSet as DataFrame
 
 
-thelogger: logging.Logger = logging.getLogger(name=f"{LOGGERNAME}.{__name__}")
+thelogger: logging.Logger = setuplogger()
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
 MYREGEX: Literal["(?P<Verein>.*)–(?P<Verband>.*)\\((?P<ID>\\d+)\\)"] = (
     r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
@@ -63,7 +63,7 @@ def assocsdf_from_list_dict(
     )
     dtv_associations[["Verband", "Ort"]] = dtv_associations[
         ["Verband", "Ort"]
-    ].apply(f=lambda x: x.str.strip())
+    ].apply(lambda x: x.str.strip())
     thelogger.info("%s", dtv_associations.describe())
     thelogger.debug(
         "%s",
@@ -128,6 +128,7 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                 if tempmatch := re.match(MYREGEX, orgdata[0]):
                     tempmatchdict: dict[str, str] = tempmatch.groupdict()
                     tempmatchdict["Ort"] = the_place
+                    thelogger.debug(tempmatchdict)
                     dtv_assocs_dict_list.extend([tempmatchdict])
         login_data["seite"] += 1
     return dtv_assocs_dict_list
