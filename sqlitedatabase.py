@@ -36,9 +36,9 @@ CREATE VIEW Fed_Club_Count as
 """
 INSERT_FEDERATION_STMT = 'INSERT INTO "Federations" ("Abbrev") VALUES(?);'
 INSERT_DETAILED_FEDERATION_STMT = """
-	'INSERT INTO "Federations"
+	INSERT INTO "Federations"
 	("Abbrev","Name","URL")
-	VALUES(:Abbrev,:Name,:URL);'
+	VALUES(:Abbrev,:Name,:URL);
 """
 
 INSERT_NEW_CLUB_STATEMENT = """INSERT INTO "Clubs"
