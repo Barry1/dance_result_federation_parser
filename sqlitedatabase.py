@@ -1,7 +1,11 @@
-from configprocessing import setuplogger
-import sqlite3
+"""Module for the SQLite-Database handling."""
+
 import logging
+import sqlite3
+
 from valuefragments import portable_timing
+
+from configprocessing import setuplogger
 
 thelogger: logging.Logger = setuplogger()
 
@@ -31,17 +35,23 @@ CREATE VIEW Fed_Club_Count as
 	ORDER BY Abbrev;
 """
 INSERT_FEDERATION_STMT = 'INSERT INTO "Federations" ("Abbrev") VALUES(?);'
-INSERT_DETAILED_FEDERATION_STMT = 'INSERT INTO "Federations" ("Abbrev","Name","URL") VALUES(:Abbrev,:Name,:URL);'
+INSERT_DETAILED_FEDERATION_STMT = """
+	'INSERT INTO "Federations"
+	("Abbrev","Name","URL")
+	VALUES(:Abbrev,:Name,:URL);'
+"""
 
 INSERT_NEW_CLUB_STATEMENT = """INSERT INTO "Clubs"
 	("ID", "Name", "City", "FederationID")
 	SELECT :ID, :Verein, :Ort, ID
 	FROM "Federations"
-	WHERE "Abbrev"=:Verband;"""
+	WHERE "Abbrev"=:Verband;
+"""
 
 
 @portable_timing
 def insertnewclubs(tempmatchdict: list[dict[str, str]]) -> None:
+    """Insert given clubs and their details into the database."""
     with sqlite3.connect(DATABASE_FILENAME) as con:
         con.set_trace_callback(thelogger.debug)
         con.executemany(INSERT_NEW_CLUB_STATEMENT, tempmatchdict)
