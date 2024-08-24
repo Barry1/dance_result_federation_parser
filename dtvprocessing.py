@@ -9,8 +9,6 @@ from typing import Literal, TypedDict
 
 import aiofiles
 import aiofiles.os
-
-# from lxml.etree import _ElementUnicodeResult
 from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
@@ -18,9 +16,6 @@ from requests import Session, urllib3  # type:ignore
 from configprocessing import setuplogger
 from sqlitedatabase import insertnewclubs
 from stringprocessing import cleanevfromentry
-
-# from strictly_typed_pandas import DataSet as DataFrame
-
 
 thelogger: logging.Logger = setuplogger()
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
@@ -130,11 +125,12 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                 if tempmatch := re.match(MYREGEX, orgdata[0]):
                     tempmatchdict: dict[str, str] = tempmatch.groupdict()
                     tempmatchdict["Ort"] = the_place
-                    # sqlitedatabase.insertnewclub(tempmatchdict)
                     allmatches.append(tempmatchdict)
                     dtv_assocs_dict_list.extend([tempmatchdict])
         login_data["seite"] += 1
     if not os.getenv("CI"):
+        # only outside of CI-Workflow like github action
+        # <https://stackoverflow.com/a/73973555>
         insertnewclubs(allmatches)
     return dtv_assocs_dict_list
 
