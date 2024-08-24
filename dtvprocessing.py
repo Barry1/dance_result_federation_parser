@@ -6,10 +6,10 @@ import os
 import re
 import time
 from typing import Literal, TypedDict
-
+import sqlitedatabase
 import aiofiles
 import aiofiles.os
-
+from sqlitedatabase import insertnewclubs
 # from lxml.etree import _ElementUnicodeResult
 from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
@@ -23,8 +23,8 @@ from stringprocessing import cleanevfromentry
 
 thelogger: logging.Logger = setuplogger()
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
-MYREGEX: Literal["(?P<Verein>.*)–(?P<Verband>.*)\\((?P<ID>\\d+)\\)"] = (
-    r"(?P<Verein>.*)–(?P<Verband>.*)\((?P<ID>\d+)\)"
+MYREGEX: Literal["(?P<Verein>.*) – (?P<Verband>.*) \\((?P<ID>\\d+)\\)"] = (
+    r"(?P<Verein>.*) – (?P<Verband>.*) \((?P<ID>\d+)\)"
 )
 PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"
 SEARCH_URL: Literal["https://www.tanzsport.de/de/service/vereinssuche"] = (
@@ -72,6 +72,7 @@ def assocsdf_from_list_dict(
     return dtv_associations.sort_index()
 
 
+
 def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
     """Parse DTV Homepage for associations, return aus list of dicts."""
     xpath_token: str = (
@@ -101,6 +102,7 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
         "landesverband[]": "",
         "seite": 0,
     }
+    allmatches:list[dict[str,str]]=list()
     tempfound: list[HtmlElement]
     thelogger.debug(
         "%s", sess_context.post(url=SEARCH_URL, data=login_data).content
@@ -128,9 +130,11 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                 if tempmatch := re.match(MYREGEX, orgdata[0]):
                     tempmatchdict: dict[str, str] = tempmatch.groupdict()
                     tempmatchdict["Ort"] = the_place
-                    thelogger.debug(tempmatchdict)
+                    #sqlitedatabase.insertnewclub(tempmatchdict)
+                    allmatches.append(tempmatchdict)
                     dtv_assocs_dict_list.extend([tempmatchdict])
         login_data["seite"] += 1
+    insertnewclubs(allmatches)
     return dtv_assocs_dict_list
 
 
@@ -148,9 +152,7 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     ):  # Cache-Datei vorhanden
         thelogger.info(
             "DTV-Vereinsdaten sind vom %s.",
-            time.ctime(
-                os.path.getmtime(filename=dtv_associations_cache_file)
-            ),
+            time.ctime(os.path.getmtime(filename=dtv_associations_cache_file)),
         )
         dtv_associations = read_parquet(
             path=dtv_associations_cache_file, engine=PARQUETENGINE
