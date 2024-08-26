@@ -7,11 +7,8 @@ import re
 import time
 from typing import Literal, TypedDict
 
-
 import aiofiles
 import aiofiles.os
-
-from lxml.etree import _ElementUnicodeResult # reportPrivateUsage
 from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
@@ -78,9 +75,9 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
         'input[@name="REQUEST_TOKEN"]/@value'
     )
     dtv_assocs_dict_list: list[dict[str, str]] = []
-    rqtoken: str = fromstring(
-        html=sess_context.get(url=SEARCH_URL).content
-    ).xpath(xpath_token)
+    rqtoken: str = fromstring(sess_context.get(url=SEARCH_URL).content).xpath(
+        xpath_token
+    )
     login_data_type = TypedDict(
         "login_data_type",
         {
@@ -109,14 +106,13 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
     )
     while (
         tempfound := fromstring(
-            html=sess_context.post(url=SEARCH_URL, data=login_data).content
+            sess_context.post(url=SEARCH_URL, data=login_data).content
         )
         .xpath(XPATH_FOR_ORGS)[0]
         .getchildren()
     ):
         thelogger.debug(msg=len(tempfound))
         the_place: str = ""
-        orgdata: list[_ElementUnicodeResult]
         for eintrag in tempfound:
             if eintrag.tag == "h3":  # Neue Ortsangabe
                 if eintrag.text:
@@ -124,10 +120,10 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                     the_place = eintrag.text
             else:  # Neuer Verein
                 # thelogger.debug("%s",repr(eintrag))
-                orgdata = eintrag.xpath(
-                    _path='div[@class="trigger"]/h3/text()'
-                )
-                if tempmatch := re.match(MYREGEX, orgdata[0]):
+                if tempmatch := re.match(
+                    MYREGEX,
+                    eintrag.xpath(_path='div[@class="trigger"]/h3/text()')[0],
+                ):
                     tempmatchdict: dict[str, str] = tempmatch.groupdict()
                     tempmatchdict["Ort"] = the_place
                     # sqlitedatabase.insertnewclub(tempmatchdict)
