@@ -42,11 +42,18 @@ CREATE_TABLES_STATEMENT = (
     + " WHERE Federations.ID=Clubs.FederationID"
     + " GROUP BY FederationID"
     + " ORDER BY Abbrev;"
-    'CREATE VIEW "CoupleClubFederation" as'
+    + 'CREATE VIEW "CoupleClubFederation" as'
     + " select Couples.String as Paar,Clubs.Name,Federations.Abbrev as Verband"
     + " from Couples"
     + " join Clubs on ClubID=Clubs.ID"
     + " join Federations on Clubs.FederationID=Federations.ID"
+    + "CREATE VIEW activCouplesFederation as"
+    + ' select Federations.Abbrev as Verband,count(Couples.String) as "aktive Paare"'
+    + " from Couples"
+    + " join Clubs on ClubID=Clubs.ID"
+    + " join Federations on Clubs.FederationID=Federations.ID"
+    + " group by Verband"
+    + ' order by "aktive Paare" desc'
 )
 INSERT_FEDERATION_STMT = 'INSERT INTO "Federations" ("Abbrev") VALUES(?);'
 INSERT_DETAILED_FEDERATION_STMT = (
@@ -71,7 +78,7 @@ INSERT_COUPLES_STATEMENT = (
 )
 
 
-@portable_timing
+# @portable_timing
 def insertcouplestodb(sourcedf: DataFrame) -> None:
     """Insert new Couples."""
     # Paar, Verein, Verband
@@ -86,7 +93,6 @@ def insertcouplestodb(sourcedf: DataFrame) -> None:
     with sqlite3.connect(DATABASE_FILENAME) as con:
         con.set_trace_callback(thelogger.debug)
         con.executemany(INSERT_COUPLES_STATEMENT, cpls)
-    # select * from couples join clubs on couples.ClubID=Clubs.ID
 
 
 @portable_timing
@@ -105,7 +111,6 @@ def create_structure() -> None:
         DATABASE_FILENAME
     ) as con:  # autocommit=False from py3.12
         con.set_trace_callback(thelogger.debug)
-        #thelogger.debug(CREATE_TABLES_STATEMENT)
         con.executescript(CREATE_TABLES_STATEMENT)
         con.commit()
         # Maybe details from <https://www.tanzsport.de/de/verband/landesverbaende>
