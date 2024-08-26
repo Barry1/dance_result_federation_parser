@@ -3,6 +3,7 @@
 import logging
 import sqlite3
 
+from pandas import DataFrame
 from valuefragments import portable_timing
 
 from configprocessing import setuplogger
@@ -27,6 +28,14 @@ CREATE TABLE IF NOT EXISTS "Clubs" (
 	PRIMARY KEY("ID"),
 	FOREIGN KEY("FederationID") REFERENCES "Federations"("ID")
 );
+CREATE TABLE IF NOT EXISTS "Couples" (
+	"ID"	INTEGER NOT NULL UNIQUE,
+	"String"	TEXT NOT NULL UNIQUE,
+	"ClubID"	INTEGER,
+	"FromDate"	TEXT,
+	FOREIGN KEY("ClubID") REFERENCES "Clubs"("ID"),
+	PRIMARY KEY("ID" AUTOINCREMENT)
+)
 CREATE VIEW Fed_Club_Count as
 	SELECT Abbrev,count(Clubs.Name)
 	FROM Clubs,Federations
@@ -47,6 +56,31 @@ INSERT_NEW_CLUB_STATEMENT = """INSERT INTO "Clubs"
 	FROM "Federations"
 	WHERE "Abbrev"=:Verband;
 """
+INSERT_COUPLES_STATEMENT = """INSERT INTO "Couples"
+	("String", "ClubID")
+	SELECT :Paar, ID
+	FROM "Clubs"
+	WHERE "Name"=:Verein
+	ON CONFLICT DO NOTHING;
+"""
+
+
+@portable_timing
+def insertcouplestodb(sourcedf: DataFrame) -> None:
+    """Insert new Couples."""
+    # Paar, Verein, Verband
+    sourcedf = sourcedf[["Paar", "Verein", "Verband"]].dropna(
+        axis=0, subset=["Verband"]
+    )
+    cpls: list[dict[str, str]] = []
+    for _, row in sourcedf.iterrows():
+        # thelogger.debug("%s | %s | %s",row["Paar"],row["Verein"],row["Verband"])
+        cpls.append({"Paar": row["Paar"], "Verein": row["Verein"]})
+    thelogger.debug("%s", cpls)
+    with sqlite3.connect(DATABASE_FILENAME) as con:
+        con.set_trace_callback(thelogger.debug)
+        con.executemany(INSERT_COUPLES_STATEMENT, cpls)
+    # select * from couples join clubs on couples.ClubID=Clubs.ID
 
 
 @portable_timing

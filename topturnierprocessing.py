@@ -2,6 +2,7 @@
 
 import logging
 from io import StringIO
+from os import getenv
 from typing import Literal, cast
 from urllib.error import HTTPError
 
@@ -14,6 +15,7 @@ from requests import get as requests_get
 from configprocessing import LOGGERNAME, MyConfigT, readconfig
 from dtvprocessing import get_dtv_df
 from esvprocessing import get_couples_df
+from sqlitedatabase import insertcouplestodb
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
 # from strictly_typed_pandas import DataSet as DataFrame
@@ -130,6 +132,7 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
     erg_df.loc[:, "Paar"] = erg_df.Paar.map(clean_number_from_couple)
     erg_df.loc[:, "Verein"] = erg_df.Verein.map(cleanevfromentry)
+    thelogger.debug("%s", erg_df)
     # erg_df['ordercol']=erg_df['Platz'].apply(lambda x:int(x[:x.find('.')]))
     # erg_df=erg_df.sort_values(by='ordercol').drop('ordercol', axis=1)
     # "inner" ging, sortiere falsch#.sort_values(by="Platz")
@@ -172,4 +175,7 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
             general_exception,
         )
         raise
+    if not getenv("CI"):
+        insertcouplestodb(ret_df)
+    thelogger.debug("%s", ret_df)
     return ret_df
