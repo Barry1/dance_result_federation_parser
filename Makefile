@@ -15,6 +15,12 @@ runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> 
 
 ALL: pylint mypy formatting vulture pytype sourcery
 
+couples_clubs_federations.db: 
+	rm resultParser.log couples_clubs_federations.db dtv_associations.parquet
+	poetry run python -OO sqlitedatabase.py
+	poetry run python -OO dtvprocessing.py
+	make BDF_2024.txt danceComp_2024.txt DSF_2024.txt HessenTanzt_2024.txt BlauesBand2024.txt DM_MASII_S_STD_2024.txt GLM_MasIV_STD_2024.txt RL_GLINDE_2024.txt
+
 pipdeptree:
 	poetry run pipdeptree --packages=aiofiles,bs4,fastparquet,html5lib,joblib,lxml,pyarrow,pytype,requests,typing
 
