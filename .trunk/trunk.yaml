@@ -14,7 +14,7 @@ lint:
     - bandit
   enabled:
     - pylint@3.2.6
-    - checkov@3.2.235
+    - checkov@3.2.236
     - osv-scanner@1.8.4
     - trivy@0.54.1
     - trufflehog@3.81.9
@@ -27,7 +27,7 @@ lint:
     - gitleaks@8.18.4
     - taplo@0.9.3
     - prettier@3.3.3
-    - mypy@1.11.1
+    - mypy@1.11.2
     - black@24.8.0
     - isort@5.13.2
     - actionlint@1.7.1
