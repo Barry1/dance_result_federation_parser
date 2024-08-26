@@ -11,14 +11,12 @@ from typing import Literal, TypedDict
 import aiofiles
 import aiofiles.os
 
-# from lxml.etree import _ElementUnicodeResult
+from lxml.etree import _ElementUnicodeResult # reportPrivateUsage
 from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
 
-import sqlitedatabase
 from configprocessing import setuplogger
-from sqlitedatabase import insertnewclubs
 from sqlitedatabase import insertnewclubs
 from stringprocessing import cleanevfromentry
 
