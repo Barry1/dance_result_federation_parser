@@ -7,6 +7,7 @@ import re
 import time
 from typing import Literal, TypedDict
 
+
 import aiofiles
 import aiofiles.os
 
@@ -18,10 +19,8 @@ from requests import Session, urllib3  # type:ignore
 import sqlitedatabase
 from configprocessing import setuplogger
 from sqlitedatabase import insertnewclubs
+from sqlitedatabase import insertnewclubs
 from stringprocessing import cleanevfromentry
-
-# from strictly_typed_pandas import DataSet as DataFrame
-
 
 thelogger: logging.Logger = setuplogger()
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
@@ -103,6 +102,8 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
         "landesverband[]": "",
         "seite": 0,
     }
+    # proposed from CircleCI instead of list()
+    allmatches: list[dict[str, str]] = []
     allmatches: list[dict[str, str]] = list()
     tempfound: list[HtmlElement]
     thelogger.debug(
@@ -117,7 +118,7 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
     ):
         thelogger.debug(msg=len(tempfound))
         the_place: str = ""
-        # orgdata: list[_ElementUnicodeResult]
+        orgdata: list[_ElementUnicodeResult]
         for eintrag in tempfound:
             if eintrag.tag == "h3":  # Neue Ortsangabe
                 if eintrag.text:
@@ -135,7 +136,10 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                     allmatches.append(tempmatchdict)
                     dtv_assocs_dict_list.extend([tempmatchdict])
         login_data["seite"] += 1
-    insertnewclubs(allmatches)
+    if not os.getenv("CI"):
+        # only outside of CI-Workflow like github action
+        # <https://stackoverflow.com/a/73973555>
+        insertnewclubs(allmatches)
     return dtv_assocs_dict_list
 
 
