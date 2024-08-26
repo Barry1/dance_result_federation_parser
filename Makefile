@@ -19,7 +19,19 @@ couples_clubs_federations.db:
 	rm resultParser.log couples_clubs_federations.db dtv_associations.parquet
 	poetry run python -OO sqlitedatabase.py
 	poetry run python -OO dtvprocessing.py
-	make BDF_2024.txt danceComp_2024.txt DSF_2024.txt HessenTanzt_2024.txt BlauesBand2024.txt DM_MASII_S_STD_2024.txt GLM_MasIV_STD_2024.txt RL_GLINDE_2024.txt
+	make BDF_2024.txt
+	make danceComp_2024.txt
+	make DSF_2024.txt
+	make HessenTanzt_2024.txt
+	make BlauesBand2024.txt
+	make DM_MASII_S_STD_2024.txt
+	make GLM_MasIV_STD_2024.txt
+	make RL_GLINDE_2024.txt
+
+.PHONY: dbevals
+dbevals:
+	sqlite3 -markdown couples_clubs_federations.db "select * from Fed_Club_Count;"
+	sqlite3 -markdown couples_clubs_federations.db "select * from activCouplesFederation;"
 
 pipdeptree:
 	poetry run pipdeptree --packages=aiofiles,bs4,fastparquet,html5lib,joblib,lxml,pyarrow,pytype,requests,typing
