@@ -6,16 +6,18 @@ import os
 import re
 import time
 from typing import Literal, TypedDict
-import sqlitedatabase
+
 import aiofiles
 import aiofiles.os
-from sqlitedatabase import insertnewclubs
+
 # from lxml.etree import _ElementUnicodeResult
 from lxml.html import HtmlElement, fromstring
 from pandas import DataFrame, read_parquet
 from requests import Session, urllib3  # type:ignore
 
+import sqlitedatabase
 from configprocessing import setuplogger
+from sqlitedatabase import insertnewclubs
 from stringprocessing import cleanevfromentry
 
 # from strictly_typed_pandas import DataSet as DataFrame
@@ -72,7 +74,6 @@ def assocsdf_from_list_dict(
     return dtv_associations.sort_index()
 
 
-
 def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
     """Parse DTV Homepage for associations, return aus list of dicts."""
     xpath_token: str = (
@@ -102,7 +103,7 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
         "landesverband[]": "",
         "seite": 0,
     }
-    allmatches:list[dict[str,str]]=list()
+    allmatches: list[dict[str, str]] = list()
     tempfound: list[HtmlElement]
     thelogger.debug(
         "%s", sess_context.post(url=SEARCH_URL, data=login_data).content
@@ -130,7 +131,7 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                 if tempmatch := re.match(MYREGEX, orgdata[0]):
                     tempmatchdict: dict[str, str] = tempmatch.groupdict()
                     tempmatchdict["Ort"] = the_place
-                    #sqlitedatabase.insertnewclub(tempmatchdict)
+                    # sqlitedatabase.insertnewclub(tempmatchdict)
                     allmatches.append(tempmatchdict)
                     dtv_assocs_dict_list.extend([tempmatchdict])
         login_data["seite"] += 1

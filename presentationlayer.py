@@ -54,8 +54,9 @@ def print_tsh_web(
                 f"HIER {__file__} muss Basti noch etwas tun @TODO inplace DataSet geht nicht."
             )
             eprint("error: ", nie)
-            eprint("error file info: ", nie.__traceback__.tb_frame)
-            eprint("error line#: ", nie.__traceback__.tb_lineno)
+            if nie.__traceback__:
+                eprint("error file info: ", nie.__traceback__.tb_frame)
+                eprint("error line#: ", nie.__traceback__.tb_lineno)
         if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
             eprint(tournhdr)
             eprint(
