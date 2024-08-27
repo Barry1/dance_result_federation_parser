@@ -45,5 +45,34 @@ runtimes:
     - go@1.21.0
     - node@18.12.1
     - python@3.11.8
+tools:
+  definitions:
+    - name: mypy
+      runtime: python
+      package: mypy
+      shims: [mypy]
+      extra_packages:
+        - requests
+        - types-requests
+        - lxml
+        - lxml-stubs
+    - name: pylint
+      runtime: python
+      package: pylint
+      shims: [pylint]
+      extra_packages:
+        - requests
+        - types-requests
+        - lxml
+        - lxml-stubs
+    - name: pyright
+      runtime: python
+      package: pyright
+      shims: [pyright]
+      extra_packages:
+        - requests
+        - types-requests
+        - lxml
+        - lxml-stubs
 ---
 
