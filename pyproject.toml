@@ -24,6 +24,9 @@ isort = true
 lint = ["pylint", "mypy", "flake8"]
 log_level = "INFO"
 
+[tool.bandit]
+skips = ["B101","B608"]
+
 [tool.flake8]
 max-line-length = 79
 extend-ignore = "E203"

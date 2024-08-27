@@ -16,7 +16,7 @@ runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> 
 ALL: pylint mypy formatting vulture pytype sourcery
 
 couples_clubs_federations.db: 
-	rm resultParser.log couples_clubs_federations.db dtv_associations.parquet
+	rm -rf resultParser.log couples_clubs_federations.db dtv_associations.parquet
 	poetry run python -OO sqlitedatabase.py
 	poetry run python -OO dtvprocessing.py
 	make BDF_2024.txt

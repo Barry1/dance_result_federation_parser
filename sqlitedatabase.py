@@ -2,6 +2,7 @@
 
 import logging
 import sqlite3
+from textwrap import dedent  # inspect.cleandoc
 
 from pandas import DataFrame
 from valuefragments import portable_timing
@@ -12,69 +13,81 @@ thelogger: logging.Logger = setuplogger()
 
 DATABASE_FILENAME = "couples_clubs_federations.db"
 
-CREATE_TABLES_STATEMENT = (
-    'CREATE TABLE IF NOT EXISTS "Federations" ('
-    + ' "ID" INTEGER NOT NULL UNIQUE,'
-    + ' "Abbrev" TEXT NOT NULL UNIQUE,'
-    + ' "Name" TEXT UNIQUE,'
-    + ' "URL" TEXT UNIQUE,'
-    + ' PRIMARY KEY("ID")'
-    + ");"
-    + 'CREATE TABLE IF NOT EXISTS "Clubs" ('
-    + ' "ID" INTEGER NOT NULL UNIQUE,'
-    + ' "Name" TEXT NOT NULL UNIQUE,'
-    + ' "City" TEXT NOT NULL,'
-    + ' "FederationID" INTEGER,'
-    + ' PRIMARY KEY("ID"),'
-    + ' FOREIGN KEY("FederationID") REFERENCES "Federations"("ID")'
-    + ");"
-    + 'CREATE TABLE IF NOT EXISTS "Couples" ('
-    + '"ID" INTEGER NOT NULL UNIQUE,'
-    + ' "String" TEXT NOT NULL UNIQUE,'
-    + ' "ClubID" INTEGER,'
-    + ' "FromDate" TEXT,'
-    + ' FOREIGN KEY("ClubID") REFERENCES "Clubs"("ID"),'
-    + ' PRIMARY KEY("ID" AUTOINCREMENT)'
-    + ");"
-    + "CREATE VIEW Fed_Club_Count as"
-    + " SELECT Abbrev,count(Clubs.Name)"
-    + " FROM Clubs,Federations"
-    + " WHERE Federations.ID=Clubs.FederationID"
-    + " GROUP BY FederationID"
-    + " ORDER BY Abbrev;"
-    + 'CREATE VIEW "CoupleClubFederation" as'
-    + " select Couples.String as Paar,Clubs.Name,Federations.Abbrev as Verband"
-    + " from Couples"
-    + " join Clubs on ClubID=Clubs.ID"
-    + " join Federations on Clubs.FederationID=Federations.ID"
-    + "CREATE VIEW activCouplesFederation as"
-    + ' select Federations.Abbrev as Verband,count(Couples.String) as "aktive Paare"'
-    + " from Couples"
-    + " join Clubs on ClubID=Clubs.ID"
-    + " join Federations on Clubs.FederationID=Federations.ID"
-    + " group by Verband"
-    + ' order by "aktive Paare" desc'
+CREATE_TABLES_STATEMENT: str = dedent(
+    """\
+    CREATE TABLE IF NOT EXISTS "Federations" (
+        "ID" INTEGER NOT NULL UNIQUE,
+        "Abbrev" TEXT NOT NULL UNIQUE,
+        "Name" TEXT UNIQUE,
+        "URL" TEXT UNIQUE,
+        PRIMARY KEY("ID")
+    );
+    """
+    """\
+    CREATE TABLE IF NOT EXISTS "Clubs" (
+        "ID" INTEGER NOT NULL UNIQUE,
+        "Name" TEXT NOT NULL UNIQUE,
+        "City" TEXT NOT NULL,
+        "FederationID" INTEGER,
+        PRIMARY KEY("ID"),
+        FOREIGN KEY("FederationID") REFERENCES "Federations"("ID")
+    );
+    """
+    """\
+    CREATE TABLE IF NOT EXISTS "Couples" (
+        "ID" INTEGER NOT NULL UNIQUE,
+        "String" TEXT NOT NULL UNIQUE,
+        "ClubID" INTEGER,
+        "FromDate" TEXT,
+        FOREIGN KEY("ClubID") REFERENCES "Clubs"("ID"),
+        PRIMARY KEY("ID" AUTOINCREMENT)
+    );
+    """
+    """\
+    CREATE VIEW IF NOT EXISTS "Fed_Club_Count" as
+        SELECT Abbrev,count(Clubs.Name)
+        FROM Clubs,Federations
+        WHERE Federations.ID=Clubs.FederationID
+        GROUP BY FederationID
+        ORDER BY Abbrev;
+    """
+    """\
+    CREATE VIEW IF NOT EXISTS "CoupleClubFederation" as
+        select Couples.String as Paar,Clubs.Name,Federations.Abbrev as Verband
+        from Couples
+        join Clubs on ClubID=Clubs.ID
+        join Federations on Clubs.FederationID=Federations.ID;
+    """
+    """\
+    CREATE VIEW IF NOT EXISTS "activCouplesFederation" as
+        select Federations.Abbrev as Verband,count(Couples.String) as "aktive Paare"
+        from Couples
+        join Clubs on ClubID=Clubs.ID
+        join Federations on Clubs.FederationID=Federations.ID
+        group by Verband
+        order by "aktive Paare" desc;
+    """
 )
 INSERT_FEDERATION_STMT = 'INSERT INTO "Federations" ("Abbrev") VALUES(?);'
 INSERT_DETAILED_FEDERATION_STMT = (
     'INSERT INTO "Federations"'
-    + ' ("Abbrev","Name","URL")'
-    + " VALUES(:Abbrev,:Name,:URL);"
+    ' ("Abbrev","Name","URL")'
+    " VALUES(:Abbrev,:Name,:URL);"
 )
 INSERT_NEW_CLUB_STATEMENT = (
     'INSERT INTO "Clubs"'
-    + ' ("ID", "Name", "City", "FederationID")'
-    + " SELECT :ID, :Verein, :Ort, ID"
-    + ' FROM "Federations"'
-    + ' WHERE "Abbrev"=:Verband;'
+    ' ("ID", "Name", "City", "FederationID")'
+    " SELECT :ID, :Verein, :Ort, ID"
+    ' FROM "Federations"'
+    ' WHERE "Abbrev"=:Verband;'
 )
 INSERT_COUPLES_STATEMENT = (
     'INSERT INTO "Couples"'
-    + ' ("String", "ClubID")'
-    + " SELECT :Paar, ID"
-    + ' FROM "Clubs"'
-    + ' WHERE "Name"=:Verein'
-    + " ON CONFLICT DO NOTHING;"
+    ' ("String", "ClubID")'
+    " SELECT :Paar, ID"
+    ' FROM "Clubs"'
+    ' WHERE "Name"=:Verein'
+    " ON CONFLICT DO NOTHING;"
 )
 
 

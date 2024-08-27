@@ -126,7 +126,9 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                 ):
                     tempmatchdict: dict[str, str] = tempmatch.groupdict()
                     tempmatchdict["Ort"] = the_place
-                    tempmatchdict["Verein"] = cleanevfromentry(tempmatchdict["Verein"])
+                    tempmatchdict["Verein"] = cleanevfromentry(
+                        tempmatchdict["Verein"]
+                    )
                     # sqlitedatabase.insertnewclub(tempmatchdict)
                     allmatches.append(tempmatchdict)
                     dtv_assocs_dict_list.extend([tempmatchdict])
