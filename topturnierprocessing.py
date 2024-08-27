@@ -3,13 +3,16 @@
 import logging
 from io import StringIO
 from os import getenv
+from re import match
 from typing import Literal, cast
 from urllib.error import HTTPError
 
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, SoupStrainer, Tag
 from lxml.etree import _ElementTree as ElementTree
+from lxml.html import fromstring
 from pandas import DataFrame, concat, read_html
+from requests import Response
 from requests import get as requests_get
 
 from configprocessing import LOGGERNAME, MyConfigT, readconfig
@@ -74,6 +77,14 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
     return tournmtsdict
 
 
+def tt_trndmntdatefrom(reqget: Response) -> dict[str, str]:
+    """Use the Get-Response from erg.htm to get the date."""
+    xpathquery = "/html/head/title/text()"  # <http://xpather.com/Nxdmjjrk>
+    dateregex = r"(?P<TAG>.*?)[./](?P<MONAT>.*?)[./](?P<JAHR>.*?) .*"
+    extracted: str = fromstring(reqget.text).xpath(xpathquery)[0]
+    return match(dateregex, extracted).groupdict()
+
+
 def tt_from_erg(theresulturl: str) -> DataFrame:
     """Process erg.html from TopTurnier resultpage."""
     assert theresulturl.endswith(
@@ -87,6 +98,9 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
             headers={"User-agent": "Mozilla"},
         )
     ).ok:
+        thelogger.info(
+            "Veranstaltungsdatum %s", tt_trndmntdatefrom(tempifinternal)
+        )
         tab1tbl: list[DataFrame] = read_html(
             StringIO(tempifinternal.text.replace("<BR>", "</td><td>")),
             attrs={"class": "tab1"},
