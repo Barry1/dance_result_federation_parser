@@ -29,7 +29,7 @@ couples_clubs_federations.db:
 	make RL_GLINDE_2024.txt
 
 .PHONY: dbevals
-dbevals:
+dbevals: couples_clubs_federations.db
 	sqlite3 -markdown couples_clubs_federations.db "select * from Fed_Club_Count;"
 	sqlite3 -markdown couples_clubs_federations.db "select * from activCouplesFederation;"
 
