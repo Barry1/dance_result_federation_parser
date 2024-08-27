@@ -71,19 +71,19 @@ CREATE_TABLES_STATEMENT: str = dedent(
     """
 )
 INSERT_FEDERATION_STMT = 'INSERT INTO "Federations" ("Abbrev") VALUES(?);'
-INSERT_DETAILED_FEDERATION_STMT = (
+INSERT_DETAILED_FEDERATION_STMT: str = dedent(
     'INSERT INTO "Federations"'
     ' ("Abbrev","Name","URL")'
     " VALUES(:Abbrev,:Name,:URL);"
 )
-INSERT_NEW_CLUB_STATEMENT = (
+INSERT_NEW_CLUB_STATEMENT: str = dedent(
     'INSERT INTO "Clubs"'
     ' ("ID", "Name", "City", "FederationID")'
     " SELECT :ID, :Verein, :Ort, ID"
     ' FROM "Federations"'
     ' WHERE "Abbrev"=:Verband;'
 )
-INSERT_COUPLES_STATEMENT = (
+INSERT_COUPLES_STATEMENT: str = dedent(
     'INSERT INTO "Couples"'
     ' ("String", "ClubID")'
     " SELECT :Paar, ID"
