@@ -3,14 +3,13 @@
 import logging
 from io import StringIO
 from os import getenv
-from re import match
+from re import DOTALL, IGNORECASE, match
 from typing import Literal, cast
 from urllib.error import HTTPError
 
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, SoupStrainer, Tag
 from lxml.etree import _ElementTree as ElementTree
-from lxml.html import fromstring
 from pandas import DataFrame, concat, read_html
 from requests import Response
 from requests import get as requests_get
@@ -79,10 +78,8 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
 
 def tt_trndmntdatefrom(reqget: Response) -> dict[str, str]:
     """Use the Get-Response from erg.htm to get the date."""
-    xpathquery = "/html/head/title/text()"  # <http://xpather.com/Nxdmjjrk>
-    dateregex = r"(?P<TAG>.*?)[./](?P<MONAT>.*?)[./](?P<JAHR>.*?) .*"
-    extracted: str = fromstring(reqget.text).xpath(xpathquery)[0]
-    return match(dateregex, extracted).groupdict()
+    titledate = r".*<title>(?P<TAG>.*?)[./](?P<MONAT>.*?)[./](?P<JAHR>.*?) "
+    return match(titledate, reqget.text, DOTALL | IGNORECASE).groupdict()
 
 
 def tt_from_erg(theresulturl: str) -> DataFrame:
