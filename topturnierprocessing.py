@@ -82,13 +82,13 @@ def tt_trndmntdatefrom(reqget: Response) -> dict[str, str]:
     return match(titledate, reqget.text, DOTALL | IGNORECASE).groupdict()
 
 
-def tt_from_erg(theresulturl: str) -> DataFrame:
+def tt_from_erg_url(theresulturl: str) -> DataFrame:
     """Process erg.html from TopTurnier resultpage."""
     assert theresulturl.endswith(
         "erg.htm"
     ), f"{theresulturl} endet nicht auf erg.htm"
     # requests-Rückmeldung mit .ok abfragen und if
-    tournamentdate:str=""
+    tournamentdate: str = ""
     if (
         tempifinternal := requests_get(
             theresulturl,
@@ -96,9 +96,15 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
             headers={"User-agent": "Mozilla"},
         )
     ).ok:
-        thedatedict: dict[str, str]=tt_trndmntdatefrom(tempifinternal)
+        thedatedict: dict[str, str] = tt_trndmntdatefrom(tempifinternal)
         thelogger.info("Veranstaltungsdatum %s", thedatedict)
-        tournamentdate=thedatedict["JAHR"]+"-"+thedatedict["MONAT"]+"-"+thedatedict["TAG"]
+        tournamentdate = (
+            thedatedict["JAHR"]
+            + "-"
+            + thedatedict["MONAT"]
+            + "-"
+            + thedatedict["TAG"]
+        )
         thelogger.info("Veranstaltungsdatum %s", tournamentdate)
         tab1tbl: list[DataFrame] = read_html(
             StringIO(tempifinternal.text.replace("<BR>", "</td><td>")),
@@ -156,6 +162,59 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
     return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")
 
 
+def tt_from_erg(theresultresponse: Response) -> DataFrame:
+    """Process erg.html from TopTurnier resultpage - as request-Response"""
+    try:
+        tab1tbl: list[DataFrame] = read_html(
+            StringIO(theresultresponse.text.replace("<BR>", "</td><td>")),
+            attrs={"class": "tab1"},
+        )
+    except ValueError:
+        thelogger.debug(
+            "HTTP-Fehler bei tab1tbl Nummer %s. Wenn es die %s-Datei nicht gibt, ist das Turnier evtl. ausgefallen?",
+            theresultresponse.status_code,
+            theresulturl,
+        )
+        return DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
+    erg_df: DataFrame
+    try:
+        tab2tbl: list[DataFrame] = read_html(
+            StringIO(theresultresponse.text.replace("<BR>", "</td><td>")),
+            attrs={"class": "tab2"},
+        )
+    except ValueError:
+        erg_df = concat(tab1tbl)
+        # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
+        erg_df.dropna(axis=0, subset=erg_df.columns[:3], inplace=True)
+        # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
+        erg_df.dropna(axis=1, inplace=True)
+        erg_df = erg_df.iloc[:, [0, -2, -1]]
+    else:
+        erg_df = concat([*tab1tbl, *tab2tbl])
+        # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
+        erg_df.dropna(axis=0, subset=erg_df.columns[:3], inplace=True)
+        # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
+        erg_df.dropna(axis=1, inplace=True)
+        if len(erg_df.columns) == 2:
+            # Solisten haben keine Vereine
+            erg_df["Verein"] = "∅"
+        erg_df = erg_df.iloc[:, [0, 1, 2]]
+    erg_df.columns = ["Platz", "Paar", "Verein"]
+    # Nur Zeilen behalten, bei denen ein "." im Platz ist
+    erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
+    erg_df.loc[:, "Paar"] = erg_df.Paar.map(clean_number_from_couple)
+    erg_df.loc[:, "Verein"] = erg_df.Verein.map(cleanevfromentry)
+    thelogger.debug("%s", erg_df)
+    # erg_df['ordercol']=erg_df['Platz'].apply(lambda x:int(x[:x.find('.')]))
+    # erg_df=erg_df.sort_values(by='ordercol').drop('ordercol', axis=1)
+    # "inner" ging, sortiere falsch#.sort_values(by="Platz")
+    if _CFG_DICT["ESVCOUPLES"]:
+        cpldf: DataFrame = get_couples_df()
+        cpldf["Verband"] = "NAMEDCOUPLE"
+        return erg_df.merge(cpldf, on="Paar", how="inner")
+    return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")
+
+
 def interpret_tt_result(theresulturl: str) -> DataFrame:
     """Process TopTurnier URL."""
     assert theresulturl.endswith("index.htm"), (
@@ -164,11 +223,29 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     )
     thelogger.debug(theresulturl)
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
+    thelogger.debug(theresulturl)
     ret_df: DataFrame = DataFrame(
         columns=["Platz", "Paar", "Verein", "Verband", "Ort"]
     )
+    ergurlresponse: Response = requests_get(
+        theresulturl, timeout=MY_TIMEOUT, headers={"User-agent": "Mozilla"}
+    )
+    if not ergurlresponse.ok:
+        print("BASTI TEST")
+        return
+    thedatedict: dict[str, str] = tt_trndmntdatefrom(ergurlresponse)
+    thelogger.info("Veranstaltungsdatum %s", thedatedict)
+    tournamentdate = (
+        thedatedict["JAHR"]
+        + "-"
+        + thedatedict["MONAT"]
+        + "-"
+        + thedatedict["TAG"]
+    )
+    thelogger.info("Veranstaltungsdatum %s", tournamentdate)
     try:
-        ret_df = tt_from_erg(theresulturl)
+        ret_df = tt_from_erg(ergurlresponse)
+        # ret_df = tt_from_erg_url(theresulturl)
     except HTTPError as http_error:
         thelogger.warning(
             "Beim tt_from_erg von %s trat der HTTPError %s auf",
