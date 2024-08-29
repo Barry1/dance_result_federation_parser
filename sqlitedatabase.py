@@ -89,11 +89,13 @@ INSERT_COUPLES_STATEMENT: str = dedent(
     " SELECT :Paar, ID, :Datum"
     ' FROM "Clubs"'
     ' WHERE "Name"=:Verein'
-    " ON CONFLICT DO NOTHING;"
+    #    " ON CONFLICT DO NOTHING;"
+    ' ON CONFLICT DO UPDATE set "FromDate" = :Datum where "FromDate"<:Datum;'
 )
 
-
 # @portable_timing
+
+
 def insertcouplestodb(sourcedf: DataFrame, tournamentdate: str) -> None:
     """Insert new Couples."""
     # Paar, Verein, Verband
