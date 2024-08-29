@@ -94,7 +94,7 @@ INSERT_COUPLES_STATEMENT: str = dedent(
 
 
 # @portable_timing
-def insertcouplestodb(sourcedf: DataFrame) -> None:
+def insertcouplestodb(sourcedf: DataFrame, tournamentdate: str) -> None:
     """Insert new Couples."""
     # Paar, Verein, Verband
     sourcedf = sourcedf[["Paar", "Verein", "Verband"]].dropna(
@@ -103,7 +103,13 @@ def insertcouplestodb(sourcedf: DataFrame) -> None:
     cpls: list[dict[str, str]] = []
     for _, row in sourcedf.iterrows():
         # thelogger.debug("%s | %s | %s",row["Paar"],row["Verein"],row["Verband"])
-        cpls.append({"Paar": row["Paar"], "Verein": row["Verein"]})
+        cpls.append(
+            {
+                "Paar": row["Paar"],
+                "Verein": row["Verein"],
+                "Datum": tournamentdate,
+            }
+        )
     thelogger.debug("%s", cpls)
     with sqlite3.connect(DATABASE_FILENAME) as con:
         con.set_trace_callback(thelogger.debug)
