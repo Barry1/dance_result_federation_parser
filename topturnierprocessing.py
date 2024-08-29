@@ -88,6 +88,7 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
         "erg.htm"
     ), f"{theresulturl} endet nicht auf erg.htm"
     # requests-Rückmeldung mit .ok abfragen und if
+    tournamentdate:str=""
     if (
         tempifinternal := requests_get(
             theresulturl,
@@ -95,9 +96,10 @@ def tt_from_erg(theresulturl: str) -> DataFrame:
             headers={"User-agent": "Mozilla"},
         )
     ).ok:
-        thelogger.info(
-            "Veranstaltungsdatum %s", tt_trndmntdatefrom(tempifinternal)
-        )
+        thedatedict: dict[str, str]=tt_trndmntdatefrom(tempifinternal)
+        thelogger.info("Veranstaltungsdatum %s", thedatedict)
+        tournamentdate=thedatedict["JAHR"]+"-"+thedatedict["MONAT"]+"-"+thedatedict["TAG"]
+        thelogger.info("Veranstaltungsdatum %s", tournamentdate)
         tab1tbl: list[DataFrame] = read_html(
             StringIO(tempifinternal.text.replace("<BR>", "</td><td>")),
             attrs={"class": "tab1"},
