@@ -85,8 +85,8 @@ INSERT_NEW_CLUB_STATEMENT: str = dedent(
 )
 INSERT_COUPLES_STATEMENT: str = dedent(
     'INSERT INTO "Couples"'
-    ' ("String", "ClubID")'
-    " SELECT :Paar, ID"
+    ' ("String", "ClubID", "FromDate")'
+    " SELECT :Paar, ID, :Datum"
     ' FROM "Clubs"'
     ' WHERE "Name"=:Verein'
     " ON CONFLICT DO NOTHING;"

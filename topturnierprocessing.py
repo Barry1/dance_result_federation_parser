@@ -224,20 +224,35 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     thelogger.debug(theresulturl)
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
     thelogger.debug(theresulturl)
-    ret_df: DataFrame = DataFrame(
-        columns=["Platz", "Paar", "Verein", "Verband", "Ort"]
-    )
+    ret_df = DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
     ergurlresponse: Response = requests_get(
         theresulturl, timeout=MY_TIMEOUT, headers={"User-agent": "Mozilla"}
     )
-    ret_df = DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
     if ergurlresponse.ok:
         thedatedict: dict[str, str] = tt_trndmntdatefrom(ergurlresponse)
-        thelogger.info("Veranstaltungsdatum %s", thedatedict)
-        tournamentdate = (
+        thelogger.debug("Veranstaltungsdatum %s", thedatedict)
+        monthtonum: dict[str, str] = {
+            "Jan": "01",
+            "Feb": "02",
+            "Mar": "03",
+            "Apr": "04",
+            "May": "05",
+            "Jun": "06",
+            "Jul": "07",
+            "Aug": "08",
+            "Sep": "09",
+            "Oct": "10",
+            "Nov": "11",
+            "Dec": "12",
+        }
+        tournamentdate: str = (
             thedatedict["JAHR"]
             + "-"
-            + thedatedict["MONAT"]
+            + (
+                thedatedict["MONAT"]
+                if thedatedict["MONAT"].isdecimal()
+                else monthtonum[thedatedict["MONAT"]]
+            )
             + "-"
             + thedatedict["TAG"]
         )
