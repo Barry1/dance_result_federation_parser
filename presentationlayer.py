@@ -129,7 +129,7 @@ def print_tsh_web(
         "<p>Falls ich ein Paar übersehen habe, ",
         "bitte ich freundlich um eine ",
         "<a href=",
-        '"mailto:ebeling@tanzen-in-sh.de?subject=&Uuml;bersehenes%20Ergebnis"',
+        f'"mailto:{cfg_dict["INFORMEMAIL"]}?subject=&Uuml;bersehenes%20Ergebnis"',
         ">Email</a>.</p>",
         sep="",
     )
@@ -218,6 +218,6 @@ def print_markdown(
     )
     print(
         "Falls ich ein Paar übersehen habe, bitte ich freundlich um eine ",
-        "[Email](mailto:ebeling@tanzen-in-sh.de?subject=&Uuml;bersehenes%20Ergebnis)",
+        f'[Email](mailto:{cfg_dict["INFORMEMAIL"]}?subject=&Uuml;bersehenes%20Ergebnis)"',
         sep="",
     )

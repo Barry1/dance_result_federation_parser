@@ -58,6 +58,7 @@ class MyConfigT(TypedDict):
     ]
     CHECKINGURLS: list[str]
     RESULTFORMAT: Literal["TSH", "MARKDOWN"]
+    INFORMEMAIL: str
 
 
 def readconfig() -> MyConfigT:
@@ -83,5 +84,8 @@ def readconfig() -> MyConfigT:
     theconfig["RESULTTABLE"] = cfg.get("RESULTTABLE", True)
     theconfig["THEFEDERATION"] = cfg.get("THEFEDERATION", "TSH")
     theconfig["RESULTFORMAT"] = cfg.get("RESULTFORMAT", "MARKDOWN")
+    theconfig["INFORMEMAIL"] = cfg.get(
+        "INFORMEMAIL", "ebeling@tanzen-in-sh.de"
+    )
     thelogger.debug(theconfig)
     return theconfig
