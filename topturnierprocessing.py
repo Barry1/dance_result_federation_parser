@@ -129,10 +129,8 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
         # international competition, no club name
         erg_df = erg_df[ergdfgeridxs]
         cpldf = couple_club_federation()
-        thelogger.debug("%s", erg_df.columns)
-        erg_df.rename(columns={"Verein": "Land"})
-        thelogger.debug("%s", cpldf.columns)
-        cpldf.rename(columns={"Name": "Verein"})
+        erg_df.rename(columns={"Verein": "Land"}, inplace=True)
+        cpldf.rename(columns={"Name": "Verein"}, inplace=True)
         return erg_df.merge(cpldf, on="Paar", how="inner")
 
     # thelogger.debug("%s", erg_df)
