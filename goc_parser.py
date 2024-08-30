@@ -9,7 +9,12 @@ from topturnierprocessing import interpret_tt_result as the_interpret_fun
 
 _CFG_DICT: MyConfigT = readconfig()
 if __name__ == "__main__":
-    foundreslinks: list[str] = getselectedhreflinks(thesubstring="2024")
+    import sys
+
+    yearstring: str = "2024"
+    if len(sys.argv) > 1:
+        yearstring = sys.argv[1]
+    foundreslinks: list[str] = getselectedhreflinks(thesubstring=yearstring)
     allreslinks: list[str] = [
         a for a in foundreslinks if a.endswith("index.htm")
     ]
