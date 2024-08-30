@@ -17,7 +17,7 @@ from requests import get as requests_get
 from configprocessing import LOGGERNAME, MyConfigT, readconfig
 from dtvprocessing import get_dtv_df
 from esvprocessing import get_couples_df
-from sqlitedatabase import insertcouplestodb,couple_club_federation
+from sqlitedatabase import couple_club_federation, insertcouplestodb
 from stringprocessing import clean_number_from_couple, cleanevfromentry
 
 # from strictly_typed_pandas import DataSet as DataFrame
@@ -128,12 +128,11 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
     if (ergdfgeridxs := erg_df.Verein == "Germany").any():
         # international competition, no club name
         erg_df = erg_df[ergdfgeridxs]
-        cpldf=couple_club_federation()
-        thelogger.debug("%s",erg_df.columns)
-        thelogger.debug("%s",cpldf.columns)
-        thelogger.debug("%s",erg_df.iloc[0:10])
-        thelogger.debug("%s",cpldf.iloc[155:165])
-        #['Paar', 'Name', 'Verband']
+        cpldf = couple_club_federation()
+        thelogger.debug("%s", erg_df.columns)
+        erg_df.rename(columns={"Verein": "Land"})
+        thelogger.debug("%s", cpldf.columns)
+        cpldf.rename(columns={"Name": "Verein"})
         return erg_df.merge(cpldf, on="Paar", how="inner")
 
     # thelogger.debug("%s", erg_df)

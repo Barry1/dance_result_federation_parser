@@ -6,8 +6,7 @@ import logging
 import sqlite3
 from textwrap import dedent  # inspect.cleandoc
 
-from pandas import DataFrame,read_sql_query
-
+from pandas import DataFrame, read_sql_query
 from valuefragments import portable_timing
 
 from configprocessing import setuplogger
@@ -126,11 +125,17 @@ def insertnewclubs(tempmatchdict: list[dict[str, str]]) -> None:
         con.set_trace_callback(thelogger.debug)
         con.executemany(INSERT_NEW_CLUB_STATEMENT, tempmatchdict)
 
+
 def couple_club_federation() -> DataFrame:
     """Get Couples with Clubs and Federations from DB."""
-    with sqlite3.connect("file:"+DATABASE_FILENAME+"?mode=ro", uri=True) as con:
-        couple_club_federation_df: DataFrame=read_sql_query("SELECT * from CoupleClubFederation", con)
+    with sqlite3.connect(
+        "file:" + DATABASE_FILENAME + "?mode=ro", uri=True
+    ) as con:
+        couple_club_federation_df: DataFrame = read_sql_query(
+            "SELECT * from CoupleClubFederation", con
+        )
     return couple_club_federation_df
+
 
 @portable_timing
 def create_structure() -> None:
