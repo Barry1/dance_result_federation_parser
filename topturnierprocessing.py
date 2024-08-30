@@ -125,7 +125,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
     erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
     erg_df.loc[:, "Paar"] = erg_df.Paar.map(clean_number_from_couple)
     erg_df.loc[:, "Verein"] = erg_df.Verein.map(cleanevfromentry)
-    if (ergdfgeridxs := (erg_df.Verein == "Germany")).any():
+    if (ergdfgeridxs := erg_df.Verein == "Germany").any():
         # international competition, no club name
         erg_df = erg_df[ergdfgeridxs]
     thelogger.debug("%s", erg_df)
