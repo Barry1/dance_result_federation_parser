@@ -1,7 +1,7 @@
 ---
 version: 0.1
 cli:
-  version: 1.22.3
+  version: 1.22.4
 plugins:
   sources:
     - id: trunk
@@ -14,12 +14,12 @@ lint:
     - bandit
   enabled:
     - pylint@3.2.6
-    - checkov@3.2.236
+    - checkov@3.2.239
     - osv-scanner@1.8.4
     - trivy@0.54.1
-    - trufflehog@3.81.9
+    - trufflehog@3.81.10
     - pyright@1.1.377
-    - ruff@0.6.2
+    - ruff@0.6.3
     - yamllint@1.35.1
     - markdownlint@0.41.0
     - autopep8@2.3.1
@@ -56,23 +56,35 @@ tools:
         - types-requests
         - lxml
         - lxml-stubs
+        - aiofiles
+        - pandas
+        - bs4
+        - joblib
     - name: pylint
       runtime: python
       package: pylint
       shims: [pylint]
       extra_packages:
         - requests
+        - aiofiles
         - types-requests
         - lxml
         - lxml-stubs
+        - pandas
+        - bs4
+        - joblib
     - name: pyright
       runtime: python
       package: pyright
       shims: [pyright]
       extra_packages:
+        - aiofiles
         - requests
         - types-requests
         - lxml
         - lxml-stubs
+        - pandas
+        - bs4
+        - joblib
 ---
 

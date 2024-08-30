@@ -120,14 +120,20 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
             erg_df["Verein"] = "∅"
         erg_df = erg_df.iloc[:, [0, 1, 2]]
     erg_df.columns = ["Platz", "Paar", "Verein"]
+
     # Nur Zeilen behalten, bei denen ein "." im Platz ist
     erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
     erg_df.loc[:, "Paar"] = erg_df.Paar.map(clean_number_from_couple)
     erg_df.loc[:, "Verein"] = erg_df.Verein.map(cleanevfromentry)
+    if (ergdfgeridxs := (erg_df.Verein == "Germany")).any():
+        # international competition, no club name
+        erg_df = erg_df[ergdfgeridxs]
     thelogger.debug("%s", erg_df)
     # erg_df['ordercol']=erg_df['Platz'].apply(lambda x:int(x[:x.find('.')]))
     # erg_df=erg_df.sort_values(by='ordercol').drop('ordercol', axis=1)
     # "inner" ging, sortiere falsch#.sort_values(by="Platz")
+    #    if (geridxs:=erg_df.Verein=="Germany").sum()>0:
+    #        thelogger.info("Germany %i",geridxs.sum())
     if _CFG_DICT["ESVCOUPLES"]:
         cpldf: DataFrame = get_couples_df()
         cpldf["Verband"] = "NAMEDCOUPLE"
