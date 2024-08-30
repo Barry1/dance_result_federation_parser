@@ -60,6 +60,7 @@ tools:
         - pandas
         - bs4
         - joblib
+        - /home/ebeling/GitHub/PyValueFragments
     - name: pylint
       runtime: python
       package: pylint
@@ -73,6 +74,7 @@ tools:
         - pandas
         - bs4
         - joblib
+        - /home/ebeling/GitHub/PyValueFragments
     - name: pyright
       runtime: python
       package: pyright
@@ -86,5 +88,6 @@ tools:
         - pandas
         - bs4
         - joblib
+        - /home/ebeling/GitHub/PyValueFragments
 ---
 
