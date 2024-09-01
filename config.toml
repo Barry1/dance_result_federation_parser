@@ -1,4 +1,3 @@
-THEFEDERATION = "TSH"
 CHECKINGURLS = [
   "http://tsa.de.cool/20190914_Senioren/index.htm",
   "http://www.tanzen-in-sh.de/ergebnisse/2019/2019-02-02_GLM_Kin-Jug_D-A_LAT/index.htm",
@@ -6,8 +5,13 @@ CHECKINGURLS = [
   "http://www.ergebnisse-tanzsport-glinde.de/mediapool/Turniere-2019/2019.09.28%20GLM",
   "http://tsk-buchholz.de/images/Tanzclub/Sparten/Turniertanz/GLM%202020.02.29",
 ]
-PYANNOTATE = true
-TOTHREAD = false
-RUN_ASYNC = true
 ESVCOUPLES = false
+HEADLINELINKS = false
+IMG_PREP = false
+INFORMEMAIL = "yourmail@provide.dance"
+PYANNOTATE = false
 RESULTFORMAT = "TSH"
+RESULTTABLE = true
+RUN_ASYNC = true
+THEFEDERATION = "TSH"
+TOTHREAD = false
