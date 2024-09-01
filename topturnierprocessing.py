@@ -3,7 +3,7 @@
 import logging
 from io import StringIO
 from os import getenv
-from re import DOTALL, IGNORECASE, Match, match
+from re import DOTALL, IGNORECASE, match
 from typing import Literal, cast
 from urllib.error import HTTPError
 
@@ -93,7 +93,9 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
         )
     except ValueError:
         thelogger.debug(
-            "HTTP-Fehler bei tab1tbl Nummer %s. Wenn es die %s-Datei nicht gibt, ist das Turnier evtl. ausgefallen?",
+            "HTTP-Fehler bei tab1tbl Nummer %s."
+            " Wenn es die %s-Datei nicht gibt,"
+            " ist das Turnier evtl. ausgefallen?",
             theresultresponse.status_code,
             theresultresponse,
         )
