@@ -43,13 +43,15 @@ presentation_function: Callable[
     [str, list[str], list[DataFrame], list[str], MyConfigT], None
 ]
 match _CFG_DICT["RESULTFORMAT"]:
-    case "TSH":
+    case "JOOMLA" | "TSH":
         presentation_function = print_tsh_web
     case "MARKDOWN":
         presentation_function = print_markdown
-    case _:
+    case wrongresultformat:
         presentation_function = None
-        thelogger.debug("Missing or invalid RESULTFORMAT")
+        thelogger.debug(
+            "Missing or invalid RESULTFORMAT '%s' in config", wrongresultformat
+        )
 
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 

@@ -57,7 +57,7 @@ class MyConfigT(TypedDict):
         "TTSV",
     ]
     CHECKINGURLS: list[str]
-    RESULTFORMAT: Literal["TSH", "MARKDOWN"]
+    RESULTFORMAT: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"]
     INFORMEMAIL: str
 
 
