@@ -1,3 +1,5 @@
+# Prevent uploading your personal changes by running
+# `git update-index --skip-worktree config.toml`
 CHECKINGURLS = [
   "http://tsa.de.cool/20190914_Senioren/index.htm",
   "http://www.tanzen-in-sh.de/ergebnisse/2019/2019-02-02_GLM_Kin-Jug_D-A_LAT/index.htm",
