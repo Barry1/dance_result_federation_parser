@@ -6,7 +6,8 @@ import logging
 from urllib.parse import quote
 from urllib.request import urlopen
 
-from lxml.etree import ElementTree
+# noinspection PyProtectedMember
+from lxml.etree import _ElementTree
 from lxml.html import parse
 from pandas import DataFrame, read_html, to_numeric  # , option_context
 
@@ -20,7 +21,7 @@ from stringprocessing import cleanevfromentry  # ,clean_number_from_couple
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 
 
-def checktpsontree(the_e_tree: ElementTree) -> bool:
+def checktpsontree(the_e_tree: _ElementTree) -> bool:
     """Search lxml-Tree for indicator if TPS."""
     return bool(
         the_e_tree.xpath(
@@ -70,7 +71,10 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
         tps_result_df = DataFrame(
             columns=["Platz", "Startnummer", "Paar", "Verein"]
         )
-    tps_result_df.columns = ["Platz", "Startnummer", "Paar", "Verein"]
+    #    tps_result_df.columns = ["Platz", "Startnummer", "Paar", "Verein"]
+    tps_result_df = tps_result_df.set_axis(
+        ["Platz", "Startnummer", "Paar", "Verein"], axis="columns", copy=False
+    )
     tps_result_df = tps_result_df[
         to_numeric(tps_result_df.Startnummer, errors="coerce").notnull()
     ]

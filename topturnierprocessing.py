@@ -3,7 +3,7 @@
 import logging
 from io import StringIO
 from os import getenv
-from re import DOTALL, IGNORECASE, match
+from re import DOTALL, IGNORECASE, Match, match
 from typing import Literal, cast
 from urllib.error import HTTPError
 
@@ -79,7 +79,9 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
 def tt_trndmntdatefrom(reqget: Response) -> dict[str, str]:
     """Use the Get-Response from erg.htm to get the date."""
     titledate = r".*<title>(?P<TAG>.*?)[./](?P<MONAT>.*?)[./](?P<JAHR>.*?) "
-    return match(titledate, reqget.text, DOTALL | IGNORECASE).groupdict()
+    if match_return := match(titledate, reqget.text, DOTALL | IGNORECASE):
+        return match_return.groupdict()
+    return {}
 
 
 def tt_from_erg(theresultresponse: Response) -> DataFrame:
@@ -119,12 +121,15 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
             # Solisten haben keine Vereine
             erg_df["Verein"] = "∅"
         erg_df = erg_df.iloc[:, [0, 1, 2]]
-    erg_df.columns = ["Platz", "Paar", "Verein"]
+    erg_df = erg_df.set_axis(
+        ["Platz", "Paar", "Verein"], axis="columns", copy=False
+    )
 
     # Nur Zeilen behalten, bei denen ein "." im Platz ist
     erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
     erg_df.loc[:, "Paar"] = erg_df.Paar.map(clean_number_from_couple)
     erg_df.loc[:, "Verein"] = erg_df.Verein.map(cleanevfromentry)
+    cpldf: DataFrame
     if (ergdfgeridxs := erg_df.Verein == "Germany").any():
         # international competition, no club name
         erg_df = erg_df[ergdfgeridxs]
@@ -140,7 +145,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
     #    if (geridxs:=erg_df.Verein=="Germany").sum()>0:
     #        thelogger.info("Germany %i",geridxs.sum())
     if _CFG_DICT["ESVCOUPLES"]:
-        cpldf: DataFrame = get_couples_df()
+        cpldf = get_couples_df()
         cpldf["Verband"] = "NAMEDCOUPLE"
         return erg_df.merge(cpldf, on="Paar", how="inner")
     return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")

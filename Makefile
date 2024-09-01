@@ -33,6 +33,10 @@ couples_clubs_federations.db:
 	make GLM_MasIV_STD_2024.txt
 	make RL_GLINDE_2024.txt
 
+.PHONY: dbcare
+dbcare:
+	sqlite3 couples_clubs_federations.db "VACUUM;"
+
 .PHONY: dbevals
 dbevals: couples_clubs_federations.db
 	sqlite3 -markdown couples_clubs_federations.db "select * from Fed_Club_Count;"
