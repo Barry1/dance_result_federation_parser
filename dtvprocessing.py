@@ -99,7 +99,6 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
     }
     # proposed from CircleCI instead of list()
     allmatches: list[dict[str, str]] = []
-    allmatches: list[dict[str, str]] = list()
     tempfound: list[HtmlElement]
     thelogger.debug(
         "%s", sess_context.post(url=SEARCH_URL, data=login_data).content
