@@ -58,11 +58,13 @@ def print_tsh_web(
                 eprint("error file info: ", nie.__traceback__.tb_frame)
                 eprint("error line#: ", nie.__traceback__.tb_lineno)
         if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
-            eprint(tournhdr)
-            eprint(
+            print("<!--") # Beginning of Comment
+            print(tournhdr)
+            print(
                 f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
             )
-            eprint(
+            print("-->") # End of Comment
+            print(
                 "<!-- =================================================== -->"
             )
         else:
