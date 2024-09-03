@@ -98,27 +98,19 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             )
         else:
             allreslinks = theparsefun(eventurl).values()
-            compnames: list[str] = [
-                human_comp_info(lnk) for lnk in allreslinks
-            ]
+            compnames: list[str] = [human_comp_info(lnk) for lnk in allreslinks]
             tsh_results: list[DataFrame]
             # <https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor>
             # python >=3.11 TaskGroup instead of gather
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if _CFG_DICT["TOTHREAD"]:
                 tsh_results = await run_grouped(
-                    [
-                        partial(the_interpret_fun, onelink)
-                        for onelink in allreslinks
-                    ],
+                    [partial(the_interpret_fun, onelink) for onelink in allreslinks],
                     "thread",
                 )
             else:
                 tsh_results = await run_grouped(
-                    [
-                        partial(the_interpret_fun, onelink)
-                        for onelink in allreslinks
-                    ],
+                    [partial(the_interpret_fun, onelink) for onelink in allreslinks],
                     "tpe",
                 )
             presentation_function(
@@ -150,9 +142,7 @@ def eventurl_to_web(synceventurl: str) -> None:
             )
         else:
             allreslinks = theparsefun(synceventurl).values()
-            compnames: list[str] = [
-                human_comp_info(thelink) for thelink in allreslinks
-            ]
+            compnames: list[str] = [human_comp_info(thelink) for thelink in allreslinks]
             tsh_results: list[DataFrame] = cast(
                 list[DataFrame],
                 Parallel(

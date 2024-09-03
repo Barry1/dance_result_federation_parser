@@ -128,9 +128,7 @@ def insertnewclubs(tempmatchdict: list[dict[str, str]]) -> None:
 
 def couple_club_federation() -> DataFrame:
     """Get Couples with Clubs and Federations from DB."""
-    with sqlite3.connect(
-        "file:" + DATABASE_FILENAME + "?mode=ro", uri=True
-    ) as con:
+    with sqlite3.connect("file:" + DATABASE_FILENAME + "?mode=ro", uri=True) as con:
         couple_club_federation_df: DataFrame = read_sql_query(
             "SELECT * from CoupleClubFederation", con
         )
@@ -141,9 +139,7 @@ def couple_club_federation() -> DataFrame:
 def create_structure() -> None:
     """Setups the expected database and fills the federations with their official abbreviations."""
     # Options for Opening <https://www.sqlite.org/uri.html>
-    with sqlite3.connect(
-        DATABASE_FILENAME
-    ) as con:  # autocommit=False from py3.12
+    with sqlite3.connect(DATABASE_FILENAME) as con:  # autocommit=False from py3.12
         con.set_trace_callback(thelogger.debug)
         con.executescript(CREATE_TABLES_STATEMENT)
         con.commit()

@@ -15,9 +15,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         yearstring = sys.argv[1]
     foundreslinks: list[str] = getselectedhreflinks(thesubstring=yearstring)
-    allreslinks: list[str] = [
-        a for a in foundreslinks if a.endswith("index.htm")
-    ]
+    allreslinks: list[str] = [a for a in foundreslinks if a.endswith("index.htm")]
     compnames: list[str] = [
         human_comp_info(turnier_info=thelink) for thelink in allreslinks
     ]
