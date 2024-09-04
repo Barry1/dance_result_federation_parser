@@ -38,7 +38,7 @@ jobs:
           git checkout --orphan results
           git config --global user.name "Dr. Bastian Ebeling"
           git config --global user.email 230051+Barry1@users.noreply.github.com
-          git add *.md
+          git add ./*.md
           git rm --force README.md SECURITY.md
           THEDATE=`date`
           git commit -m "$THEDATE results updated" *.md

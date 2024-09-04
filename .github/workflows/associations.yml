@@ -42,7 +42,7 @@ jobs:
           git config --global user.name "Dr. Bastian Ebeling"
           git config --global user.email 230051+Barry1@users.noreply.github.com
           git add -f associations/*.txt
-          THEDATE=`date`
+          THEDATE=$(date)
           git commit -m "$THEDATE association files updated" associations/*.txt
           git push --force --set-upstream origin associations
       #    git checkout main
