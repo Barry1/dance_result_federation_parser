@@ -1,3 +1,5 @@
+"""GOC is always a strange thing."""
+
 from joblib import Parallel, delayed
 from pandas import DataFrame
 from valuefragments import getselectedhreflinks

@@ -1,3 +1,5 @@
+"""Relevant functions for parsing ESV data."""
+
 import configparser
 from io import StringIO
 
@@ -14,6 +16,7 @@ from stringprocessing import correcttitleposition
 
 @memoize
 def get_esvcredentials() -> dict[str, str]:
+    """Loading credentials from file."""
     mycredentialsconf: configparser.ConfigParser = configparser.ConfigParser()
     mycredentialsconf.read(".credentials")
     return {
