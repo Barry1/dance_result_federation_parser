@@ -22,7 +22,9 @@ def correcttitleposition(couplestring: str) -> str:
     #        regex=True,
     #        inplace=True,
     #    )
-    return re_sub(r"(^.*,\s)(.*\s)(.*\.\s)(\/ )", r"\1\3\2\4", couplestring).strip()
+    return re_sub(
+        r"(^.*,\s)(.*\s)(.*\.\s)(\/ )", r"\1\3\2\4", couplestring
+    ).strip()
 
 
 def cleanevfromentry(singleorg: str) -> str:
@@ -50,7 +52,9 @@ def sr_human_comp_info(turnier_info: str) -> str:
     firstpos: int = turnier_info.rfind("/", 0, lastpos) + 1
     turnier_info = turnier_info[firstpos:lastpos]
     comp_desc: str
-    [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split("_", 2)
+    [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split(
+        "_", 2
+    )
     comp_desc = comp_desc.upper()
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
     comp_desc = comp_desc.replace("LAT", " Latein ")

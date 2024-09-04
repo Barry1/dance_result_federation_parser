@@ -15,7 +15,9 @@ def setuplogger() -> logging.Logger:
     logformatter: logging.Formatter = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     )
-    logfilehandler: logging.FileHandler = logging.FileHandler(f"{LOGGERNAME}.log")
+    logfilehandler: logging.FileHandler = logging.FileHandler(
+        f"{LOGGERNAME}.log"
+    )
     logfilehandler.setFormatter(logformatter)
     thelogger.addHandler(logfilehandler)
     if __debug__:
@@ -68,7 +70,9 @@ def readconfig() -> MyConfigT:
         with open("config.toml", "rb") as buffered_config_file:
             cfg = tomllib.load(buffered_config_file)
     except FileNotFoundError:
-        thelogger.info("No file config.toml found, default configuration used.")
+        thelogger.info(
+            "No file config.toml found, default configuration used."
+        )
         cfg = {}
     theconfig["CHECKINGURLS"] = cfg.get("CHECKINGURLS", [])
     theconfig["HEADLINELINKS"] = cfg.get("HEADLINELINKS", False)
@@ -80,6 +84,8 @@ def readconfig() -> MyConfigT:
     theconfig["RESULTTABLE"] = cfg.get("RESULTTABLE", True)
     theconfig["THEFEDERATION"] = cfg.get("THEFEDERATION", "TSH")
     theconfig["RESULTFORMAT"] = cfg.get("RESULTFORMAT", "MARKDOWN")
-    theconfig["INFORMEMAIL"] = cfg.get("INFORMEMAIL", "ebeling@tanzen-in-sh.de")
+    theconfig["INFORMEMAIL"] = cfg.get(
+        "INFORMEMAIL", "ebeling@tanzen-in-sh.de"
+    )
     thelogger.debug(theconfig)
     return theconfig
