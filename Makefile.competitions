@@ -1,3 +1,7 @@
+.PHONY: ergebnisse.ltvbremen.de/2024-09-07-glm-bremerhaven/index.htm
+GLM_HGR_D-B_LAT_2024.txt: ergebnisse.ltvbremen.de/2024-09-07-glm-bremerhaven/index.htm
+	$(runme)
+
 .PHONY: ltvb.de/wp-content/uploads/results/15209/index.htm
 DM_HGR_S_Kombi_2024.txt: ltvb.de/wp-content/uploads/results/15209/index.htm
 	$(runmesingle) 

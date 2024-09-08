@@ -81,7 +81,8 @@ INSERT_NEW_CLUB_STATEMENT: str = dedent(
     ' ("ID", "Name", "City", "FederationID")'
     " SELECT :ID, :Verein, :Ort, ID"
     ' FROM "Federations"'
-    ' WHERE "Abbrev"=:Verband;'
+    ' WHERE "Abbrev"=:Verband'
+    ' ON CONFLICT DO UPDATE set "FederationID" = ID;'
 )
 INSERT_COUPLES_STATEMENT: str = dedent(
     'INSERT INTO "Couples"'
