@@ -28,7 +28,8 @@ def print_tsh_web(
         "<p>Hier folgend die Ergebnisse",
         "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",
         f"der {cfg_dict['THEFEDERATION']}-Paare.",
-        #        "Die &Uuml;berschriften sind die Links zum Ergebnis.</p>",
+        #        "Die &Uuml;berschriften sind die Links zum Ergebnis.",
+        "</p>",
         "<!-- =================================================== -->",
     )
     for actreslink, value, turnier_info in zip(
@@ -221,5 +222,137 @@ def print_markdown(
     print(
         "Falls ich ein Paar übersehen habe, bitte ich freundlich um eine ",
         f'[Email](mailto:{cfg_dict["INFORMEMAIL"]}?subject=&Uuml;bersehenes%20Ergebnis)"',
+        sep="",
+    )
+
+
+def print_wordpress(
+    wholereslink: str,
+    allreslinks: list[str],
+    tsh_results: list[DataFrame],
+    compnames: list[str],
+    cfg_dict: MyConfigT,
+) -> None:
+    """Export data as WordPress."""
+    thelogger.debug("PresentationLayer WordPress")
+    print(
+        "<!-- wp:paragraph -->",
+        "<p>Einleitende Worte.</p>",
+        "<!-- /wp:paragraph -->",
+        "<!-- wp:more -->",
+        "<!--more-->",
+        "<!-- /wp:more -->",
+        "<!-- wp:paragraph -->",
+        "<p>Hier folgend die Ergebnisse",
+        "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",
+        f"der {cfg_dict['THEFEDERATION']}-Paare.",
+        "</p>",
+        "<!-- /wp:paragraph -->",
+        "<!-- =================================================== -->",
+    )
+    for actreslink, value, turnier_info in zip(
+        allreslinks, tsh_results, compnames
+    ):
+        tournhdr: str = (
+            (
+                "<!-- wp:heading -->"
+                f'<h2 class="wp-block-heading"><a href="{actreslink}" target="_blank" '
+                f'rel="noopener">{turnier_info}</a></h2>'
+                "<!-- /wp:heading -->"
+            )
+            if cfg_dict["HEADLINELINKS"]
+            else (
+                "<!-- wp:heading -->"
+                f'<h2 class="wp-block-heading">{turnier_info}</h2>'
+                "<!-- /wp:heading -->"
+            )
+        )
+        # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
+        # wird der Verband künstlich gesetzt:
+        # value.Verband[value.Verband == "NAMEDCOUPLE"]
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
+            "THEFEDERATION"
+        ]
+        if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
+            print("<!--")  # Beginning of Comment
+            print(tournhdr)
+            print(
+                f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
+            )
+            print("-->")  # End of Comment
+            print(
+                "<!-- =================================================== -->"
+            )
+        else:
+            print(tournhdr)
+            if cfg_dict["IMG_PREP"]:
+                print(
+                    '<div style="float: right; margin-left: 10px;'
+                    ' text-align: center;font-size: 8pt;">'
+                )
+                print(
+                    "<img"
+                    ' src="https://loremflickr.com/150/200/ballroom-dancing"'
+                    ' alt="Beispielfoto" height="200" />'
+                )
+                print("<br />Foto: loremflickr.com</div>")
+            if cfg_dict["RESULTTABLE"]:
+                print("<!-- wp:table -->")
+                print('<figure class="wp-block-table">')
+                print('<table class="has-fixed-layout">')
+                print(
+                    "<thead><tr><th>&nbsp;</th>",
+                    '<th style="text-align: right;">Platz</th>',
+                    '<th style="text-align: right;">Paar</th>',
+                    '<th style="text-align: right;">Verein</th>',
+                    "</tr></thead><tbody>",
+                    sep="",
+                )
+                for resline in value[
+                    value.Verband == cfg_dict["THEFEDERATION"]
+                ].iterrows():
+                    print(
+                        "<tr><td><strong>&nbsp;</strong></td>",
+                        '<td style="text-align: right;">',
+                        resline[1].Platz,
+                        '</td><td style="text-align: right;">',
+                        resline[1].Paar,
+                        '</td><td style="text-align: right;">',
+                        resline[1].Verein,
+                        "</td></tr>",
+                        sep="",
+                    )
+                print("</tbody></table></figure>")
+                print("<!-- /wp:table -->")
+            else:
+                print("<ul>")
+                for resline in value[
+                    value.Verband == cfg_dict["THEFEDERATION"]
+                ].iterrows():
+                    print(
+                        f"<li>{resline[1].Platz}",
+                        f"{resline[1].Paar} ({resline[1].Verein})</li>",
+                        sep="",
+                    )
+                print("</ul>")
+            print(
+                "<!-- =================================================== -->"
+            )
+    print(
+        "<!-- wp:paragraph -->",
+        '<p>Das Gesamtergebnis ist unter dem <a href="',
+        wholereslink,
+        '" target="_blank">Link</a> zu finden.</p>',
+        "<!-- /wp:paragraph -->",
+        sep="",
+    )
+    print(
+        "<!-- wp:paragraph -->",
+        "<p>Falls ich ein Paar übersehen habe, ",
+        "bitte ich freundlich um eine ",
+        "<a href=",
+        f'"mailto:{cfg_dict["INFORMEMAIL"]}?subject=&Uuml;bersehenes%20Ergebnis"',
+        ">Email</a>.</p>",
+        "<!-- /wp:paragraph -->",
         sep="",
     )
