@@ -98,7 +98,7 @@ addopts = ["--verbose"]
 
 [tool.poetry]
 name = "dance_result_federation_parser"
-version = "0.2.2"
+version = "0.2.3"
 description = ""
 authors = ["Ebeling, Dr. Bastian <bastian.ebeling@web.de>"]
 

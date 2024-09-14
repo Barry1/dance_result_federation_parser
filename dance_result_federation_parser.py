@@ -43,11 +43,11 @@ presentation_function: Callable[
     [str, list[str], list[DataFrame], list[str], MyConfigT], None
 ]
 match _CFG_DICT["RESULTFORMAT"]:
-    case "JOOMLA" | "TSH":
+    case "JOOMLA":
         presentation_function = print_tsh_web
     case "MARKDOWN":
         presentation_function = print_markdown
-    case "WORDPRESS":
+    case "WORDPRESS" | "TSH":
         presentation_function = print_wordpress
     case wrongresultformat:
         presentation_function = None
