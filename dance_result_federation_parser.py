@@ -28,7 +28,7 @@ from valuefragments import run_grouped
 
 from configprocessing import MyConfigT, readconfig, setuplogger
 from dtvprocessing import get_dtv_df
-from presentationlayer import print_markdown, print_tsh_web
+from presentationlayer import print_markdown, print_tsh_web, print_wordpress
 from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
     checkttontree,
@@ -47,6 +47,8 @@ match _CFG_DICT["RESULTFORMAT"]:
         presentation_function = print_tsh_web
     case "MARKDOWN":
         presentation_function = print_markdown
+    case "WORDPRESS":
+        presentation_function = print_wordpress
     case wrongresultformat:
         presentation_function = None
         thelogger.debug(

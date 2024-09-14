@@ -46,18 +46,9 @@ def print_tsh_web(
         # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
         # wird der Verband künstlich gesetzt:
         # value.Verband[value.Verband == "NAMEDCOUPLE"]
-        try:
-            value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
-                "THEFEDERATION"
-            ]
-        except NotImplementedError as nie:
-            eprint(
-                f"HIER {__file__} muss Basti noch etwas tun @TODO inplace DataSet geht nicht."
-            )
-            eprint("error: ", nie)
-            if nie.__traceback__:
-                eprint("error file info: ", nie.__traceback__.tb_frame)
-                eprint("error line#: ", nie.__traceback__.tb_lineno)
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
+            "THEFEDERATION"
+        ]
         if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
             print("<!--")  # Beginning of Comment
             print(tournhdr)
