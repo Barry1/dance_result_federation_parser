@@ -6,9 +6,6 @@ from configprocessing import MyConfigT, readconfig, setuplogger
 from dance_result_federation_parser import interpret_tt_result
 from presentationlayer import presentation_function
 
-# from strictly_typed_pandas import DataSet as DataFrame
-
-
 thelogger: logging.Logger = setuplogger()
 _CFG_DICT: MyConfigT = readconfig()
 if __name__ == "__main__":
