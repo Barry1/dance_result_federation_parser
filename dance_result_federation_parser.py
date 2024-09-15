@@ -160,7 +160,7 @@ def eventurl_to_web(synceventurl: str) -> None:
             )
 
 
-__all__: list[str] = ["interpret_tt_result", "print_tsh_web"]
+__all__: list[str] = ["interpret_tt_result", "presentation_function"]
 if __name__ == "__main__":
     # execute only if run as a script
     if _CFG_DICT["PYANNOTATE"]:
