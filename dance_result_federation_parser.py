@@ -28,7 +28,7 @@ from valuefragments import run_grouped
 
 from configprocessing import MyConfigT, readconfig, setuplogger
 from dtvprocessing import get_dtv_df
-from presentationlayer import print_markdown, print_tsh_web, print_wordpress
+from presentationlayer import presentation_function
 from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
     checkttontree,
@@ -39,22 +39,6 @@ from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 thelogger: logging.Logger = setuplogger()
 _CFG_DICT: MyConfigT = readconfig()
-presentation_function: Callable[
-    [str, list[str], list[DataFrame], list[str], MyConfigT], None
-]
-match _CFG_DICT["RESULTFORMAT"]:
-    case "JOOMLA":
-        presentation_function = print_tsh_web
-    case "MARKDOWN":
-        presentation_function = print_markdown
-    case "WORDPRESS" | "TSH":
-        presentation_function = print_wordpress
-    case wrongresultformat:
-        presentation_function = None
-        thelogger.debug(
-            "Missing or invalid RESULTFORMAT '%s' in config", wrongresultformat
-        )
-
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 

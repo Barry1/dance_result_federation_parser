@@ -13,7 +13,7 @@ from configprocessing import LOGGERNAME, MyConfigT
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 
 
-def print_tsh_web(
+def print_joomla(
     wholereslink: str,
     allreslinks: list[str],
     tsh_results: list[DataFrame],
@@ -347,3 +347,34 @@ def print_wordpress(
         "<!-- /wp:paragraph -->",
         sep="",
     )
+
+
+def presentation_function(
+    wholereslink: str,
+    allreslinks: list[str],
+    tsh_results: list[DataFrame],
+    compnames: list[str],
+    cfg_dict: MyConfigT,
+) -> None:
+    """Returns result based on config selector."""
+    match cfg_dict["RESULTFORMAT"]:
+        case "JOOMLA":
+            return print_joomla(
+                wholereslink, allreslinks, tsh_results, compnames, cfg_dict
+            )
+        case "WORDPRESS" | "TSH":
+            return print_wordpress(
+                wholereslink, allreslinks, tsh_results, compnames, cfg_dict
+            )
+        case "MARKDOWN":
+            return print_markdown(
+                wholereslink, allreslinks, tsh_results, compnames, cfg_dict
+            )
+        case wrongresultformat:
+            thelogger.debug(
+                "Missing or invalid RESULTFORMAT '%s' in config",
+                wrongresultformat,
+            )
+            return print_markdown(
+                wholereslink, allreslinks, tsh_results, compnames, cfg_dict
+            )
