@@ -1,9 +1,6 @@
 """Module analyzing single competitions not events."""
 
 import logging
-from typing import Callable
-
-from pandas import DataFrame
 
 from configprocessing import MyConfigT, readconfig, setuplogger
 from dance_result_federation_parser import interpret_tt_result
