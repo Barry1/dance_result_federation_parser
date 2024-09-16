@@ -32,7 +32,9 @@ def print_joomla(
         "</p>",
         "<!-- =================================================== -->",
     )
-    for actreslink, value, turnier_info in zip(allreslinks, tsh_results, compnames):
+    for actreslink, value, turnier_info in zip(
+        allreslinks, tsh_results, compnames
+    ):
         tournhdr: str = (
             (
                 f'<h2><a href="{actreslink}" target="_blank" '
@@ -44,13 +46,19 @@ def print_joomla(
         # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
         # wird der Verband künstlich gesetzt:
         # value.Verband[value.Verband == "NAMEDCOUPLE"]
-        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict["THEFEDERATION"]
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
+            "THEFEDERATION"
+        ]
         if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
             print("<!--")  # Beginning of Comment
             print(tournhdr)
-            print(f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>")
+            print(
+                f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
+            )
             print("-->")  # End of Comment
-            print("<!-- =================================================== -->")
+            print(
+                "<!-- =================================================== -->"
+            )
         else:
             print(tournhdr)
             if cfg_dict["IMG_PREP"]:
@@ -102,7 +110,9 @@ def print_joomla(
                         sep="",
                     )
                 print("</ul>")
-            print("<!-- =================================================== -->")
+            print(
+                "<!-- =================================================== -->"
+            )
     print(
         '<p>Das Gesamtergebnis ist unter dem <a href="',
         wholereslink,
@@ -141,7 +151,9 @@ def print_markdown(
         f"der {cfg_dict['THEFEDERATION']}-Paare.",
         sep="",
     )
-    for actreslink, value, turnier_info in zip(allreslinks, tsh_results, compnames):
+    for actreslink, value, turnier_info in zip(
+        allreslinks, tsh_results, compnames
+    ):
         tournhdr: str = (
             "\n"
             + (
@@ -151,11 +163,17 @@ def print_markdown(
             )
             + "\n"
         )
-        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict["THEFEDERATION"]
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
+            "THEFEDERATION"
+        ]
         if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
             eprint(tournhdr)
-            eprint(f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>")
-            eprint("<!-- =================================================== -->")
+            eprint(
+                f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
+            )
+            eprint(
+                "<!-- =================================================== -->"
+            )
         else:
             print(tournhdr)
             if cfg_dict["IMG_PREP"]:
@@ -175,7 +193,9 @@ def print_markdown(
                 for resline in value[
                     value.Verband == cfg_dict["THEFEDERATION"]
                 ].iterrows():
-                    print(f"|{resline[1].Platz}|{resline[1].Paar}|{resline[1].Verein}|")
+                    print(
+                        f"|{resline[1].Platz}|{resline[1].Paar}|{resline[1].Verein}|"
+                    )
             else:
                 for resline in value[
                     value.Verband == cfg_dict["THEFEDERATION"]
@@ -220,7 +240,9 @@ def print_wordpress(
         "</p>",
         "<!-- /wp:paragraph -->",
     )
-    for actreslink, value, turnier_info in zip(allreslinks, tsh_results, compnames):
+    for actreslink, value, turnier_info in zip(
+        allreslinks, tsh_results, compnames
+    ):
         tournhdr: str = (
             (
                 "<!-- wp:heading -->"
@@ -238,11 +260,15 @@ def print_wordpress(
         # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
         # wird der Verband künstlich gesetzt:
         # value.Verband[value.Verband == "NAMEDCOUPLE"]
-        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict["THEFEDERATION"]
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
+            "THEFEDERATION"
+        ]
         if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
             print("<!--")  # Beginning of Comment
             print(tournhdr)
-            print(f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>")
+            print(
+                f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
+            )
             print("-->")  # End of Comment
         else:
             print(tournhdr)
@@ -305,7 +331,9 @@ def print_wordpress(
                 '<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->'
             )
             print(
-                '<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>'
+                '<hr class="wp-block-separator has-text-color has-white-color '
+                "has-alpha-channel-opacity has-white-background-color has-background "
+                'is-style-wide"/>'
             )
             print("<!-- /wp:separator -->")
     print(
