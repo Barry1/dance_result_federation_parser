@@ -285,9 +285,6 @@ def print_wordpress(
                     )
                 print("</tbody></table></figure>")
                 print("<!-- /wp:table -->")
-                print("<!-- wp:separator -->")
-                print('<hr class="wp-block-separator has-alpha-channel-opacity" />')
-                print("<!-- /wp:separator -->")
             else:
                 print("<ul>")
                 for resline in value[
@@ -299,7 +296,18 @@ def print_wordpress(
                         sep="",
                     )
                 print("</ul>")
-            print("<!-- =================================================== -->")
+            print("<!-- wp:spacer -->")
+            print(
+                '<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>'
+            )
+            print("<!-- /wp:spacer -->")
+            print(
+                '<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->'
+            )
+            print(
+                '<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>'
+            )
+            print("<!-- /wp:separator -->")
     print(
         "<!-- wp:paragraph -->",
         '<p>Das Gesamtergebnis ist unter dem <a href="',
