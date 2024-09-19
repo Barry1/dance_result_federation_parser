@@ -64,6 +64,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
     """Async convert URL from Event to HTML for TSH CMS."""
     try:
         with urlopen(eventurl) as openedurl:
+            eventurl = openedurl.geturl()
             tree: _ElementTree = await asyncio.to_thread(parse, openedurl)
     except HTTPError as http_error:
         thelogger.exception(http_error)
@@ -116,6 +117,7 @@ def eventurl_to_web(synceventurl: str) -> None:
     """Convert URL from Event to HTML for TSH CMS."""
     try:
         with urlopen(synceventurl) as openedurl:
+            synceventurl = openedurl.geturl()
             tree: _ElementTree = parse(openedurl)
     except HTTPError as sync_http_error:
         thelogger.exception(sync_http_error)

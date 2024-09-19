@@ -52,9 +52,6 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
     benötigt für eine exemplarische Seite
     http://tsa.de.cool/20190914_Senioren 196 ms.
     """
-    assert baseurlwith.endswith(
-        ("index.htm", "index.html")
-    ), 'URL muss auf "/" und index.htm[l] enden'
     baseurl: str = baseurlwith[: baseurlwith.rfind("/")]
     tournmtsdict: dict[str, str] = {}
     for eintrag in cast(
@@ -155,10 +152,6 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
 
 def interpret_tt_result(theresulturl: str) -> DataFrame:
     """Process TopTurnier URL."""
-    assert theresulturl.endswith("index.htm"), (
-        "Es muss die index.htm-URL vom Turnier"
-        "(nicht der Veranstaltung) angegeben werden"
-    )
     thelogger.debug(theresulturl)
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
     thelogger.debug(theresulturl)
