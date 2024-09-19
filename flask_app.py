@@ -1,5 +1,8 @@
 #!/bin/env -S poetry run python -OO
-# flask --debug --app flask_test run
+# flask --debug --FLASK_APP flask_test run
+"""A module running a small Flask FLASK_APP to use this."""
+from __future__ import absolute_import
+
 from contextlib import redirect_stdout
 from io import StringIO
 
@@ -7,13 +10,12 @@ from flask import Flask, request
 
 import dance_result_federation_parser
 
-app = Flask(__name__)
+FLASK_APP = Flask(__name__)
 
 
-@app.route("/", methods=["GET"])  # POST not working like I think
+@FLASK_APP.route("/", methods=["GET"])  # POST not working like I think
 def result() -> str:
     """Build Website and if getURL try to read couples results."""
-    #    theurl = "https://tanzen-in-sh.de/ergebnisse/2024/2024-02-24_GLM_MasIV_STD/index.htm"
     theurl: str | None = request.args.get("theurl")
     the_cms_code: str = ""
     if theurl:
@@ -39,4 +41,4 @@ def result() -> str:
 
 
 if __name__ == "__main__":
-    app.run(debug=__debug__)
+    FLASK_APP.run(debug=__debug__)
