@@ -230,9 +230,13 @@ def print_wordpress(
         "<!-- wp:paragraph -->",
         "<p>Einleitende Worte.</p>",
         "<!-- /wp:paragraph -->",
+    )
+    print(
         "<!-- wp:more -->",
         "<!--more-->",
         "<!-- /wp:more -->",
+    )
+    print(
         "<!-- wp:paragraph -->",
         "<p>Hier folgend die Ergebnisse",
         "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",

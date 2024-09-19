@@ -115,6 +115,7 @@ requests = "^2.32.0"
 #strictly-typed-pandas = "^0.3.4"
 typing = "^3.7.4"
 typing-extensions = ">=4.3"
+flask = "^3.0.3"
 
 [tool.poetry.dependencies.valuefragments]
 git = "https://github.com/Barry1/PyValueFragments.git"
