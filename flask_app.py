@@ -1,6 +1,6 @@
 #!/bin/env -S poetry run python -OO
-# flask --debug --FLASK_APP flask_test run
-"""A module running a small Flask FLASK_APP to use this."""
+# flask --debug --app flask_app run
+"""A module running a small Flask App to use this."""
 from __future__ import absolute_import
 
 from contextlib import redirect_stdout
@@ -27,7 +27,7 @@ def result() -> str:
         "<html><head><title>Flask-Test</title></head><body>"
         + '<form action="/" method="get">'
         + "<table><tr>"
-        + '<td><label for="fname">Veranstaltungs-URL (inklusive index.html):</label></td>'
+        + '<td><label for="fname">Veranstaltungs-URL:</label></td>'
         + '<td><input type="text" id="theurl" name="theurl"></td>'
         + "</tr><tr><td></td>"
         + '<td><input type="submit" value="Submit"></td>'
