@@ -41,5 +41,5 @@ jobs:
           git add ./*.md
           git rm --force README.md SECURITY.md
           THEDATE=$(date)
-          git commit -m "$THEDATE results updated" *.md
+          git commit -m "$THEDATE results updated" ./*.md
           git push --force --set-upstream origin results
