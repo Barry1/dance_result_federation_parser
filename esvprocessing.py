@@ -30,7 +30,11 @@ def get_esvcredentials() -> dict[str, str]:
 @memoize
 def get_couples_df() -> DataFrame:
     """Login to esv and retrieve csv file of couples."""
-    readopts = {"encoding": "iso8859_15", "sep": ";", "usecols": ["Paar"]}
+    readopts: dict[str, str | list[str]] = {
+        "encoding": "iso8859_15",
+        "sep": ";",
+        "usecols": ["Paar"],
+    }
     login_url = "https://ev.tanzsport-portal.de"
     couples_url: str = f"{login_url}/Auswertungen/showAuswertung/id/57"
     logout_url: str = f"{login_url}/DefaultMod/logout"
