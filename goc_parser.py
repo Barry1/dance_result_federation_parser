@@ -5,7 +5,7 @@ from pandas import DataFrame
 from valuefragments import getselectedhreflinks
 
 from configprocessing import MyConfigT, readconfig  # , setuplogger
-from presentationlayer import print_tsh_web as presentation_function
+from presentationlayer import print_wordpress as presentation_function
 from stringprocessing import sr_human_comp_info as human_comp_info
 from topturnierprocessing import interpret_tt_result as the_interpret_fun
 
