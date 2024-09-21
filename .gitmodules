@@ -1,0 +1,3 @@
+[submodule "DanceCouplesData"]
+	path = DanceCouplesData
+	url = https://github.com/Barry1/DanceCouplesData

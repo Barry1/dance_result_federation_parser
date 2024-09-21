@@ -4,6 +4,7 @@ from __future__ import absolute_import
 
 import logging
 import sqlite3
+from os import sep
 from textwrap import dedent  # inspect.cleandoc
 
 from pandas import DataFrame, read_sql_query
@@ -13,7 +14,9 @@ from configprocessing import setuplogger
 
 thelogger: logging.Logger = setuplogger()
 
-DATABASE_FILENAME = "couples_clubs_federations.db"
+DATABASE_FILENAME = (
+    "DanceCouplesData" + sep + "couples_clubs_federations.sqlite3"
+)
 
 CREATE_TABLES_STATEMENT: str = dedent(
     """\
