@@ -85,10 +85,26 @@ INSERT_NEW_CLUB_STATEMENT: str = dedent(
     " SELECT :ID, :Verein, :Ort, ID"
     ' FROM "Federations"'
     ' WHERE "Abbrev"=:Verband'
-    ' ON CONFLICT DO UPDATE set "FederationID" = ID;'
+    ' ON CONFLICT DO UPDATE set "FederationID" = excluded.FederationID;'
+)
+_INSERT_NEW_CLUB_STATEMENT_REPLACE: str = dedent(
+    'REPLACE INTO "Clubs"'
+    ' ("ID", "Name", "City", "FederationID")'
+    " SELECT :ID, :Verein, :Ort, ID"
+    ' FROM "Federations"'
+    ' WHERE "Abbrev"=:Verband;'
 )
 INSERT_COUPLES_STATEMENT: str = dedent(
     'INSERT INTO "Couples"'
+    ' ("String", "ClubID", "FromDate")'
+    " SELECT :Paar, ID, :Datum"
+    ' FROM "Clubs"'
+    ' WHERE "Name"=:Verein'
+    " ON CONFLICT DO UPDATE"
+    ' set "FromDate" = excluded.FromDate where "FromDate"<excluded.FromDate;'
+)
+_INSERT_COUPLES_STATEMENT_REPLACE: str = dedent(
+    'REPLACE INTO "Couples"'
     ' ("String", "ClubID", "FromDate")'
     " SELECT :Paar, ID, :Datum"
     ' FROM "Clubs"'
