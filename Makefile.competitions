@@ -1,3 +1,7 @@
+.PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/2024_glm_hgr_masi-a_s/2024_glm_hgr%2Bmasi-a%2Bs/index.htm
+GLM_HGR_MASI_A-S_STD_2024.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/2024_glm_hgr_masi-a_s/2024_glm_hgr%2Bmasi-a%2Bs/index.htm
+	$(runme)
+
 .PHONY: tanzen-in-sh.de/ergebnisse/2024/2024-09-15_GLM_MASIII_S_STD/index.htm
 GLM_MASIII_S_STD_2024.txt: tanzen-in-sh.de/ergebnisse/2024/2024-09-15_GLM_MASIII_S_STD/index.htm
 	$(runmesingle) 
