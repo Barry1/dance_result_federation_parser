@@ -13,6 +13,8 @@ lint:
     - sourcery
     - bandit
   enabled:
+    - shellcheck@0.10.0
+    - shfmt@3.6.0
     - pylint@3.2.7
     - checkov@3.2.255
     - osv-scanner@1.8.5
