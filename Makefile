@@ -22,6 +22,13 @@ runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> 
 
 ALL: pylint mypy formatting vulture pytype sourcery
 
+.PHONE: multicouplecheck
+multicouplecheck:
+	sqlite3 -readonly -markdown DanceCouplesData/couples_clubs_federations.sqlite3 "select * from CoupleClubFederation where Paar like \"%Ebeling%\";"
+	sqlite3 -readonly -markdown DanceCouplesData/couples_clubs_federations.sqlite3 "select count(*) from CoupleClubFederation;"
+	sqlite3 -readonly -markdown DanceCouplesData/couples_clubs_federations.sqlite3 "select count(*) from CoupleClubFederation where Paar like \"%,%/%,%\";"
+
+
 .PHONY: dbreset
 dbreset:
 	sqlite3 $(cpldb) "delete from COUPLES;"

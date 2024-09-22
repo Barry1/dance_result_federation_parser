@@ -3,6 +3,7 @@
 from __future__ import absolute_import
 
 import logging
+import re
 import sqlite3
 from os import sep
 from textwrap import dedent  # inspect.cleandoc
@@ -112,6 +113,11 @@ _INSERT_COUPLES_STATEMENT_REPLACE: str = dedent(
     #    " ON CONFLICT DO NOTHING;"
     ' ON CONFLICT DO UPDATE set "FromDate" = :Datum where "FromDate"<:Datum;'
 )
+INSERT_BASECOUPLES_STATEMENT: str = dedent(
+    'INSERT INTO "BaseCouples"'
+    ' ("HeFirstname", "HeSurname", "SheFirstname", "SheSurname","ClubID","FromDate")'
+    " Values  (:HeFirstname, :HeSurname, :SheFirstname, :SheSurname, :ClubID, :FromDate)"
+)
 
 # @portable_timing
 
@@ -194,6 +200,29 @@ def create_structure() -> None:
         con.commit()
 
 
+def cpltobasecpl() -> None:
+    """Seraches Couples and derives BaseCouples."""
+    theregex = r"(?P<HeSurname>.*), (?P<HeFirstname>.*) / (?P<SheSurname>.*), (?P<SheFirstname>.*)"
+    with sqlite3.connect(DATABASE_FILENAME) as con:
+        couplescursor: sqlite3.Cursor = con.cursor()
+        couplescursor.execute(
+            'select * from Couples where String like "%, % / %, %" and String not in (select String FROM DerivedCouples);'
+        )
+        allrows: list = couplescursor.fetchall()
+    newbasecouplesdict: list[dict[str, str | Any]] = [
+        {
+            **re.match(theregex, row[1]).groupdict(),
+            "ClubID": row[2],
+            "FromDate": row[3],
+        }
+        for row in allrows
+    ]
+    with sqlite3.connect(DATABASE_FILENAME) as con:
+        con.set_trace_callback(thelogger.debug)
+        con.executemany(INSERT_BASECOUPLES_STATEMENT, newbasecouplesdict)
+
+
 if __name__ == "__main__":
-    create_structure()
+    # create_structure()
     # create_clubs()
+    cpltobasecpl()
