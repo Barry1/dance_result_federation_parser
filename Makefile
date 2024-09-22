@@ -12,6 +12,8 @@ OBJS=$(shell git ls-files *.py *.pyi)
 
 runme=poetry run python -OO ./dance_result_federation_parser.py https\://$< > $@ 2> $(@:.txt=.err)
 rungoc=poetry run python -OO ./goc_parser.py $(subst GOC_,,$(@:.txt=)) https\://$< > $@ 2> $(@:.txt=.err)
+cpldb=DanceCouplesData/couples_clubs_federations.sqlite3
+
 
 $(@:.txt=.err)
 
@@ -20,27 +22,23 @@ runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> 
 
 ALL: pylint mypy formatting vulture pytype sourcery
 
-couples_clubs_federations.db: 
-	rm -rf resultParser.log couples_clubs_federations.db dtv_associations.parquet
-	poetry run python -OO sqlitedatabase.py
-	poetry run python -OO dtvprocessing.py
-	make BDF_2024.txt
-	make danceComp_2024.txt
-	make DSF_2024.txt
-	make HessenTanzt_2024.txt
-	make BlauesBand2024.txt
-	make DM_MASII_S_STD_2024.txt
-	make GLM_MasIV_STD_2024.txt
-	make RL_GLINDE_2024.txt
+.PHONY: dbreset
+dbreset:
+	sqlite3 $(cpldb) "delete from COUPLES;"
+	sqlite3 $(cpldb) "delete from CLUBS;"
+	sqlite3 $(cpldb) "delete from sqlite_sequence;"
+	sqlite3 $(cpldb) "VACUUM;"
+	rm -rf dtv_associations.parquet
+	rm -rf *_*.txt *.err
 
 .PHONY: dbcare
 dbcare:
-	sqlite3 couples_clubs_federations.db "VACUUM;"
+	sqlite3 $(cpldb) "VACUUM;"
 
 .PHONY: dbevals
-dbevals: couples_clubs_federations.db
-	sqlite3 -markdown couples_clubs_federations.db "select * from Fed_Club_Count;"
-	sqlite3 -markdown couples_clubs_federations.db "select * from activCouplesFederation;"
+dbevals: $(cpldb)
+	sqlite3 -markdown $(cpldb) "select * from Fed_Club_Count;"
+	sqlite3 -markdown $(cpldb) "select * from activCouplesFederation;"
 
 pipdeptree:
 	poetry run pipdeptree --packages=aiofiles,bs4,fastparquet,html5lib,joblib,lxml,pyarrow,pytype,requests,typing
