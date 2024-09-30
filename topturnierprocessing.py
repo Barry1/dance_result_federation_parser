@@ -159,6 +159,7 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     ergurlresponse: Response = requests_get(
         theresulturl, timeout=MY_TIMEOUT, headers={"User-agent": "Mozilla"}
     )
+    # thelogger.debug("hier %s",ergurlresponse)
     if ergurlresponse.ok:
         thedatedict: dict[str, str] = tt_trndmntdatefrom(ergurlresponse)
         thelogger.debug("Veranstaltungsdatum %s", thedatedict)

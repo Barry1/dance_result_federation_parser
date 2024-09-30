@@ -5,7 +5,7 @@ cli:
 plugins:
   sources:
     - id: trunk
-      ref: v1.6.2
+      ref: v1.6.3
       uri: https://github.com/trunk-io/plugins
 lint:
   disabled:
@@ -15,24 +15,24 @@ lint:
   enabled:
     - shellcheck@0.10.0
     - shfmt@3.6.0
-    - pylint@3.2.7
+    - pylint@3.3.1
     - checkov@3.2.255
     - osv-scanner@1.8.5
     - trivy@0.55.2
-    - trufflehog@3.82.2
-    - pyright@1.1.381
-    - ruff@0.6.6
+    - trufflehog@3.82.6
+    - pyright@1.1.382
+    - ruff@0.6.8
     - yamllint@1.35.1
-    - markdownlint@0.41.0
+    - markdownlint@0.42.0
     - autopep8@2.3.1
     - flake8@7.1.1
-    - gitleaks@8.19.2
+    - gitleaks@8.19.3
     - taplo@0.9.3
     - prettier@3.3.3
     - mypy@1.11.2
     - black@24.8.0
     - isort@5.13.2
-    - actionlint@1.7.1
+    - actionlint@1.7.3
     - git-diff-check
 actions:
   enabled:
