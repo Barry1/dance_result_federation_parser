@@ -40,6 +40,7 @@ dbreset:
 
 .PHONY: dbcare
 dbcare:
+	poetry run python -OO sqlitedatabase.py
 	sqlite3 $(cpldb) "VACUUM;"
 
 .PHONY: dbevals
