@@ -67,7 +67,7 @@ CREATE_TABLES_STATEMENT: str = dedent(
     """
     """\
     CREATE VIEW IF NOT EXISTS "activCouplesFederation" as
-        select 
+        select
             Federations.Abbrev as Verband,
             count(Couples.String) as "aktive Paare"
         from Couples
