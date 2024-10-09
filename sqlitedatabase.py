@@ -6,7 +6,8 @@ import logging
 import re
 import sqlite3
 from os import sep
-from textwrap import dedent  # inspect.cleandoc
+from textwrap import dedent
+from typing import Any  # inspect.cleandoc
 
 from pandas import DataFrame, read_sql_query
 from valuefragments import portable_timing
@@ -66,7 +67,9 @@ CREATE_TABLES_STATEMENT: str = dedent(
     """
     """\
     CREATE VIEW IF NOT EXISTS "activCouplesFederation" as
-        select Federations.Abbrev as Verband,count(Couples.String) as "aktive Paare"
+        select 
+            Federations.Abbrev as Verband,
+            count(Couples.String) as "aktive Paare"
         from Couples
         join Clubs on ClubID=Clubs.ID
         join Federations on Clubs.FederationID=Federations.ID
@@ -115,8 +118,10 @@ _INSERT_COUPLES_STATEMENT_REPLACE: str = dedent(
 )
 INSERT_BASECOUPLES_STATEMENT: str = dedent(
     'INSERT INTO "BaseCouples"'
-    ' ("HeFirstname", "HeSurname", "SheFirstname", "SheSurname","ClubID","FromDate")'
-    " Values  (:HeFirstname, :HeSurname, :SheFirstname, :SheSurname, :ClubID, :FromDate)"
+    ' ("HeFirstname", "HeSurname", "SheFirstname",'
+    ' "SheSurname","ClubID","FromDate")'
+    " Values  (:HeFirstname, :HeSurname, :SheFirstname,"
+    " :SheSurname, :ClubID, :FromDate)"
 )
 
 # @portable_timing
@@ -130,7 +135,9 @@ def insertcouplestodb(sourcedf: DataFrame, tournamentdate: str) -> None:
     )
     cpls: list[dict[str, str]] = []
     for _, row in sourcedf.iterrows():
-        # thelogger.debug("%s | %s | %s",row["Paar"],row["Verein"],row["Verband"])
+        thelogger.debug(
+            "%s | %s | %s", row["Paar"], row["Verein"], row["Verband"]
+        )
         cpls.append(
             {
                 "Paar": row["Paar"],
@@ -165,7 +172,7 @@ def couple_club_federation() -> DataFrame:
 
 @portable_timing
 def create_structure() -> None:
-    """Setups the expected database and fills the federations with their official abbreviations."""
+    """Setups database and fills the federations abbreviations."""
     # Options for Opening <https://www.sqlite.org/uri.html>
     with sqlite3.connect(
         DATABASE_FILENAME
@@ -173,7 +180,8 @@ def create_structure() -> None:
         con.set_trace_callback(thelogger.debug)
         con.executescript(CREATE_TABLES_STATEMENT)
         con.commit()
-        # Maybe details from <https://www.tanzsport.de/de/verband/landesverbaende>
+        # Maybe details from
+        # <https://www.tanzsport.de/de/verband/landesverbaende>
         con.execute(INSERT_FEDERATION_STMT, ("Bayern",))
         con.execute(INSERT_FEDERATION_STMT, ("Berlin",))
         con.execute(INSERT_FEDERATION_STMT, ("Bremen",))
@@ -201,14 +209,23 @@ def create_structure() -> None:
 
 
 def cpltobasecpl() -> None:
-    """Seraches Couples and derives BaseCouples."""
-    theregex = r"(?P<HeSurname>.*), (?P<HeFirstname>.*) / (?P<SheSurname>.*), (?P<SheFirstname>.*)"
+    """Searches Couples and derives BaseCouples."""
+    theregex = (
+        r"(?P<HeSurname>.*), (?P<HeFirstname>.*)"
+        + " / "
+        + r"(?P<SheSurname>.*), (?P<SheFirstname>.*)"
+    )
     with sqlite3.connect(DATABASE_FILENAME) as con:
         couplescursor: sqlite3.Cursor = con.cursor()
         couplescursor.execute(
-            'select * from Couples where String like "%, % / %, %" and String not in (select String FROM DerivedCouples);'
+            "select * from Couples "
+            'where String like "%, % / %, %" '
+            "and String not in (select String FROM DerivedCouples);"
         )
         allrows: list = couplescursor.fetchall()
+        thelogger.info(
+            "%i new couples not in base couples found.", len(allrows)
+        )
     newbasecouplesdict: list[dict[str, str | Any]] = [
         {
             **re.match(theregex, row[1]).groupdict(),
