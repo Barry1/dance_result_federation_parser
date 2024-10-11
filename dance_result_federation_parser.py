@@ -170,7 +170,9 @@ if __name__ == "__main__":
 
         collect_types.init_types_collection()
         collect_types.start()
+    import os
     import sys
+    import threading
 
     # Besonders nötig, damit bei ASYNC nur einmal
     # ggf. die DTV-Vereinliste aktualisiert wird
