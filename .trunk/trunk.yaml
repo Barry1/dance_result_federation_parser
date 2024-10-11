@@ -48,6 +48,9 @@ runtimes:
     - node@18.12.1
     - python@3.11.8
 tools:
+  enabled:
+    - sourcery@1.23.0
+    - poetry@1.8.3
   definitions:
     - name: mypy
       runtime: python
