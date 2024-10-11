@@ -170,16 +170,12 @@ if __name__ == "__main__":
 
         collect_types.init_types_collection()
         collect_types.start()
-    import os
-    import sys
-    import threading
-
-    # Besonders nötig, damit bei ASYNC nur einmal
+        # Besonders nötig, damit bei ASYNC nur einmal
     # ggf. die DTV-Vereinliste aktualisiert wird
     _: DataFrame = get_dtv_df().loc[403:406]
     # vielleicht auch mit <https://docs.python.org/3/library/asyncio-sync.html> zu lösen
-    if len(sys.argv) > 1:
-        for theurl in sys.argv[1:]:
+    if len(theargv := __import__("sys").argv) > 1:
+        for theurl in theargv[1:]:
             thelogger.info("Auswertung von %s", theurl)
             if _CFG_DICT["RUN_ASYNC"]:
                 asyncio.run(async_eventurl_to_web(theurl))
