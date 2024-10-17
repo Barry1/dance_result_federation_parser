@@ -1,0 +1,31 @@
+28 Vereine im 'SLT':
+                                          Verein             Ort
+ID                                                              
+1184                                 RRC Homburg         Homburg
+1185                      TSC Residenz Ottweiler       Ottweiler
+1186                    TG Grün-Gold Saarbrücken     Saarbrücken
+1187                 Saarbrücker TSC Schwarz-Rot     Saarbrücken
+1189                     TSC Blau-Gold Saarlouis       Saarlouis
+1190                         TSC Rubin Saarlouis       Saarlouis
+1192                    TG Blau-Gold St. Ingbert     St. Ingbert
+1195             TSC Royal im TV Völklingen 1878      Völklingen
+1282                  TSV Orchidee Mandelbachtal   Mandelbachtal
+1780                     TSA d. TuS 1895 Ensdorf         Ensdorf
+1791             TSA d. TV Rußhütte, Saarbrücken     Saarbrücken
+1799                       TSC Melodie Saarlouis       Saarlouis
+1807                           TSA des TV Lebach          Lebach
+1930           SV Saar 05 Tanzsport, Saarbrücken     Saarbrücken
+2277               TSA d. SV Friedrichsthal 1937  Friedrichsthal
+2379               TSC Tanzfreunde Mandelbachtal   Mandelbachtal
+2391         TSC Schwarz-Gold Casino Saarbrücken     Saarbrücken
+2404                   TSA d. TV 1894 Schwalbach      Schwalbach
+2835               TSA der Homburger Narrenzunft         Homburg
+2836           Tanzsportzentrum Saar-Gold Merzig          Merzig
+3048                    TSA d. TV Rehlingen 1923       Rehlingen
+3466                     Dance Point Neunkirchen     Neunkirchen
+3625                  TSC Die Boogies Völklingen      Völklingen
+3869             TSA Fortuna d. ATSV Saarbrücken     Saarbrücken
+3993  TSA d. TSV Ford Saarlouis-Steinrausch 1977       Saarlouis
+4190                  The Fusion Academy, Merzig          Merzig
+4313              TSA d. Schermscha, St. Ingbert     St. Ingbert
+4318       Line Dance d. TV 1879 Saarlouis-Roden       Saarlouis
