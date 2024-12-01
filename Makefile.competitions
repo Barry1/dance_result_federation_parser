@@ -1,3 +1,7 @@
+.PHONY: tanzen-in-sh.de/ergebnisse/2024/2024-11-30-12-01_BYO/index.htm
+BYO_2024.txt: tanzen-in-sh.de/ergebnisse/2024/2024-11-30-12-01_BYO/index.htm
+	$(runme)
+
 .PHONY: www.htv.de/media/24_09_28/0-dm_mas3sstd/index.htm
 DM_MASIII_S_STD_2024.txt: www.htv.de/media/24_09_28/0-dm_mas3sstd/index.htm
 	$(runmesingle) 
