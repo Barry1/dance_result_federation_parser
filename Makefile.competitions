@@ -1,5 +1,9 @@
-.PHONY: tanzen-in-sh.de/ergebnisse/2024/2024-11-30-12-01_BYO/index.htm
-BYO_2024.txt: tanzen-in-sh.de/ergebnisse/2024/2024-11-30-12-01_BYO/index.htm
+.PHONY: ergebnisse.widafe.de/2024/
+WiDaFe_2024.txt: ergebnisse.widafe.de/2024/
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2024/2024-11-30-12-01_BYO_Ergebnisse/index.htm
+BYO_2024.txt: tanzen-in-sh.de/ergebnisse/2024/2024-11-30-12-01_BYO_Ergebnisse/index.htm	
 	$(runme)
 
 .PHONY: www.htv.de/media/24_09_28/0-dm_mas3sstd/index.htm

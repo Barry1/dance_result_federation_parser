@@ -178,7 +178,7 @@ if __name__ == "__main__":
         for theurl in theargv[1:]:
             thelogger.info("Auswertung von %s", theurl)
             if _CFG_DICT["RUN_ASYNC"]:
-                asyncio.run(async_eventurl_to_web(theurl))
+                asyncio.run(async_eventurl_to_web(theurl), debug=__debug__)
             else:
                 eventurl_to_web(theurl)
     else:
@@ -187,7 +187,7 @@ if __name__ == "__main__":
         for theurl in _CFG_DICT["CHECKINGURLS"]:
             thelogger.info("Geprüft wird die Funktion anhand von %s", theurl)
             if _CFG_DICT["RUN_ASYNC"]:
-                asyncio.run(async_eventurl_to_web(theurl))
+                asyncio.run(async_eventurl_to_web(theurl), debug=__debug__)
             else:
                 eventurl_to_web(theurl)
     if _CFG_DICT["PYANNOTATE"]:
