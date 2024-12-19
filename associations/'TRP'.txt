@@ -1,0 +1,125 @@
+122 Vereine im 'TRP':
+                                                  Verein                  Ort
+ID                                                                           
+1125                          TSC Crucenia Bad Kreuznach        Bad Kreuznach
+1126                           TSA d. TV 1910 Bad Salzig           Bad Salzig
+1133                 TSC Gelb-Schwarz-Casino Frankenthal          Frankenthal
+1135                           TSC Blau-Gold Germersheim          Germersheim
+1137               Edelstein-Tanzclub ETC Idar-Oberstein       Idar-Oberstein
+1139                                       TSC Ingelheim            Ingelheim
+1141                        TC Barbarossa Kaiserslautern       Kaiserslautern
+1142                       TC Grün-Orange Kaiserslautern       Kaiserslautern
+1143                          TC Rot-Weiß Kaiserslautern       Kaiserslautern
+1146                     TSG Grün-Weiß Kirchheimbolanden    Kirchheimbolanden
+1147                    1. TGC Redoute Koblenz + Neuwied              Koblenz
+1151                               TSC Landau i.d. Pfalz               Landau
+1153                 TC Ludwigshafen/Wachenheim Rot-Gold         Ludwigshafen
+1154                   TSC Grün-Gold Casino Ludwigshafen         Ludwigshafen
+1155                           TC Rot-Weiss Casino Mainz                Mainz
+1157                 Sportgruppe ZDF Sparte Tanzen Mainz                Mainz
+1160                                   TSC Calypso Mayen                Mayen
+1161                  TSC Blau-Gold Rhein-Lahn Montabaur            Montabaur
+1162                        1. Tanzsportclub Mutterstadt          Mutterstadt
+1163                     TSA d. Turnvereinigung Neuhofen             Neuhofen
+1164                  TSC Schwarz-Gold Neustadt/Weinstr.             Neustadt
+1165                                         TSC Neuwied              Neuwied
+1166                          TC Silber-Casino Pirmasens            Pirmasens
+1168                                        TSV Ramstein             Ramstein
+1169                 TSG Rot-Silber Saulheim u. Umgebung             Saulheim
+1170                                TSC Grün-Gold Speyer               Speyer
+1171                                       1. RRC Speyer               Speyer
+1173                       TSA d. TV Germania Trier 1861                Trier
+1175                            RRC Rockin' Wormel Worms                Worms
+1176                TSC Rheingold-Casino Worms-Grünstadt                Worms
+1177                        TanzSportClub Worms-Wonnegau                Worms
+1181                       TSC Weiß-Gold Weisenheim a.B.           Weisenheim
+1319                                 TSA d. TG Konz 1885                 Konz
+1397                                  TSA d. PSV Remagen              Remagen
+1403                          TSA d. Eintracht Lambsheim            Lambsheim
+1579                                 TSA d. TV 1888 Eich                 Eich
+1590                                   Speyerer TSC 1990               Speyer
+1726                                TC Royal Zweibrücken          Zweibrücken
+1738                          TC Fohlenweide Mutterstadt          Mutterstadt
+1755                  1. Rock'n Roll Club Neustadt/Wstr.             Neustadt
+1835                         TSC Schwarz-Gelb Winnweiler           Winnweiler
+1972                         TSC Rot-Weiß-Casino Maxdorf              Maxdorf
+1989                          RR-Team Rock and Fly Worms                Worms
+2017                       TSA Lahngold i. VfL Altendiez            Altendiez
+2168                        Tanzsportclub Royal Rülzheim             Rülzheim
+2209             1. Lindy Boogie Hoppers Club Mainz 1992                Mainz
+2230                        TSC Sickingenstadt Landstuhl            Landstuhl
+2240              Tanzsportgruppe d. TuS Gerolsheim 1892           Gerolsheim
+2366  TSA d. Turn- und Sportverein 1900 Frei-Laubersheim     Frei-Laubersheim
+2378                      Tanzsport time to dance, Urbar                Urbar
+2422                               TSA d. TuS Hachenburg           Hachenburg
+2442                             Tanzclub Fantasy, Trier                Trier
+2456                            TanzZentrum Ludwigshafen         Ludwigshafen
+2476            TSA d. Turnverein 1861 Kirchheimbolanden    Kirchheimbolanden
+2615                TSA Horchheimer CV Koblenz-Horchheim            Horchheim
+2616                    TC Blau-Weiß St. Katharinen Linz                 Linz
+2714                                TSA im Post-SV Mainz                Mainz
+2830                  Karnevalverein 1838 Kaiserslautern       Kaiserslautern
+2883                 Abteilung Tanz d. Spvgg Siefersheim          Siefersheim
+2885                            TSA d. TV Nierstein 1901            Nierstein
+2995                           TSA des TV 1970 Kübelberg            Kübelberg
+2996                           Crazy Boots Bad Kreuznach        Bad Kreuznach
+3036                                 The Mustangs, Mainz                Mainz
+3071       Renegades-Line Dance just for fun Bermersheim          Bermersheim
+3117                      Kulturverein Staudernheim/Nahe         Staudernheim
+3129            TSC Saltatio Neustadt im TV 1860 Mußbach             Neustadt
+3163             TSA d. Karnevalverein Böhler Hängsching                 Böhl
+3245                          Tanzsportverein Spabrücken           Spabrücken
+3289                       TSV Sweet Devils Staudernheim         Staudernheim
+3308       Niederfelder Mauerblümchen d. CC Ludwigshafen         Ludwigshafen
+3330                                  TSA im RV Mölsheim             Mölsheim
+3348                            TSA im TV Kallstadt 1886            Kallstadt
+3349        TSA im KV Die Rhoischnooke 1960, Germersheim          Germersheim
+3353            Linedance Connection Neustadt/Weinstraße  Neustadt/Weinstraße
+3402                       Country-Line Dancers Neuhofen             Neuhofen
+3431                            TSA d. TV 1848 Bodenheim            Bodenheim
+3435                    TSG d. TuS 1894 Rimschweiler e.V         Rimschweiler
+3439                             TSA i. TV 1878 Waldmohr             Waldmohr
+3444                      Tanzsportgemeinschaft Bellheim             Bellheim
+3482                               DanceRepublic Haßloch              Haßloch
+3494                                   TSV 08 Hallgarten           Hallgarten
+3497               TSA Showtanz d. TSG 1861 Sprendlingen         Sprendlingen
+3527                  TSA d. SV Rot- Weiß Rheinbreitbach       Rheinbreitbach
+3545                           TSA d. TSG 1861 Grünstadt            Grünstadt
+3590                 Die Generationen Tanzgruppe Morbach              Morbach
+3608                        Tanzfreunde Hunsrück Simmern              Simmern
+3735                          1. TC Rot-Gold Zweibrücken          Zweibrücken
+3758                         TSA d. TV 1864/04 Lambsheim            Lambsheim
+3776                     nuMotion-DanceCompany, Neumagen             Neumagen
+3780                                Tanzsportclub Burgen               Burgen
+3800        TSA d. Karneval Verein 'Sunneblum' Guldental            Guldental
+3888           Tanz- u. Sportzentr. Mittelrhein, Koblenz              Koblenz
+3911                                     TSA d. SV Worms                Worms
+3921                TSA d. Turn- u. Polizei-SV Enkenbach  Enkenbach-Alsenborn
+3961                           TSA d. TuS 1886 Wolfsheim            Wolfsheim
+3964                             TSA d. TuS Dexheim 1848              Dexheim
+3965                             TSA d. VfR 1921 Simmern              Simmern
+3999                                 TSC Volxheim TANZT!             Volxheim
+4007                     TSA d. 1. FC Bächel, Wachenheim           Wachenheim
+4079                TSA Schängel D. d. Coblenzer TG 1880              Koblenz
+4087                  TSA d. SG Westerwald, Gebhardshain         Gebhardshein
+4112                                 Tanzsportclub Trier                Trier
+4130                      Tanzsportclub Rhein Ahr Sinzig               Sinzig
+4133                Dance Company Hoppstädten-Weiersbach          Hoppstädten
+4144                               Rock´n´Roll Club Prüm                 Prüm
+4150              Jazztanzgruppen Tanzsportclub Dienheim             Dienheim
+4185                TSA d. KV 'Mir sen'se' Piesport 1927             Piesport
+4186                          TSA im TuS Hirschhorn 1922           Hirschhorn
+4204                      TSA d. TSG 1863 Ober-Flörsheim       Ober-Flörsheim
+4220                TSA d. KuH Sand, Schönenberg-Kübelb.  Schönenberg-Kübelb.
+4256                              TSC Movement Eisenberg            Eisenberg
+4286                            AkzepTANZ Großniedesheim       Großniedesheim
+4302                                 TSG Palatina Landau               Landau
+4303                   Tanzsportgemeinschaft Zweibrücken          Zweibrücken
+4314                    TSA d. TV 1893 Dautenheim, Alzey                Alzey
+4324                              TSG DanceXpress Urmitz               Urmitz
+4326                           TSA d. Dance & Arts Mainz                Mainz
+4366                TSA d. VfSK Oppau 1900, Ludwigshafen         Ludwigshafen
+4368          TSA d. TuS Hertlingshausen 1904, Carlsberg            Carlsberg
+4370                               TC Royal Ludwigshafen         Ludwigshafen
+4386              TSA d. Tanzsport u. Kulturverein Trier                Trier
+4399             Team Eifelperle d. Niederdürenbacher KV      Niederdürenbach
