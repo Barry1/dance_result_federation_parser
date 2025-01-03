@@ -151,7 +151,6 @@ def insertcouplestodb(sourcedf: DataFrame, tournamentdate: str) -> None:
         con.executemany(INSERT_COUPLES_STATEMENT, cpls)
 
 
-@portable_timing
 def insertnewclubs(tempmatchdict: list[dict[str, str]]) -> None:
     """Insert given clubs and their details into the database."""
     with sqlite3.connect(DATABASE_FILENAME) as con:
@@ -222,16 +221,20 @@ def cpltobasecpl() -> None:
             'where String like "%, % / %, %" '
             "and String not in (select String FROM DerivedCouples);"
         )
-        allrows: list = couplescursor.fetchall()
+        allrows: list[list[str]] = couplescursor.fetchall()
         thelogger.info(
             "%i new couples not in base couples found.", len(allrows)
         )
     newbasecouplesdict: list[dict[str, str | Any]] = [
-        {
-            **re.match(theregex, row[1]).groupdict(),
-            "ClubID": row[2],
-            "FromDate": row[3],
-        }
+        (
+            {
+                **thematch.groupdict(),
+                "ClubID": row[2],
+                "FromDate": row[3],
+            }
+            if (thematch := re.match(theregex, row[1]))
+            else {}
+        )
         for row in allrows
     ]
     with sqlite3.connect(DATABASE_FILENAME) as con:
