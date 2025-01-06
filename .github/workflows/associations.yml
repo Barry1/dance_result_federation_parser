@@ -35,6 +35,8 @@ jobs:
         run: python3 -m pip install --only-binary typing poetry poetry-plugin-export cffi typing
       - name: Get dependencies from poetry
         run: poetry export --without-hashes --output=requirements.txt
+      - name: Print dependencies
+        run: cat requirements.txt
       - name: Install dependencies from poetry
         run: python3 -m pip install -r requirements.txt
       - name: Run the Python Module
