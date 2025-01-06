@@ -35,7 +35,7 @@ jobs:
         run: python3 -m pip install --only-binary typing poetry poetry-plugin-export cffi
       - name: Get dependencies from poetry
         run: |
-          export POETRY_INSTALLER_ONLY_BINARY=typing
+          export POETRY_INSTALLER_ONLY_BINARY=true
           poetry export --without-hashes --output=requirements.txt
       - name: Print dependencies
         run: cat requirements.txt
