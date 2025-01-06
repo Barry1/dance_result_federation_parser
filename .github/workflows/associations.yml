@@ -32,9 +32,11 @@ jobs:
       - name: Show python3 version
         run: python3 --version
       - name: Prepare poetry (and more) in Python
-        run: python3 -m pip install --only-binary typing poetry poetry-plugin-export cffi typing
+        run: python3 -m pip install --only-binary typing poetry poetry-plugin-export cffi
       - name: Get dependencies from poetry
-        run: poetry export --without-hashes --output=requirements.txt
+        run: |
+          export POETRY_INSTALLER_ONLY_BINARY=typing
+          poetry export --without-hashes --output=requirements.txt
       - name: Print dependencies
         run: cat requirements.txt
       - name: Install dependencies from poetry
