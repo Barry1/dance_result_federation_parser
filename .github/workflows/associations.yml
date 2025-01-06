@@ -36,6 +36,7 @@ jobs:
       - name: Get dependencies from poetry
         run: |
           poetry config installer.only-binary typing
+          poetry config installer.re-resolve true
           poetry config --list
           poetry export --without-hashes --output=requirements.txt
       - name: Print dependencies
