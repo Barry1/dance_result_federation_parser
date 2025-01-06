@@ -39,8 +39,8 @@ verbose = 2
 
 [tool.mypy]
 disallow_untyped_defs = true
-install_types = true
-non_interactive = true
+#install_types = true
+#non_interactive = true
 pretty = true
 python_version = "3.11"
 show_error_codes = true
