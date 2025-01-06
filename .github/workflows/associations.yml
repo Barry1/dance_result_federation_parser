@@ -34,7 +34,10 @@ jobs:
       - name: Prepare poetry (and more) in Python
         run: python3 -m pip install poetry==2.0.0 poetry-plugin-export cffi
       - name: Get dependencies from poetry
-        run: POETRY_INSTALLER_ONLY_BINARY=typing poetry export --without-hashes --output=requirements.txt
+        run: |
+          poetry config installer.only-binary typing
+          poetry config --list
+          poetry export --without-hashes --output=requirements.txt
       - name: Print dependencies
         run: cat requirements.txt
       - name: Install dependencies from poetry
