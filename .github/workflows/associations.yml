@@ -32,7 +32,8 @@ jobs:
       - name: Show python3 version
         run: python3 --version
       - name: Prepare poetry (and more) in Python
-        run: python3 -m pip install poetry==2.0.0 poetry-plugin-export cffi
+        run: python3 -m pip install poetry
+        #==2.0.0 poetry-plugin-export cffi
       - name: Get dependencies from poetry
         run: |
           poetry config installer.only-binary typing
@@ -46,7 +47,7 @@ jobs:
       - name: Run the Python Module
         run: |
           poetry config --list
-          PIP_ONLY_BINARY=:all: poetry install
+          PIP_ONLY_BINARY=typing poetry install
           poetry run python3 -OO dtvprocessing.py
       # - name: Show the files
       #   run: ls -lah associations
