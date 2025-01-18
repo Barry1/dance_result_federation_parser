@@ -1,3 +1,7 @@
+.PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
+JanuarRLs_2025.txt: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
+	$(runme)
+
 .PHONY: ergebnisse.widafe.de/2024/
 WiDaFe_2024.txt: ergebnisse.widafe.de/2024/
 	$(runme)
