@@ -1,7 +1,7 @@
 ---
 version: 0.1
 cli:
-  version: 1.22.8
+  version: 1.22.9
 plugins:
   sources:
     - id: trunk
@@ -12,27 +12,27 @@ lint:
     - yapf
     - bandit
   enabled:
-    - sourcery@1.28.0
+    - sourcery@1.32.0
     - shellcheck@0.10.0
     - shfmt@3.6.0
     - pylint@3.3.3
-    - checkov@3.2.347
+    - checkov@3.2.357
     - osv-scanner@1.9.2
-    - trivy@0.58.1
-    - trufflehog@3.88.1
-    - pyright@1.1.391
-    - ruff@0.8.6
+    - trivy@0.58.2
+    - trufflehog@3.88.2
+    - pyright@1.1.392
+    - ruff@0.9.3
     - yamllint@1.35.1
     - markdownlint@0.43.0
-    - autopep8@2.3.1
+    - autopep8@2.3.2
     - flake8@7.1.1
-    - gitleaks@8.22.1
+    - gitleaks@8.23.1
     - taplo@0.9.3
     - prettier@3.4.2
     - mypy@1.14.1
     - black@24.10.0
     - isort@5.13.2
-    - actionlint@1.7.6
+    - actionlint@1.7.7
     - git-diff-check
 actions:
   enabled:
@@ -49,8 +49,8 @@ runtimes:
     - python@3.12.2
 tools:
   enabled:
-    - sourcery@1.28.0
-    - poetry@2.0.0
+    - sourcery@1.32.0
+    - poetry@2.0.1
   definitions:
     - name: mypy
       runtime: python
