@@ -1,4 +1,5 @@
 [submodule "DanceCouplesData"]
 	path = DanceCouplesData
 	url = https://github.com/Barry1/DanceCouplesData
-	branch = main
+	# branch = main
+	# update = rebase
