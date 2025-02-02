@@ -1,3 +1,7 @@
+.PHONY: app.ceronne.de/ergebnisse/987_2025%20GLM%20Nord%20Kinder%20Jugend%20Latein/
+GLM_Kin-Jug_LAT_2025.txt: app.ceronne.de/ergebnisse/987_2025%20GLM%20Nord%20Kinder%20Jugend%20Latein/
+	$(runme)
+
 .PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
 JanuarRLs_2025.txt: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
 	$(runme)
