@@ -47,7 +47,7 @@ def create_dtv_df() -> DataFrame:
 
 
 def assocsdf_from_list_dict(
-    input_list_dict: list[dict[str, str]]
+    input_list_dict: list[dict[str, str]],
 ) -> DataFrame:
     """Convert assosiations list of dicts to DataFrame."""
     dtv_associations: DataFrame = DataFrame.from_records(
