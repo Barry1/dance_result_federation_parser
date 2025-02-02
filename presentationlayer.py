@@ -2,7 +2,6 @@
 
 import logging
 
-# from pandas import DataFrame
 from pandas import DataFrame
 
 # from strictly_typed_pandas import DataSet as DataFrame
@@ -268,25 +267,30 @@ def print_wordpress(
             "THEFEDERATION"
         ]
         if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
+            # Commenting out not working in WordPress
+            # pass
+            # learned from https://stackoverflow.com/a/15207771
             print("<!--")  # Beginning of Comment
             print(tournhdr)
             print(
                 f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
             )
-            print("-->")  # End of Comment
+            print("<!-- -->")  # End of Comment (see link above)
         else:
             print(tournhdr)
             if cfg_dict["IMG_PREP"]:
-                print(
-                    '<div style="float: right; margin-left: 10px;'
-                    ' text-align: center;font-size: 8pt;">'
-                )
+                print('<!-- wp:image {"sizeSlug":"large"} -->')
+                print('<figure class="wp-block-image size-large">')
                 print(
                     "<img"
                     ' src="https://loremflickr.com/150/200/ballroom-dancing"'
                     ' alt="Beispielfoto" height="200" />'
                 )
-                print("<br />Foto: loremflickr.com</div>")
+                print(
+                    '<figcaption class="wp-element-caption">Foto: loremflickr.com</figcaption>'
+                )
+                print("</figure>")
+                print("<!-- /wp:image -->")
             if cfg_dict["RESULTTABLE"]:
                 print('<!-- wp:table {"hasFixedLayout":false} -->')
                 print('<figure class="wp-block-table">')
