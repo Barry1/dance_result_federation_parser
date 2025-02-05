@@ -7,10 +7,10 @@ name = "pypi"
 joblib = "*"
 lxml = "*"
 pandas = "*"
-valuefragments = {git = "https://github.com/Barry1/PyValueFragments.git"}
-aiofiles = "*"
+valuefragments = {git = "https://github.com/Barry1/PyValueFragments.git", version = ">=0.3.48"}
+aiofiles = ">24"
 bs4 = "*"
-fastparquet = "*"
+fastparquet = ">2024"
 
 [dev-packages]
 black = ">=24.3"
