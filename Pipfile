@@ -4,13 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-joblib = "*"
-lxml = "*"
-pandas = "*"
-valuefragments = {git = "https://github.com/Barry1/PyValueFragments.git", version = ">=0.3.48"}
 aiofiles = ">24"
 bs4 = "*"
 fastparquet = ">2024"
+joblib = "*"
+lxml = "*"
+pandas = "*"
+
+[packages.valuefragments]
+git = "https://github.com/Barry1/PyValueFragments.git"
+version = ">=0.3.48"
 
 [dev-packages]
 black = ">=24.3"
