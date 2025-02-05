@@ -55,9 +55,6 @@ def print_joomla(
                 f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
             )
             print("-->")  # End of Comment
-            print(
-                "<!-- =================================================== -->"
-            )
         else:
             print(tournhdr)
             if cfg_dict["IMG_PREP"]:
@@ -109,9 +106,9 @@ def print_joomla(
                         sep="",
                     )
                 print("</ul>")
-            print(
-                "<!-- =================================================== -->"
-            )
+        print(
+            "<!-- =================================================== -->"
+        )
     print(
         '<p>Das Gesamtergebnis ist unter dem <a href="',
         wholereslink,
