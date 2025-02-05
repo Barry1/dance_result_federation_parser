@@ -1,5 +1,6 @@
 """GOC is always a strange thing."""
 
+
 from joblib import Parallel, delayed
 from pandas import DataFrame
 from valuefragments import getselectedhreflinks
@@ -13,9 +14,7 @@ _CFG_DICT: MyConfigT = readconfig()
 if __name__ == "__main__":
     import sys
 
-    yearstring: str = "2024"
-    if len(sys.argv) > 1:
-        yearstring = sys.argv[1]
+    yearstring = sys.argv[1] if len(sys.argv) > 1 else "2024"
     foundreslinks: list[str] = getselectedhreflinks(thesubstring=yearstring)
     allreslinks: list[str] = [
         a for a in foundreslinks if a.endswith("index.htm")
