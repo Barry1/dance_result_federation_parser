@@ -117,20 +117,18 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                 if eintrag.text:
                     thelogger.debug("Neuer Ort: %s", eintrag.text)
                     the_place = eintrag.text
-            else:  # Neuer Verein
-                # thelogger.debug("%s",repr(eintrag))
-                if tempmatch := re.match(
+            elif tempmatch := re.match(
                     MYREGEX,
                     eintrag.xpath(_path='div[@class="trigger"]/h3/text()')[0],
                 ):
-                    tempmatchdict: dict[str, str] = tempmatch.groupdict()
-                    tempmatchdict["Ort"] = the_place
-                    tempmatchdict["Verein"] = cleanevfromentry(
-                        tempmatchdict["Verein"]
-                    )
-                    # sqlitedatabase.insertnewclub(tempmatchdict)
-                    allmatches.append(tempmatchdict)
-                    dtv_assocs_dict_list.extend([tempmatchdict])
+                tempmatchdict: dict[str, str] = tempmatch.groupdict()
+                tempmatchdict["Ort"] = the_place
+                tempmatchdict["Verein"] = cleanevfromentry(
+                    tempmatchdict["Verein"]
+                )
+                # sqlitedatabase.insertnewclub(tempmatchdict)
+                allmatches.append(tempmatchdict)
+                dtv_assocs_dict_list.extend([tempmatchdict])
         login_data["seite"] += 1
     if not os.getenv("CI"):
         # only outside of CI-Workflow like github action
