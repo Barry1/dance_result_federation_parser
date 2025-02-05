@@ -5,11 +5,8 @@ name = "pypi"
 
 [packages]
 aiofiles = ">24"
-bs4 = "*"
+bs4 = ">=0.0.2"
 fastparquet = ">2024"
-joblib = "*"
-lxml = "*"
-pandas = "*"
 
 [packages.valuefragments]
 git = "https://github.com/Barry1/PyValueFragments.git"
