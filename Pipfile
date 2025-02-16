@@ -6,14 +6,17 @@ name = "pypi"
 [packages]
 aiofiles = ">24"
 bs4 = ">=0.0.2"
-fastparquet = ">2024"
-
-[packages.valuefragments]
-git = "https://github.com/Barry1/PyValueFragments.git"
-version = ">=0.3.48"
+fastparquet = ">=2024.11"
+valuefragments = {git = "https://github.com/Barry1/PyValueFragments.git", version = ">=0.3.48"}
+joblib = "*"
 
 [dev-packages]
 black = ">=24.3"
+isort = "*"
+mypy = "*"
+vermin = ">=1.4.0"
+vulture = ">=2.5"
+
 
 [requires]
 python_version = "3.12"
