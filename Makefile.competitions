@@ -1,3 +1,7 @@
+.PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-02-22_GLM_MasIV_STD/
+GLM_MASIV_STD_2025.txt: tanzen-in-sh.de/ergebnisse/2025/2025-02-22_GLM_MasIV_STD/
+	$(runme)
+
 .PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2025/2025_glm_hgr_a_s_mas_s_lat/2025_glm_hgr_a%2Bs_mas_s_la/index.htm
 GLM_HGR_MAS_AS_LAT_2025.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2025/2025_glm_hgr_a_s_mas_s_lat/2025_glm_hgr_a%2Bs_mas_s_la/index.htm
 	$(runme)
