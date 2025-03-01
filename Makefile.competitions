@@ -1,3 +1,7 @@
+.PHONY: www.hatv.de/wrapper/2025_GLM_MasII/index.html
+GLM_MASII_BAS_STD_2025.txt: www.hatv.de/wrapper/2025_GLM_MasII/index.html
+	$(runme)
+
 .PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-02-22_GLM_MasIV_STD/
 GLM_MASIV_STD_2025.txt: tanzen-in-sh.de/ergebnisse/2025/2025-02-22_GLM_MasIV_STD/
 	$(runme)
