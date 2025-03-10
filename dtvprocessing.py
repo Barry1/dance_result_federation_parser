@@ -118,9 +118,9 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
                     thelogger.debug("Neuer Ort: %s", eintrag.text)
                     the_place = eintrag.text
             elif tempmatch := re.match(
-                    MYREGEX,
-                    eintrag.xpath(_path='div[@class="trigger"]/h3/text()')[0],
-                ):
+                MYREGEX,
+                eintrag.xpath(_path='div[@class="trigger"]/h3/text()')[0],
+            ):
                 tempmatchdict: dict[str, str] = tempmatch.groupdict()
                 tempmatchdict["Ort"] = the_place
                 tempmatchdict["Verein"] = cleanevfromentry(

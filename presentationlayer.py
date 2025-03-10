@@ -106,9 +106,7 @@ def print_joomla(
                         sep="",
                     )
                 print("</ul>")
-        print(
-            "<!-- =================================================== -->"
-        )
+        print("<!-- =================================================== -->")
     print(
         '<p>Das Gesamtergebnis ist unter dem <a href="',
         wholereslink,
