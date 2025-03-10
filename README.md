@@ -4,6 +4,7 @@ author: Dr. Bastian Ebeling
 ---
 
 ## General
+
 Python tool to parse dance competition results for couples of given federation
 
 I use [![GitHub Super-Linter](https://github.com/Barry1/dance_result_federation_parser/actions/workflows/lintme.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
@@ -16,7 +17,7 @@ Installation itself is not that easy, because for some reasons there is a submod
 ### Windows
 
 ```cmd
-winget install ezwinports.make SQLite.SQLite 
+winget install ezwinports.make SQLite.SQLite
 git config --global --add filter.sqlite3tosql.clean "sqlite3 %f .dump"
 git config --global --add filter.sqlite3tosql.smudge "sqlite3 tempsqlitedb ; cat tempsqlitedb ; rm tempsqlitedb"
 git config --global --add filter.sqlite3tosql.required "true"
