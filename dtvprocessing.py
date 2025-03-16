@@ -180,10 +180,11 @@ async def outputassocfiles() -> None:
         if not await aiofiles.os.path.isdir("associations"):
             await aiofiles.os.mkdir(path="associations")
         async with aiofiles.open(
-            file=f"associations/{verbandsvereine[0]}.txt", mode="w"
+            file=f"associations/{verbandsvereine[0].decode() if isinstance(verbandsvereine[0], bytes) else verbandsvereine[0]}.txt",
+            mode="w",
         ) as ausgabedatei:
             await ausgabedatei.write(
-                f"{len(verbandsvereine[1])} Vereine im {verbandsvereine[0]}:\n"
+                f"{len(verbandsvereine[1])} Vereine im {verbandsvereine[0].decode() if isinstance(verbandsvereine[0], bytes) else verbandsvereine[0]}:\n"
             )
             await ausgabedatei.write(
                 verbandsvereine[1][["Verein", "Ort"]].to_string()
