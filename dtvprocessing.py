@@ -177,7 +177,7 @@ async def outputassocfiles() -> None:
     print(dtv_assocs_df[dtv_assocs_df.Verband == "TSH"])
     for verbandsvereine in dtv_assocs_df.groupby(by="Verband"):
         # make folder associations if needed
-        verbandsname: str = str(verbandsvereine)
+        verbandsname: str = str(verbandsvereine[0])
         #        verbandsname: str = (
         #            verbandsvereine[0].decode()
         #            if isinstance(verbandsvereine[0], bytes)
