@@ -110,6 +110,10 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
         # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
         erg_df.dropna(axis=1, inplace=True)
         erg_df = erg_df.iloc[:, [0, -2, -1]]
+        thelogger.debug("Within ValueError %s", "Zeile 106")
+        thelogger.debug("%s", theresultresponse.text)
+    except Exception as e:
+        thelogger.debug("An error occurred: %s", e)
     else:
         erg_df = concat([*tab1tbl, *tab2tbl])
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen

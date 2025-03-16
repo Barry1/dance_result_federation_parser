@@ -13,6 +13,7 @@ from typing import Callable, cast
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
+from _collections_abc import dict_values
 from joblib import Parallel, delayed
 
 # noinspection PyProtectedMember
@@ -137,7 +138,9 @@ def eventurl_to_web(synceventurl: str) -> None:
                 synceventurl,
             )
         else:
-            allreslinks = theparsefun(synceventurl).values()
+            allreslinks: dict_values[str, str] = theparsefun(
+                synceventurl
+            ).values()
             compnames: list[str] = [
                 human_comp_info(thelink) for thelink in allreslinks
             ]
