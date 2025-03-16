@@ -57,15 +57,16 @@ tools:
       package: mypy
       shims: [mypy]
       extra_packages:
-        - requests
-        - types-requests
-        - lxml
-        - lxml-stubs
+        - /home/ebeling/GitHub/PyValueFragments
         - aiofiles
-        - pandas
         - bs4
         - joblib
-        - /home/ebeling/GitHub/PyValueFragments
+        - lxml
+        - lxml-stubs
+        - pandas
+        - requests
+        - types-aiofiles
+        - types-requests
     - name: pylint
       runtime: python
       package: pylint
