@@ -1,3 +1,7 @@
+.PHONY: www.htv.de/media/25_03_15/index.htm
+DM_Latein_2025.txt: www.htv.de/media/25_03_15/index.htm
+	$(runme)
+
 .PHONY: ergebnisse.tc-gold-und-silber.de/2025-03-08/
 GBM_Kombi_2025.txt: ergebnisse.tc-gold-und-silber.de/2025-03-08/
 	$(runme)

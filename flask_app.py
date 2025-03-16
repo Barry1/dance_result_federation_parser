@@ -1,6 +1,7 @@
 #!/bin/env -S poetry run python -OO
 # flask --debug --app flask_app run
 """A module running a small Flask App to use this."""
+
 from __future__ import absolute_import
 
 from contextlib import redirect_stdout
