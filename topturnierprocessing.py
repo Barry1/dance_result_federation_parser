@@ -118,7 +118,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
         thelogger.error(
             "%s in line %i of %s",
             type(e).__name__,
-            e.__traceback__.tb_lineno,
+            e.__traceback__.tb_lineno if e.__traceback__ else 0,
             __file__,
         )
     else:
