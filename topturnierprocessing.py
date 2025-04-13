@@ -7,8 +7,8 @@ from re import DOTALL, IGNORECASE, match
 from typing import Literal, cast
 from urllib.error import HTTPError
 
-from bs4 import BeautifulSoup
-from bs4.element import ResultSet, SoupStrainer, Tag
+from bs4 import BeautifulSoup, ResultSet, Tag
+from bs4.filter import SoupStrainer
 from lxml.etree import _ElementTree as ElementTree
 from pandas import DataFrame, concat, read_html
 from requests import Response
