@@ -1,3 +1,7 @@
+.PHONY: blau-orange.de/wp-content/2025gcdc/index.htm
+GCDC_2025.txt: blau-orange.de/wp-content/2025gcdc/index.htm
+	$(runme)
+
 .PHONY: htv.de/media/25_03_15/index.htm
 DM_Latein_2025.txt: htv.de/media/25_03_15/index.htm
 	$(runme)
