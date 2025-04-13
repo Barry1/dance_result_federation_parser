@@ -9,7 +9,7 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 import asyncio
 import logging
 from functools import partial
-from typing import Callable, cast
+from typing import Callable
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
@@ -141,18 +141,15 @@ def eventurl_to_web(synceventurl: str) -> None:
             compnames: list[str] = [
                 human_comp_info(thelink) for thelink in allreslinks
             ]
-            tsh_results: list[DataFrame] = cast(
-                list[DataFrame],
-                Parallel(
-                    n_jobs=1 if __debug__ else -1,
-                    verbose=10 if __debug__ else 0,
-                    backend="multiprocessing",
-                    # Testrun multiprocessing 2.899999998509884 (25,661 für 5)
-                    # Testrun threading 4.420000001788139 (29,347 für 5)
-                    # Testrun loky 4.8099999986588955 (30,918 für 5)
-                    #                    prefer='processes',
-                )(delayed(the_interpret_fun)(a) for a in allreslinks),
-            )
+            tsh_results: list[DataFrame] = Parallel(
+                n_jobs=1 if __debug__ else -1,
+                verbose=10 if __debug__ else 0,
+                backend="multiprocessing",
+                # Testrun multiprocessing 2.899999998509884 (25,661 für 5)
+                # Testrun threading 4.420000001788139 (29,347 für 5)
+                # Testrun loky 4.8099999986588955 (30,918 für 5)
+                #                    prefer='processes',
+            )(delayed(the_interpret_fun)(a) for a in allreslinks)
             presentation_function(
                 synceventurl,
                 list(allreslinks),
@@ -173,7 +170,9 @@ if __name__ == "__main__":
         # Besonders nötig, damit bei ASYNC nur einmal
     # ggf. die DTV-Vereinliste aktualisiert wird
     _: DataFrame = get_dtv_df().loc[403:406]
-    # vielleicht auch mit <https://docs.python.org/3/library/asyncio-sync.html> zu lösen
+    # vielleicht auch mit
+    # <https://docs.python.org/3/library/asyncio-sync.html>
+    # zu lösen
     if len(theargv := __import__("sys").argv) > 1:
         for theurl in theargv[1:]:
             thelogger.info("Auswertung von %s", theurl)
