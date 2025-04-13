@@ -101,6 +101,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
     try:
         tab2tbl: list[DataFrame] = read_html(
             StringIO(theresultresponse.text.replace("<BR>", "</td><td>")),
+            flavor="lxml",
             attrs={"class": "tab2"},
         )
     except ValueError:
@@ -113,7 +114,13 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
         thelogger.debug("Within ValueError %s", "Zeile 106")
         thelogger.debug("%s", theresultresponse.text)
     except Exception as e:
-        thelogger.debug("An error occurred: %s", e)
+        thelogger.error("An error occurred: %s", e)
+        thelogger.error(
+            "%s in line %i of %s",
+            type(e).__name__,
+            e.__traceback__.tb_lineno,
+            __file__,
+        )
     else:
         erg_df = concat([*tab1tbl, *tab2tbl])
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
