@@ -261,17 +261,7 @@ def print_wordpress(
         value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict[
             "THEFEDERATION"
         ]
-        if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
-            # Commenting out not working in WordPress
-            pass
-            # learned from https://stackoverflow.com/a/15207771
-            # print("<!--")  # Beginning of Comment
-            # print(tournhdr)
-            # print(
-            # f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
-            # )
-            # print("<!-- -->")  # End of Comment (see link above)
-        else:
+        if not value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
             print(tournhdr)
             if cfg_dict["IMG_PREP"]:
                 print('<!-- wp:image {"sizeSlug":"large"} -->')
