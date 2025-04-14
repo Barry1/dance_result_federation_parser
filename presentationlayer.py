@@ -263,14 +263,14 @@ def print_wordpress(
         ]
         if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
             # Commenting out not working in WordPress
-            # pass
+            pass
             # learned from https://stackoverflow.com/a/15207771
-            print("<!--")  # Beginning of Comment
-            print(tournhdr)
-            print(
-                f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
-            )
-            print("<!-- -->")  # End of Comment (see link above)
+            # print("<!--")  # Beginning of Comment
+            # print(tournhdr)
+            # print(
+            # f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
+            # )
+            # print("<!-- -->")  # End of Comment (see link above)
         else:
             print(tournhdr)
             if cfg_dict["IMG_PREP"]:
@@ -279,7 +279,7 @@ def print_wordpress(
                 print(
                     "<img"
                     ' src="https://loremflickr.com/150/200/ballroom-dancing"'
-                    ' alt="Beispielfoto" height="200" />'
+                    ' alt="Beispielfoto" />'
                 )
                 print(
                     '<figcaption class="wp-element-caption">Foto: loremflickr.com</figcaption>'
@@ -292,9 +292,9 @@ def print_wordpress(
                 print("<table>")
                 print(
                     "<thead><tr><th>&nbsp;</th>",
-                    '<th style="text-align: right;">Platz</th>',
-                    '<th style="text-align: right;">Paar</th>',
-                    '<th style="text-align: right;">Verein</th>',
+                    "<th>Platz</th>",  # style="text-align: right;"
+                    "<th>Paar</th>",  # style="text-align: right;"
+                    "<th>Verein</th>",  # style="text-align: right;"
                     "</tr></thead><tbody>",
                     sep="",
                 )
@@ -303,11 +303,11 @@ def print_wordpress(
                 ].iterrows():
                     print(
                         "<tr><td><strong>&nbsp;</strong></td>",
-                        '<td style="text-align: right;">',
+                        "<td>",  # style="text-align: right;"
                         resline[1].Platz,
-                        '</td><td style="text-align: right;">',
+                        "</td><td>",  # style="text-align: right;"
                         resline[1].Paar,
-                        '</td><td style="text-align: right;">',
+                        "</td><td>",  # style="text-align: right;"
                         resline[1].Verein,
                         "</td></tr>",
                         sep="",
