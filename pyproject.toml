@@ -96,26 +96,27 @@ addopts = ["--verbose"]
 
 [tool.towncrier]
 
-[tool.poetry]
+[project]
 name = "dance_result_federation_parser"
 version = "0.2.8"
 description = ""
-authors = ["Ebeling, Dr. Bastian <bastian.ebeling@web.de>"]
-
-[tool.poetry.dependencies]
-aiofiles = ">=24.1"
-bs4 = ">=0.0.2"
-fastparquet = ">=2024.11"
+#authors = [name="Ebeling, Dr. Bastian",mail="bastian.ebeling@web.de"]
+dependencies = [
+  "aiofiles >=24.1",
+  "bs4 >=0.0.2",
+  "fastparquet >=2024.11",
+  "joblib>=1.4.2",
+]
+requires-python = ">=3.9"
 #flask = "^3.0.3"
 #html5lib = ">=1.1" # no longer needed
-joblib = ">=1.4.2"
 #lxml = ">=5.2"
 #pyarrow = ">=16"
-python = "^3.12"
 #requests = "^2.32.0"
 #typing = "=3.7.4.1"
 #typing-extensions = ">=4.3"
-
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8"
 [tool.poetry.dependencies.valuefragments]
 git = "https://github.com/Barry1/PyValueFragments.git"
 rev = "main"
@@ -137,11 +138,11 @@ pipdeptree = ">2.25"
 #pyanalyze = "^0.9.0"
 pyannotate = ">=1.2.0"
 pyflakes = ">=3"
-pylint = ">=3.3.6"
+#pylint = ">=3.3.6"
 #pylyzer = "^0.0.51"
 pyright = ">1.1.390"
-pytest = ">8.3.3"
-radon = ">=6.0"
+#pytest = ">8.3.3"
+#radon = ">=6.0"
 #retype = "*" # typed-ast not in python3.13
 ruff = "^0.3.7"
 sourcery = "^1.35.0"
@@ -168,13 +169,13 @@ platform = "linux"
 
 [tool.poetry.group.dev.dependencies.pytype]
 version = ">=2024"
-python = ">=3.10,<3.13"
 #markers = "sys_platform == 'linux'" 
 platform = "linux"
 
 [tool.poetry.group.dev.dependencies.pylama]
 extras = ["all"]
 version = ">8.4"
+python = ">=3.7"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

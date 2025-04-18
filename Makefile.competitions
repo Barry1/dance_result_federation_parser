@@ -1,3 +1,7 @@
+.PHONY: turniere.btc-gruen-gold.de/bb2025/index.htm
+BlauesBand2025.txt: turniere.btc-gruen-gold.de/bb2025/index.htm
+	$(runme)
+
 .PHONY: blau-orange.de/wp-content/2025gcdc/index.htm
 GCDC_2025.txt: blau-orange.de/wp-content/2025gcdc/index.htm
 	$(runme)

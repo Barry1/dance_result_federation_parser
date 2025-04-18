@@ -16,17 +16,17 @@ lint:
     - shellcheck@0.10.0
     - shfmt@3.6.0
     - pylint@3.3.6
-    - checkov@3.2.403
+    - checkov@3.2.405
     - osv-scanner@2.0.1
     - trivy@0.61.0
-    - trufflehog@3.88.23
+    - trufflehog@3.88.24
     - pyright@1.1.399
     - ruff@0.11.5
     - yamllint@1.37.0
     - markdownlint@0.44.0
     - autopep8@2.3.2
     - flake8@7.2.0
-    - gitleaks@8.24.2
+    - gitleaks@8.24.3
     - taplo@0.9.3
     - prettier@3.5.3
     - mypy@1.15.0
