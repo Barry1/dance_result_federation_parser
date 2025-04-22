@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
       - name: NewPreb
         run: |
-          python3 -m pip install --upgrade pip poetry cffi
+          python3 -m pip install --upgrade pip poetry poetry-plugin-export ufw
           poetry install --no-root
       - name: Prepare python environment
         run: |
