@@ -28,6 +28,10 @@ jobs:
           sudo update-alternatives --display python3
       - name: checkout
         uses: actions/checkout@v4
+      - name: NewPreb
+        run: |
+          python3 -m pip install --upgrade pip
+          poetry install --no-root
       - name: Prepare python environment
         run: |
           python3 -m pip install aiofiles bs4 fastparquet lxml \ 
