@@ -97,6 +97,7 @@ addopts = ["--verbose"]
 [tool.towncrier]
 
 [project]
+package-mode = false
 name = "dance_result_federation_parser"
 version = "0.2.8"
 description = ""
