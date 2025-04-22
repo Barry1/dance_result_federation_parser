@@ -30,7 +30,9 @@ jobs:
         uses: actions/checkout@v4
       - name: NewPreb
         run: |
-          python3 -m pip install --upgrade pip poetry cffi poetry-plugin-export ufw lxml aiofiles beautifulsoup4 fastparquet joblib requests git+https://github.com/Barry1/PyValueFragments.git
+          python3 -m pip install --upgrade pip poetry cffi poetry-plugin-export ufw lxml \
+            aiofiles beautifulsoup4 fastparquet joblib requests \
+            git+https://github.com/Barry1/PyValueFragments.git typing-extensions
 #          poetry install --no-root
 #      - name: Prepare python environment
 #        run: |
