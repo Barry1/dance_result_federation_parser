@@ -40,7 +40,7 @@ jobs:
         # poetry self add poetry-plugin-export
       - name: Get dependencies from poetry
         run: |
-          poetry config installer.only-binary typing,pytype
+          poetry config installer.only-binary typing
           poetry config installer.re-resolve true
           poetry config --list
           # poetry self update
@@ -53,7 +53,7 @@ jobs:
       - name: poetry install --no-root
         run: |
           poetry config --list
-          PIP_ONLY_BINARY=typing,pytype poetry install --no-root
+          PIP_ONLY_BINARY=typing poetry install --no-root
       - name: Run the Python Module
         run: |
           poetry run python3 -OO dtvprocessing.py
