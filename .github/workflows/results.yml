@@ -47,7 +47,9 @@ jobs:
           python -OO ./dance_result_federation_parser.py https\://www.tanzsport-biedermann.de/results/pfingsten22/index.html > BadBevensen_2022.txt
           make --jobs=1 --file=Makefile.githubworkflow FIRST
       - name: Results creation by Makefile - all others parallel
-        run: time make --keep-going --file=Makefile.githubworkflow OTHERS
+        run: |
+          time make --keep-going --file=Makefile.githubworkflow OTHERS
+          echo SUPER
       - name: Push to orphan branch results
         run: |
           git checkout --orphan results
