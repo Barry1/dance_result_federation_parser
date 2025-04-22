@@ -97,7 +97,6 @@ addopts = ["--verbose"]
 [tool.towncrier]
 
 [project]
-package-mode = false
 name = "dance_result_federation_parser"
 version = "0.2.8"
 description = ""
@@ -116,6 +115,8 @@ requires-python = ">=3.9,<4.0"
 #requests = "^2.32.0"
 #typing = "=3.7.4.1"
 #typing-extensions = ">=4.3"
+[tool.poetry]
+package-mode = false
 [tool.poetry.requires-plugins]
 poetry-plugin-export = ">=1.8"
 [tool.poetry.dependencies.valuefragments]
