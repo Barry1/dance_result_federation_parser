@@ -50,10 +50,12 @@ jobs:
       #  run: cat requirements.txt
       #- name: Install dependencies from poetry
       #  run: python3 -m pip install --only-binary typing -r requirements.txt
-      - name: Run the Python Module
+      - name: poetry install --no-root
         run: |
           poetry config --list
-          PIP_ONLY_BINARY=typing poetry install --no-root
+          PIP_ONLY_BINARY=typing,pytype poetry install --no-root
+      - name: Run the Python Module
+        run: |
           poetry run python3 -OO dtvprocessing.py
       # - name: Show the files
       #   run: ls -lah associations
