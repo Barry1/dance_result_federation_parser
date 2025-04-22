@@ -30,8 +30,8 @@ jobs:
         uses: actions/checkout@v4
       - name: NewPreb
         run: |
-          python3 -m pip install --upgrade pip poetry cffi poetry-plugin-export ufw
-          poetry install --no-root
+          python3 -m pip install --upgrade pip poetry cffi poetry-plugin-export ufw lxml aiofiles beautyfulsoup4 fastparquet joblib requests git+https://github.com/Barry1/PyValueFragments.git
+#          poetry install --no-root
 #      - name: Prepare python environment
 #        run: |
 #          python3 -m pip install aiofiles bs4 fastparquet lxml \ 
@@ -41,9 +41,7 @@ jobs:
       - name: remove config
         run: rm config.toml
       - name: Results creation by Makefile - first run only for one URL
-        run: |
-          make --jobs=1 --file=Makefile.githubworkflow FIRST
-          cat *.err
+        run: make --jobs=1 --file=Makefile.githubworkflow FIRST
       - name: Results creation by Makefile - all others parallel
         run: time make --keep-going --file=Makefile.githubworkflow OTHERS
       - name: Push to orphan branch results
