@@ -32,10 +32,10 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip poetry cffi poetry-plugin-export ufw
           poetry install --no-root
-      - name: Prepare python environment
-        run: |
-          python3 -m pip install aiofiles bs4 fastparquet lxml \ 
-            html5lib git+https://github.com/Barry1/PyValueFragments.git pyannotate
+#      - name: Prepare python environment
+#        run: |
+#          python3 -m pip install aiofiles bs4 fastparquet lxml \ 
+#            html5lib git+https://github.com/Barry1/PyValueFragments.git pyannotate
       - name: create results folder
         run: mkdir results
       - name: remove config
