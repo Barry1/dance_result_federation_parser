@@ -33,7 +33,7 @@ jobs:
         run: python3 --version
       - name: Prepare poetry (and more) in Python
         run: |
-          python3 -m pip install --upgrade pip poetry cffi
+          python3 -m pip install --upgrade pip poetry cffi poetry-plugin-export
           # poetry self update
           # poetry self lock
         # poetry-plugin-export
