@@ -40,7 +40,7 @@ jobs:
         # poetry self add poetry-plugin-export
       - name: Get dependencies from poetry
         run: |
-          poetry config installer.only-binary typing pytype
+          poetry config installer.only-binary typing,pytype
           poetry config installer.re-resolve true
           poetry config --list
           # poetry self update
