@@ -41,7 +41,9 @@ jobs:
       - name: remove config
         run: rm config.toml
       - name: Results creation by Makefile - first run only for one URL
-        run: make --jobs=1 --file=Makefile.githubworkflow FIRST
+        run: |
+          make --jobs=1 --file=Makefile.githubworkflow FIRST
+          cat *.err
       - name: Results creation by Makefile - all others parallel
         run: time make --keep-going --file=Makefile.githubworkflow OTHERS
       - name: Push to orphan branch results
