@@ -1,3 +1,7 @@
+.PHONY: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
+GLM_HgrMasI_D-B_STD_2025.txt: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
+	$(runme)
+
 .PHONY: turniere.btc-gruen-gold.de/bb2025/index.htm
 BlauesBand2025.txt: turniere.btc-gruen-gold.de/bb2025/index.htm
 	$(runme)
