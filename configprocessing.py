@@ -37,13 +37,13 @@ def setuplogger() -> logging.Logger:
 class MyConfigT(TypedDict):
     """Typing-Class for configuration."""
 
-    HEADLINELINKS: Literal[True, False]
-    IMG_PREP: Literal[True, False]
-    PYANNOTATE: Literal[True, False]
-    ESVCOUPLES: Literal[True, False]
-    RUN_ASYNC: Literal[True, False]
-    TOTHREAD: Literal[True, False]
-    RESULTTABLE: Literal[True, False]
+    HEADLINELINKS: bool
+    IMG_PREP: bool
+    PYANNOTATE: bool
+    ESVCOUPLES: bool
+    RUN_ASYNC: bool
+    TOTHREAD: bool
+    RESULTTABLE: bool
     THEFEDERATION: Literal[
         "TSH",
         "HATV",
