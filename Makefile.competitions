@@ -1,3 +1,7 @@
+.PHONY: hessen-tanzt.de/media/ht2025/index.htm
+HessenTanzt_2025.txt: hessen-tanzt.de/media/ht2025/index.htm
+	$(runme)
+
 .PHONY: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
 GLM_HgrMasI_D-B_STD_2025.txt: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
 	$(runme)
@@ -110,8 +114,8 @@ DM_Equality_2024.txt: www.equalitydancing.de/files/Ergebnisse/240518u19_DM2024-K
 DM_Kombi_U18MASIV_STD_2024.txt: www.tsz-stuttgart.de/fileadmin/01_TSZ_Stuttgart/ergebnisse/2024_DM_MAS_U21/index.htm
 	$(runme)
 
-.PHONY: www.hessen-tanzt.de/media/ht2024/index.htm
-HessenTanzt_2024.txt: www.hessen-tanzt.de/media/ht2024/index.htm
+.PHONY: hessen-tanzt.de/media/ht2024/index.htm
+HessenTanzt_2024.txt: hessen-tanzt.de/media/ht2024/index.htm
 	$(runme)
 
 .PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/GLM_OL_2024/GLM_OL_2024/index.htm
@@ -209,8 +213,8 @@ danceComp_2023.txt: ergebnisse.dancecomp.de/2023/index.htm
 DSF_2023.txt: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/index.htm
 	$(runme)
 
-.PHONY: www.hessen-tanzt.de/media/ht2023/index.htm
-HessenTanzt_2023.txt: www.hessen-tanzt.de/media/ht2023/index.htm
+.PHONY: hessen-tanzt.de/media/ht2023/index.htm
+HessenTanzt_2023.txt: hessen-tanzt.de/media/ht2023/index.htm
 	$(runme)
 
 .PHONY: ltvb.de/wp-content/uploads/results/13347/index.htm
@@ -325,8 +329,8 @@ DSF_2022.txt: ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm
 GLM_HGR_SENI_D-B_STD_2022.txt: tps.1sc-norderstedt-tsa.de/20220528/index.htm
 	$(runme)
 
-.PHONY: www.hessen-tanzt.de/media/ht2022/index.htm 
-HessenTanzt2022.txt: www.hessen-tanzt.de/media/ht2022/index.htm
+.PHONY: hessen-tanzt.de/media/ht2022/index.htm 
+HessenTanzt2022.txt: hessen-tanzt.de/media/ht2022/index.htm
 	$(runme)
 
 .PHONY: www.blauesband-berlin.de/Ergebnisse/2018/blauesband2018/index.htm
