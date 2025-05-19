@@ -11,12 +11,8 @@ list:
 OBJS=$(shell git ls-files *.py *.pyi)
 
 runme=poetry run python -OO ./dance_result_federation_parser.py https\://$< > $@ 2> $(@:.txt=.err)
-rungoc=poetry run python -OO ./goc_parser.py $(subst GOC_,,$(@:.txt=)) https\://$< > $@ 2> $(@:.txt=.err)
+rungoc=poetry run python -OO ./goc_parser.py $(subst GOC_,,$(@:.txt=)) > $@ 2> $(@:.txt=.err)
 cpldb=DanceCouplesData/couples_clubs_federations.sqlite3
-
-
-$(@:.txt=.err)
-
 
 runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
 
