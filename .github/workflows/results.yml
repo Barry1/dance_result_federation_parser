@@ -3,8 +3,8 @@ name: Build some results
 permissions: read-all
 on:
   schedule:
-    - cron: "45 23 * * *"
-  workflow_dispatch:
+    - cron: 45 23 * * *
+  workflow_dispatch: null # für yamllint
 jobs:
   my_job:
     name: Run dance_result_federation_parser
@@ -44,7 +44,9 @@ jobs:
       - name: list files
         run: ls -lah
       - name: make the results
-        run: ./makeallresults.sh
+        run: |
+          ./makeallresults.sh
+          for a in *.txt; do mv $a $(a%.txt).md; done
       #      - name: Results creation by Makefile - first run only for one URL
       #        run: |
       #          python -OO ./dance_result_federation_parser.py https\://www.tanzsport-biedermann.de/results/pfingsten22/index.html > BadBevensen_2022.txt
