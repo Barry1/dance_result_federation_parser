@@ -14,4 +14,4 @@ alltargets="${targets} ${goctargets}"
 echo "Targets: ${alltargets}"
 # for make understanding multiple targets
 # shellcheck disable=SC2086
-make --jobs 1 --ignore-errors --always-make ${alltargets}
+make --jobs 1 -f Makefile.githubworkflow --ignore-errors --always-make ${alltargets}
