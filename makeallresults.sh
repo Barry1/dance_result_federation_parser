@@ -10,6 +10,8 @@ targets=$(make -qp |
 	grep -v GOC_ |
 	sort)
 goctargets="GOC_2020.txt GOC_2021.txt GOC_2022.txt GOC_2023.txt GOC_2024.txt GOC_2025.txt"
-alltargets="$targets $goctargets"
-echo "Targets: $alltargets"
-make --jobs 1 --ignore-errors --always-make $alltargets
+alltargets="${targets} ${goctargets}"
+echo "Targets: ${alltargets}"
+# for make understanding multiple targets
+# shellcheck disable=SC2086
+make --jobs 1 --ignore-errors --always-make ${alltargets}
