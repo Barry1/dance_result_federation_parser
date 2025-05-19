@@ -10,8 +10,9 @@ targets=$(make -qp |
 	grep -v GOC_ |
 	sort)
 goctargets="GOC_2020.txt GOC_2021.txt GOC_2022.txt GOC_2023.txt GOC_2024.txt GOC_2025.txt"
-alltargets="${targets} ${goctargets}"
-echo "Targets: ${alltargets}"
+alltargets="$targets $goctargets"
+mdtargets=$(echo "$alltargets" | sed -e 's/.txt/.md/g')
+echo "Targets: ${mdtargets}"
 # for make understanding multiple targets
 # shellcheck disable=SC2086
-make --jobs 1 -f Makefile.githubworkflow --ignore-errors --always-make ${alltargets}
+make --jobs 1 -f Makefile.githubworkflow --ignore-errors --always-make ${mdtargets}
