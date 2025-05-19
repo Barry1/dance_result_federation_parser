@@ -45,8 +45,9 @@ jobs:
         run: ls -lah
       - name: make the results
         run: |
-          ./makeallresults.sh
-          for a in *.txt; do mv $a $(a%.txt).md; done
+          # ./makeallresults.sh
+          python -OO ./dance_result_federation_parser.py https\://turniere.btc-gruen-gold.de/bb2024/index.htm > BlauesBand2024.txt
+          for a in *.txt; do mv ${a} ${a%.txt}.md; done
       #      - name: Results creation by Makefile - first run only for one URL
       #        run: |
       #          python -OO ./dance_result_federation_parser.py https\://www.tanzsport-biedermann.de/results/pfingsten22/index.html > BadBevensen_2022.txt
