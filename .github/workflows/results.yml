@@ -44,14 +44,14 @@ jobs:
       - name: make the results
         run: |
           ./makeallresults.sh
-          #python3 -OO ./dance_result_federation_parser.py https\://turniere.btc-gruen-gold.de/bb2024/index.htm > BlauesBand2024.txt
-          #for a in *.txt; do mv ${a} ${a%.txt}.md; done
       #      - name: Results creation by Makefile - first run only for one URL
       #        run: |
       #          python -OO ./dance_result_federation_parser.py https\://www.tanzsport-biedermann.de/results/pfingsten22/index.html > BadBevensen_2022.txt
       #          make --jobs=1 --file=Makefile.githubworkflow FIRST
       #      - name: Results creation by Makefile - all others parallel
       #        run: make --keep-going --file=Makefile.githubworkflow OTHERS || true
+      - name: Show err-files
+        run: cat *.err
       - name: Push to orphan branch results
         run: |
           git checkout --orphan results
