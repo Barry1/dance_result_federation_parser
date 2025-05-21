@@ -9,9 +9,10 @@ targets=$(make -qp |
 	grep txt |
 	grep -v GOC_ |
 	sort)
-goctargets="GOC_2020.txt GOC_2021.txt GOC_2022.txt GOC_2023.txt GOC_2024.txt GOC_2025.txt"
-alltargets="$targets $goctargets"
-mdtargets=$(echo "$alltargets" | sed -e 's/.txt/.md/g')
+goctargets="\nGOC_2020.txt\nGOC_2021.txt\nGOC_2022.txt\nGOC_2023.txt\nGOC_2024.txt\nGOC_2025.txt"
+alltargets="${targets} ${goctargets}"
+mdtargets=$(echo "${alltargets}" | shuf | sed -e 's/.txt/.md/g')
+# shuffled to be not so reproducible
 echo "Targets: ${mdtargets}"
 # for make understanding multiple targets
 # shellcheck disable=SC2086
