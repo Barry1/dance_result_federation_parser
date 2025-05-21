@@ -318,7 +318,15 @@ DM_SENII_STD_2022.txt: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/0-
 	$(runmesingle)
 
 .PHONY: www.tanzsport-biedermann.de/results/pfingsten22/index.html
-BadBevensen_2022.txt: www.tanzsport-biedermann.de/results/pfingsten22/index.html
+BadBevensen_Pfingsten_2022.txt: www.tanzsport-biedermann.de/results/pfingsten22/index.html
+	$(runme)
+
+.PHONY: www.tanzsport-biedermann.de/results/pfingsten23/index.html
+BadBevensen_Pfingsten_2022.txt: www.tanzsport-biedermann.de/results/pfingsten22/index.html
+	$(runme)
+
+.PHONY: www.tanzsport-biedermann.de/results/pfingsten24/index.html
+BadBevensen_Pfingsten_2022.txt: www.tanzsport-biedermann.de/results/pfingsten22/index.html
 	$(runme)
 
 .PHONY: ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm
