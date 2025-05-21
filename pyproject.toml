@@ -98,7 +98,7 @@ addopts = ["--verbose"]
 
 [project]
 name = "dance_result_federation_parser"
-version = "0.2.9"
+version = "0.2.10"
 description = ""
 #authors = [name="Ebeling, Dr. Bastian",mail="bastian.ebeling@web.de"]
 dependencies = [

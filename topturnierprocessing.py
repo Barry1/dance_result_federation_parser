@@ -121,6 +121,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
             e.__traceback__.tb_lineno if e.__traceback__ else 0,
             __file__,
         )
+        raise e
     else:
         erg_df = concat([*tab1tbl, *tab2tbl])
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
