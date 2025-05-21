@@ -29,8 +29,8 @@ jobs:
         uses: actions/checkout@v4
       - name: list files
         run: |
-          ls -lahR
           head DanceCouplesData/couples_clubs_federations.sqlite3 
+          ls -lahR
       - name: NewPreb
         run: |
           python3 -m pip install --upgrade pip poetry cffi poetry-plugin-export ufw lxml \
