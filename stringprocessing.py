@@ -9,32 +9,30 @@ thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 
 
 def correcttitleposition(couplestring: str) -> str:
-    """cdcd"""
-    #        couplesdf.replace(
-    #        to_replace=r"(.*),(.*)Dr\. (/)",
-    #        value=r"\1, Dr.\2\3",
-    #        regex=True,
-    #        inplace=True,
-    #    )
-    #    couplesdf.replace(
-    #        to_replace=r"(/)(.*),(.*)Dr\.",
-    #        value=r"\1\2, Dr.\3",
-    #        regex=True,
-    #        inplace=True,
-    #    )
+    """If Dr. in name, move it to the front."""
     return re_sub(
-        r"(^.*,\s)(.*\s)(.*\.\s)(\/ )", r"\1\3\2\4", couplestring
+        pattern=r"(^.*,\s)(.*\s)(.*\.\s)(\/ )",
+        repl=r"\1\3\2\4",
+        string=couplestring,
     ).strip()
 
 
 def cleanevfromentry(singleorg: str) -> str:
     """Remove ev after name of association/club."""
-    return re_sub(r"\s+", " ", re_sub(r" e\. ?V\.", "", singleorg)).strip()
+    return re_sub(
+        pattern=r"\s+",
+        repl=" ",
+        string=re_sub(pattern=r" e\. ?V\.", repl="", string=singleorg),
+    ).strip()
 
 
 def cleanevfrom_dtv_tsh_entry(singleorg: str) -> str:
     """Remove ev from Entry of TSH-association with DTV database."""
-    return re_sub(r"– TSH \(\d*\).*", "", cleanevfromentry(singleorg)).strip()
+    return re_sub(
+        pattern=r"– TSH \(\d*\).*",
+        repl="",
+        string=cleanevfromentry(singleorg=singleorg),
+    ).strip()
 
 
 def clean_number_from_couple(couple_str_with_num: str) -> str:
@@ -57,10 +55,14 @@ def sr_human_comp_info(turnier_info: str) -> str:
     )
     comp_desc = comp_desc.upper()
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
-    comp_desc = comp_desc.replace("LAT", " Latein ")
     comp_desc = comp_desc.replace("MAS", "Masters ")
     comp_desc = comp_desc.replace("SEN", "Senioren ")
+    comp_desc = comp_desc.replace("KIN", "Kinder ")
+    comp_desc = comp_desc.replace("JUG", "Jugend ")
+    comp_desc = comp_desc.replace("JUN", "Junioren ")
+    comp_desc = comp_desc.replace("INT", "International ")
     comp_desc = comp_desc.replace("STD", " Standard ")
+    comp_desc = comp_desc.replace("LAT", " Latein ")
     comp_desc = comp_desc.replace("1", " I ")
     comp_desc = comp_desc.replace("2", " II ")
     comp_desc = comp_desc.replace("3", " III ")

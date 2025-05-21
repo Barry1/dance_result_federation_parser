@@ -98,18 +98,18 @@ addopts = ["--verbose"]
 
 [project]
 name = "dance_result_federation_parser"
-version = "0.2.8"
+version = "0.2.9"
 description = ""
 #authors = [name="Ebeling, Dr. Bastian",mail="bastian.ebeling@web.de"]
 dependencies = [
   "aiofiles>=24",
-#  "bs4>=0.0.2",
+  #  "bs4>=0.0.2",
   "beautifulsoup4>=4",
   "fastparquet>=2024",
   "joblib>=1.4",
   "lxml>=5",
   "requests>=2.32",
-  "valuefragments @ git+https://github.com/Barry1/PyValueFragments.git"
+  "valuefragments @ git+https://github.com/Barry1/PyValueFragments.git",
 ]
 requires-python = ">=3.12"
 #flask = "^3.0.3"
