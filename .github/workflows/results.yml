@@ -31,8 +31,10 @@ jobs:
           submodules: true
       - name: list files
         run: |
-          head DanceCouplesData/couples_clubs_federations.sqlite3 
-          ls -lahR
+          cd DanceCouplesData
+          mv couples_clubs_federations.sqlite3 couples_clubs_federations.sql
+          cat couples_clubs_federations.sql | sqlite3 -bail -batch couples_clubs_federations.sqlite3
+          rm couples_clubs_federations.sql
       - name: NewPreb
         run: |
           python3 -m pip install --upgrade pip poetry cffi poetry-plugin-export ufw lxml \
