@@ -27,6 +27,8 @@ jobs:
           sudo update-alternatives --display python3
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          submodules: true
       - name: list files
         run: |
           head DanceCouplesData/couples_clubs_federations.sqlite3 
