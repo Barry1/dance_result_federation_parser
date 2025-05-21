@@ -1,14 +1,14 @@
 MAKEFLAGS += --always-make --jobs --output-sync=target 
 # --max-load=3 
+include Makefile.competitions
 runme=python3 -OO ./dance_result_federation_parser.py https\://$< > $@ 2> $(@:.txt=.err)
 runmesingle=python3 -OO ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
+rungoc=python -OO ./goc_parser.py $(subst GOC_,,$(@:.txt=)) > $@ 2> $(@:.txt=.err)
 
-%.md:%.txt
+%.md: %.txt
 	mv $< $@
 
-.PHONY: FIRST OTHERS 
-
-include Makefile.competitions
+.PHONY: FIRST OTHERS
 
 FIRST: BadBevensen_2022.md
 
