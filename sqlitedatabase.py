@@ -16,9 +16,7 @@ from configprocessing import setuplogger
 
 thelogger: logging.Logger = setuplogger()
 
-DATABASE_FILENAME = (
-    "DanceCouplesData" + sep + "couples_clubs_federations.sqlite3"
-)
+DATABASE_FILENAME = f"DanceCouplesData{sep}couples_clubs_federations.sqlite3"
 
 CREATE_TABLES_STATEMENT: str = dedent(
     """\
@@ -160,9 +158,7 @@ def insertnewclubs(tempmatchdict: list[dict[str, str]]) -> None:
 
 def couple_club_federation() -> DataFrame:
     """Get Couples with Clubs and Federations from DB."""
-    with sqlite3.connect(
-        "file:" + DATABASE_FILENAME + "?mode=ro", uri=True
-    ) as con:
+    with sqlite3.connect(f"file:{DATABASE_FILENAME}?mode=ro", uri=True) as con:
         couple_club_federation_df: DataFrame = read_sql_query(
             "SELECT * from CoupleClubFederation", con
         )
