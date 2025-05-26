@@ -326,11 +326,11 @@ BadBevensen_Pfingsten_2022.txt: www.tanzsport-biedermann.de/results/pfingsten22/
 	$(runme)
 
 .PHONY: www.tanzsport-biedermann.de/results/pfingsten23/index.html
-BadBevensen_Pfingsten_2022.txt: www.tanzsport-biedermann.de/results/pfingsten22/index.html
+BadBevensen_Pfingsten_2023.txt: www.tanzsport-biedermann.de/results/pfingsten23/index.html
 	$(runme)
 
 .PHONY: www.tanzsport-biedermann.de/results/pfingsten24/index.html
-BadBevensen_Pfingsten_2022.txt: www.tanzsport-biedermann.de/results/pfingsten22/index.html
+BadBevensen_Pfingsten_2024.txt: www.tanzsport-biedermann.de/results/pfingsten24/index.html
 	$(runme)
 
 .PHONY: ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm
