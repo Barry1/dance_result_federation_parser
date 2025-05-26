@@ -1,3 +1,7 @@
+.PHONY: www.hatv.de/wrapper/DM_Elmshorn/index.htm
+DM_MasI-III_Kombi_MasII_U21_STD_2025.txt: www.hatv.de/wrapper/DM_Elmshorn/index.htm 
+	$(runme)
+
 .PHONY: hessen-tanzt.de/media/ht2025/index.htm
 HessenTanzt_2025.txt: hessen-tanzt.de/media/ht2025/index.htm
 	$(runme)
