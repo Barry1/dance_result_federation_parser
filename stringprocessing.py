@@ -54,6 +54,7 @@ def sr_human_comp_info(turnier_info: str) -> str:
         "_", 2
     )
     comp_desc = comp_desc.upper()
+    comp_desc = comp_desc.replace("U21", "UnderTwentyOne ")
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
     comp_desc = comp_desc.replace("MAS", "Masters ")
     comp_desc = comp_desc.replace("SEN", "Senioren ")
