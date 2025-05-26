@@ -14,17 +14,17 @@ lint:
     - shellcheck@0.10.0
     - shfmt@3.6.0
     - pylint@3.3.7
-    - checkov@3.2.416
+    - checkov@3.2.424
     - osv-scanner@2.0.2
     - trivy@0.62.1
     - trufflehog@3.88.29
     - pyright@1.1.400
-    - ruff@0.11.8
+    - ruff@0.11.10
     - yamllint@1.37.1
     - markdownlint@0.44.0
     - autopep8@2.3.2
     - flake8@7.2.0
-    - gitleaks@8.25.1
+    - gitleaks@8.26.0
     - taplo@0.9.3
     - prettier@3.5.3
     - mypy@1.15.0
@@ -44,7 +44,7 @@ runtimes:
   enabled:
     - go@1.21.0
     - node@18.20.5
-    - python@3.12.2
+    - python@3.12.10
 tools:
   enabled:
     - sourcery@1.36.0
@@ -93,5 +93,18 @@ tools:
         - bs4
         - joblib
         - /home/ebeling/GitHub/PyValueFragments
+downloads:
+  - name: python
+    downloads:
+      - os:
+          macos: apple-darwin
+          linux: unknown-linux-gnu
+        cpu:
+          x86_64: x86_64
+        #          arm_64: aarch64
+        url: https://github.com/indygreg/python-build-standalone/releases/download/20250517/cpython-${version}+20250517-${cpu}-${os}-install_only.tar.gz
+        #        url: https://github.com/astral-sh/python-build-standalone/releases/download/20240415/cpython-${version}+20240415-${cpu}-${os}-install_only.tar.gz
+        #        version: <=3.11.9
+        strip_components: 1
 ---
 

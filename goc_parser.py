@@ -24,11 +24,11 @@ if __name__ == "__main__":
     tsh_results: list[DataFrame] = Parallel(
         n_jobs=1 if __debug__ else -1,
         verbose=10 if __debug__ else 0,
-        backend="multiprocessing",
+        backend="multiprocessing",  # threading ist nur halb so schnell
     )(delayed(function=the_interpret_fun)(a) for a in allreslinks)
     presentation_function(
         "https://www.goc-stuttgart.de/event-guide/ergebnisarchiv",
-        list(allreslinks),
+        allreslinks,
         tsh_results,
         compnames,
         _CFG_DICT,

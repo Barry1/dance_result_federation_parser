@@ -2,10 +2,9 @@
 name: Build some results
 permissions: read-all
 on:
-  - workflow_dispatch
-#  - push
-#schedule:
-#  - cron: "23 01 * * *"
+  schedule:
+    - cron: 45 23 * * 0
+  workflow_dispatch: null # für yamllint
 jobs:
   my_job:
     name: Run dance_result_federation_parser
@@ -28,26 +27,39 @@ jobs:
           sudo update-alternatives --display python3
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: build useable database
+        run: |
+          cd DanceCouplesData
+          mv couples_clubs_federations.sqlite3 couples_clubs_federations.sql
+          cat couples_clubs_federations.sql | sqlite3 -bail -batch couples_clubs_federations.sqlite3
+          rm couples_clubs_federations.sql
       - name: NewPreb
         run: |
           python3 -m pip install --upgrade pip poetry cffi poetry-plugin-export ufw lxml \
             aiofiles beautifulsoup4 fastparquet joblib requests \
             git+https://github.com/Barry1/PyValueFragments.git typing-extensions
-#          poetry install --no-root
-#      - name: Prepare python environment
-#        run: |
-#          python3 -m pip install aiofiles bs4 fastparquet lxml \ 
-#            html5lib git+https://github.com/Barry1/PyValueFragments.git pyannotate
-      - name: create results folder
-        run: mkdir results
+      #          poetry install --no-root
+      #      - name: Prepare python environment
+      #        run: |
+      #          python3 -m pip install aiofiles bs4 fastparquet lxml \
+      #            html5lib git+https://github.com/Barry1/PyValueFragments.git pyannotate
+      #- name: create results folder
+      #  run: mkdir results
       - name: remove config
         run: rm config.toml
-      - name: Results creation by Makefile - first run only for one URL
+      - name: make the results
         run: |
-          python -OO ./dance_result_federation_parser.py https\://www.tanzsport-biedermann.de/results/pfingsten22/index.html > BadBevensen_2022.txt
-          make --jobs=1 --file=Makefile.githubworkflow FIRST
-      - name: Results creation by Makefile - all others parallel
-        run: make --keep-going --file=Makefile.githubworkflow OTHERS || true
+          ./makeallresults.sh
+      #      - name: Results creation by Makefile - first run only for one URL
+      #        run: |
+      #          python -OO ./dance_result_federation_parser.py https\://www.tanzsport-biedermann.de/results/pfingsten22/index.html > BadBevensen_2022.txt
+      #          make --jobs=1 --file=Makefile.githubworkflow FIRST
+      #      - name: Results creation by Makefile - all others parallel
+      #        run: make --keep-going --file=Makefile.githubworkflow OTHERS || true
+      - name: Show err-files
+        run: cat *.err
       - name: Push to orphan branch results
         run: |
           git checkout --orphan results
