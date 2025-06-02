@@ -1,33 +1,33 @@
 ---
 version: 0.1
 cli:
-  version: 1.22.15
+  version: 1.24.0
 plugins:
   sources:
     - id: trunk
-      ref: v1.6.8
+      ref: v1.7.0
       uri: https://github.com/trunk-io/plugins
 lint:
   enabled:
     - bandit@1.8.3
-    - sourcery@1.36.0
+    - sourcery@1.37.0
     - shellcheck@0.10.0
     - shfmt@3.6.0
     - pylint@3.3.7
-    - checkov@3.2.424
+    - checkov@3.2.436
     - osv-scanner@2.0.2
-    - trivy@0.62.1
-    - trufflehog@3.88.29
-    - pyright@1.1.400
-    - ruff@0.11.10
+    - trivy@0.63.0
+    - trufflehog@3.88.35
+    - pyright@1.1.401
+    - ruff@0.11.12
     - yamllint@1.37.1
-    - markdownlint@0.44.0
+    - markdownlint@0.45.0
     - autopep8@2.3.2
     - flake8@7.2.0
-    - gitleaks@8.26.0
+    - gitleaks@8.27.0
     - taplo@0.9.3
     - prettier@3.5.3
-    - mypy@1.15.0
+    - mypy@1.16.0
     - black@25.1.0
     - isort@6.0.1
     - actionlint@1.7.7
@@ -43,11 +43,11 @@ actions:
 runtimes:
   enabled:
     - go@1.21.0
-    - node@18.20.5
+    - node@22.16.0
     - python@3.12.10
 tools:
   enabled:
-    - sourcery@1.36.0
+    - sourcery@1.37.0
     - poetry@2.1.3
   definitions:
     - name: mypy

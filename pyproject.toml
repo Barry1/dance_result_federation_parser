@@ -98,7 +98,7 @@ addopts = ["--verbose"]
 
 [project]
 name = "dance_result_federation_parser"
-version = "0.2.10"
+version = "0.2.11"
 description = ""
 #authors = [name="Ebeling, Dr. Bastian",mail="bastian.ebeling@web.de"]
 dependencies = [
@@ -110,6 +110,9 @@ dependencies = [
   "lxml>=5",
   "requests>=2.32",
   "valuefragments @ git+https://github.com/Barry1/PyValueFragments.git",
+  "ty (>=0.0.1a6,<0.0.2)",
+  "pyrefly (>=0.16.3,<0.17.0)",
+  "pyanalyze (>=0.13.1,<0.14.0)",
 ]
 requires-python = ">=3.12"
 #flask = "^3.0.3"

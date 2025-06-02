@@ -10,7 +10,7 @@ import asyncio
 import logging
 from functools import partial
 from typing import Callable
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
 from joblib import Parallel, delayed
@@ -62,8 +62,28 @@ def reslinks_interpreter(
 
 async def async_eventurl_to_web(eventurl: str) -> None:
     """Async convert URL from Event to HTML for TSH CMS."""
+    thelogger.info("Verarbeite %s", eventurl)
     try:
-        with urlopen(eventurl) as openedurl:
+        openedurl = urlopen(eventurl)
+        thelogger.debug("%s wurde geöffnet", eventurl)
+    except URLError as url_error:  # spricht der Server kein https?
+        thelogger.exception(
+            "Die URL %s ist nicht erreichbar, "
+            "möglicherweise spricht der Server kein https?",
+            eventurl,
+        )
+        thelogger.exception(url_error)
+        eventurl = eventurl[:4] + eventurl[5:]
+        thelogger.debug(
+            "Die URL %s wurde auf http umgestellt, "
+            "möglicherweise ist sie jetzt erreichbar.",
+            eventurl,
+        )
+        openedurl = urlopen(eventurl)
+        thelogger.debug("%s wurde geöffnet", eventurl)
+    thelogger.info("Die URL %s ist erreichbar.", eventurl)
+    try:
+        with openedurl:
             eventurl = openedurl.geturl()
             tree: _ElementTree = await asyncio.to_thread(parse, openedurl)
     except HTTPError as http_error:

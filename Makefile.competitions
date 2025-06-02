@@ -1,5 +1,5 @@
 .PHONY: ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
-RL_FUERTH_2025.txt: ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
+RL_Fuerth_2025.txt: ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
 	$(runme)
 
 .PHONY: www.tvjahn-tanzt.de/wp-content/uploads/turnierergebnisse/glm_nord_latein/index.htm
