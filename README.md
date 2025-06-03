@@ -23,6 +23,7 @@ git config --global --add filter.sqlite3tosql.smudge "sqlite3 tempsqlitedb ; cat
 git config --global --add filter.sqlite3tosql.required "true"
 git config --list --show-origin --show-scope
 git clone --recurse-submodules --remote-submodules https://github.com/Barry1/dance_result_federation_parser
+curl -sSL https://install.python-poetry.org | python3 -
 cd dance_result_federation_parser
 poetry update
 poetry run python dance_result_federation_parser.py https://ergebnisse.tc-gold-und-silber.de/2025-03-08/
