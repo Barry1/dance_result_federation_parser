@@ -1,60 +1,9 @@
-include Makefile.competitions.2025 Makefile.competitions.2024 Makefile.competitions.2023
-
-.PHONY: www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
-GLM_KIN-JUG_LAT_2022.txt: www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
-	$(runme)
-
-.PHONY: tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
-GLM_SEN_II_A-S_STD_2022.txt: tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
-	$(runme)
-
-.PHONY: tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
-DP_SEN_III_S_STD_2022.txt: tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
-	$(runmesingle)
-
-.PHONY: www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
-GLM_SEN_II+III_D-B_STD_2022.txt: www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
-	$(runme)
-
-.PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
-GLM_KIN-JUG_STD_2022.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
-	$(runme)
-
-.PHONY: www.htv.de/media/22_10_02/index.htm
-DM-DP_KIN-JUG_STD_2022.txt: www.htv.de/media/22_10_02/index.htm
-	$(runme)
+include Makefile.competitions.2025 Makefile.competitions.2024 Makefile.competitions.2023 Makefile.competitions.2022
 
 .PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
 GLM4_MASIV_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
 	$(runme)
 
-.PHONY: www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm
-Enzkloesterle_2022.txt: www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm
-	$(runme)
-
-.PHONY: ergebnisse.dancecomp.de/2022/index.htm
-danceComp_2022.txt: ergebnisse.dancecomp.de/2022/index.htm
-	$(runme)
-	
-.PHONY: tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm
-BalSen_2022.txt: tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm
-	$(runme)
-
-.PHONY: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
-GLM_Sen_IV_und_Sen_V_2022.txt: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
-	$(runme)
-
-.PHONY: www.boston-club.de/ergebnis/dchgralat2022/index.htm
-DC_HGR-A_LAT_2022.txt: www.boston-club.de/ergebnis/dchgralat2022/index.htm
-	$(runmesingle)
-
-.PHONY: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/0-dm_sen2sstd/index.htm
-DM_SENII_STD_2022.txt: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/0-dm_sen2sstd/index.htm
-	$(runmesingle)
-
-.PHONY: www.tanzsport-biedermann.de/results/pfingsten22/index.html
-BadBevensen_Pfingsten_2022.txt: www.tanzsport-biedermann.de/results/pfingsten22/index.html
-	$(runme)
 
 .PHONY: www.tanzsport-biedermann.de/results/pfingsten23/index.html
 BadBevensen_Pfingsten_2023.txt: www.tanzsport-biedermann.de/results/pfingsten23/index.html
@@ -64,17 +13,6 @@ BadBevensen_Pfingsten_2023.txt: www.tanzsport-biedermann.de/results/pfingsten23/
 BadBevensen_Pfingsten_2024.txt: www.tanzsport-biedermann.de/results/pfingsten24/index.html
 	$(runme)
 
-.PHONY: ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm
-DSF_2022.txt: ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm
-	$(runme)
-
-.PHONY: tps.1sc-norderstedt-tsa.de/20220528/index.htm
-GLM_HGR_SENI_D-B_STD_2022.txt: tps.1sc-norderstedt-tsa.de/20220528/index.htm
-	$(runme)
-
-.PHONY: hessen-tanzt.de/media/ht2022/index.htm 
-HessenTanzt2022.txt: hessen-tanzt.de/media/ht2022/index.htm
-	$(runme)
 
 .PHONY: www.blauesband-berlin.de/Ergebnisse/2018/blauesband2018/index.htm
 BlauesBand2018.txt: www.blauesband-berlin.de/Ergebnisse/2018/blauesband2018/index.htm
@@ -83,10 +21,6 @@ BlauesBand2018.txt: www.blauesband-berlin.de/Ergebnisse/2018/blauesband2018/inde
 .PHONY: www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm 
 BlauesBand2019.txt: www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm
 	$(runme)
-
-.PHONY: turniere.btc-gruen-gold.de/bb2022/index.htm
-BlauesBand2022.txt: turniere.btc-gruen-gold.de/bb2022/index.htm
-	$(runme) 
 
 HolmOstern2022.txt:
 	$(runme) http://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/freitag/index.htm > $@ 2> $(@:.txt=.err)
