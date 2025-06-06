@@ -206,7 +206,7 @@ def print_markdown(
     )
     print(
         "Falls ich ein Paar übersehen habe, bitte ich freundlich um eine ",
-        f'[Email](mailto:{cfg_dict["INFORMEMAIL"]}?subject=&Uuml;bersehenes%20Ergebnis)"',
+        f'[Email](mailto:{cfg_dict["INFORMEMAIL"]}?subject=&Uuml;bersehenes%20Ergebnis)',
         sep="",
     )
 
