@@ -1,0 +1,104 @@
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-11-25-26_BYO/
+BYO_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-11-25-26_BYO/
+	$(runme)
+
+.PHONY: www.owl-tanzt.de/turniere/2023/
+OWL_2023.txt: www.owl-tanzt.de/turniere/2023/
+	$(runme)
+
+.PHONY: ltvb.de/wp-content/uploads/results/13941/index.htm
+DM_Kin-Jug_STD_2023.txt: ltvb.de/wp-content/uploads/results/13941/index.htm
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-24_GLM5_HGR_A-S_STD/
+GLM5_HgrMasI_AS_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-24_GLM5_HGR_A-S_STD/
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-16_GLM5_Kin-Jug_STD/index.html
+GLM5_Kin-Jug_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-16_GLM5_Kin-Jug_STD/index.html
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-11-04_DM_HGR_S_STD/index.htm
+DM_HGRSSTD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-11-04_DM_HGR_S_STD/index.htm
+	$(runmesingle)
+
+
+.PHONY: www.hatv.de/wrapper/2023/dm_mas_iii_s_std_2023/0-dm_mas3sstd/index.htm
+DM_MAS3SSTD_2023.txt: www.hatv.de/wrapper/2023/dm_mas_iii_s_std_2023/0-dm_mas3sstd/index.htm
+	$(runmesingle)
+
+.PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2023/3-1006_dc_hgralat/3-1006_dc_hgralat/index.htm
+DC_HGR-A-LAT_2023.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2023/3-1006_dc_hgralat/3-1006_dc_hgralat/index.htm
+	$(runmesingle)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-06-10_DM_MAS-II_S_STD/0-dm_mas2sstd/index.htm
+dm_mas2sstd_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-06-10_DM_MAS-II_S_STD/0-dm_mas2sstd/index.htm
+	$(runmesingle)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-09_GLM4_HGR_D-B_LAT/index.htm
+GLM4_HGR_D-B_LAT_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-09_GLM4_HGR_D-B_LAT/index.htm
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-02_GLM_HGRII_D-S_STD/index.htm
+GLM_HGRII_D-S_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-02_GLM_HGRII_D-S_STD/index.htm
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-09-03_GLM4_MASII-III_D-B_STD/index.htm
+GLM4_MASII-III_D-B_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-03_GLM4_MASII-III_D-B_STD/index.htm
+	$(runme)
+
+.PHONY: ergebnisse.dancecomp.de/2023/index.htm
+danceComp_2023.txt: ergebnisse.dancecomp.de/2023/index.htm
+	$(runme)
+
+.PHONY: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/index.htm
+DSF_2023.txt: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/index.htm
+	$(runme)
+
+.PHONY: hessen-tanzt.de/media/ht2023/index.htm
+HessenTanzt_2023.txt: hessen-tanzt.de/media/ht2023/index.htm
+	$(runme)
+
+.PHONY: ltvb.de/wp-content/uploads/results/13347/index.htm
+Nuernberg_2023.txt: ltvb.de/wp-content/uploads/results/13347/index.htm
+	$(runme)
+
+.PHONY: berlin-dance-festival.de/files/bdf/results/2023/index.htm
+BeDaFe_2023.txt: berlin-dance-festival.de/files/bdf/results/2023/index.htm
+	$(runme)
+
+.PHONY: turniere.btc-gruen-gold.de/bb2023/index.htm
+BlauesBand2023.txt: turniere.btc-gruen-gold.de/bb2023/index.htm
+	$(runme)
+
+.PHONY: www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
+Kamen_2023.txt: www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
+GBM_Kombi_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
+	$(runme)
+
+.PHONY: www.goc-stuttgart.de/programm/ergebnis-archiv-kopie-1
+GOC_ALLTIME.txt: www.goc-stuttgart.de/programm/ergebnis-archiv-kopie-1
+	$(runme)
+
+.PHONY: hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
+GLM4_MASII_AS_MASV_S_STD_2023.txt: hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
+	$(runme)
+
+.PHONY: hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
+GLM_HGR_MASI_D-B_STD_2023.txt: hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
+	$(runme)
+
+.PHONY: ergebnisse.tnw.de/vereine/912/2023-02-25/index.htm
+RL_DUS_2023.txt: ergebnisse.tnw.de/vereine/912/2023-02-25/index.htm
+	$(runme)
+
+.PHONY: hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
+RL_GLINDE_2023.txt: hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
+GLM_HGR-MAS_A-S_LAT_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
+	$(runme)
