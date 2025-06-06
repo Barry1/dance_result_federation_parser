@@ -1,7 +1,5 @@
-.PHONY: ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
-RL_Fuerth_2025.txt: ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
-	$(runme)
-
+include Makefile.competitions.2025
+############################### ALTE EINTRÄGE ###########################################
 .PHONY: www.tvjahn-tanzt.de/wp-content/uploads/turnierergebnisse/glm_nord_latein/index.htm
 GLM_HGRII_MASI-III_LAT_2025.txt: www.tvjahn-tanzt.de/wp-content/uploads/turnierergebnisse/glm_nord_latein/index.htm
 	$(runme)
@@ -10,25 +8,14 @@ GLM_HGRII_MASI-III_LAT_2025.txt: www.tvjahn-tanzt.de/wp-content/uploads/turniere
 DM_MasI-III_Kombi_MasII_U21_STD_2025.txt: www.hatv.de/wrapper/DM_Elmshorn/index.htm 
 	$(runme)
 
-.PHONY: hessen-tanzt.de/media/ht2025/index.htm
-HessenTanzt_2025.txt: hessen-tanzt.de/media/ht2025/index.htm
-	$(runme)
-
 .PHONY: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
 GLM_HgrMasI_D-B_STD_2025.txt: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
-	$(runme)
-
-.PHONY: turniere.btc-gruen-gold.de/bb2025/index.htm
-BlauesBand2025.txt: turniere.btc-gruen-gold.de/bb2025/index.htm
 	$(runme)
 
 .PHONY: blau-orange.de/wp-content/2025gcdc/index.htm
 GCDC_2025.txt: blau-orange.de/wp-content/2025gcdc/index.htm
 	$(runme)
 
-.PHONY: htv.de/media/25_03_15/index.htm
-DM_Latein_2025.txt: htv.de/media/25_03_15/index.htm
-	$(runme)
 
 .PHONY: ergebnisse.tc-gold-und-silber.de/2025-03-08/
 GBM_Kombi_2025.txt: ergebnisse.tc-gold-und-silber.de/2025-03-08/
@@ -48,10 +35,6 @@ GLM_HGR_MAS_AS_LAT_2025.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2025/
 
 .PHONY: app.ceronne.de/ergebnisse/987_2025%20GLM%20Nord%20Kinder%20Jugend%20Latein/
 GLM_Kin-Jug_LAT_2025.txt: app.ceronne.de/ergebnisse/987_2025%20GLM%20Nord%20Kinder%20Jugend%20Latein/
-	$(runme)
-
-.PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
-JanuarRLs_2025.txt: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
 	$(runme)
 
 .PHONY: ergebnisse.widafe.de/2024/

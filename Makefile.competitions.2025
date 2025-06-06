@@ -1,0 +1,72 @@
+.PHONY: ergebnisse.ggcbremen.de/2025-06-06.DSF/
+2025_DSF.txt: ergebnisse.ggcbremen.de/2025-06-06.DSF/
+	$(runme)
+
+.PHONY: ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
+2025_RL_Fuerth.txt: ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
+	$(runme)
+
+.PHONY: hessen-tanzt.de/media/ht2025/index.htm
+2025_HessenTanzt.txt: hessen-tanzt.de/media/ht2025/index.htm
+	$(runme)
+
+.PHONY: turniere.btc-gruen-gold.de/bb2025/index.htm
+2025_BlauesBand.txt: turniere.btc-gruen-gold.de/bb2025/index.htm
+	$(runme)
+
+.PHONY: htv.de/media/25_03_15/index.htm
+2025_DM_Latein.txt: htv.de/media/25_03_15/index.htm
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
+2025_JanuarRLs.txt: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
+	$(runme)
+
+.PHONY: ergebnisse.ggcbremen.de/2024-05-31.DSF/
+2024_DSF.txt: ergebnisse.ggcbremen.de/2024-05-31.DSF/
+	$(runme)
+
+.PHONY: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/
+2023_DSF.txt: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/
+	$(runme)
+
+.PHONY: ergebnisse.ggcbremen.de/2022-06-03.DSF/
+2022_DSF.txt: ergebnisse.ggcbremen.de/2022-06-03.DSF/
+	$(runme)
+############################### ALTE EINTRÄGE ###########################################
+.PHONY: www.tvjahn-tanzt.de/wp-content/uploads/turnierergebnisse/glm_nord_latein/index.htm
+GLM_HGRII_MASI-III_LAT_2025.txt: www.tvjahn-tanzt.de/wp-content/uploads/turnierergebnisse/glm_nord_latein/index.htm
+	$(runme)
+
+.PHONY: www.hatv.de/wrapper/DM_Elmshorn/index.htm
+DM_MasI-III_Kombi_MasII_U21_STD_2025.txt: www.hatv.de/wrapper/DM_Elmshorn/index.htm 
+	$(runme)
+
+.PHONY: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
+GLM_HgrMasI_D-B_STD_2025.txt: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
+	$(runme)
+
+.PHONY: blau-orange.de/wp-content/2025gcdc/index.htm
+GCDC_2025.txt: blau-orange.de/wp-content/2025gcdc/index.htm
+	$(runme)
+
+
+.PHONY: ergebnisse.tc-gold-und-silber.de/2025-03-08/
+GBM_Kombi_2025.txt: ergebnisse.tc-gold-und-silber.de/2025-03-08/
+	$(runme)
+
+.PHONY: www.hatv.de/wrapper/2025_GLM_MasII/index.html
+GLM_MASII_BAS_STD_2025.txt: www.hatv.de/wrapper/2025_GLM_MasII/index.html
+	$(runme)
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-02-22_GLM_MasIV_STD/
+GLM_MASIV_STD_2025.txt: tanzen-in-sh.de/ergebnisse/2025/2025-02-22_GLM_MasIV_STD/
+	$(runme)
+
+.PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2025/2025_glm_hgr_a_s_mas_s_lat/2025_glm_hgr_a%2Bs_mas_s_la/index.htm
+GLM_HGR_MAS_AS_LAT_2025.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2025/2025_glm_hgr_a_s_mas_s_lat/2025_glm_hgr_a%2Bs_mas_s_la/index.htm
+	$(runme)
+
+.PHONY: app.ceronne.de/ergebnisse/987_2025%20GLM%20Nord%20Kinder%20Jugend%20Latein/
+GLM_Kin-Jug_LAT_2025.txt: app.ceronne.de/ergebnisse/987_2025%20GLM%20Nord%20Kinder%20Jugend%20Latein/
+	$(runme)
