@@ -1,3 +1,7 @@
+.PHONY: tanzsport-biedermann.de/results/pfingsten25/index.html
+2025_BadBevensenPfingsten.txt: tanzsport-biedermann.de/results/pfingsten25/index.html
+	$(runme)
+
 .PHONY: ergebnisse.ggcbremen.de/2025-06-06.DSF/
 2025_DSF.txt: ergebnisse.ggcbremen.de/2025-06-06.DSF/
 	$(runme)

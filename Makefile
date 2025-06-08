@@ -1,6 +1,6 @@
 MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 include Makefile.competitions
-.PHONY: ALL pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns pyright pylyze pipdeptree
+.PHONY: all pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns pyright pylyze pipdeptree formatting clean test
 
 #<https://stackoverflow.com/questions/4219255/how-do-you-get-the-list-of-targets-in-a-makefile/26339924#26339924>
 .PHONY: list
@@ -16,7 +16,7 @@ cpldb=DanceCouplesData/couples_clubs_federations.sqlite3
 
 runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
 
-ALL: pylint mypy formatting vulture pytype sourcery
+all: pylint mypy formatting vulture pytype sourcery
 
 .PHONE: multicouplecheck
 multicouplecheck:
