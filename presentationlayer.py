@@ -201,7 +201,7 @@ def print_markdown(
         "\n",
         "Das Gesamtergebnis ist unter dem [Link](",
         wholereslink,
-        "}) zu finden.",
+        ") zu finden.",
         sep="",
     )
     print(
