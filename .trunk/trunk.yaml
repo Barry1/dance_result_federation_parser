@@ -18,7 +18,7 @@ lint:
     - osv-scanner@2.0.2
     - trivy@0.63.0
     - trufflehog@3.89.1
-    - pyright@1.1.401
+    - pyright@1.1.402
     - ruff@0.11.13
     - yamllint@1.37.1
     - markdownlint@0.45.0
