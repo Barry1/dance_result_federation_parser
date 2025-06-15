@@ -1,5 +1,5 @@
-.PHONY: tanzsportclub-frankfurt-oder.de/wp-content/uploads/TopTurnier/dm2025_mas2s_std/0-dm_mas2sstd/index.htm
-2025_DM_MasII_STD.txt: tanzsportclub-frankfurt-oder.de/wp-content/uploads/TopTurnier/dm2025_mas2s_std/0-dm_mas2sstd/index.htm
+.PHONY: tanzsportclub-frankfurt-oder.de/wp-content/uploads/TopTurnier/dm2025_mas2s_std/0-dm_mas2sstd
+2025_DM_MasII_STD.txt: tanzsportclub-frankfurt-oder.de/wp-content/uploads/TopTurnier/dm2025_mas2s_std/0-dm_mas2sstd
 	$(runmesingle)
 
 .PHONY: tanzsport-biedermann.de/results/pfingsten25/index.html
