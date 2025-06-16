@@ -164,9 +164,14 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
 
 def interpret_tt_result(theresulturl: str) -> DataFrame:
     """Process TopTurnier URL."""
-    thelogger.debug(theresulturl)
+    thelogger.debug("interpret_tt_result Aufruf mit %s", theresulturl)
+    if not theresulturl.endswith("index.htm"):
+        thelogger.debug("URL endet nicht auf index.htm")
+        theresulturl += (
+            "/index.htm" if theresulturl.endswith("/") else "/index.htm"
+        )
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
-    thelogger.debug(theresulturl)
+    thelogger.debug("interpret_tt_result Auswertung von %s", theresulturl)
     ret_df = DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
     ergurlresponse: Response = requests_get(
         theresulturl, timeout=MY_TIMEOUT, headers={"User-agent": "Mozilla"}
