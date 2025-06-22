@@ -1,3 +1,7 @@
+.PHONY: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/2025_hatata_2025/
+2025_HaTaTa.txt: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/2025_hatata_2025/
+	$(runme)
+
 .PHONY: www.gruen-weiss-aachen.de/files/ergebnisse/3LE-2025/3LE-2025/index.htm
 2025_RL-Aachen_HGR-LAT_MasI_IV_STD.txt: www.gruen-weiss-aachen.de/files/ergebnisse/3LE-2025/3LE-2025/index.htm
 	$(runme)
