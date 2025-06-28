@@ -193,3 +193,13 @@ aggressive = true
 transform_concats = true
 transform_joins = true
 fail_on_change = true
+[tool.pyrefly]
+python_version = "3.12.0"
+replace_imports_with_any = [
+  "psutil",
+  "pandas",
+  "joblib",
+  "lxml.*",
+  "bs4.*",
+  "pyannotate_runtime",
+]

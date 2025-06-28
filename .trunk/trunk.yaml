@@ -14,7 +14,7 @@ lint:
     - shellcheck@0.10.0
     - shfmt@3.6.0
     - pylint@3.3.7
-    - checkov@3.2.443
+    - checkov@3.2.445
     - osv-scanner@2.0.3
     - trivy@0.63.0
     - trufflehog@3.89.2
@@ -23,10 +23,10 @@ lint:
     - yamllint@1.37.1
     - markdownlint@0.45.0
     - autopep8@2.3.2
-    - flake8@7.2.0
+    - flake8@7.3.0
     - gitleaks@8.27.2
     - taplo@0.9.3
-    - prettier@3.5.3
+    - prettier@3.6.0
     - mypy@1.16.1
     - black@25.1.0
     - isort@6.0.1
