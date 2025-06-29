@@ -5,7 +5,7 @@ cli:
 plugins:
   sources:
     - id: trunk
-      ref: v1.7.0
+      ref: v1.7.1
       uri: https://github.com/trunk-io/plugins
 lint:
   enabled:
@@ -14,19 +14,19 @@ lint:
     - shellcheck@0.10.0
     - shfmt@3.6.0
     - pylint@3.3.7
-    - checkov@3.2.445
+    - checkov@3.2.447
     - osv-scanner@2.0.3
     - trivy@0.63.0
     - trufflehog@3.89.2
     - pyright@1.1.402
-    - ruff@0.12.0
+    - ruff@0.12.1
     - yamllint@1.37.1
     - markdownlint@0.45.0
     - autopep8@2.3.2
     - flake8@7.3.0
     - gitleaks@8.27.2
     - taplo@0.9.3
-    - prettier@3.6.0
+    - prettier@3.6.2
     - mypy@1.16.1
     - black@25.1.0
     - isort@6.0.1

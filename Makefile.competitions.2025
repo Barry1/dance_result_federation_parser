@@ -1,3 +1,7 @@
+.PHONY: tanzen-in-kiel.de/media/Turnierergebnisse/2025/KielPokal-2025/
+2025_KielPokal.txt: tanzen-in-kiel.de/media/Turnierergebnisse/2025/KielPokal-2025/
+	$(runme)
+
 .PHONY: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/2025_hatata_2025/
 2025_HaTaTa.txt: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/2025_hatata_2025/
 	$(runme)
