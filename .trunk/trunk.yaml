@@ -16,7 +16,7 @@ lint:
     - pylint@3.3.7
     - checkov@3.2.447
     - osv-scanner@2.0.3
-    - trivy@0.63.0
+    - trivy@0.64.0
     - trufflehog@3.89.2
     - pyright@1.1.402
     - ruff@0.12.1

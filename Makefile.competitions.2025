@@ -1,5 +1,6 @@
 .PHONY: ergebnisse.dancecomp.de/2025/
 2025_danceComp.txt: ergebnisse.dancecomp.de/2025/
+	$(runme)
 
 .PHONY: tanzen-in-kiel.de/media/Turnierergebnisse/2025/KielPokal-2025/
 2025_KielPokal.txt: tanzen-in-kiel.de/media/Turnierergebnisse/2025/KielPokal-2025/
