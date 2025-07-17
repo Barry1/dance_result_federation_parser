@@ -12,6 +12,32 @@ from configprocessing import LOGGERNAME, MyConfigT
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 
 
+def print_ul_html(therowiterator) -> None:
+    """Small printer for result ul."""
+    print("<ul>")
+    for resline in therowiterator:
+        print(
+            f"<li>{resline[1].Platz}",
+            f"{resline[1].Paar} ({resline[1].Verein})</li>",
+            sep="",
+        )
+    print("</ul>")
+
+
+def print_img_placeholder() -> None:
+    """Small printer for example images."""
+    print(
+        '<div style="float: right; margin-left: 10px;'
+        ' text-align: center;font-size: 8pt;">'
+    )
+    print(
+        "<img"
+        ' src="https://loremflickr.com/150/200/ballroom-dancing"'
+        ' alt="Beispielfoto" height="200" />'
+    )
+    print("<br />Foto: loremflickr.com</div>")
+
+
 def print_joomla(
     wholereslink: str,
     allreslinks: list[str],
@@ -58,16 +84,7 @@ def print_joomla(
         else:
             print(tournhdr)
             if cfg_dict["IMG_PREP"]:
-                print(
-                    '<div style="float: right; margin-left: 10px;'
-                    ' text-align: center;font-size: 8pt;">'
-                )
-                print(
-                    "<img"
-                    ' src="https://loremflickr.com/150/200/ballroom-dancing"'
-                    ' alt="Beispielfoto" height="200" />'
-                )
-                print("<br />Foto: loremflickr.com</div>")
+                print_img_placeholder()
             if cfg_dict["RESULTTABLE"]:
                 print("<table>")
                 print(
@@ -114,17 +131,6 @@ def print_joomla(
         ">Email</a>.</p>",
         sep="",
     )
-
-
-def print_ul_html(therowiterator) -> None:
-    print("<ul>")
-    for resline in therowiterator:
-        print(
-            f"<li>{resline[1].Platz}",
-            f"{resline[1].Paar} ({resline[1].Verein})</li>",
-            sep="",
-        )
-    print("</ul>")
 
 
 def print_markdown(
@@ -175,16 +181,7 @@ def print_markdown(
         else:
             print(tournhdr)
             if cfg_dict["IMG_PREP"]:
-                print(
-                    '<div style="float: right; margin-left: 10px;'
-                    ' text-align: center;font-size: 8pt;">'
-                )
-                print(
-                    "<img"
-                    ' src="https://loremflickr.com/150/200/ballroom-dancing"'
-                    ' alt="Beispielfoto" height="200" />'
-                )
-                print("<br />Foto: loremflickr.com</div>")
+                print_img_placeholder()
             if cfg_dict["RESULTTABLE"]:
                 print("|Platz|Paar|Verein|")
                 print("|---:|---:|---:|")
