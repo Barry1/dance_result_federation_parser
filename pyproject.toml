@@ -2,7 +2,7 @@
 # Cool info <https://blog.pilosus.org/posts/2019/12/26/python-third-party-tools-configuration/>
 # https://github.com/hhatto/autopep8/blob/master/README.rst#pyproject-toml
 [tool.autopep8]
-max_line_length = 88
+max_line_length = 79
 in-place = true
 recursive = true
 jobs = 0
@@ -10,7 +10,7 @@ ignore = ["E203"]
 
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 [tool.black]
-line-length = 88
+line-length = 79
 target-version = ['py312'] #'py37', 'py38',
 color = true
 #safe = true
@@ -28,7 +28,7 @@ log_level = "INFO"
 skips = ["B101", "B608"]
 
 [tool.flake8]
-max-line-length = 88
+max-line-length = 79
 extend-ignore = "E203"
 
 # https://interrogate.readthedocs.io/en/latest/#configuration
@@ -57,18 +57,18 @@ ignore_missing_imports = true
 # https://pycqa.github.io/isort/docs/configuration/options
 py_version = 312 #311 not yet supported
 # color_output = true
-line_length = 88
+line_length = 79
 profile = "black"
 skip = "venv"
 
 [tool.pylama.pep8]
-max_line_length = 88
+max_line_length = 79
 
 [tool.pylama.pycodestyle]
-max_line_length = 88
+max_line_length = 79
 
 [tool.pylama.pylint]
-max_line_length = 88
+max_line_length = 79
 
 [tool.pylint.MASTER]
 jobs = 0
