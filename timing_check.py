@@ -20,9 +20,7 @@ if __name__ == "__main__":
     thelogger.disabled = True
     print("For best results invoke with")
     print("==> ./timing_test.py & sudo renice -20 $! ;fg <==")
-    theurl: str = (
-        "http://blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm"
-    )
+    theurl: str = "http://blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm"
     print(60 * "=")
     print("Running Sync")
     with TimingCM():

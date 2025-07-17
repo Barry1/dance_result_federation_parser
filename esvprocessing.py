@@ -42,7 +42,7 @@ def get_couples_df() -> DataFrame:
         loginreq: requests.Response = esvsession.post(
             login_url, data=get_esvcredentials()
         )
-        assert loginreq.status_code == 200
+        assert loginreq.status_code == 200  # nosec B101
         whatweneed: requests.Response = esvsession.post(
             couples_url, data={"execute": 1, "export": 1, "print": 0}
         )

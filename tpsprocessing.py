@@ -36,22 +36,20 @@ def ogparserurl(baseurl: str) -> dict[str, str]:
     """Parse results from O. Gröhns competition software."""
     tournmtsdict: dict[str, str] = {}
     base: str = baseurl[: baseurl.rfind("/")]
-    with urlopen(baseurl) as urlrequest:
+    with urlopen(baseurl) as urlrequest:  # nosec B310
         for entry in parse(urlrequest).xpath("/html/body/div/main/a[*]"):
             tournmtsdict[entry.xpath("div/div/h4/text()")[0]] = (
                 f'{base}/{quote(entry.xpath("@href")[0])}'
             )
     if not tournmtsdict:  # keine in Main gefunden, jetzt DropDown nutzen
-        for entry in parse(baseurl).xpath(
-            "/html/body/nav/div[2]/ul/li[1]/ul/li[*]/a"
-        ):
+        for entry in parse(baseurl).xpath("/html/body/nav/div[2]/ul/li[1]/ul/li[*]/a"):
             tournmtsdict[entry.text] = f'{base}/{quote(entry.get("href"))}'
     return tournmtsdict
 
 
 def interpret_tps_result(theresulturl: str) -> DataFrame:
     """Extract results from tps-made result-website."""
-    assert theresulturl.endswith("index.html"), (
+    assert theresulturl.endswith("index.html"), (  # nosec B101
         "Es muss die index.html-URL vom Turnier"
         " (nicht der Veranstaltung) angegeben werden"
     )
@@ -59,18 +57,14 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
     thelogger.debug("Verarbeitung von %s", theresulturl)
     tps_result_df: DataFrame
     try:
-        tps_result_df = read_html(
-            theresulturl, attrs={"class": "table fa-lg"}
-        )[0]
+        tps_result_df = read_html(theresulturl, attrs={"class": "table fa-lg"})[0]
     except IndexError as index_error:
         thelogger.exception(
             "Bei interpret_tps_result von %s trag der IndexError %s auf.",
             theresulturl,
             index_error,
         )
-        tps_result_df = DataFrame(
-            columns=["Platz", "Startnummer", "Paar", "Verein"]
-        )
+        tps_result_df = DataFrame(columns=["Platz", "Startnummer", "Paar", "Verein"])
     #    tps_result_df.columns = ["Platz", "Startnummer", "Paar", "Verein"]
     tps_result_df = tps_result_df.set_axis(
         ["Platz", "Startnummer", "Paar", "Verein"], axis="columns", copy=False
@@ -81,6 +75,4 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
     # with option_context("mode.chained_assignment", None):
     tps_result_df.loc[:, "Verein"] = tps_result_df.Verein.map(cleanevfromentry)
     # Sortierung korrigert
-    return tps_result_df.merge(
-        get_dtv_df(autoupdate=False), on="Verein", how="left"
-    )
+    return tps_result_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")

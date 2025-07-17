@@ -2,7 +2,7 @@
 # Cool info <https://blog.pilosus.org/posts/2019/12/26/python-third-party-tools-configuration/>
 # https://github.com/hhatto/autopep8/blob/master/README.rst#pyproject-toml
 [tool.autopep8]
-max_line_length = 79
+max_line_length = 88
 in-place = true
 recursive = true
 jobs = 0
@@ -10,7 +10,7 @@ ignore = ["E203"]
 
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 [tool.black]
-line-length = 79
+line-length = 88
 target-version = ['py312'] #'py37', 'py38',
 color = true
 #safe = true
@@ -28,7 +28,7 @@ log_level = "INFO"
 skips = ["B101", "B608"]
 
 [tool.flake8]
-max-line-length = 79
+max-line-length = 88
 extend-ignore = "E203"
 
 # https://interrogate.readthedocs.io/en/latest/#configuration
@@ -57,7 +57,7 @@ ignore_missing_imports = true
 # https://pycqa.github.io/isort/docs/configuration/options
 py_version = 312 #311 not yet supported
 # color_output = true
-line_length = 79
+line_length = 88
 profile = "black"
 skip = "venv"
 
@@ -162,6 +162,7 @@ vulture = ">=2.14"
 # poetry-plugin-export = "^1.9.0" # install with poetry self add 
 basedpyright = "^1.29.2"
 pylyzer = "^0.0.82"
+bandit = "^1.8.6"
 
 [tool.poetry.group.dev.dependencies.black]
 version = ">22"

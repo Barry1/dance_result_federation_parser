@@ -133,9 +133,7 @@ def insertcouplestodb(sourcedf: DataFrame, tournamentdate: str) -> None:
     )
     cpls: list[dict[str, str]] = []
     for _, row in sourcedf.iterrows():
-        thelogger.debug(
-            "%s | %s | %s", row["Paar"], row["Verein"], row["Verband"]
-        )
+        thelogger.debug("%s | %s | %s", row["Paar"], row["Verein"], row["Verband"])
         cpls.append(
             {
                 "Paar": row["Paar"],
@@ -169,9 +167,7 @@ def couple_club_federation() -> DataFrame:
 def create_structure() -> None:
     """Setups database and fills the federations abbreviations."""
     # Options for Opening <https://www.sqlite.org/uri.html>
-    with sqlite3.connect(
-        DATABASE_FILENAME
-    ) as con:  # autocommit=False from py3.12
+    with sqlite3.connect(DATABASE_FILENAME) as con:  # autocommit=False from py3.12
         con.set_trace_callback(thelogger.debug)
         con.executescript(CREATE_TABLES_STATEMENT)
         con.commit()
@@ -218,9 +214,7 @@ def cpltobasecpl() -> None:
             "and String not in (select String FROM DerivedCouples);"
         )
         allrows: list[list[str]] = couplescursor.fetchall()
-        thelogger.info(
-            "%i new couples not in base couples found.", len(allrows)
-        )
+        thelogger.info("%i new couples not in base couples found.", len(allrows))
     newbasecouplesdict: list[dict[str, str | Any]] = [
         (
             {
