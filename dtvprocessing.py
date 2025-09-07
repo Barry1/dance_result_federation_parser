@@ -18,7 +18,9 @@ from sqlitedatabase import insertnewclubs
 from stringprocessing import cleanevfromentry
 
 thelogger: logging.Logger = setuplogger()
-MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
+MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60 * 100  # einhundert Wochen
+# leider hat der DTV die Vereinssuche umgebaut
+# und die VereinsID kommt nicht mehr raus
 MYREGEX: Literal["(?P<Verein>.*) – (?P<Verband>.*) \\((?P<ID>\\d+)\\)"] = (
     r"(?P<Verein>.*) – (?P<Verband>.*) \((?P<ID>\d+)\)"
 )
@@ -26,9 +28,9 @@ PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"
 SEARCH_URL: Literal["https://www.tanzsport.de/de/service/vereinssuche"] = (
     "https://www.tanzsport.de/de/service/vereinssuche"
 )
-XPATH_FOR_ORGS: Literal['//div[@id="container_grid"]//div[@class="result_body"]'] = (
+XPATH_FOR_ORGS: Literal[
     '//div[@id="container_grid"]//div[@class="result_body"]'
-)
+] = '//div[@id="container_grid"]//div[@class="result_body"]'
 
 
 def create_dtv_df() -> DataFrame:
@@ -54,10 +56,12 @@ def assocsdf_from_list_dict(
         data=input_list_dict, index="ID"
     )
     dtv_associations.index = dtv_associations.index.astype(dtype=int)
-    dtv_associations["Verein"] = dtv_associations["Verein"].apply(func=cleanevfromentry)
-    dtv_associations[["Verband", "Ort"]] = dtv_associations[["Verband", "Ort"]].apply(
-        lambda x: x.str.strip()
+    dtv_associations["Verein"] = dtv_associations["Verein"].apply(
+        func=cleanevfromentry
     )
+    dtv_associations[["Verband", "Ort"]] = dtv_associations[
+        ["Verband", "Ort"]
+    ].apply(lambda x: x.str.strip())
     thelogger.info("%s", dtv_associations.describe())
     thelogger.debug(
         "%s",
@@ -69,7 +73,8 @@ def assocsdf_from_list_dict(
 def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
     """Parse DTV Homepage for associations, return aus list of dicts."""
     xpath_token: str = (
-        '//*[@id="mod_vereinssuche_formular"]/' 'input[@name="REQUEST_TOKEN"]/@value'
+        '//*[@id="mod_vereinssuche_formular"]/'
+        'input[@name="REQUEST_TOKEN"]/@value'
     )
     dtv_assocs_dict_list: list[dict[str, str]] = []
     rqtoken: str = fromstring(sess_context.get(url=SEARCH_URL).content).xpath(
@@ -97,7 +102,9 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
     # proposed from CircleCI instead of list()
     allmatches: list[dict[str, str]] = []
     tempfound: list[HtmlElement]
-    thelogger.debug("%s", sess_context.post(url=SEARCH_URL, data=login_data).content)
+    thelogger.debug(
+        "%s", sess_context.post(url=SEARCH_URL, data=login_data).content
+    )
     while (
         tempfound := fromstring(
             sess_context.post(url=SEARCH_URL, data=login_data).content
@@ -118,7 +125,9 @@ def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
             ):
                 tempmatchdict: dict[str, str] = tempmatch.groupdict()
                 tempmatchdict["Ort"] = the_place
-                tempmatchdict["Verein"] = cleanevfromentry(tempmatchdict["Verein"])
+                tempmatchdict["Verein"] = cleanevfromentry(
+                    tempmatchdict["Verein"]
+                )
                 # sqlitedatabase.insertnewclub(tempmatchdict)
                 allmatches.append(tempmatchdict)
                 dtv_assocs_dict_list.extend([tempmatchdict])
@@ -138,7 +147,8 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     dtv_associations: DataFrame
     if os.path.exists(dtv_associations_cache_file) and not (
         autoupdate
-        and time.time() - os.path.getmtime(filename=dtv_associations_cache_file)
+        and time.time()
+        - os.path.getmtime(filename=dtv_associations_cache_file)
         > MAX_CACHE_AGE_IN_SECONDS
     ):  # Cache-Datei vorhanden
         thelogger.info(
@@ -161,7 +171,11 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
 async def outputassocfiles() -> None:
     """Write file for each association."""
     dtv_assocs_df: DataFrame = get_dtv_df()
-    print(dtv_assocs_df.pivot_table(index="Verband", values="Verein", aggfunc="count"))
+    print(
+        dtv_assocs_df.pivot_table(
+            index="Verband", values="Verein", aggfunc="count"
+        )
+    )
     print(dtv_assocs_df[dtv_assocs_df.Verband == "TSH"])
     for verbandsvereine in dtv_assocs_df.groupby(by="Verband"):
         # make folder associations if needed
@@ -180,7 +194,9 @@ async def outputassocfiles() -> None:
             await ausgabedatei.write(
                 f"{len(verbandsvereine[1])} Vereine im {verbandsname}:\n"
             )
-            await ausgabedatei.write(verbandsvereine[1][["Verein", "Ort"]].to_string())
+            await ausgabedatei.write(
+                verbandsvereine[1][["Verein", "Ort"]].to_string()
+            )
             await ausgabedatei.write("\n")
 
 

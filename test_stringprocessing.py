@@ -19,7 +19,8 @@ def test_correcttitleposition() -> None:
 def test_cleanevfromentry() -> None:
     """Remove e.V. oder e. V. from association."""
     assert (  # nosec B101
-        cleanevfromentry("TSA im VfL Pinneberg e. V.") == "TSA im VfL Pinneberg"
+        cleanevfromentry("TSA im VfL Pinneberg e. V.")
+        == "TSA im VfL Pinneberg"
     )
     assert (  # nosec B101
         cleanevfromentry("TSA im VfL Pinneberg e.V.") == "TSA im VfL Pinneberg"
@@ -33,7 +34,8 @@ def test_cleanevfrom_dtv_tsh_entry() -> None:
         == "TSA im VfL Pinneberg"
     )
     assert (  # nosec B101
-        cleanevfrom_dtv_tsh_entry("TSA im VfL Pinneberg e.V.") == "TSA im VfL Pinneberg"
+        cleanevfrom_dtv_tsh_entry("TSA im VfL Pinneberg e.V.")
+        == "TSA im VfL Pinneberg"
     )
     assert (  # nosec B101
         cleanevfrom_dtv_tsh_entry("Rhythm & Dance e.V., Börnsen – TSH (3768)")
@@ -49,5 +51,9 @@ def test_cleanevfrom_dtv_tsh_entry() -> None:
 
 def test_clean_number_from_couple() -> None:
     """Remove starting number from couples entry in result list."""
-    assert clean_number_from_couple("Herr / Dame (1)") == "Herr / Dame"  # nosec B101
-    assert clean_number_from_couple("Herr / Dame(1)") == "Herr / Dame"  # nosec B101
+    assert (
+        clean_number_from_couple("Herr / Dame (1)") == "Herr / Dame"
+    )  # nosec B101
+    assert (
+        clean_number_from_couple("Herr / Dame(1)") == "Herr / Dame"
+    )  # nosec B101
