@@ -3,18 +3,14 @@
 import asyncio
 import logging
 import os
-import re
 import time
-from typing import Literal, TypedDict
+from typing import Literal
 
 import aiofiles
 import aiofiles.os
-from lxml.html import HtmlElement, fromstring
-from pandas import DataFrame, read_parquet
-from requests import Session, urllib3  # type:ignore
+from pandas import DataFrame, read_json, read_parquet
 
 from configprocessing import setuplogger
-from sqlitedatabase import insertnewclubs
 from stringprocessing import cleanevfromentry
 
 thelogger: logging.Logger = setuplogger()
@@ -34,39 +30,50 @@ XPATH_FOR_ORGS: Literal[
 
 
 def create_dtv_df() -> DataFrame:
-    """Build dataframe from all organisations taken from DTV-Website."""
-    # Maybe better create with <https://stackoverflow.com/a/72784123>
-    # Or <https://numpy.org/doc/stable/user/basics.rec.html>?
-    # np.dtype([('ID',int),('Verband','O'),('Verein','O'),('Ort','O')])
-    # needs to be object type because of variable lenght
-    urllib3.disable_warnings()
-    with Session() as the_sess_context:
-        # sess_context.verify = False
-        dtv_assocs_dict_list: list[dict[str, str]] = parse_dtv_to_list_dict(
-            sess_context=the_sess_context
-        )
-    return assocsdf_from_list_dict(input_list_dict=dtv_assocs_dict_list)
-
-
-def assocsdf_from_list_dict(
-    input_list_dict: list[dict[str, str]],
-) -> DataFrame:
-    """Convert assosiations list of dicts to DataFrame."""
-    dtv_associations: DataFrame = DataFrame.from_records(
-        data=input_list_dict, index="ID"
+    """Build dataframe from all organisations taken from DTV.
+    New method from 2025-09-07, parser no longer needed."""
+    dtv_associations: DataFrame = read_json(
+        "https://event.api.tanzsport.de/vereine", orient="records"
+    ).set_index("nummer")
+    dtv_associations.rename(
+        columns={"city": "Ort", "name": "Verein", "federation": "Verband"},
+        inplace=True,
     )
-    dtv_associations.index = dtv_associations.index.astype(dtype=int)
+    dtv_associations["Verband"] = dtv_associations["Verband"].replace(
+        to_replace={
+            8: "(TAF)",
+            1308: "HTV",
+            1408: "HATV",
+            1508: "Berlin",
+            1608: "Bayern",
+            1708: "Brandenburg",
+            1808: "LTV Bremen",
+            1908: "NTV",
+            2008: "Saarland",
+            2108: "TBW",
+            2208: "TMV",
+            2308: "TNW",
+            2508: "TRP",
+            2608: "TSH",
+            2708: "Thüringen",
+            2808: "Sachsen",
+            2908: "Sachsen-Anhalt",
+        }
+    )
     dtv_associations["Verein"] = dtv_associations["Verein"].apply(
         func=cleanevfromentry
     )
-    dtv_associations[["Verband", "Ort"]] = dtv_associations[
-        ["Verband", "Ort"]
-    ].apply(lambda x: x.str.strip())
+    dtv_associations[["Ort"]] = dtv_associations[["Ort"]].apply(
+        lambda x: x.str.strip()
+    )
+    dtv_associations.index = dtv_associations.index.astype(dtype=int)
     thelogger.info("%s", dtv_associations.describe())
     thelogger.debug(
         "%s",
         dtv_associations[["Verband", "Verein"]].groupby(by="Verband").count(),
     )
+    thelogger.debug("%s", dtv_associations.loc[404])
+    # sqlitedatabase  insertnewclubs(allmatches) - war bei alter API
     return dtv_associations.sort_index()
 
 
