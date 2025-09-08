@@ -14,19 +14,8 @@ from configprocessing import setuplogger
 from stringprocessing import cleanevfromentry
 
 thelogger: logging.Logger = setuplogger()
-MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60 * 100  # einhundert Wochen
-# leider hat der DTV die Vereinssuche umgebaut
-# und die VereinsID kommt nicht mehr raus
-MYREGEX: Literal["(?P<Verein>.*) – (?P<Verband>.*) \\((?P<ID>\\d+)\\)"] = (
-    r"(?P<Verein>.*) – (?P<Verband>.*) \((?P<ID>\d+)\)"
-)
+MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
 PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"
-SEARCH_URL: Literal["https://www.tanzsport.de/de/service/vereinssuche"] = (
-    "https://www.tanzsport.de/de/service/vereinssuche"
-)
-XPATH_FOR_ORGS: Literal[
-    '//div[@id="container_grid"]//div[@class="result_body"]'
-] = '//div[@id="container_grid"]//div[@class="result_body"]'
 
 
 def create_dtv_df() -> DataFrame:
@@ -75,75 +64,6 @@ def create_dtv_df() -> DataFrame:
     thelogger.debug("%s", dtv_associations.loc[404])
     # sqlitedatabase  insertnewclubs(allmatches) - war bei alter API
     return dtv_associations.sort_index()
-
-
-def parse_dtv_to_list_dict(sess_context: Session) -> list[dict[str, str]]:
-    """Parse DTV Homepage for associations, return aus list of dicts."""
-    xpath_token: str = (
-        '//*[@id="mod_vereinssuche_formular"]/'
-        'input[@name="REQUEST_TOKEN"]/@value'
-    )
-    dtv_assocs_dict_list: list[dict[str, str]] = []
-    rqtoken: str = fromstring(sess_context.get(url=SEARCH_URL).content).xpath(
-        xpath_token
-    )
-    login_data_type = TypedDict(
-        "login_data_type",
-        {
-            "FORM_SUBMIT": str,
-            "REQUEST_TOKEN": str,
-            "name": str,
-            "standort": str,
-            "landesverband[]": str,
-            "seite": int,
-        },
-    )
-    login_data: login_data_type = {
-        "FORM_SUBMIT": "mod_vereinssuche_formular",
-        "REQUEST_TOKEN": rqtoken,
-        "name": "",
-        "standort": "",
-        "landesverband[]": "",
-        "seite": 0,
-    }
-    # proposed from CircleCI instead of list()
-    allmatches: list[dict[str, str]] = []
-    tempfound: list[HtmlElement]
-    thelogger.debug(
-        "%s", sess_context.post(url=SEARCH_URL, data=login_data).content
-    )
-    while (
-        tempfound := fromstring(
-            sess_context.post(url=SEARCH_URL, data=login_data).content
-        )
-        .xpath(XPATH_FOR_ORGS)[0]
-        .getchildren()
-    ):
-        thelogger.debug(msg=len(tempfound))
-        the_place: str = ""
-        for eintrag in tempfound:
-            if eintrag.tag == "h3":  # Neue Ortsangabe
-                if eintrag.text:
-                    thelogger.debug("Neuer Ort: %s", eintrag.text)
-                    the_place = eintrag.text
-            elif tempmatch := re.match(
-                MYREGEX,
-                eintrag.xpath(_path='div[@class="trigger"]/h3/text()')[0],
-            ):
-                tempmatchdict: dict[str, str] = tempmatch.groupdict()
-                tempmatchdict["Ort"] = the_place
-                tempmatchdict["Verein"] = cleanevfromentry(
-                    tempmatchdict["Verein"]
-                )
-                # sqlitedatabase.insertnewclub(tempmatchdict)
-                allmatches.append(tempmatchdict)
-                dtv_assocs_dict_list.extend([tempmatchdict])
-        login_data["seite"] += 1
-    if not os.getenv("CI"):
-        # only outside of CI-Workflow like github action
-        # <https://stackoverflow.com/a/73973555>
-        insertnewclubs(allmatches)
-    return dtv_assocs_dict_list
 
 
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
