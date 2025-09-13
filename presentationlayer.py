@@ -1,7 +1,8 @@
 """Module for the presentation Layer of the results."""
 
 import logging
-from typing import Hashable, Iterator
+from collections.abc import Hashable
+from typing import Iterator
 
 from pandas import DataFrame, Series
 
