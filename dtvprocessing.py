@@ -28,6 +28,16 @@ def create_dtv_df() -> DataFrame:
         columns={"city": "Ort", "name": "Verein", "federation": "Verband"},
         inplace=True,
     )
+    # unter der URL https://event.api.tanzsport.de/events/tags sind
+    # die IDs der Verbände mit ihren Namen zu finden.
+    # Mit dem zusätzlichen Parametern ?filter=103&filter=1203&filter=1303
+    # lässt sich noch mehr finden.
+    # 103=Wettbewerbsart
+    # 104=Altersgruppe
+    # 105=Turnierform
+    # 106=Turnierart
+    # 107=Klasse
+    # 108=Landesverband
     dtv_associations["Verband"] = dtv_associations["Verband"].replace(
         to_replace={
             8: "(TAF)",
