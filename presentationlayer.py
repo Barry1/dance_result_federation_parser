@@ -1,7 +1,7 @@
 """Module for the presentation Layer of the results."""
 
 import logging
-from typing import Any, Hashable, Iterator
+from typing import Hashable, Iterator
 
 from pandas import DataFrame, Series
 
@@ -14,7 +14,7 @@ thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 
 
 def print_ul_html(
-    therowiterator: Iterator[tuple[Hashable, Series[Any]]],
+    therowiterator: Iterator[tuple[Hashable, Series]],
 ) -> None:
     """Small printer for result ul."""
     # Usually it gets called with iterrows from a DataFrame
