@@ -48,7 +48,7 @@ runtimes:
 tools:
   enabled:
     - sourcery@1.37.0
-    - poetry@2.1.4
+    - poetry@2.2.0
   definitions:
     - name: mypy
       runtime: python
