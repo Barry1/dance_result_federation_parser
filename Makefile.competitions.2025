@@ -1,3 +1,7 @@
+.PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-09-13-14_GLM_Nord-OT/
+2025_GLM_HGRII_MASIII-V_B-A_STD.txt: tanzen-in-sh.de/ergebnisse/2025/2025-09-13-14_GLM_Nord-OT/
+	$(runme)
+
 .PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-09-14_GLM-MasIIISStd/0-lm_mas3sstd/
 2025_GLM_MasIII_STD.txt: tanzen-in-sh.de/ergebnisse/2025/2025-09-14_GLM-MasIIISStd/0-lm_mas3sstd/
 	$(runmesingle)
