@@ -17,9 +17,9 @@ lint:
     - checkov@3.2.471
     - osv-scanner@2.2.2
     - trivy@0.66.0
-    - trufflehog@3.90.6
+    - trufflehog@3.90.8
     - pyright@1.1.405
-    - ruff@0.13.0
+    - ruff@0.13.1
     - yamllint@1.37.1
     - markdownlint@0.45.0
     - autopep8@2.3.2
@@ -27,8 +27,8 @@ lint:
     - gitleaks@8.28.0
     - taplo@0.10.0
     - prettier@3.6.2
-    - mypy@1.18.1
-    - black@25.1.0
+    - mypy@1.18.2
+    - black@25.9.0
     - isort@6.0.1
     - actionlint@1.7.7
     - git-diff-check
@@ -48,7 +48,7 @@ runtimes:
 tools:
   enabled:
     - sourcery@1.37.0
-    - poetry@2.2.0
+    - poetry@2.2.1
   definitions:
     - name: mypy
       runtime: python
