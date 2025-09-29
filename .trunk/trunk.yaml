@@ -19,7 +19,7 @@ lint:
     - trivy@0.66.0
     - trufflehog@3.90.8
     - pyright@1.1.405
-    - ruff@0.13.1
+    - ruff@0.13.2
     - yamllint@1.37.1
     - markdownlint@0.45.0
     - autopep8@2.3.2

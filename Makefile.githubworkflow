@@ -1,9 +1,16 @@
 MAKEFLAGS += --always-make --jobs --output-sync=target 
 # --max-load=3 
 include Makefile.competitions
-runme=python3 -OO ./dance_result_federation_parser.py https\://$< > $@ 2> $(@:.txt=.err)
-runmesingle=python3 -OO ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
-rungoc=python -OO ./goc_parser.py $(subst GOC_,,$(@:.txt=)) > $@ 2> $(@:.txt=.err)
+
+ifeq ($(GITHUB-ACTIONS),true)
+	run=python3 -OO
+else
+	run=poetry run python3 -OO
+endif
+
+runme=$(run) ./dance_result_federation_parser.py https\://$< > $@ 2> $(@:.txt=.err)
+runmesingle=$(run) ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
+rungoc=$(run) ./goc_parser.py $(subst GOC_,,$(@:.txt=)) > $@ 2> $(@:.txt=.err)
 
 %.md: %.txt
 	mv $< $@
