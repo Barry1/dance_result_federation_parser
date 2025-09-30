@@ -1,3 +1,11 @@
+.PHONY: turnierergebnisse.vflpi.de/Turniere-2025/2025-glm-std/
+2025_GLM_HGR_MasI_AS_STD.txt: turnierergebnisse.vflpi.de/Turniere-2025/2025-glm-std/
+	$(runme)
+
+.PHONY: turnierergebnisse.vflpi.de/Turniere-2025/2025-hgr-festivals/
+2025_HGR-Festivals.txt: turnierergebnisse.vflpi.de/Turniere-2025/2025-hgr-festivals/
+	$(runme)
+
 .PHONY: ltv-berlin.de/files/ltv/ergebnisse/2025/09_27_dm/0-dm_mas3sstd/
 2025_DM_MasIII_STD.txt: ltv-berlin.de/files/ltv/ergebnisse/2025/09_27_dm/0-dm_mas3sstd/
 	$(runmesingle)
