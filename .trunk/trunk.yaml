@@ -10,7 +10,7 @@ plugins:
 lint:
   enabled:
     - bandit@1.8.6
-    - sourcery@1.40.0
+    - sourcery@1.41.1
     - shellcheck@0.11.0
     - shfmt@3.6.0
     - pylint@4.0.2
@@ -47,7 +47,7 @@ runtimes:
     - python@3.12.10
 tools:
   enabled:
-    - sourcery@1.40.0
+    - sourcery@1.41.1
     - poetry@2.2.1
   definitions:
     - name: mypy
