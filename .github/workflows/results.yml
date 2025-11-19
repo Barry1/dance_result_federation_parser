@@ -49,6 +49,8 @@ jobs:
       #  run: mkdir results
       - name: remove config
         run: rm config.toml
+      - name: print environment
+        run: printenv
       - name: make the results
         run: |
           ./makeallresults.sh
