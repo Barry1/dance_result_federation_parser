@@ -2,10 +2,12 @@ MAKEFLAGS += --always-make --jobs --output-sync=target
 # --max-load=3 
 include Makefile.competitions
 
-ifeq ($(GITHUB-ACTIONS),true)
-	run=python3 -OO
+ifndef GITHUB_ACTION
+$(info No in a GITHUB Action)
+run=poetry run python3 -OO
 else
-	run=poetry run python3 -OO
+$(info Within a GITHUB Action)
+run=python3 -OO
 endif
 
 runme=$(run) ./dance_result_federation_parser.py https\://$< > $@ 2> $(@:.txt=.err)
