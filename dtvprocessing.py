@@ -38,7 +38,7 @@ def create_dtv_df() -> DataFrame:
     # 106=Turnierart
     # 107=Klasse
     # 108=Landesverband
-    dtv_associations["Verband"] = dtv_associations["Verband"].replace(
+    dtv_associations.loc[:, "Verband"] = dtv_associations["Verband"].replace(
         to_replace={
             8: "(TAF)",
             1308: "HTV",
@@ -59,10 +59,10 @@ def create_dtv_df() -> DataFrame:
             2908: "Sachsen-Anhalt",
         }
     )
-    dtv_associations["Verein"] = dtv_associations["Verein"].apply(
+    dtv_associations.loc[:, "Verein"] = dtv_associations["Verein"].apply(
         func=cleanevfromentry
     )
-    dtv_associations[["Ort"]] = dtv_associations[["Ort"]].apply(
+    dtv_associations.loc[:, "Ort"] = dtv_associations[["Ort"]].apply(
         lambda x: x.str.strip()
     )
     dtv_associations.index = dtv_associations.index.astype(dtype=int)
