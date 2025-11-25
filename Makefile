@@ -105,8 +105,7 @@ nuitka/resultParser.bin: dance_result_federation_parser.py
 
 dance_result_federation_parser.bin: dance_result_federation_parser.py
 	sudo nala install patchelf ccache
-	#https://nuitka.net/user-documentation/nuitka-package-config.html#anti-bloat
-	niceload poetry run nuitka --onefile --lto=yes --follow-imports dance_result_federation_parser.py #--nofollow-import-to=valuefragments.mathhelpers 
+	nice poetry run nuitka --onefile --lto=yes --follow-imports dance_result_federation_parser.py --include-package=fastparquet
 
 vermin:
 	poetry run vermin --eval-annotations --backport asyncio --backport typing *.py

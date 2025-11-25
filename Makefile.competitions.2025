@@ -1,5 +1,5 @@
-.PHONY: https://saxoniandanceclassics.de/wp-content/uploads/archiv/sdc_2025/
-2025_SDC.txt: https://saxoniandanceclassics.de/wp-content/uploads/archiv/sdc_2025/ 
+.PHONY: saxoniandanceclassics.de/wp-content/uploads/archiv/sdc_2025/
+2025_SDC.txt: saxoniandanceclassics.de/wp-content/uploads/archiv/sdc_2025/ 
 	$(runme)
 
 .PHONY: turnierergebnisse.vflpi.de/Turniere-2025/2025-glm-std/
