@@ -79,8 +79,9 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             "möglicherweise ist sie jetzt erreichbar.",
             eventurl,
         )
+        thelogger.info("Versuche %s zu öffnen.", eventurl)
         openedurl = urlopen(eventurl)  # nosec B310
-        thelogger.debug("%s wurde geöffnet", eventurl)
+        thelogger.debug("%s wurde geöffnet.", eventurl)
     thelogger.info("Die URL %s ist erreichbar.", eventurl)
     try:
         with openedurl:
