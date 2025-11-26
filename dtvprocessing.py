@@ -25,7 +25,7 @@ def create_dtv_df() -> DataFrame:
         "https://event.api.tanzsport.de/vereine", orient="records"
     ).set_index("nummer")
     dtv_associations.rename(
-        columns={"city": "Ort", "name": "Verein", "federation": "Verband"},
+        columns={"city": "Ort", "name": "Verein", "federation": "VerbandNum"},
         inplace=True,
     )
     # unter der URL https://event.api.tanzsport.de/events/tags sind
@@ -38,7 +38,9 @@ def create_dtv_df() -> DataFrame:
     # 106=Turnierart
     # 107=Klasse
     # 108=Landesverband
-    dtv_associations.loc[:, "Verband"] = dtv_associations["Verband"].replace(
+    dtv_associations.loc[:, "Verband"] = dtv_associations[
+        "VerbandNum"
+    ].replace(
         to_replace={
             8: "(TAF)",
             1308: "HTV",
@@ -59,6 +61,7 @@ def create_dtv_df() -> DataFrame:
             2908: "Sachsen-Anhalt",
         }
     )
+    dtv_associations.drop(columns=["VerbandNum"], inplace=true)
     dtv_associations.loc[:, "Verein"] = dtv_associations["Verein"].apply(
         func=cleanevfromentry
     )
