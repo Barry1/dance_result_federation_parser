@@ -61,7 +61,7 @@ def create_dtv_df() -> DataFrame:
             2908: "Sachsen-Anhalt",
         }
     )
-    dtv_associations.drop(columns=["VerbandNum"], inplace=true)
+    dtv_associations.drop(columns=["VerbandNum"], inplace=True)
     dtv_associations.loc[:, "Verein"] = dtv_associations["Verein"].apply(
         func=cleanevfromentry
     )
