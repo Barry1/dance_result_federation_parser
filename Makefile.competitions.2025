@@ -1,3 +1,7 @@
+.PHONY: tszdresden.de/ergebnisse/dm_standard_2025/0-dm_hgrsstd
+2025_DM_HGR_STD.txt: tszdresden.de/ergebnisse/dm_standard_2025/0-dm_hgrsstd
+	$(runmesingle)
+
 .PHONY: saxoniandanceclassics.de/wp-content/uploads/archiv/sdc_2025/
 2025_SDC.txt: saxoniandanceclassics.de/wp-content/uploads/archiv/sdc_2025/ 
 	$(runme)
