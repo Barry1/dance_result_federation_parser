@@ -5,18 +5,19 @@ name = "pypi"
 
 [packages]
 aiofiles = ">=25.1"
-bs4 = ">=0.0.2"
+beautifulsoup4 = ">=4.14"
 fastparquet = ">=2025.12"
-valuefragments = {git = "https://github.com/Barry1/PyValueFragments.git", version = ">=0.4.0"}
 joblib = ">=1.5.3"
+valuefragments = {git = "https://github.com/Barry1/PyValueFragments.git", version = ">=0.4.0"}
 
 [dev-packages]
 black = ">=25.12"
 isort = ">=7"
 mypy = ">=1.19"
+pyright = "*"
+ty = "*"
 vermin = ">=1.8.0"
 vulture = ">=2.14"
-
 
 [requires]
 python_version = "3.12"
