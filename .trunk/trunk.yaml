@@ -13,24 +13,24 @@ lint:
     - sourcery@1.41.1
     - shellcheck@0.11.0
     - shfmt@3.6.0
-    - pylint@4.0.3
-    - checkov@3.2.495
-    - osv-scanner@2.3.0
-    - trivy@0.67.2
-    - trufflehog@3.91.1
-    - pyright@1.1.407
-    - ruff@0.14.6
-    - yamllint@1.37.1
-    - markdownlint@0.46.0
+    - pylint@4.0.4
+    - checkov@3.2.497
+    - osv-scanner@2.3.1
+    - trivy@0.68.2
+    - trufflehog@3.92.4
+    - pyright@1.1.408
+    - ruff@0.14.11
+    - yamllint@1.38.0
+    - markdownlint@0.47.0
     - autopep8@2.3.2
     - flake8@7.3.0
-    - gitleaks@8.29.1
+    - gitleaks@8.30.0
     - taplo@0.10.0
-    - prettier@3.6.2
-    - mypy@1.18.2
-    - black@25.11.0
+    - prettier@3.7.4
+    - mypy@1.19.1
+    - black@25.12.0
     - isort@7.0.0
-    - actionlint@1.7.9
+    - actionlint@1.7.10
     - git-diff-check
 actions:
   enabled:
@@ -107,4 +107,3 @@ downloads:
         #        version: <=3.11.9
         strip_components: 1
 ---
-

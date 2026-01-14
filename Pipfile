@@ -4,17 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-aiofiles = ">=24.1"
+aiofiles = ">=25.1"
 bs4 = ">=0.0.2"
-fastparquet = ">=2024.11"
+fastparquet = ">=2025.12"
 valuefragments = {git = "https://github.com/Barry1/PyValueFragments.git", version = ">=0.4.0"}
-joblib = ">=1.4.2"
+joblib = ">=1.5.3"
 
 [dev-packages]
-black = ">=24.3"
-isort = "*"
-mypy = ">=1.15"
-vermin = ">=1.6.0"
+black = ">=25.12"
+isort = ">=7"
+mypy = ">=1.19"
+vermin = ">=1.8.0"
 vulture = ">=2.14"
 
 

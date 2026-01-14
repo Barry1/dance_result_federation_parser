@@ -4,10 +4,10 @@ import logging
 from io import StringIO
 from os import getenv
 from re import DOTALL, IGNORECASE, match
-from typing import Literal, cast
+from typing import Literal
 from urllib.error import HTTPError
 
-from bs4 import BeautifulSoup, ResultSet, Tag
+from bs4 import BeautifulSoup
 from bs4.filter import SoupStrainer
 from lxml.etree import _ElementTree as ElementTree
 from pandas import DataFrame, concat, read_html
@@ -54,18 +54,15 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
     """
     baseurl: str = baseurlwith[: baseurlwith.rfind("/")]
     tournmtsdict: dict[str, str] = {}
-    for eintrag in cast(
-        ResultSet[Tag],
-        BeautifulSoup(
-            requests_get(
-                baseurlwith,
-                timeout=MY_TIMEOUT,
-                headers={"User-agent": "Mozilla"},
-            ).text,
-            features="lxml",
-            parse_only=SoupStrainer("a"),
-        )("span"),
-    ):
+    for eintrag in BeautifulSoup(
+        requests_get(
+            baseurlwith,
+            timeout=MY_TIMEOUT,
+            headers={"User-agent": "Mozilla"},
+        ).text,
+        features="lxml",
+        parse_only=SoupStrainer("a"),
+    )("span"):
         if (the_parent := eintrag.parent) is not None and not isinstance(
             href_val := the_parent["href"], list
         ):

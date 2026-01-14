@@ -18,6 +18,9 @@ runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> 
 
 all: pylint mypy formatting vulture pytype sourcery
 
+Pipfile.lock: Pipfile
+	pipenv lock
+
 .PHONE: multicouplecheck
 multicouplecheck:
 	sqlite3 -readonly -markdown DanceCouplesData/couples_clubs_federations.sqlite3 "select * from CoupleClubFederation where Paar like \"%Ebeling%\";"
