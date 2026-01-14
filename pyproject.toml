@@ -104,7 +104,7 @@ description = ""
 dependencies = [
   "aiofiles>=24.1",
   #  "bs4>=0.0.2",
-  # "beautifulsoup4>=4",
+  "beautifulsoup4>=4",
   "fastparquet>=2024.11",
   "joblib>=1.5.1",
   # "lxml>=5",
@@ -212,6 +212,6 @@ replace_imports_with_any = [
   "pandas",
   "joblib",
   "lxml.*",
-  "bs4.*",
+  "beautifulsoup4.*",
   "pyannotate_runtime",
 ]
