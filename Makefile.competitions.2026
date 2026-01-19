@@ -1,0 +1,3 @@
+.PHONY: hatv.de/wrapper/RL2026/index.htm
+2026_JanuarRLs.txt: hatv.de/wrapper/RL2026/index.htm
+	$(runme)

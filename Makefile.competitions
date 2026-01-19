@@ -1,4 +1,4 @@
-include Makefile.competitions.2025 Makefile.competitions.2024 Makefile.competitions.2023 Makefile.competitions.2022
+include Makefile.competitions.2026 Makefile.competitions.2025 Makefile.competitions.2024 Makefile.competitions.2023 Makefile.competitions.2022
 
 .PHONY: tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
 GLM4_MASIV_STD_2023.txt: tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
