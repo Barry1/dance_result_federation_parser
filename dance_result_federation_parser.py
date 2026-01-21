@@ -40,7 +40,8 @@ from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 thelogger: logging.Logger = setuplogger()
 _CFG_DICT: MyConfigT = readconfig()
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
-#pandas_set_option("mode.copy_on_write", True)
+# pandas_set_option("mode.copy_on_write", True)
+
 
 def reslinks_interpreter(
     tree: _ElementTree,
@@ -191,7 +192,7 @@ if __name__ == "__main__":
         # Besonders nötig, damit bei ASYNC nur einmal
     # ggf. die DTV-Vereinliste aktualisiert wird
     _: DataFrame = get_dtv_df().sort_index()
-#    _: DataFrame = get_dtv_df().loc[403:406]
+    #    _: DataFrame = get_dtv_df().loc[403:406]
     # vielleicht auch mit
     # <https://docs.python.org/3/library/asyncio-sync.html>
     # zu lösen
