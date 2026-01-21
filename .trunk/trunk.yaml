@@ -9,26 +9,26 @@ plugins:
       uri: https://github.com/trunk-io/plugins
 lint:
   enabled:
-    - bandit@1.9.2
-    - sourcery@1.41.1
+    - bandit@1.9.3
+    - sourcery@1.43.0
     - shellcheck@0.11.0
     - shfmt@3.6.0
     - pylint@4.0.4
     - checkov@3.2.497
-    - osv-scanner@2.3.1
+    - osv-scanner@2.3.2
     - trivy@0.68.2
-    - trufflehog@3.92.4
+    - trufflehog@3.92.5
     - pyright@1.1.408
-    - ruff@0.14.11
+    - ruff@0.14.13
     - yamllint@1.38.0
     - markdownlint@0.47.0
     - autopep8@2.3.2
     - flake8@7.3.0
     - gitleaks@8.30.0
     - taplo@0.10.0
-    - prettier@3.7.4
+    - prettier@3.8.0
     - mypy@1.19.1
-    - black@25.12.0
+    - black@26.1.0
     - isort@7.0.0
     - actionlint@1.7.10
     - git-diff-check
@@ -47,8 +47,8 @@ runtimes:
     - python@3.12.10
 tools:
   enabled:
-    - sourcery@1.41.1
-    - poetry@2.2.1
+    - sourcery@1.43.0
+    - poetry@2.3.1
   definitions:
     - name: mypy
       runtime: python

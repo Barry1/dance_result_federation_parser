@@ -72,9 +72,8 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
             columns=["Platz", "Startnummer", "Paar", "Verein"]
         )
     #    tps_result_df.columns = ["Platz", "Startnummer", "Paar", "Verein"]
-    tps_result_df = tps_result_df.set_axis(
-        ["Platz", "Startnummer", "Paar", "Verein"], axis="columns", copy=False
-    )
+    #tps_result_df = tps_result_df.set_axis(["Platz", "Startnummer", "Paar", "Verein"], axis="columns", copy=False)
+    tps_result_df = tps_result_df.set_axis(labels=["Platz", "Startnummer", "Paar", "Verein"], axis="columns")
     tps_result_df = tps_result_df[
         to_numeric(tps_result_df.Startnummer, errors="coerce").notnull()
     ]

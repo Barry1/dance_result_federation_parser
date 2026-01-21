@@ -129,9 +129,8 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
             # Solisten haben keine Vereine
             erg_df["Verein"] = "∅"
         erg_df = erg_df.iloc[:, [0, 1, 2]]
-    erg_df = erg_df.set_axis(
-        ["Platz", "Paar", "Verein"], axis="columns", copy=False
-    )
+    #erg_df = erg_df.set_axis(        ["Platz", "Paar", "Verein"], axis="columns", copy=False    )
+    erg_df = erg_df.set_axis(labels=["Platz", "Paar", "Verein"], axis="columns")
 
     # Nur Zeilen behalten, bei denen ein "." im Platz ist
     erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
