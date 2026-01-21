@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12"]
+        python-version: ["3.12", "3.13"]
         # working but prj needs 3.10
         # not working "3.11beta","3.11dev"
         # https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json
@@ -48,7 +48,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Generate requirements.txt from poety
         run: |
-          python -m pip install poetry
+          python -m pip install --upgrade poetry
           poetry export --with dev --without-hashes --output requirements.txt
       - name: Run Pyre
         uses: facebook/pyre-action@v0.0.2
