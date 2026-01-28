@@ -111,7 +111,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
         thelogger.debug("Within ValueError %s", "Zeile 106")
         thelogger.debug("%s", theresultresponse.text)
     except Exception as e:
-        thelogger.error("An error occurred: %s", e)
+        thelogger.error("An error occurred: %s", e)  # exc_info = e
         thelogger.error(
             "%s in line %i of %s",
             type(e).__name__,

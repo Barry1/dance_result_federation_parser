@@ -102,15 +102,12 @@ version = "0.3.2"
 description = ""
 #authors = [name="Ebeling, Dr. Bastian",mail="bastian.ebeling@web.de"]
 dependencies = [
-  "aiofiles>=24.1",
-  #  "bs4>=0.0.2",
-  "beautifulsoup4>=4",
-  "fastparquet>=2024.11",
-  "joblib>=1.5.1",
-  # "lxml>=5",
-  # "requests>=2.32",
-  "valuefragments @ git+https://github.com/Barry1/PyValueFragments.git",
+  "aiofiles>=25.1",
+  "beautifulsoup4>=4.14",
+  "fastparquet>=2025.12",
   "html5lib (>=1.1,<2.0)",
+  "joblib>=1.5.3",
+  "valuefragments @ git+https://github.com/Barry1/PyValueFragments.git",
 ]
 requires-python = ">=3.12,<4.0"
 #flask = "^3.0.3"
@@ -126,53 +123,53 @@ package-mode = false
 poetry-plugin-export = ">=1.9"
 [tool.poetry.group.dev.dependencies]
 #lxml-stubs = "*"
-colorama = ">=0.4.5"
-flake8 = ">7"
-flynt = "^1.0.1"
-importlib-resources = "^5.12.0"
-joblib-stubs = "*"
-MonkeyType = ">=23.3.0"
-mypy = ">=1.18"
-nuitka = ">=2.6.9"
-ordered-set = "*"
-pandas-stubs = "*"
-pipdeptree = ">2.25"
+colorama = ">=0.4.6"
+flake8 = ">=7.3"
+flynt = ">=1.0.6"
+importlib-resources = ">=5.13.0"
+joblib-stubs = ">=1.5.3"
+monkeytype = ">=23.3.0"
+mypy = ">=1.19"
+nuitka = ">=2.8.10"
+ordered-set = ">=4.1"
+pandas-stubs = ">=2.3.3"
+pipdeptree = ">=2.30"
 #prospector = ">=1.7.7"
 pyanalyze = ">=0.13.1"
 pyannotate = ">=1.2.0"
-pyflakes = ">=3"
+pyflakes = ">=3.4"
 #pylint = ">=3.3.6"
 #pylyzer = "^0.0.51"
 pyrefly = ">=0.16.3,<0.17.0"
-pyright = ">1.1.390"
+pyright = ">=1.1.408"
 #pytest = ">8.3.3"
 #radon = ">=6.0"
 #retype = "*" # typed-ast not in python3.13
 ruff = "^0.3.7"
-sourcery = "^1.35.0,!=1.41.1"
+sourcery = ">=1.43"         #">=1.35.0,!=1.41.1"
 ty = ">=0.0.1a6,<0.0.2"
-types-aiofiles = ">=22.1.0"
-types-cffi = "^1.16.0.20240331"
-types-lxml = "*"
-types-openpyxl = "*"
-types-requests = "^2.32"
-ufmt = ">=2.7.1"
-vermin = ">=1.6.0"
+types-aiofiles = ">=25.1.0"
+types-cffi = ">=1.17"
+types-lxml = ">=2026"
+types-openpyxl = ">=3.1.5"
+types-requests = ">=2.32"
+ufmt = ">=2.8"
+vermin = ">=1.8"
 vulture = ">=2.14"
 # poetry-plugin-export = "^1.9.0" # install with poetry self add 
-basedpyright = "^1.29.2"
+basedpyright = ">=1.37"
 pylyzer = "^0.0.82"
-bandit = "^1.8.6"
+bandit = "^1.9.3"
 typeguard = "^4.4.4"
-pytest-cov = "^6.2.1"
-pytest-sugar = "^1.1.0"
-pytest-bandit = "^0.6.1"
-pytest-black = "^0.6.0"
-pytest-colordots = "^1.1"
-pytest-monkeytype = "^1.1.0"
-pytest-mypy = "^1.0.1"
-pytest-pyright = "^0.0.6"
-pytest-beartype = "^0.2.0"
+pytest-cov = ">=6.3"
+pytest-sugar = ">=1.1.0"
+pytest-bandit = ">=0.6.1"
+pytest-black = ">=0.6.0"
+pytest-colordots = ">=1.1"
+pytest-monkeytype = ">=1.1.0"
+pytest-mypy = ">=1.0.1"
+pytest-pyright = ">=0.0.6"
+pytest-beartype = ">=0.2.0"
 
 [tool.poetry.group.dev.dependencies.black]
 version = ">22"
