@@ -170,6 +170,7 @@ pytest-monkeytype = ">=1.1.0"
 pytest-mypy = ">=1.0.1"
 pytest-pyright = ">=0.0.6"
 pytest-beartype = ">=0.2.0"
+pyupgrade = "^3.21.2"
 
 [tool.poetry.group.dev.dependencies.black]
 version = ">22"
