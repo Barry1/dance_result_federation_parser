@@ -1,7 +1,5 @@
 """Module for the SQLite-Database handling."""
 
-from __future__ import absolute_import
-
 import logging
 import re
 import sqlite3

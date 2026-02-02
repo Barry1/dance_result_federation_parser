@@ -8,8 +8,8 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 
 import asyncio
 import logging
+from collections.abc import Callable
 from functools import partial
-from typing import Callable
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
