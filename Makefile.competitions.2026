@@ -1,3 +1,7 @@
 .PHONY: hatv.de/wrapper/RL2026/index.htm
 2026_JanuarRLs.txt: hatv.de/wrapper/RL2026/index.htm
 	$(runme)
+
+.PHONY: ttc-elmshorn.de/ergebnisse/2026_02_14
+2026_TTC_Sparkassenpokal.txt: ttc-elmshorn.de/ergebnisse/2026_02_14
+	$(runme)
