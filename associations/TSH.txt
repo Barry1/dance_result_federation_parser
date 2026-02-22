@@ -1,0 +1,66 @@
+63 Vereine im TSH:
+                                               Verein             Ort
+nummer                                                               
+404                              TSA im VfL Pinneberg       Pinneberg
+1197                 TSA des Ahrensburger TSV v. 1874      Ahrensburg
+1198             Team Altenholz, TSA im TSV Altenholz       Altenholz
+1199                    TC Roland d. TS Bad Bramstedt   Bad Bramstedt
+1201                     TSA d. VfL Bad Oldesloe 1862    Bad Oldesloe
+1202                         TSA d. MTV Segeberg 1860    Bad Segeberg
+1206                                 TSC Osterrönfeld      Schülldorf
+1208                                   TC Eckernförde     Eckernförde
+1209                        TSG Blau-Gold Eckernförde        Schaalby
+1213                       Tanz-Turnier-Club Elmshorn        Elmshorn
+1216                            TSA d. PSV Eutin 1956           Eutin
+1218                                   Flensburger TC       Flensburg
+1219                     RRC Flying Saucers Flensburg      Schafflund
+1222                         TSA d. Gettorfer TV 1889         Gettorf
+1224                      Tanzsparte d. SSV Großensee       Großensee
+1234                            TSC Blau-Gold Itzehoe         Itzehoe
+1236                  Grün-Weiß-Club d. PSV Kiel 1921            Kiel
+1241                       TSA d. TSV Kronshagen 1924            Kiel
+1242                        Tanzclub Concordia Lübeck          Lübeck
+1243                              TC Hanseatic Lübeck          Lübeck
+1245                   TSA d. SV Gut Heil Lübeck 1876          Lübeck
+1249                                   TSC Neumünster      Neumünster
+1250                    TC Rot-Gold-Casino Neumünster         Nortorf
+1251                         TSA d. 1. SC Norderstedt     Norderstedt
+1255                         TSA d. Preetzer TSV 1861          Preetz
+1256                Tanzsparte d. Raisdorfer TSV 1922  Schwentinental
+1263                           TC Grün-Gold Schleswig       Schleswig
+1264                     TSC Ostseebad Schönberg 1984       Schönberg
+1266                    TanzSportZentrum Schwarzenbek    Schwarzenbek
+1268              TSA im Turn- u. Spielverein Esingen        Tornesch
+1269                            TSA d. TV Trappenkamp     Trappenkamp
+1271                         TSA d. SV Wahlstedt 1928       Wahlstedt
+1382                               TSA d. TSV Reinbek         Reinbek
+1419                      TSA d. TSV Bargteheide 1868     Bargteheide
+1539                        TSC Rot-Gold Schönkirchen    Schönkirchen
+1763                            TSA d. TSV Husum 1875           Husum
+1911                       TSA d. TSV Lütjenburg 1861      Lütjenburg
+2181                Tanzsportclub Astoria Norderstedt     Norderstedt
+2340                               1. Latin Team Kiel            Kiel
+2358                                    Uni Tanz Kiel       Ottendorf
+2532                  TSA d. Sportverein Hammer, Kiel            Kiel
+2710        Tanzsportgemeinschaft Creativ Norderstedt     Norderstedt
+2992              Tanzsportfreunde Phoenix Lütjenburg      Lütjenburg
+3039                  TSA d. Blumenthaler Sportverein        Melsdorf
+3092                         Tanzsportclub Südtondern         Niebüll
+3196                  TSG Nimbus 2004 Schwesing/Husum           Husum
+3214               Karnevalsgesellschaft Nyge-Münster      Neumünster
+3280       TSA d. Ellerbeker Turnvereinigung von 1886            Kiel
+3407                           Hobby-Tanzsport Lübeck          Lübeck
+3428                            Tanzsportzentrum Tarp     Eckernförde
+3446                                TSC Astoria Mölln           Mölln
+3854                       Oak Tree Dancers Poyenberg       Hennstedt
+3878                                   Tanzen in Kiel            Kiel
+4001                             TSA d. Post-SV Heide           Heide
+4025             R´n´R d. 'Dance and Fly' Eckernförde        Schaalby
+4078             TSA d. Dance Factory Nord, Flensburg       Handewitt
+4099                   Rock´n Roll Club Teddybär Kiel            Kiel
+4171                       Tanzen an der Schlei, Güby            Selk
+4181    Schwarz-Rot Elmshorn, TSA d. Fortuna Elmshorn        Elmshorn
+4238                     TSC Titanium Holstein Lübeck          Lübeck
+4276                          Tanzsportzentrum Lübeck          Lübeck
+4359                               TSA d. BSV Kisdorf         Kisdorf
+4407                TSA d. Kieler TB Brunswik v. 1899            Kiel
