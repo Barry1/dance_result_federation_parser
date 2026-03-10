@@ -1,3 +1,9 @@
+
+
+.PHONY: tanzen-in-sh.de/ergebnisse/2026/2026-03-08_glm_senii_b_s_std/
+2026_GLM_SenII_BAS_STD.txt: tanzen-in-sh.de/ergebnisse/2026/2026-03-08_glm_senii_b_s_std/
+	$(runme)
+
 .PHONY: hatv.de/wrapper/RL2026/index.htm
 2026_JanuarRLs.txt: hatv.de/wrapper/RL2026/index.htm
 	$(runme)
