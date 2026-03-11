@@ -80,7 +80,7 @@ extension-pkg-whitelist = "lxml"
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
 #useLibraryCodeForTypes = true
 pythonPlatform = "All"
-pythonVersions = "3.12"
+pythonVersion = "3.12"
 reportMissingImports = true
 reportMissingTypeStubs = true
 typeCheckingMode = "strict"
@@ -103,7 +103,7 @@ description = ""
 #authors = [name="Ebeling, Dr. Bastian",mail="bastian.ebeling@web.de"]
 dependencies = [
   "aiofiles>=25.1",
-  "beautifulsoup4>=4.14",
+  "beautifulsoup4>=4.14.3",
   "fastparquet>=2025.12",
   "html5lib (>=1.1,<2.0)",
   "joblib>=1.5.3",
@@ -127,14 +127,14 @@ poetry-plugin-export = ">=1.9"
 colorama = ">=0.4.6"
 flake8 = ">=7.3"
 flynt = ">=1.0.6"
-importlib-resources = ">=5.13.0"
+importlib-resources = ">=6.5"
 joblib-stubs = ">=1.5.3"
-monkeytype = ">=23.3.0"
-mypy = ">=1.19"
-nuitka = ">=2.8.10"
+monkeytype = ">=23.3"
+mypy = ">=1.19.1"
+nuitka = ">=4"
 ordered-set = ">=4.1"
-pandas-stubs = ">=2.3.3"
-pipdeptree = ">=2.30"
+pandas-stubs = ">=3"
+pipdeptree = ">=2.31"
 #prospector = ">=1.7.7"
 pyanalyze = ">=0.13.1"
 pyannotate = ">=1.2.0"

@@ -24,7 +24,7 @@ from stringprocessing import clean_number_from_couple, cleanevfromentry
 
 
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
-_CFG_DICT: MyConfigT = readconfig()
+_ConfigDict: MyConfigT = readconfig()
 MY_TIMEOUT: Literal[3] = 3
 
 
@@ -153,7 +153,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
     # "inner" ging, sortiere falsch#.sort_values(by="Platz")
     #    if (geridxs:=erg_df.Verein=="Germany").sum()>0:
     #        thelogger.info("Germany %i",geridxs.sum())
-    if _CFG_DICT["ESVCOUPLES"]:
+    if _ConfigDict["ESVCOUPLES"]:
         cpldf = get_couples_df()
         cpldf["Verband"] = "NAMEDCOUPLE"
         return erg_df.merge(cpldf, on="Paar", how="inner")

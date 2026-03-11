@@ -92,7 +92,8 @@ tools:
         - pandas
         - bs4
         - joblib
-        - /home/ebeling/GitHub/PyValueFragments
+        - git+https://github.com/Barry1/PyValueFragments
+#        - /home/ebeling/GitHub/PyValueFragments
 downloads:
   - name: python
     downloads:

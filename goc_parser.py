@@ -9,7 +9,7 @@ from presentationlayer import print_wordpress as presentation_function
 from stringprocessing import sr_human_comp_info as human_comp_info
 from topturnierprocessing import interpret_tt_result as the_interpret_fun
 
-_CFG_DICT: MyConfigT = readconfig()
+_ConfigDict: MyConfigT = readconfig()
 if __name__ == "__main__":
     import sys
 
@@ -31,5 +31,5 @@ if __name__ == "__main__":
         allreslinks,
         tsh_results,
         compnames,
-        _CFG_DICT,
+        _ConfigDict,
     )

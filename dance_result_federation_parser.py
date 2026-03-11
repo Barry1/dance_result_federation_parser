@@ -38,7 +38,7 @@ from topturnierprocessing import (
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 thelogger: logging.Logger = setuplogger()
-_CFG_DICT: MyConfigT = readconfig()
+_ConfigDict: MyConfigT = readconfig()
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 # pandas_set_option("mode.copy_on_write", True)
 
@@ -114,7 +114,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # <https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor>
             # python >=3.11 TaskGroup instead of gather
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
-            if _CFG_DICT["TOTHREAD"]:
+            if _ConfigDict["TOTHREAD"]:
                 tsh_results = await run_grouped(
                     [
                         partial(the_interpret_fun, onelink)
@@ -131,7 +131,11 @@ async def async_eventurl_to_web(eventurl: str) -> None:
                     "tpe",
                 )
             presentation_function(
-                eventurl, list(allreslinks), tsh_results, compnames, _CFG_DICT
+                eventurl,
+                list(allreslinks),
+                tsh_results,
+                compnames,
+                _ConfigDict,
             )
 
 
@@ -177,14 +181,14 @@ def eventurl_to_web(synceventurl: str) -> None:
                 list(allreslinks),
                 tsh_results,
                 compnames,
-                _CFG_DICT,
+                _ConfigDict,
             )
 
 
 __all__: list[str] = ["interpret_tt_result", "presentation_function"]
 if __name__ == "__main__":
     # execute only if run as a script
-    if _CFG_DICT["PYANNOTATE"]:
+    if _ConfigDict["PYANNOTATE"]:
         from pyannotate_runtime import collect_types
 
         collect_types.init_types_collection()
@@ -199,19 +203,19 @@ if __name__ == "__main__":
     if len(theargv := __import__("sys").argv) > 1:
         for theurl in theargv[1:]:
             thelogger.info("Auswertung von %s", theurl)
-            if _CFG_DICT["RUN_ASYNC"]:
+            if _ConfigDict["RUN_ASYNC"]:
                 asyncio.run(async_eventurl_to_web(theurl), debug=__debug__)
             else:
                 eventurl_to_web(theurl)
     else:
         thelogger.info("Selbsttest des Moduls resultParser")
         thelogger.info(get_dtv_df().sort_index().loc[403:406])
-        for theurl in _CFG_DICT["CHECKINGURLS"]:
+        for theurl in _ConfigDict["CHECKINGURLS"]:
             thelogger.info("Geprüft wird die Funktion anhand von %s", theurl)
-            if _CFG_DICT["RUN_ASYNC"]:
+            if _ConfigDict["RUN_ASYNC"]:
                 asyncio.run(async_eventurl_to_web(theurl), debug=__debug__)
             else:
                 eventurl_to_web(theurl)
-    if _CFG_DICT["PYANNOTATE"]:
+    if _ConfigDict["PYANNOTATE"]:
         collect_types.stop()
         collect_types.dump_stats("type_info.json")

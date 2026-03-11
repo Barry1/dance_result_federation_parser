@@ -7,7 +7,7 @@ from dance_result_federation_parser import interpret_tt_result
 from presentationlayer import presentation_function
 
 thelogger: logging.Logger = setuplogger()
-_CFG_DICT: MyConfigT = readconfig()
+_ConfigDict: MyConfigT = readconfig()
 if __name__ == "__main__":
     import sys
 
@@ -19,7 +19,7 @@ if __name__ == "__main__":
                 [theurl],
                 [interpret_tt_result(theurl)],
                 ["Turniername"],
-                _CFG_DICT,
+                _ConfigDict,
             )
     else:
         THEURL = "https://www.tbw.de/turnierergebnisse/2021/2021_11_06_Boeblingen/index.htm"
@@ -29,5 +29,5 @@ if __name__ == "__main__":
             [THEURL],
             [interpret_tt_result(THEURL)],
             ["Turniername"],
-            _CFG_DICT,
+            _ConfigDict,
         )

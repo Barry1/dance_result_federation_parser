@@ -21,7 +21,11 @@ all: pylint mypy formatting vulture pytype sourcery
 Pipfile.lock: Pipfile
 	pipenv lock
 
-.PHONE: multicouplecheck
+.PHONY: pyupgrade
+pyupgrade:
+	poetry run pyupgrade --py312-plus $(OBJS)
+
+.PHONY: multicouplecheck
 multicouplecheck:
 	sqlite3 -readonly -markdown DanceCouplesData/couples_clubs_federations.sqlite3 "select * from CoupleClubFederation where Paar like \"%Ebeling%\";"
 	sqlite3 -readonly -markdown DanceCouplesData/couples_clubs_federations.sqlite3 "select count(*) from CoupleClubFederation;"
@@ -51,7 +55,7 @@ pipdeptree:
 	poetry run pipdeptree --packages=aiofiles,bs4,fastparquet,html5lib,joblib,lxml,pyarrow,pytype,requests,typing
 
 pylyze:
-	poetry run pylyzer $(OBJS)
+	poetry run pylyzer dance_result_federation_parser.py single_result_parser.py
 
 sourcery:
 	poetry run sourcery review $(OBJS) --summary --fix --verbose
