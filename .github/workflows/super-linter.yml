@@ -23,7 +23,7 @@ jobs:
     steps:
       # https://github.com/actions/checkout/releases/latest
       - name: Checkout code
-        uses: actions/checkout@6.0.2
+        uses: actions/checkout@v6.0.2
         # uses: actions/checkout@latest
         with:
           # Full git history is needed to get a proper list
