@@ -39,7 +39,7 @@ jobs:
         # not working "3.11beta","3.11dev"
         # https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: true
       - name: Set up Python ${{ matrix.python-version }}
