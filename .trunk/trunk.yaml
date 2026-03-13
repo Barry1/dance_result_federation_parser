@@ -31,6 +31,8 @@ lint:
     - isort@8.0.1
     - actionlint@1.7.11
     - git-diff-check
+  disabled:
+    - prettier
 actions:
   enabled:
     - poetry-check
