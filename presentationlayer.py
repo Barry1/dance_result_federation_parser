@@ -130,8 +130,9 @@ def print_joomla(
     print(
         "<p>Falls ich ein Paar übersehen habe, ",
         "bitte ich freundlich um eine ",
-        "<a href=",
-        f'"mailto:{cfg_dict["INFORMEMAIL"]}?subject=&Uuml;bersehenes%20Ergebnis"',
+        '<a href="mailto:',
+        cfg_dict["INFORMEMAIL"],
+        '?subject=&Uuml;bersehenes%20Ergebnis"',
         ">Email</a>.</p>",
         sep="",
     )
@@ -155,7 +156,8 @@ def print_markdown(
         sep="",
     )
     print(
-        "Hier folgend die Ergebnisse (nach Verfügbarkeit fortlaufend gepflegt) ",
+        "Hier folgend die Ergebnisse ",
+        "(nach Verfügbarkeit fortlaufend gepflegt) ",
         f"der {cfg_dict['THEFEDERATION']}-Paare.",
         sep="",
     )
@@ -193,14 +195,28 @@ def print_markdown(
                     value.Verband == cfg_dict["THEFEDERATION"]
                 ].iterrows():
                     print(
-                        f"|{resline[1].Platz}|{resline[1].Paar}|{resline[1].Verein}|"
+                        "|",
+                        resline[1].Platz,
+                        "|",
+                        resline[1].Paar,
+                        "|",
+                        resline[1].Verein,
+                        "|",
+                        sep="",
                     )
             else:
                 for resline in value[
                     value.Verband == cfg_dict["THEFEDERATION"]
                 ].iterrows():
                     print(
-                        f" - {resline[1].Platz} {resline[1].Paar} ({resline[1].Verein}"
+                        "- ",
+                        resline[1].Platz,
+                        " ",
+                        resline[1].Paar,
+                        " (",
+                        resline[1].Verein,
+                        ")",
+                        sep="",
                     )
     print(
         "\n",
@@ -211,7 +227,9 @@ def print_markdown(
     )
     print(
         "Falls ich ein Paar übersehen habe, bitte ich freundlich um eine ",
-        f'[Email](mailto:{cfg_dict["INFORMEMAIL"]}?subject=&Uuml;bersehenes%20Ergebnis).',
+        "[Email](mailto:",
+        cfg_dict["INFORMEMAIL"],
+        "?subject=&Uuml;bersehenes%20Ergebnis).",
         sep="",
     )
 
@@ -249,7 +267,8 @@ def print_wordpress(
         tournhdr: str = (
             (
                 "<!-- wp:heading -->"
-                f'<h2 class="wp-block-heading"><a href="{actreslink}" target="_blank" '
+                '<h2 class="wp-block-heading">'
+                f'<a href="{actreslink}" target="_blank" '
                 f'rel="noopener">{turnier_info}</a></h2>'
                 "<!-- /wp:heading -->"
             )
@@ -277,7 +296,8 @@ def print_wordpress(
                     ' alt="Beispielfoto" />'
                 )
                 print(
-                    '<figcaption class="wp-element-caption">Foto: loremflickr.com</figcaption>'
+                    '<figcaption class="wp-element-caption">'
+                    "Foto: loremflickr.com</figcaption>"
                 )
                 print("</figure>")
                 print("<!-- /wp:image -->")
@@ -317,16 +337,18 @@ def print_wordpress(
                 )
             print("<!-- wp:spacer -->")
             print(
-                '<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>'
+                '<div style="height:100px" aria-hidden="true"'
+                ' class="wp-block-spacer"></div>'
             )
             print("<!-- /wp:spacer -->")
             print(
-                '<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->'
+                '<!-- wp:separator {"className":"is-style-wide"'
+                ',"backgroundColor":"white"} -->'
             )
             print(
-                '<hr class="wp-block-separator has-text-color has-white-color '
-                "has-alpha-channel-opacity has-white-background-color has-background "
-                'is-style-wide"/>'
+                '<hr class="wp-block-separator has-text-color has-white-color'
+                " has-alpha-channel-opacity has-white-background-color"
+                ' has-background is-style-wide"/>'
             )
             print("<!-- /wp:separator -->")
     print(
@@ -342,7 +364,8 @@ def print_wordpress(
         "<p>Falls ich ein Paar übersehen habe, ",
         "bitte ich freundlich um eine ",
         "<a href=",
-        f'"mailto:{cfg_dict["INFORMEMAIL"]}?subject=&Uuml;bersehenes%20Ergebnis"',
+        f'"mailto:{cfg_dict["INFORMEMAIL"]}',
+        '?subject=&Uuml;bersehenes%20Ergebnis"',
         ">Email</a>.</p>",
         "<!-- /wp:paragraph -->",
         sep="",
