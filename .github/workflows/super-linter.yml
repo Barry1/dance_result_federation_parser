@@ -21,9 +21,9 @@ jobs:
       matrix:
         python-version: ["3.12", "3.13", "3.14", 3.15-dev] # 3.15-rc
     steps:
-      # https://github.com/marketplace/actions/checkout
+      # https://github.com/actions/checkout/releases/latest
       - name: Checkout code
-        uses: actions/checkout@6
+        uses: actions/checkout@6.0.2
         # uses: actions/checkout@latest
         with:
           # Full git history is needed to get a proper list
