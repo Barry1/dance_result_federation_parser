@@ -7,7 +7,7 @@
 # For more information, see:
 # https://github.com/github/super-linter
 name: Lint Code Base
-
+permissions: read-all
 on: workflow_dispatch
 #  push:
 #    branches: ["main", "master"]
@@ -19,11 +19,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12", "3.13", "3.14", 3.15-dev] # 3.15-rc
+        python-version: ["3.12", "3.13", "3.14", 3.15-dev] # 3.15-rc
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout code
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@latest
         # uses: actions/checkout@latest
         with:
           # Full git history is needed to get a proper list
