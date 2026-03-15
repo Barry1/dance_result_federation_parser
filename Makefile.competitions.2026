@@ -1,4 +1,6 @@
-
+.PHONY: ergebnisse.tnw.de/vereine/912/2026-03-14/index.htm
+2026_DM_LAT.txt:ergebnisse.tnw.de/vereine/912/2026-03-14/index.htm 
+	$(runme)
 
 .PHONY: tanzen-in-sh.de/ergebnisse/2026/2026-03-08_glm_senii_b_s_std/
 2026_GLM_SenII_BAS_STD.txt: tanzen-in-sh.de/ergebnisse/2026/2026-03-08_glm_senii_b_s_std/
