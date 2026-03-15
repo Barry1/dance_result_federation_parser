@@ -38,6 +38,7 @@ def get_couples_df() -> DataFrame:
     login_url = "https://ev.tanzsport-portal.de"
     couples_url: str = f"{login_url}/Auswertungen/showAuswertung/id/57"
     logout_url: str = f"{login_url}/DefaultMod/logout"
+    esvsession: requests.Session
     with requests.Session() as esvsession:
         loginreq: requests.Response = esvsession.post(
             login_url, data=get_esvcredentials()

@@ -7,7 +7,7 @@
 # For more information, see:
 # https://github.com/github/super-linter
 name: Lint Code Base
-
+permissions: read-all
 on: workflow_dispatch
 #  push:
 #    branches: ["main", "master"]
@@ -19,24 +19,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12", "3.13", "3.14", 3.15-dev] # 3.15-rc
+        python-version: ["3.12", "3.13", "3.14", 3.15-dev] # 3.15-rc
     steps:
-      # https://github.com/marketplace/actions/checkout
+      # https://github.com/actions/checkout/releases/latest
       - name: Checkout code
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v6.0.2
         # uses: actions/checkout@latest
         with:
           # Full git history is needed to get a proper list
           # of changed files within `super-linter`
           fetch-depth: 0
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4.4.0
+        uses: actions/setup-python@v6.2.0
         # uses: actions/setup-python@latest
         with:
           python-version: ${{ matrix.python-version }}
       - name: Try to install own versions
         run: |
-          python3 -m pip install --upgrade isort black pylint flake8
+          python3 -m pip install --upgrade black pylint flake8
       #      - name: Show Python Version
       #        run: >
       #          python3 --version
@@ -49,6 +49,7 @@ jobs:
         uses: github/super-linter@latest
         env:
           VALIDATE_ALL_CODEBASE: true
+          VALIDATE_PYTHON_ISORT: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: /

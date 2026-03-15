@@ -43,11 +43,11 @@ jobs:
         # https://raw.githubusercontent.com
         # /actions/python-versions/main/versions-manifest.json
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: true
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v6.2.0
         with:
           python-version: ${{ matrix.python-version }}
       - name: Generate requirements.txt from poety
