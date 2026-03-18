@@ -143,7 +143,8 @@ pyflakes = ">=3.4"
 #pylyzer = "^0.0.51"
 pyrefly = ">=0.16.3,<0.17.0"
 pyright = ">=1.1.408"
-#pytest = ">8.3.3"
+pytest = ">9"
+#setuptools = "<82" # needed for pytest as pkg_resources is not in stdlib anymore
 #radon = ">=6.0"
 #retype = "*" # typed-ast not in python3.13
 ruff = "^0.3.7"
@@ -190,10 +191,10 @@ version = ">=2024"
 #markers = "sys_platform == 'linux'" 
 platform = "linux"
 
-[tool.poetry.group.dev.dependencies.pylama]
-extras = ["all"]
-version = ">8.4"
-python = ">=3.7"
+#[tool.poetry.group.dev.dependencies.pylama]
+#extras = ["all"]
+#version = ">8.4"
+#python = ">=3.7"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
