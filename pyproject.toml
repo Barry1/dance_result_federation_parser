@@ -104,7 +104,7 @@ description = ""
 dependencies = [
   "aiofiles>=25.1",
   "beautifulsoup4>=4.14.3",
-  "fastparquet>=2025.12",
+  "fastparquet (>=2025.12,!=2026.3.0)",
   "html5lib (>=1.1,<2.0)",
   "joblib>=1.5.3",
   "valuefragments @ git+https://github.com/Barry1/PyValueFragments.git",

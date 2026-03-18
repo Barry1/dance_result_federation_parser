@@ -9,6 +9,7 @@ plugins:
       uri: https://github.com/trunk-io/plugins
 lint:
   enabled:
+    - prettier@3.6.2
     - bandit@1.9.4
     - sourcery@1.43.0
     - shellcheck@0.11.0
@@ -32,7 +33,6 @@ lint:
     - actionlint@1.7.11
     - git-diff-check
   disabled:
-    - prettier
 actions:
   enabled:
     - poetry-check
@@ -111,3 +111,4 @@ downloads:
         #        version: <=3.11.9
         strip_components: 1
 ---
+
