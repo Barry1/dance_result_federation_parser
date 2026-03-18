@@ -191,10 +191,10 @@ version = ">=2024"
 #markers = "sys_platform == 'linux'" 
 platform = "linux"
 
-#[tool.poetry.group.dev.dependencies.pylama]
-#extras = ["all"]
-#version = ">8.4"
-#python = ">=3.7"
+[tool.poetry.group.dev.dependencies.pylama]
+extras = ["all"]
+version = ">8.4"
+python = ">=3.7,<=3.10"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

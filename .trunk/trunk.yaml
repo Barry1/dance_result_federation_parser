@@ -15,7 +15,7 @@ lint:
     - shellcheck@0.11.0
     - shfmt@3.6.0
     - pylint@4.0.5
-    - checkov@3.2.509
+    - checkov@3.2.510
     - osv-scanner@2.3.3
     - trivy@0.69.3
     - trufflehog@3.93.8
