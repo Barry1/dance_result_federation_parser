@@ -61,15 +61,6 @@ line_length = 79
 profile = "black"
 skip = "venv"
 
-[tool.pylama.pep8]
-max_line_length = 79
-
-[tool.pylama.pycodestyle]
-max_line_length = 79
-
-[tool.pylama.pylint]
-max_line_length = 79
-
 [tool.pylint.MASTER]
 jobs = 0
 output-format = "colorized"
@@ -190,11 +181,6 @@ platform = "linux"
 version = ">=2024"
 #markers = "sys_platform == 'linux'" 
 platform = "linux"
-
-[tool.poetry.group.dev.dependencies.pylama]
-extras = ["all"]
-version = ">8.4"
-python = ">=3.7,<=3.10"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
