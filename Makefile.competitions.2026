@@ -1,5 +1,9 @@
+.PHONY: berlin-dance-festival.de/files/bdf/results/2026/index.htm
+2026_BerlinDanceFestival.txt: berlin-dance-festival.de/files/bdf/results/2026/index.htm
+	$(runme)
+
 .PHONY: ergebnisse.tnw.de/vereine/912/2026-03-14/index.htm
-2026_DM_LAT.txt:ergebnisse.tnw.de/vereine/912/2026-03-14/index.htm 
+2026_DM_LAT.txt: ergebnisse.tnw.de/vereine/912/2026-03-14/index.htm 
 	$(runme)
 
 .PHONY: tanzen-in-sh.de/ergebnisse/2026/2026-03-08_glm_senii_b_s_std/
