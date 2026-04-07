@@ -59,11 +59,11 @@ jobs:
           # Force 0 exit code to allow SARIF file generation
           # This will handover control about PR rejection to the GitHub side
           max-allowed-issues: 2147483647
-
+          skip-github-code-scanning-upload: true  # Add this
       # Upload the SARIF file generated in the previous step
       - name: Upload SARIF results file
         id: upload-sarif
-        uses: github/codeql-action/upload-sarif@v4
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: results.sarif
           category: Codacy-${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}
