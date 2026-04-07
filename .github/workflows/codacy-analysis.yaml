@@ -1,6 +1,7 @@
-name: Codacy Analysis CLI
+name: New Codacy Analysis CLI
 
-on: [workflow_dispatch"]
+on:
+  workflow_dispatch:
 
 jobs:
   codacy-analysis-cli:
