@@ -21,7 +21,7 @@ def result() -> str:
         outputcollector = StringIO()
         with redirect_stdout(outputcollector):
             dance_result_federation_parser.eventurl_to_web(theurl)
-        the_cms_code: str = outputcollector.getvalue()
+        the_cms_code = outputcollector.getvalue()
     thehtmlpage: str = (
         "<html><head><title>Flask-Test</title></head><body>"
         + '<form action="/" method="get">'
