@@ -34,10 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.12", "3.13", "3.14"]
-        # working but prj needs 3.10
-        # not working "3.11beta","3.11dev"
-        # https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json
+        python-version: ["3.13", "3.14"]
     steps:
       - uses: actions/checkout@v6.0.2
         with:
