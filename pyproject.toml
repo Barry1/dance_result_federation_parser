@@ -132,7 +132,7 @@ pyannotate = ">=1.2.0"
 pyflakes = ">=3.4"
 #pylint = ">=3.3.6"
 #pylyzer = "^0.0.51"
-pyrefly = ">=0.16.3,<0.17.0"
+pyrefly = ">=0.16.3,!=0.17.0"
 pyright = ">=1.1.408"
 pytest = ">9"
 #setuptools = "<82" # needed for pytest as pkg_resources is not in stdlib anymore
