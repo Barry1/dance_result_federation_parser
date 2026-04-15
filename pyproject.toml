@@ -1,3 +1,28 @@
+[project]
+name = "dance_result_federation_parser"
+version = "0.3.2"
+description = ""
+requires-python = ">=3.12,<4.0"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+  "aiofiles>=25.1",
+  "beautifulsoup4>=4.14.3",
+  "fastparquet (>=2025.12,!=2026.3.0)",
+  "html5lib (>=1.1,<2.0)",
+  "joblib>=1.5.3",
+  "valuefragments @ git+https://github.com/Barry1/PyValueFragments.git",
+  "zstandard>=0.25",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.6,<0.12.0"]
+build-backend = "uv_build"
+
 # Learn more at <https://github.com/carlosperate/awesome-pyproject>
 # Cool info <https://blog.pilosus.org/posts/2019/12/26/python-third-party-tools-configuration/>
 # https://github.com/hhatto/autopep8/blob/master/README.rst#pyproject-toml
@@ -8,11 +33,65 @@ recursive = true
 jobs = 0
 ignore = ["E203"]
 
+[dependency-groups]
+dev = [
+  "colorama>=0.4.6",
+  "flake8>=7.3",
+  "flynt>=1.0.6",
+  "importlib-resources>=6.5",
+  "joblib-stubs>=1.5.3",
+  "monkeytype>=23.3",
+  "mypy>=1.19.1",
+  "nuitka>=4",
+  "ordered-set>=4.1",
+  "pandas-stubs>=3",
+  "pipdeptree>=2.31",
+  "pyanalyze>=0.13.1",
+  "pyannotate>=1.2.0",
+  "pyflakes>=3.4",
+  "pyrefly>=0.16.3,!=0.17.0",
+  "pyright>=1.1.408",
+  "pytest>9",
+  "ruff>=0.3.7,<0.4",
+  "sourcery>=1.43",
+  "ty>=0.0.1a6,<0.0.2",
+  "types-aiofiles>=25.1.0",
+  "types-cffi>=1.17",
+  "types-lxml>=2026",
+  "types-openpyxl>=3.1.5",
+  "types-requests>=2.32",
+  "ufmt>=2.8",
+  "vermin>=1.8",
+  "vulture>=2.14",
+  "basedpyright>=1.37",
+  "pylyzer>=0.0.82,<0.0.83",
+  "bandit>=1.9.3,<2",
+  "typeguard>=4.4.4,<5",
+  "pytest-cov>=6.3",
+  "pytest-sugar>=1.1.0",
+  "pytest-bandit>=0.6.1",
+  "pytest-black>=0.6.0",
+  "pytest-colordots>=1.1",
+  "pytest-monkeytype>=1.1.0",
+  "pytest-mypy>=1.0.1",
+  "pytest-pyright>=0.0.6",
+  "pytest-beartype>=0.2.0",
+  "pyupgrade>=3.21.2,<4",
+  "black>22",
+  "isort[colors]",
+  "pyre-check ; sys_platform == 'linux'",
+  "pytype>=2024 ; sys_platform == 'linux'",
+]
+
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 [tool.black]
 line-length = 79
 target-version = ['py312'] #'py37', 'py38',
 color = true
+
+[tool.uv]
+package = false
+default-groups = "all"
 #safe = true
 
 #force-exlude = ".*/venv/.*"
@@ -86,22 +165,6 @@ minversion = "7.0"
 addopts = ["--verbose"]
 
 [tool.towncrier]
-
-[project]
-name = "dance_result_federation_parser"
-version = "0.3.2"
-description = ""
-#authors = [name="Ebeling, Dr. Bastian",mail="bastian.ebeling@web.de"]
-dependencies = [
-  "aiofiles>=25.1",
-  "beautifulsoup4>=4.14.3",
-  "fastparquet (>=2025.12,!=2026.3.0)",
-  "html5lib (>=1.1,<2.0)",
-  "joblib>=1.5.3",
-  "valuefragments @ git+https://github.com/Barry1/PyValueFragments.git",
-  "zstandard>=0.25",
-]
-requires-python = ">=3.12,<4.0"
 #flask = "^3.0.3"
 #html5lib = ">=1.1" # no longer needed
 #pyarrow = ">=16"
@@ -181,10 +244,6 @@ platform = "linux"
 version = ">=2024"
 #markers = "sys_platform == 'linux'" 
 platform = "linux"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.flynt]
 aggressive = true
