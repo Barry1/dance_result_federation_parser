@@ -17,3 +17,7 @@
 .PHONY: ttc-elmshorn.de/ergebnisse/2026_02_14
 2026_TTC_Sparkassenpokal.txt: ttc-elmshorn.de/ergebnisse/2026_02_14
 	$(runme)
+
+.PHONY: turniere.btc-gruen-gold.de/bb2026/index.htm
+2026_BlauesBand.txt: turniere.btc-gruen-gold.de/bb2026/index.htm
+	$(runme)
