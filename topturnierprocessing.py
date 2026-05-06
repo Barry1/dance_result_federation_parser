@@ -129,9 +129,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
             # Solisten haben keine Vereine
             erg_df["Verein"] = "∅"
         erg_df = erg_df.iloc[:, [0, 1, 2]]
-    erg_df = erg_df.set_axis(
-        labels=["Platz", "Paar", "Verein"], axis="columns"
-    )
+    erg_df = erg_df.set_axis(labels=["Platz", "Paar", "Verein"], axis="columns")
 
     # Nur Zeilen behalten, bei denen ein "." im Platz ist
     erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
@@ -164,9 +162,7 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     thelogger.debug("interpret_tt_result Aufruf mit %s", theresulturl)
     if not theresulturl.endswith("index.htm"):
         thelogger.debug("URL endet nicht auf index.htm")
-        theresulturl += (
-            "/index.htm" if theresulturl.endswith("/") else "/index.htm"
-        )
+        theresulturl += "/index.htm" if theresulturl.endswith("/") else "/index.htm"
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
     thelogger.debug("interpret_tt_result Auswertung von %s", theresulturl)
     ret_df = DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])

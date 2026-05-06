@@ -38,9 +38,7 @@ def create_dtv_df() -> DataFrame:
     # 106=Turnierart
     # 107=Klasse
     # 108=Landesverband
-    dtv_associations.loc[:, "Verband"] = dtv_associations[
-        "VerbandNum"
-    ].replace(
+    dtv_associations.loc[:, "Verband"] = dtv_associations["VerbandNum"].replace(
         to_replace={
             8: "(TAF)",
             1308: "HTV",
@@ -82,13 +80,12 @@ def create_dtv_df() -> DataFrame:
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     """Retrieve dataframe of associations from Cache or Web."""
     dtv_associations_cache_file: str = (
-        f"{__file__[:__file__.rfind(os.sep)]}/dtv_associations.parquet"
+        f"{__file__[: __file__.rfind(os.sep)]}/dtv_associations.parquet"
     )
     dtv_associations: DataFrame
     if os.path.exists(dtv_associations_cache_file) and not (
         autoupdate
-        and time.time()
-        - os.path.getmtime(filename=dtv_associations_cache_file)
+        and time.time() - os.path.getmtime(filename=dtv_associations_cache_file)
         > MAX_CACHE_AGE_IN_SECONDS
     ):  # Cache-Datei vorhanden
         thelogger.info(
@@ -111,11 +108,7 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
 async def outputassocfiles() -> None:
     """Write file for each association."""
     dtv_assocs_df: DataFrame = get_dtv_df()
-    print(
-        dtv_assocs_df.pivot_table(
-            index="Verband", values="Verein", aggfunc="count"
-        )
-    )
+    print(dtv_assocs_df.pivot_table(index="Verband", values="Verein", aggfunc="count"))
     print(dtv_assocs_df[dtv_assocs_df.Verband == "TSH"])
     for verbandsvereine in dtv_assocs_df.groupby(by="Verband"):
         # make folder associations if needed
@@ -134,9 +127,7 @@ async def outputassocfiles() -> None:
             await ausgabedatei.write(
                 f"{len(verbandsvereine[1])} Vereine im {verbandsname}:\n"
             )
-            await ausgabedatei.write(
-                verbandsvereine[1][["Verein", "Ort"]].to_string()
-            )
+            await ausgabedatei.write(verbandsvereine[1][["Verein", "Ort"]].to_string())
             await ausgabedatei.write("\n")
 
 

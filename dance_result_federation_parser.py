@@ -7,9 +7,11 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 """
 
 import asyncio
+from contextlib import contextmanager, nullcontext
 import logging
 from collections.abc import Callable
 from functools import partial
+from typing import Any, Generator
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
@@ -107,27 +109,19 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             )
         else:
             allreslinks = theparsefun(eventurl).values()
-            compnames: list[str] = [
-                human_comp_info(lnk) for lnk in allreslinks
-            ]
+            compnames: list[str] = [human_comp_info(lnk) for lnk in allreslinks]
             tsh_results: list[DataFrame]
             # <https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor>
             # python >=3.11 TaskGroup instead of gather
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
             if _ConfigDict["TOTHREAD"]:
                 tsh_results = await run_grouped(
-                    [
-                        partial(the_interpret_fun, onelink)
-                        for onelink in allreslinks
-                    ],
+                    [partial(the_interpret_fun, onelink) for onelink in allreslinks],
                     "thread",
                 )
             else:
                 tsh_results = await run_grouped(
-                    [
-                        partial(the_interpret_fun, onelink)
-                        for onelink in allreslinks
-                    ],
+                    [partial(the_interpret_fun, onelink) for onelink in allreslinks],
                     "tpe",
                 )
             presentation_function(
@@ -164,9 +158,7 @@ def eventurl_to_web(synceventurl: str) -> None:
             )
         else:
             allreslinks = theparsefun(synceventurl).values()
-            compnames: list[str] = [
-                human_comp_info(thelink) for thelink in allreslinks
-            ]
+            compnames: list[str] = [human_comp_info(thelink) for thelink in allreslinks]
             tsh_results: list[DataFrame] = Parallel(
                 n_jobs=1 if __debug__ else -1,
                 verbose=10 if __debug__ else 0,
@@ -186,36 +178,38 @@ def eventurl_to_web(synceventurl: str) -> None:
 
 
 __all__: list[str] = ["interpret_tt_result", "presentation_function"]
+
+
+@contextmanager
+def pyannotatecontext() -> Generator[None, Any, None]:
+    """Context manager for pyannotate."""
+    from pyannotate_runtime import collect_types
+
+    collect_types.init_types_collection()
+    collect_types.start()
+    yield
+    collect_types.stop()
+    collect_types.dump_stats("type_info.json")
+
+
 if __name__ == "__main__":
     # execute only if run as a script
-    if _ConfigDict["PYANNOTATE"]:
-        from pyannotate_runtime import collect_types
-
-        collect_types.init_types_collection()
-        collect_types.start()
+    with pyannotatecontext() if _ConfigDict["PYANNOTATE"] else nullcontext():
         # Besonders nötig, damit bei ASYNC nur einmal
-    # ggf. die DTV-Vereinliste aktualisiert wird
-    _: DataFrame = get_dtv_df().sort_index()
-    #    _: DataFrame = get_dtv_df().loc[403:406]
-    # vielleicht auch mit
-    # <https://docs.python.org/3/library/asyncio-sync.html>
-    # zu lösen
-    if len(theargv := __import__("sys").argv) > 1:
-        for theurl in theargv[1:]:
+        # ggf. die DTV-Vereinliste aktualisiert wird
+        thelogger.info(get_dtv_df().sort_index().loc[403:406])
+        # _: DataFrame = get_dtv_df().sort_index()
+        #    _: DataFrame = get_dtv_df().loc[403:406]
+        # vielleicht auch mit
+        # <https://docs.python.org/3/library/asyncio-sync.html>
+        # zu lösen
+        for theurl in (
+            theargv[1:]
+            if len(theargv := __import__("sys").argv) > 1
+            else _ConfigDict["CHECKINGURLS"]
+        ):
             thelogger.info("Auswertung von %s", theurl)
             if _ConfigDict["RUN_ASYNC"]:
                 asyncio.run(async_eventurl_to_web(theurl), debug=__debug__)
             else:
                 eventurl_to_web(theurl)
-    else:
-        thelogger.info("Selbsttest des Moduls resultParser")
-        thelogger.info(get_dtv_df().sort_index().loc[403:406])
-        for theurl in _ConfigDict["CHECKINGURLS"]:
-            thelogger.info("Geprüft wird die Funktion anhand von %s", theurl)
-            if _ConfigDict["RUN_ASYNC"]:
-                asyncio.run(async_eventurl_to_web(theurl), debug=__debug__)
-            else:
-                eventurl_to_web(theurl)
-    if _ConfigDict["PYANNOTATE"]:
-        collect_types.stop()
-        collect_types.dump_stats("type_info.json")
