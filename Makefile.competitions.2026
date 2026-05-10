@@ -1,5 +1,5 @@
-.PHONY: hessen-tanzt.de/media/ht2026/index.htm
-2026_HessenTanzt.txt: hessen-tanzt.de/media/ht2026/index.htm
+.PHONY: hessen-tanzt.de/media/ht2025/index.htm
+2026_HessenTanzt.txt: hessen-tanzt.de/media/ht2025/index.htm
 	$(runme)
 
 .PHONY: berlin-dance-festival.de/files/bdf/results/2026/index.htm
