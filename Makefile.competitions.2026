@@ -1,4 +1,4 @@
-.PHONY: hessen-tanzt.de/media/ht2025/index.htm
+.PHONY: hessen-tanzt.de/media/ht2026/index.htm
 2026_HessenTanzt.txt: hessen-tanzt.de/media/ht2026/index.htm
 	$(runme)
 
