@@ -57,6 +57,9 @@ jobs:
       #            html5lib git+https://github.com/Barry1/PyValueFragments.git pyannotate
       #- name: create results folder
       #  run: mkdir results
+      - name: check valuefragments
+        run: |
+          python3 -c "import valuefragments;print(dir(valuefragments))"
       - name: remove config
         run: rm config.toml
       - name: print environment
