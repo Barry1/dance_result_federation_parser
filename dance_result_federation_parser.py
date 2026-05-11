@@ -7,9 +7,9 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 """
 
 import asyncio
-from contextlib import contextmanager, nullcontext
 import logging
 from collections.abc import Callable
+from contextlib import contextmanager, nullcontext
 from functools import partial
 from typing import Any, Generator
 from urllib.error import HTTPError, URLError

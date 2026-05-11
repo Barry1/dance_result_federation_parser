@@ -1,6 +1,7 @@
-MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
+MAKEFLAGS += --always-make --jobs=1 --max-load=3 --output-sync=target
+# all geht nicht parallel
 include Makefile.competitions
-.PHONY: all pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns pyright pylyze pipdeptree formatting clean test
+.PHONY: alltools pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns pyright pylyze pipdeptree formatting clean test
 
 # --- Konfiguration ---
 PYTHON_SCRIPT = ./dance_result_federation_parser.py
@@ -13,23 +14,60 @@ PYTHON_CALL = python3 -OO $(PYTHON_SCRIPT)
 endif
 HASH_DIR = .hashes
 RESULTS_DIR = Results
+MD_RESULTS_DIR = mdResults
 # --- AUTO-COMPLETION ---
 # 1. Wir extrahieren alle Dateinamen aus den URL-Definitionen aller Makefiles
 # Das Ergebnis ist eine Liste wie: 2026_HessenTanzt.txt 2025_Andere.txt
-ALL_POSSIBLE_TXT = $(shell grep -h "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/^URL_\(.*\) =.*/Results\/\1/' | sort | uniq)
-
+ALL_POSSIBLE_TXT = $(shell grep -h "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/^URL_\(.*\) =.*/$(RESULTS_DIR)\/\1/' | sort | uniq)
+ALL_POSSIBLE_MD = $(patsubst %.txt,%.md,$(shell grep -h "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/^URL_\(.*\) =.*/$(MD_RESULTS_DIR)\/\1/' | sort | uniq))
 # 2. Wir definieren diese Dateien als explizite Ziele, aber ohne eigene Befehle.
 # Dadurch "sieht" die Bash-Completion diese Targets.
 # Die eigentliche Arbeit erledigt weiterhin die Pattern-Rule %.txt:
 $(ALL_POSSIBLE_TXT):
+$(ALL_POSSIBLE_MD):
 # --- AUTO-COMPLETION ---
 
-%.md: %.txt
-	mv $< $@
+.PHONY: all
+all: $(ALL_POSSIBLE_TXT) $(ALL_POSSIBLE_MD)
+
+.PHONY: info
+info:
+	$(info Mögliche .txt-Ziele:)
+	$(info $(ALL_POSSIBLE_TXT))
+	$(info Mögliche .md-Ziele:)
+	$(info $(ALL_POSSIBLE_MD))
+#%.md: %.txt
+#	mv $< $@
+
+%.md:
+	@# 1. Sicherstellen, dass das Hash-Verzeichnis existiert
+	@mkdir -p $(HASH_DIR) $(MD_RESULTS_DIR)
+	
+	@# 2. Die URL für das aktuelle Target dynamisch auflösen
+	$(eval CURRENT_URL := $(URL_$(@F:.md=.txt)))
+	@URL="$(CURRENT_URL)"; \
+	HASH_FILE="$(HASH_DIR)/.$(@F:.txt=.sha256)"; \
+	\
+	if [ -z "$$URL" ]; then \
+		echo "Error: No URL defined for $(@F) (Variable URL_$(@F) is empty)"; \
+		exit 1; \
+	fi; \
+	\
+	CURRENT_HASH=$$(curl -s "$$URL" | sha256sum | cut -d' ' -f1); \
+	\
+	if [ -f "$$HASH_FILE" ] && [ "$$CURRENT_HASH" = "$$(cat $$HASH_FILE)" ] && [ -f $@ ]; then \
+		echo "No changes for $@. Skipping..."; \
+	else \
+		echo "Change detected or file missing. Updating $@..."; \
+		echo "$$CURRENT_HASH" > $$HASH_FILE; \
+		mv config.toml versteckt_config.toml; \
+		$(PYTHON_CALL) "$$URL" > $@; \
+		mv versteckt_config.toml config.toml; \
+	fi
 
 %.txt:
 	@# 1. Sicherstellen, dass das Hash-Verzeichnis existiert
-	@mkdir -p $(HASH_DIR)
+	@mkdir -p $(HASH_DIR) $(RESULTS_DIR)
 	
 	@# 2. Die URL für das aktuelle Target dynamisch auflösen
 	$(eval CURRENT_URL := $(URL_$(@F)))
@@ -71,7 +109,7 @@ cpldb=DanceCouplesData/couples_clubs_federations.sqlite3
 
 runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
 
-all: pylint mypy formatting vulture pytype sourcery
+alltools: pylint mypy formatting vulture pytype sourcery
 
 Pipfile.lock: Pipfile
 	pipenv lock

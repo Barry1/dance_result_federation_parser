@@ -1,0 +1,425 @@
+<!-- wp:paragraph --> <p>Einleitende Worte.</p> <!-- /wp:paragraph -->
+<!-- wp:more --> <!--more--> <!-- /wp:more -->
+<!-- wp:paragraph --> <p>Hier folgend die Ergebnisse (nach Verf&uuml;gbarkeit fortlaufend gepflegt) der TSH-Paare. </p> <!-- /wp:paragraph -->
+<!-- wp:heading --><h2 class="wp-block-heading">31.05. WDSF WORLDCH Standard Senioren III</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>29.- 31.</td><td>Andreas Reumann / Annette Reumann</td><td>Tanz-Turnier-Club Elmshorn</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>43.- 46.</td><td>Klaus-Michael Gluchowski / Dr. Kathrin Rosenkranz-Gluchowski</td><td>TSA d. 1. SC Norderstedt</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>120.- 127.</td><td>Friedrich Hoppe / Kirsten Göppert</td><td>TanzSportZentrum Schwarzenbek</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>160.- 163.</td><td>Thomas Schuldt / Birgit Schuldt</td><td>TSA d. TSV Reinbek</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">31.05. WDSF OPENRISINGSTARS Standard</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>7.</td><td>Jerico Khadjeh-Nouri / Lena Schröer</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>27.</td><td>Andrea Cipriani / Flûte Seifart</td><td>TSA d. 1. SC Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">31.05. DTV Hauptgruppe D Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>1.</td><td>Ben-Luca Grupe / Sinje Retzlaff</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>5.</td><td>Lennard Wilhelmi / Lena Tetzlaff</td><td>1. Latin Team Kiel</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">31.05. DTV Hauptgruppe C Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>3.</td><td>Friedrich Rehren / Carolin Erhard</td><td>TSC Titanium Holstein Lübeck</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>4.</td><td>Ben-Luca Grupe / Sinje Retzlaff</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">31.05. DTV Hauptgruppe B Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>3.</td><td>André Bannourah / Viena Frese</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>5.</td><td>Ivan Boiko / Marianna Sapon</td><td>TC Hanseatic Lübeck</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">31.05. WDSF OPEN Latein Senioren III</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>7.</td><td>Harald Wolff / Antje Wolff</td><td>TSA d. 1. SC Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">31.05. DTV Hauptgruppe II Masters I C Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>2.</td><td>Friedrich Rehren / Carolin Erhard</td><td>TSC Titanium Holstein Lübeck</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">31.05. DTV Hauptgruppe B Standard</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>5.</td><td>Ivan Boiko / Marianna Sapon</td><td>TC Hanseatic Lübeck</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>7.</td><td>André Bannourah / Viena Frese</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">31.05. DTV Masters I B Standard</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>2.</td><td>Florian Behncke / Stephanie Kraft</td><td>Tanzclub Concordia Lübeck</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. WDSF WORLDOPEN Standard</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>12.</td><td>Joshua Khadjeh-Nouri / Jadzia Khadjeh-Nouri</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>48.- 49.</td><td>Jerico Khadjeh-Nouri / Lena Schröer</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>53.</td><td>Andrea Cipriani / Flûte Seifart</td><td>TSA d. 1. SC Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Kinder D Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>6.</td><td>Leo Burkhardt / Maja Kramek</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Kinder Junioren I C Standard</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>5.</td><td>Jethro Khadjeh-Nouri / Evelyn Neser</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Kinder C Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>8.</td><td>Jethro Khadjeh-Nouri / Evelyn Neser</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Junioren I D Standard</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>3.</td><td>Leo Burkhardt / Maja Kramek</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Junioren II C Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>6.</td><td>Enrico Boddien / Svea Odebrecht</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Junioren I D Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>8.</td><td>Leo Burkhardt / Maja Kramek</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Junioren II C Standard</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>4.</td><td>Enrico Boddien / Svea Odebrecht</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Jugend D Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>2.</td><td>Florian Diestel / Lya Meyer</td><td>TSC Astoria Mölln</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Junioren I C Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>11.</td><td>Jethro Khadjeh-Nouri / Evelyn Neser</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Kinder D Standard</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>5.</td><td>Leo Burkhardt / Maja Kramek</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Jugend C Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>7.</td><td>Enrico Boddien / Svea Odebrecht</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Hauptgruppe D Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>4.</td><td>Yassin Sayah / Amalia Tuberquia Prelle</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>5.</td><td>Lennard Wilhelmi / Lena Tetzlaff</td><td>1. Latin Team Kiel</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>9.</td><td>Florian Diestel / Lya Meyer</td><td>TSC Astoria Mölln</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>10.- 11.</td><td>Markus Richter / Annabelle-Sophie Brücker</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. WDSF OPEN Latein Senioren II</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>22.- 23.</td><td>Harald Wolff / Antje Wolff</td><td>TSA d. 1. SC Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Hauptgruppe C Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>3.</td><td>Friedrich Rehren / Carolin Erhard</td><td>TSC Titanium Holstein Lübeck</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">01.06. DTV Hauptgruppe D Standard</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>2.</td><td>Florian Diestel / Lya Meyer</td><td>TSC Astoria Mölln</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">02.06. WDSF OPEN Standard Junioren II</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>22.</td><td>Kevin Eckert / Sarah-Madlen Schenke</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">02.06. DTV Kinder C Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>7.</td><td>Jethro Khadjeh-Nouri / Evelyn Neser</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">02.06. WDSF OPEN Standard Senioren II</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>8.</td><td>Pascal Buchtmann / Martina Bruhns</td><td>TSA d. 1. SC Norderstedt</td></tr>
+<tr><td><strong>&nbsp;</strong></td><td>34.</td><td>Dirk Hoffmann / Monika Hoffmann</td><td>TSA d. 1. SC Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:heading --><h2 class="wp-block-heading">02.06. DTV Junioren I C Latein</h2><!-- /wp:heading -->
+<!-- wp:table {"hasFixedLayout":false} -->
+<figure class="wp-block-table">
+<table>
+<thead><tr><th>&nbsp;</th><th>Platz</th><th>Paar</th><th>Verein</th></tr></thead><tbody>
+<tr><td><strong>&nbsp;</strong></td><td>10.</td><td>Jethro Khadjeh-Nouri / Evelyn Neser</td><td>Tanzsportclub Astoria Norderstedt</td></tr>
+</tbody></table></figure>
+<!-- /wp:table -->
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- wp:separator {"className":"is-style-wide","backgroundColor":"white"} -->
+<hr class="wp-block-separator has-text-color has-white-color has-alpha-channel-opacity has-white-background-color has-background is-style-wide"/>
+<!-- /wp:separator -->
+<!-- wp:paragraph --><p>Das Gesamtergebnis ist unter dem <a href="https://ergebnisse.ggcbremen.de/2024-05-31.DSF/" target="_blank">Link</a> zu finden.</p><!-- /wp:paragraph -->
+<!-- wp:paragraph --><p>Falls ich ein Paar übersehen habe, bitte ich freundlich um eine <a href="mailto:yourmail@provide.dance?subject=&Uuml;bersehenes%20Ergebnis">Email</a>.</p><!-- /wp:paragraph -->
