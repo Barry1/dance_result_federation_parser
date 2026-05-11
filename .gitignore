@@ -3,7 +3,6 @@ __pycache__/
 *.out
 out/
 *.log
-*.txt
 *.err
 nuitka
 resultParser.log

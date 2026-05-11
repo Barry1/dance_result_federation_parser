@@ -12,10 +12,11 @@ else
 PYTHON_CALL = python3 -OO $(PYTHON_SCRIPT)
 endif
 HASH_DIR = .hashes
+RESULTS_DIR = Results
 # --- AUTO-COMPLETION ---
 # 1. Wir extrahieren alle Dateinamen aus den URL-Definitionen aller Makefiles
 # Das Ergebnis ist eine Liste wie: 2026_HessenTanzt.txt 2025_Andere.txt
-ALL_POSSIBLE_TXT = $(shell grep -h "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/^URL_\(.*\) =.*/\1/' | sort | uniq)
+ALL_POSSIBLE_TXT = $(shell grep -h "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/^URL_\(.*\) =.*/Results\/\1/' | sort | uniq)
 
 # 2. Wir definieren diese Dateien als explizite Ziele, aber ohne eigene Befehle.
 # Dadurch "sieht" die Bash-Completion diese Targets.
@@ -31,12 +32,12 @@ $(ALL_POSSIBLE_TXT):
 	@mkdir -p $(HASH_DIR)
 	
 	@# 2. Die URL für das aktuelle Target dynamisch auflösen
-	$(eval CURRENT_URL := $(URL_$@))
+	$(eval CURRENT_URL := $(URL_$(@F)))
 	@URL="$(CURRENT_URL)"; \
 	HASH_FILE="$(HASH_DIR)/.$(@F:.txt=.sha256)"; \
 	\
 	if [ -z "$$URL" ]; then \
-		echo "Error: No URL defined for $@ (Variable URL_$@ is empty)"; \
+		echo "Error: No URL defined for $(@F) (Variable URL_$(@F) is empty)"; \
 		exit 1; \
 	fi; \
 	\
@@ -58,7 +59,7 @@ list:
 	@# Wir nutzen 'grep', um im aktuellen Makefile (und ggf. include-Dateien) 
 	@# alle Zeilen zu finden, die mit 'URL_' beginnen und auf '.txt' enden.
 	@# Dann extrahieren wir den Variablennamen und entfernen das 'URL_' Präfix.
-	@grep -r "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/.*URL_\(.*\) =.*/\1/' | sort | uniq
+	@grep -r "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/.*URL_\(.*\) =.*/Results\/\1/' | sort | uniq
 	@#echo ""
 	@#echo "Tipp: Nutzen Sie 'make <dateiname>.txt', um eine Datei zu erzeugen."
 #OBJS=dtvprocessing.py dance_result_federation_parser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
