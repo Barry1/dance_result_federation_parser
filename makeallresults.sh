@@ -20,4 +20,5 @@ mdtargets=$(echo "${alltargets}" | shuf | sed -e 's/.txt/.md/g')
 echo "Targets: ${mdtargets}"
 # for make understanding multiple targets
 # shellcheck disable=SC2086
-make --jobs 1 -f Makefile.githubworkflow --ignore-errors --always-make ${mdtargets}
+# make --jobs 1 -f Makefile.githubworkflow --ignore-errors --always-make ${mdtargets}
+make --jobs 1 --ignore-errors --always-make ${mdtargets}

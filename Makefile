@@ -4,7 +4,13 @@ include Makefile.competitions
 
 # --- Konfiguration ---
 PYTHON_SCRIPT = ./dance_result_federation_parser.py
+ifndef GITHUB_ACTION
+$(info Not in a GITHUB Action)
 PYTHON_CALL = poetry run python -OO $(PYTHON_SCRIPT)
+else
+$(info Within a GITHUB Action)
+PYTHON_CALL = python3 -OO $(PYTHON_SCRIPT)
+endif
 HASH_DIR = .hashes
 # --- AUTO-COMPLETION ---
 # 1. Wir extrahieren alle Dateinamen aus den URL-Definitionen aller Makefiles
@@ -17,12 +23,8 @@ ALL_POSSIBLE_TXT = $(shell grep -h "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/^U
 $(ALL_POSSIBLE_TXT):
 # --- AUTO-COMPLETION ---
 
-
-
-
-
-
-
+%.md: %.txt
+	mv $< $@
 
 %.txt:
 	@# 1. Sicherstellen, dass das Hash-Verzeichnis existiert
