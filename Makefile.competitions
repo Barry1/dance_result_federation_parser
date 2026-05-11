@@ -3,8 +3,8 @@ include Makefile.competitions.2026 Makefile.competitions.2025 Makefile.competiti
 URL_GLM4_MASIV_STD_2023.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-03-12_GLM4_MASIV_D-S_STD/index.htm
 URL_BadBevensen_Pfingsten_2023.txt = https://www.tanzsport-biedermann.de/results/pfingsten23/index.html
 URL_BadBevensen_Pfingsten_2024.txt = https://www.tanzsport-biedermann.de/results/pfingsten24/index.html
-URL_BlauesBand2018.txt = https://www.blauesband-berlin.de/Ergebnisse/2018/blauesband2018/index.htm
-URL_BlauesBand2019.txt = https://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm
+#URL_BlauesBand2018.txt = https://www.blauesband-berlin.de/Ergebnisse/2018/blauesband2018/index.htm
+#URL_BlauesBand2019.txt = https://www.blauesband-berlin.de/Ergebnisse/2019/blauesband2019/index.htm
 
 HolmOstern2022.txt:
 	$(runme) http://www.die-ostsee-tanzt.de/turnierergebnisse/ostsee-ostern-2022/freitag/index.htm > $@ 2> $(@:.txt=.err)
