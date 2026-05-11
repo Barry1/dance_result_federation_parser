@@ -46,7 +46,7 @@ info:
 	@# 2. Die URL für das aktuelle Target dynamisch auflösen
 	$(eval CURRENT_URL := $(URL_$(@F:.md=.txt)))
 	@URL="$(CURRENT_URL)"; \
-	HASH_FILE="$(HASH_DIR)/.$(@F:.txt=.sha256)"; \
+	HASH_FILE="$(HASH_DIR)/.$(@F:.md=.sha256)"; \
 	\
 	if [ -z "$$URL" ]; then \
 		echo "Error: No URL defined for $(@F) (Variable URL_$(@F) is empty)"; \
