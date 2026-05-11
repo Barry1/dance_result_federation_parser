@@ -14,6 +14,9 @@
 #alltargets="${targets} ${goctargets}"
 # OLD STYLE
 
+mv config.toml versteckmalschnell
+mv Results versteckResults
+mkdir Results
 alltargets=$(make list)
 mdtargets=$(echo "${alltargets}" | shuf | sed -e 's/.txt/.md/g')
 # shuffled to be not so reproducible
@@ -22,3 +25,6 @@ echo "Targets: ${mdtargets}"
 # shellcheck disable=SC2086
 # make --jobs 1 -f Makefile.githubworkflow --ignore-errors --always-make ${mdtargets}
 make --jobs 1 --ignore-errors --always-make ${mdtargets}
+mv versteckResults/* Results/
+rmdir versteckResults
+mv versteckmalschnell config.toml

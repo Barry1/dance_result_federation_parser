@@ -19,7 +19,7 @@ rungoc=$(run) ./goc_parser.py $(subst GOC_,,$(@:.txt=)) > $@ 2> $(@:.txt=.err)
 
 .PHONY: FIRST OTHERS
 
-FIRST: BadBevensen_2022.md
+FIRST: 2022_BadBevensen.md
 
 PRINTALLTARGETS:
 	make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | sort -u | grep \.md | xargs

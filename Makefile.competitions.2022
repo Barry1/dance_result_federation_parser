@@ -1,27 +1,27 @@
 .PHONY: tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
-DP_SEN_III_S_STD_2022.txt: tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
+2022_DP_SEN_III_S_STD.txt: tanzen-in-sh.de/ergebnisse/2022/2022-09-24_DP_SENIII_S_STD/index.htm
 	$(runmesingle)
 
 .PHONY: www.boston-club.de/ergebnis/dchgralat2022/index.htm
-DC_HGR-A_LAT_2022.txt: www.boston-club.de/ergebnis/dchgralat2022/index.htm
+2022_DC_HGR-A_LAT.txt: www.boston-club.de/ergebnis/dchgralat2022/index.htm
 	$(runmesingle)
 
 .PHONY: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/0-dm_sen2sstd/index.htm
-DM_SENII_STD_2022.txt: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/0-dm_sen2sstd/index.htm
+2022_DM_SENII_STD.txt: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/0-dm_sen2sstd/index.htm
 	$(runmesingle)
 
 URL_2022_DSF.txt = https://ergebnisse.ggcbremen.de/2022-06-03.DSF/
-URL_BadBevensen_Pfingsten_2022.txt: www.tanzsport-biedermann.de/results/pfingsten22/index.html
-URL_BalSen_2022.txt: tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm
-URL_BlauesBand2022.txt: turniere.btc-gruen-gold.de/bb2022/index.htm
-URL_danceComp_2022.txt: ergebnisse.dancecomp.de/2022/index.htm
-URL_DM-DP_KIN-JUG_STD_2022.txt: www.htv.de/media/22_10_02/index.htm
-URL_DSF_2022.txt: ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm
-URL_Enzkloesterle_2022.txt: www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm
-URL_GLM_HGR_SENI_D-B_STD_2022.txt: tps.1sc-norderstedt-tsa.de/20220528/index.htm
-URL_GLM_KIN-JUG_LAT_2022.txt: www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
-URL_GLM_KIN-JUG_STD_2022.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
-URL_GLM_SEN_II_A-S_STD_2022.txt: tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
-URL_GLM_SEN_II+III_D-B_STD_2022.txt: www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
-URL_GLM_Sen_IV_und_Sen_V_2022.txt: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
-URL_HessenTanzt2022.txt: hessen-tanzt.de/media/ht2022/index.htm
+URL_2022_BadBevensen_Pfingsten.txt: www.tanzsport-biedermann.de/results/pfingsten22/index.html
+URL_2022_BalSen.txt: tanzen-in-sh.de/ergebnisse/2022/2022-06-18-19_BalticSenior/index.htm
+URL_2022_BlauesBand.txt: turniere.btc-gruen-gold.de/bb2022/index.htm
+URL_2022_danceComp.txt: ergebnisse.dancecomp.de/2022/index.htm
+URL_2022_DM-DP_KIN-JUG_STD.txt: www.htv.de/media/22_10_02/index.htm
+URL_2022_DSF.txt: ergebnisse.ggcbremen.de/2022-06-03.DSF/index.htm
+URL_2022_Enzkloesterle.txt: www.tbw.de/turnierergebnisse/2022/2022_07_30-31_Enzkloesterle/index.htm
+URL_2022_GLM_HGR_SENI_D-B_STD.txt: tps.1sc-norderstedt-tsa.de/20220528/index.htm
+URL_2022_GLM_KIN-JUG_LAT.txt: www.clubsaltatio.de/Ergebnisse/glmjugend2022/index.html
+URL_2022_GLM_KIN-JUG_STD.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2022/2022_glm_kin-jug_std/2022_glm_kin-jug_std/index.htm
+URL_2022_GLM_SEN_II_A-S_STD.txt: tsc-casino-oberalster.de/wp-content/uploads/turnierergebnisse/2022-05-07_GLM_Sen_II-A-S
+URL_2022_GLM_SEN_II+III_D-B_STD.txt: www.hatv.de/wrapper/2022/glm_sen-d-b-hsv
+URL_2022_GLM_Sen_IV_und_Sen_V.txt: tanzsport-glinde-ergebnisse.de/mediapool/Turniere-2022/GLM_Sen_IV_und_Sen_V/index.html
+URL_2022_HessenTanzt.txt: hessen-tanzt.de/media/ht2022/index.htm
