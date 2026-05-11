@@ -2,123 +2,39 @@
 2025_DM_HGR_STD.txt: tszdresden.de/ergebnisse/dm_standard_2025/0-dm_hgrsstd
 	$(runmesingle)
 
-.PHONY: saxoniandanceclassics.de/wp-content/uploads/archiv/sdc_2025/
-2025_SDC.txt: saxoniandanceclassics.de/wp-content/uploads/archiv/sdc_2025/ 
-	$(runme)
-
-.PHONY: turnierergebnisse.vflpi.de/Turniere-2025/2025-glm-std/
-2025_GLM_HGR_MasI_AS_STD.txt: turnierergebnisse.vflpi.de/Turniere-2025/2025-glm-std/
-	$(runme)
-
-.PHONY: turnierergebnisse.vflpi.de/Turniere-2025/2025-hgr-festivals/
-2025_HGR-Festivals.txt: turnierergebnisse.vflpi.de/Turniere-2025/2025-hgr-festivals/
-	$(runme)
-
 .PHONY: ltv-berlin.de/files/ltv/ergebnisse/2025/09_27_dm/0-dm_mas3sstd/
 2025_DM_MasIII_STD.txt: ltv-berlin.de/files/ltv/ergebnisse/2025/09_27_dm/0-dm_mas3sstd/
 	$(runmesingle)
-
-.PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-09-13-14_GLM_Nord-OT/
-2025_GLM_HGRII_MASIII-V_B-A_STD.txt: tanzen-in-sh.de/ergebnisse/2025/2025-09-13-14_GLM_Nord-OT/
-	$(runme)
 
 .PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-09-14_GLM-MasIIISStd/0-lm_mas3sstd/
 2025_GLM_MasIII_STD.txt: tanzen-in-sh.de/ergebnisse/2025/2025-09-14_GLM-MasIIISStd/0-lm_mas3sstd/
 	$(runmesingle)
 
-.PHONY: ergebnisse.dancecomp.de/2025/
-2025_danceComp.txt: ergebnisse.dancecomp.de/2025/
-	$(runme)
-
-.PHONY: tanzen-in-kiel.de/media/Turnierergebnisse/2025/KielPokal-2025/
-2025_KielPokal.txt: tanzen-in-kiel.de/media/Turnierergebnisse/2025/KielPokal-2025/
-	$(runme)
-
-.PHONY: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/2025_hatata_2025/
-2025_HaTaTa.txt: hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/2025_hatata_2025/
-	$(runme)
-
-.PHONY: www.gruen-weiss-aachen.de/files/ergebnisse/3LE-2025/3LE-2025/index.htm
-2025_RL-Aachen_HGR-LAT_MasI_IV_STD.txt: www.gruen-weiss-aachen.de/files/ergebnisse/3LE-2025/3LE-2025/index.htm
-	$(runme)
-
 .PHONY: tanzsportclub-frankfurt-oder.de/wp-content/uploads/TopTurnier/dm2025_mas2s_std/0-dm_mas2sstd
 2025_DM_MasII_STD.txt: tanzsportclub-frankfurt-oder.de/wp-content/uploads/TopTurnier/dm2025_mas2s_std/0-dm_mas2sstd
 	$(runmesingle)
 
-.PHONY: tanzsport-biedermann.de/results/pfingsten25/index.html
-2025_BadBevensenPfingsten.txt: tanzsport-biedermann.de/results/pfingsten25/index.html
-	$(runme)
-
-.PHONY: ergebnisse.ggcbremen.de/2025-06-06.DSF/
-2025_DSF.txt: ergebnisse.ggcbremen.de/2025-06-06.DSF/
-	$(runme)
-
-.PHONY: ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
-2025_RL_Fuerth.txt: ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
-	$(runme)
-
-.PHONY: hessen-tanzt.de/media/ht2025/index.htm
-2025_HessenTanzt.txt: hessen-tanzt.de/media/ht2025/index.htm
-	$(runme)
-
-.PHONY: turniere.btc-gruen-gold.de/bb2025/index.htm
-2025_BlauesBand.txt: turniere.btc-gruen-gold.de/bb2025/index.htm
-	$(runme)
-
-.PHONY: htv.de/media/25_03_15/index.htm
-2025_DM_Latein.txt: htv.de/media/25_03_15/index.htm
-	$(runme)
-
-.PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
-2025_JanuarRLs.txt: tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
-	$(runme)
-
-.PHONY: ergebnisse.ggcbremen.de/2024-05-31.DSF/
-2024_DSF.txt: ergebnisse.ggcbremen.de/2024-05-31.DSF/
-	$(runme)
-
-.PHONY: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/
-2023_DSF.txt: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/
-	$(runme)
-
-.PHONY: ergebnisse.ggcbremen.de/2022-06-03.DSF/
-2022_DSF.txt: ergebnisse.ggcbremen.de/2022-06-03.DSF/
-	$(runme)
-
-.PHONY: www.tvjahn-tanzt.de/wp-content/uploads/turnierergebnisse/glm_nord_latein/index.htm
-2025_GLM_HGRII_MASI-III_LAT.txt: www.tvjahn-tanzt.de/wp-content/uploads/turnierergebnisse/glm_nord_latein/index.htm
-	$(runme)
-
-.PHONY: www.hatv.de/wrapper/DM_Elmshorn/index.htm
-2025_DM_MasI-III_Kombi_MasII_U21_STD.txt: www.hatv.de/wrapper/DM_Elmshorn/index.htm 
-	$(runme)
-
-.PHONY: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
-2025_GLM_HgrMasI_D-B_STD.txt: files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
-	$(runme)
-
-.PHONY: blau-orange.de/wp-content/2025gcdc/index.htm
-2025_GCDC.txt: blau-orange.de/wp-content/2025gcdc/index.htm
-	$(runme)
-
-
-.PHONY: ergebnisse.tc-gold-und-silber.de/2025-03-08/
-2025_GBM_Kombi.txt: ergebnisse.tc-gold-und-silber.de/2025-03-08/
-	$(runme)
-
-.PHONY: www.hatv.de/wrapper/2025_GLM_MasII/index.html
-2025_GLM_MASII_BAS_STD.txt: www.hatv.de/wrapper/2025_GLM_MasII/index.html
-	$(runme)
-
-.PHONY: tanzen-in-sh.de/ergebnisse/2025/2025-02-22_GLM_MasIV_STD/
-2025_GLM_MASIV_STD.txt: tanzen-in-sh.de/ergebnisse/2025/2025-02-22_GLM_MasIV_STD/
-	$(runme)
-
-.PHONY: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2025/2025_glm_hgr_a_s_mas_s_lat/2025_glm_hgr_a%2Bs_mas_s_la/index.htm
-2025_GLM_HGR_MAS_AS_LAT.txt: www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2025/2025_glm_hgr_a_s_mas_s_lat/2025_glm_hgr_a%2Bs_mas_s_la/index.htm
-	$(runme)
-
-.PHONY: app.ceronne.de/ergebnisse/987_2025%20GLM%20Nord%20Kinder%20Jugend%20Latein/
-2025_GLM_Kin-Jug_LAT.txt: app.ceronne.de/ergebnisse/987_2025%20GLM%20Nord%20Kinder%20Jugend%20Latein/
-	$(runme)
+URL_2025_BadBevensenPfingsten.txt = https://tanzsport-biedermann.de/results/pfingsten25/index.html
+URL_2025_BlauesBand.txt = https://turniere.btc-gruen-gold.de/bb2025/index.htm
+URL_2025_danceComp.txt = https://ergebnisse.dancecomp.de/2025/
+URL_2025_DM_Latein.txt = https://htv.de/media/25_03_15/index.htm
+URL_2025_DM_MasI-III_Kombi_MasII_U21_STD.txt = https://www.hatv.de/wrapper/DM_Elmshorn/index.htm 
+URL_2025_DSF.txt = https://ergebnisse.ggcbremen.de/2025-06-06.DSF/
+URL_2025_GBM_Kombi.txt = https://ergebnisse.tc-gold-und-silber.de/2025-03-08/
+URL_2025_GCDC.txt = https://blau-orange.de/wp-content/2025gcdc/index.htm
+URL_2025_GLM_HGR_MAS_AS_LAT.txt = https://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2025/2025_glm_hgr_a_s_mas_s_lat/2025_glm_hgr_a%2Bs_mas_s_la/index.htm
+URL_2025_GLM_HGR_MasI_AS_STD.txt = https://turnierergebnisse.vflpi.de/Turniere-2025/2025-glm-std/
+URL_2025_GLM_HGRII_MASI-III_LAT.txt = https://www.tvjahn-tanzt.de/wp-content/uploads/turnierergebnisse/glm_nord_latein/index.htm
+URL_2025_GLM_HGRII_MASIII-V_B-A_STD.txt = https://tanzen-in-sh.de/ergebnisse/2025/2025-09-13-14_GLM_Nord-OT/
+URL_2025_GLM_HgrMasI_D-B_STD.txt = https://files.tc-hanseatic.de/ergebnisse/2025_glm_hgr_mas1_d_b_std/index.htm
+URL_2025_GLM_Kin-Jug_LAT.txt = https://app.ceronne.de/ergebnisse/987_2025%20GLM%20Nord%20Kinder%20Jugend%20Latein/
+URL_2025_GLM_MASII_BAS_STD.txt = https://www.hatv.de/wrapper/2025_GLM_MasII/index.html
+URL_2025_GLM_MASIV_STD.txt = https://tanzen-in-sh.de/ergebnisse/2025/2025-02-22_GLM_MasIV_STD/
+URL_2025_HaTaTa.txt = https://hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/2025_hatata_2025/
+URL_2025_HessenTanzt.txt = https://hessen-tanzt.de/media/ht2025/index.htm
+URL_2025_HGR-Festivals.txt = https://turnierergebnisse.vflpi.de/Turniere-2025/2025-hgr-festivals/
+URL_2025_JanuarRLs.txt = https://tanzen-in-sh.de/ergebnisse/2025/2025-01-18-19_RLs_MASI-IIV_HGR_STD_LAT/
+URL_2025_KielPokal.txt = https://tanzen-in-kiel.de/media/Turnierergebnisse/2025/KielPokal-2025/
+URL_2025_RL_Fuerth.txt = https://ergebnisse.rot-gold-casino.de/2025-05-31_RL_Mas_III_und_Hgr_Std/
+URL_2025_RL-Aachen_HGR-LAT_MasI_IV_STD.txt = https://www.gruen-weiss-aachen.de/files/ergebnisse/3LE-2025/3LE-2025/index.htm
+URL_2025_SDC.txt = https://saxoniandanceclassics.de/wp-content/uploads/archiv/sdc_2025/ 
