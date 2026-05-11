@@ -33,7 +33,7 @@ $(ALL_POSSIBLE_TXT):
 	@# 2. Die URL für das aktuelle Target dynamisch auflösen
 	$(eval CURRENT_URL := $(URL_$@))
 	@URL="$(CURRENT_URL)"; \
-	HASH_FILE="$(HASH_DIR)/.$(notdir $@).sha256"; \
+	HASH_FILE="$(HASH_DIR)/.$(@F:.txt=.sha256)"; \
 	\
 	if [ -z "$$URL" ]; then \
 		echo "Error: No URL defined for $@ (Variable URL_$@ is empty)"; \
