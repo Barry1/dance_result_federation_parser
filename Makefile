@@ -2,11 +2,63 @@ MAKEFLAGS += --always-make --jobs --max-load=3 --output-sync=target
 include Makefile.competitions
 .PHONY: all pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns pyright pylyze pipdeptree formatting clean test
 
+# --- Konfiguration ---
+PYTHON_SCRIPT = ./dance_result_federation_parser.py
+PYTHON_CALL = poetry run python -OO $(PYTHON_SCRIPT)
+HASH_DIR = .hashes
+# --- AUTO-COMPLETION ---
+# 1. Wir extrahieren alle Dateinamen aus den URL-Definitionen aller Makefiles
+# Das Ergebnis ist eine Liste wie: 2026_HessenTanzt.txt 2025_Andere.txt
+ALL_POSSIBLE_TXT = $(shell grep -h "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/^URL_\(.*\) =.*/\1/' | sort | uniq)
+
+# 2. Wir definieren diese Dateien als explizite Ziele, aber ohne eigene Befehle.
+# Dadurch "sieht" die Bash-Completion diese Targets.
+# Die eigentliche Arbeit erledigt weiterhin die Pattern-Rule %.txt:
+$(ALL_POSSIBLE_TXT):
+# --- AUTO-COMPLETION ---
+
+
+
+
+
+
+
+
+%.txt:
+	@# 1. Sicherstellen, dass das Hash-Verzeichnis existiert
+	@mkdir -p $(HASH_DIR)
+	
+	@# 2. Die URL für das aktuelle Target dynamisch auflösen
+	$(eval CURRENT_URL := $(URL_$@))
+	@URL="$(CURRENT_URL)"; \
+	HASH_FILE="$(HASH_DIR)/.$(notdir $@).sha256"; \
+	\
+	if [ -z "$$URL" ]; then \
+		echo "Error: No URL defined for $@ (Variable URL_$@ is empty)"; \
+		exit 1; \
+	fi; \
+	\
+	CURRENT_HASH=$$(curl -s "$$URL" | sha256sum | cut -d' ' -f1); \
+	\
+	if [ -f "$$HASH_FILE" ] && [ "$$CURRENT_HASH" = "$$(cat $$HASH_FILE)" ] && [ -f $@ ]; then \
+		echo "No changes for $@. Skipping..."; \
+	else \
+		echo "Change detected or file missing. Updating $@..."; \
+		echo "$$CURRENT_HASH" > $$HASH_FILE; \
+		$(PYTHON_CALL) "$$URL" > $@; \
+	fi
+
 #<https://stackoverflow.com/questions/4219255/how-do-you-get-the-list-of-targets-in-a-makefile/26339924#26339924>
 .PHONY: list
 list:
-	@LC_ALL=C $(MAKE) -pRrq -f $(firstword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/(^|\n)# Files(\n|$$)/,/(^|\n)# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | grep -E -v -e '^[^[:alnum:]]' -e '^$@$$'
-
+	@#LC_ALL=C $(MAKE) -pRrq -f $(firstword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/(^|\n)# Files(\n|$$)/,/(^|\n)# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | grep -E -v -e '^[^[:alnum:]]' -e '^$@$$'
+	@#echo "Erzeugbare .txt-Dateien (mit definierter URL):"
+	@# Wir nutzen 'grep', um im aktuellen Makefile (und ggf. include-Dateien) 
+	@# alle Zeilen zu finden, die mit 'URL_' beginnen und auf '.txt' enden.
+	@# Dann extrahieren wir den Variablennamen und entfernen das 'URL_' Präfix.
+	@grep -r "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/.*URL_\(.*\) =.*/\1/' | sort | uniq
+	@#echo ""
+	@#echo "Tipp: Nutzen Sie 'make <dateiname>.txt', um eine Datei zu erzeugen."
 #OBJS=dtvprocessing.py dance_result_federation_parser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
 OBJS=$(shell git ls-files *.py *.pyi)
 
