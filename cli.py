@@ -5,8 +5,8 @@ drfparser = ArgumentParser(
     prog="drfp", description="Dance Result Federation Parser", epilog="epi"
 )
 drfparser.add_argument("URL", type=str)
-drfparser.add_argument("-s", "--single", type=bool, default=False)
-drfparser.add_argument("-v", "--verbose", type=bool, default=False)
+drfparser.add_argument("-s", "--single", type=bool, default=False, action="store_true")
+drfparser.add_argument("-v", "--verbose", type=bool, default=False, action="store_true")
 drfparser.add_argument(
     "-f", "--format", type=str, choices=["JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"]
 )
@@ -20,6 +20,8 @@ def main() -> None:
     if args.format:
         _ConfigDict["RESULTFORMAT"] = args.format
     print(_ConfigDict)
+    if args.single:
+        print("single")
 
 
 if __name__ == "__main__":
