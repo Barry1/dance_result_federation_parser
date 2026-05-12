@@ -18,10 +18,17 @@ dependencies = [
   "valuefragments @ git+https://github.com/Barry1/PyValueFragments.git",
   "zstandard>=0.25",
 ]
+[tool.setuptools]
+py-modules = ["cli","configprocessing"]
+#[tool.setuptools.packages.find]
+#where = ["."]
+[project.scripts]
+# drfp = "dance_result_federation_parser.cli:main"
+drfp = "cli:main"
 
 [build-system]
-requires = ["uv_build>=0.11.6,<0.12.0"]
-build-backend = "uv_build"
+requires = ["setuptools>=80.0"]
+build-backend = "setuptools.build_meta"
 
 # Learn more at <https://github.com/carlosperate/awesome-pyproject>
 # Cool info <https://blog.pilosus.org/posts/2019/12/26/python-third-party-tools-configuration/>
