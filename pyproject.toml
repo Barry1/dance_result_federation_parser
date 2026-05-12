@@ -19,7 +19,7 @@ dependencies = [
   "zstandard>=0.25",
 ]
 [tool.setuptools]
-py-modules = ["cli","configprocessing"]
+py-modules = ["cli","configprocessing","dance_result_federation_parser","dtvprocessing","stringprocessing","presentationlayer","topturnierprocessing","esvprocessing","sqlitedatabase","tpsprocessing"]
 #[tool.setuptools.packages.find]
 #where = ["."]
 [project.scripts]
