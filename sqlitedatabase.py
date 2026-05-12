@@ -13,8 +13,9 @@ from valuefragments import portable_timing
 from configprocessing import setuplogger
 
 thelogger: logging.Logger = setuplogger()
-
-DATABASE_FILENAME = f"DanceCouplesData{sep}couples_clubs_federations.sqlite3"
+DATABASE_FILENAME = (
+    __file__[:-17] + "DanceCouplesData" + sep + "couples_clubs_federations.sqlite3"
+)
 
 CREATE_TABLES_STATEMENT: str = dedent(
     """\
@@ -231,4 +232,5 @@ def cpltobasecpl() -> None:
 if __name__ == "__main__":
     # create_structure()
     # create_clubs()
-    cpltobasecpl()
+    # cpltobasecpl()
+    print(__file__[:-17])
