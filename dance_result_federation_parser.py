@@ -6,6 +6,10 @@ urllib.request für https nötig
 https://www.w3schools.com/xml/xpath_syntax.asp
 """
 
+import sys
+
+if hasattr(sys, "set_lazy_imports"):
+    sys.set_lazy_imports("all")
 import asyncio
 import logging
 from collections.abc import Callable
