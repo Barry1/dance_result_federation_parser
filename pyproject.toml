@@ -20,11 +20,14 @@ dependencies = [
 ]
 [tool.setuptools]
 py-modules = ["cli","configprocessing","dance_result_federation_parser","dtvprocessing","stringprocessing","presentationlayer","topturnierprocessing","esvprocessing","sqlitedatabase","tpsprocessing"]
-#[tool.setuptools.packages.find]
-#where = ["."]
+[tool.setuptools.packages.find]
+where = ["."]
 [tool.setuptools.package-data]
-#"*" = ["DanceCouplesData/couples_clubs_federations.sqlite3"]
 "*" = ["*.sqlite3"]
+#"*" = ["DanceCouplesData/couples_clubs_federations.sqlite3"]
+#".DanceCouplesData" = ["*.sqlite3"]
+#"*.DanceCouplesData" = ["*.sqlite3"]
+#DanceCouplesData = ["*.sqlite3"]
 [project.scripts]
 drfp = "cli:main"
 

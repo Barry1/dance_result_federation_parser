@@ -11,7 +11,7 @@ import logging
 from collections.abc import Callable
 from contextlib import contextmanager, nullcontext
 from functools import partial
-from typing import Any, Generator
+from typing import Any, Generator, Literal
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
@@ -190,6 +190,34 @@ def pyannotatecontext() -> Generator[None, Any, None]:
     yield
     collect_types.stop()
     collect_types.dump_stats("type_info.json")
+
+
+class DanceResultFederationParser:
+    """Dance Result Federation Parser main class."""
+
+    _ConfigDict: MyConfigT
+
+    def __init__(self) -> None:
+        self._ConfigDict = readconfig()
+
+    @property
+    def RESULTFORMAT(self) -> str:
+        """Get the result format."""
+        return self._ConfigDict["RESULTFORMAT"]
+
+    @RESULTFORMAT.setter
+    def RESULTFORMAT(
+        self, value: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"]
+    ) -> None:
+        """Set the result format."""
+        self._ConfigDict["RESULTFORMAT"] = value
+
+    def parse(self, url: str) -> None:
+        """Parse the given URL."""
+        if self._ConfigDict["RUN_ASYNC"]:
+            asyncio.run(async_eventurl_to_web(url), debug=__debug__)
+        else:
+            eventurl_to_web(url)
 
 
 if __name__ == "__main__":
