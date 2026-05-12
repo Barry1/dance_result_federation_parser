@@ -2,6 +2,7 @@
 
 import asyncio
 from argparse import ArgumentParser, Namespace
+
 from configprocessing import MyConfigT, readconfig
 from dance_result_federation_parser import (
     DanceResultFederationParser,
@@ -33,13 +34,13 @@ def main() -> None:
     """Main function for the command line interface."""
     DRFP = DanceResultFederationParser()
     args: Namespace = cliParserArgs()
-    #print(args)
+    # print(args)
     # _unneeded = get_dtv_df().sort_index().loc[403:406]
     if args.format:
         DRFP.RESULTFORMAT = args.format.upper()
-    #print(DRFP._ConfigDict)
+    # print(DRFP._ConfigDict)
     if args.single:
-        print("single")
+        DRFP.parsesingle(args.URL)
     else:
         DRFP.parse(args.URL)
 

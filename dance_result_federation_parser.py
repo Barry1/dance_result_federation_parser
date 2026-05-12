@@ -219,6 +219,16 @@ class DanceResultFederationParser:
         else:
             eventurl_to_web(url)
 
+    def parsesingle(self, theurl: str) -> None:
+        """Parse the given URL."""
+        presentation_function(
+            theurl,
+            [theurl],
+            [interpret_tt_result(theurl)],
+            ["Turniername"],
+            self._ConfigDict,
+        )
+
 
 if __name__ == "__main__":
     # execute only if run as a script
