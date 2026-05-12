@@ -1,7 +1,13 @@
-from argparse import ArgumentParser
-from configprocessing import MyConfigT, readconfig
-from dance_result_federation_parser import async_eventurl_to_web, eventurl_to_web
+"""Command line interface for Dance Result Federation Parser."""
+
 import asyncio
+from argparse import ArgumentParser
+
+from configprocessing import MyConfigT, readconfig
+from dance_result_federation_parser import (
+    async_eventurl_to_web,
+    eventurl_to_web,
+)
 
 drfparser = ArgumentParser(
     prog="drfp", description="Dance Result Federation Parser", epilog="epi"
@@ -19,6 +25,7 @@ drfparser.add_argument("-o", "--output", type=str)
 
 
 def main() -> None:
+    """Main function for the command line interface."""
     _ConfigDict: MyConfigT = readconfig()
     args = drfparser.parse_args()
     print(args)
