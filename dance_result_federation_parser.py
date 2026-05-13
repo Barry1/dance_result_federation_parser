@@ -8,15 +8,15 @@ https://www.w3schools.com/xml/xpath_syntax.asp
 
 import sys
 
-if hasattr(sys, "set_lazy_imports"):
+# if hasattr(sys, "set_lazy_imports"):
+if sys.version_info >= (3, 15):
     sys.set_lazy_imports("all")
 import asyncio
 import logging
-from collections.abc import Callable
+from collections.abc import Callable, Generator
 from contextlib import contextmanager, nullcontext
 from functools import partial
 from typing import Any, Literal
-from collections.abc import Generator
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
@@ -203,6 +203,7 @@ class DanceResultFederationParser:
     _ConfigDict: MyConfigT
 
     def __init__(self) -> None:
+        """Initialize the parser with the configuration."""
         self._ConfigDict = readconfig()
 
     @property
