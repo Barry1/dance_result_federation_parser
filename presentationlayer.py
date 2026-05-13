@@ -82,14 +82,14 @@ def print_joomla(
             print("<!--")  # Beginning of Comment
             print(tournhdr)
             print(
-                f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>"
+                f"<p>Leider ohne {cfg_dict.THEFEDERATION}-Beteiligung.</p>"
             )
             print("-->")  # End of Comment
         else:
             print(tournhdr)
-            if cfg_dict["IMG_PREP"]:
+            if cfg_dict.IMG_PREP:
                 print_img_placeholder()
-            if cfg_dict["RESULTTABLE"]:
+            if cfg_dict.RESULTTABLE:
                 print("<table>")
                 print(
                     "<thead><tr><th>&nbsp;</th>",
@@ -158,7 +158,7 @@ def print_markdown(
     print(
         "Hier folgend die Ergebnisse ",
         "(nach Verfügbarkeit fortlaufend gepflegt) ",
-        f"der {cfg_dict['THEFEDERATION']}-Paare.",
+        f"der {cfg_dict.THEFEDERATION}-Paare.",
         sep="",
     )
     for actreslink, value, turnier_info in zip(
