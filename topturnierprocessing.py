@@ -147,6 +147,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
         # erg_df = erg_df[ergdfgeridxs]
         thelogger.debug("reduced to German couples to %s", erg_df)
         cpldf = couple_club_federation()
+        thelogger.debug("Using couple_club_federation %s", cpldf)
         erg_df.rename(columns={"Verein": "Land"}, inplace=True)
         cpldf.rename(columns={"Name": "Verein"}, inplace=True)
         return erg_df.merge(cpldf, on="Paar", how="inner")
