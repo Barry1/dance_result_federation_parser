@@ -10,7 +10,9 @@ import sys
 
 # if hasattr(sys, "set_lazy_imports"):
 if sys.version_info >= (3, 15):
+    # pylint: disable=no-member"
     sys.set_lazy_imports("all")
+# pylint: disable=wrong-import-position"
 import asyncio
 import logging
 from collections.abc import Callable, Generator
@@ -188,8 +190,8 @@ __all__: list[str] = ["interpret_tt_result", "presentation_function"]
 @contextmanager
 def pyannotatecontext() -> Generator[None, Any, None]:
     """Context manager for pyannotate."""
+    # pylint: disable=import-outside-toplevel
     from pyannotate_runtime import collect_types
-
     collect_types.init_types_collection()
     collect_types.start()
     yield
@@ -200,27 +202,27 @@ def pyannotatecontext() -> Generator[None, Any, None]:
 class DanceResultFederationParser:
     """Dance Result Federation Parser main class."""
 
-    _ConfigDict: MyConfigT
+    _config_dict: MyConfigT
 
     def __init__(self) -> None:
         """Initialize the parser with the configuration."""
-        self._ConfigDict = readconfig()
+        self._config_dict = readconfig()
 
     @property
     def RESULTFORMAT(self) -> str:
         """Get the result format."""
-        return self._ConfigDict["RESULTFORMAT"]
+        return self._config_dict["RESULTFORMAT"]
 
     @RESULTFORMAT.setter
     def RESULTFORMAT(
         self, value: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"]
     ) -> None:
         """Set the result format."""
-        self._ConfigDict["RESULTFORMAT"] = value
+        self._config_dict["RESULTFORMAT"] = value
 
     def parse(self, url: str) -> None:
         """Parse the given URL."""
-        if self._ConfigDict["RUN_ASYNC"]:
+        if self._config_dict["RUN_ASYNC"]:
             asyncio.run(async_eventurl_to_web(url), debug=__debug__)
         else:
             eventurl_to_web(url)
@@ -232,7 +234,7 @@ class DanceResultFederationParser:
             [theurl],
             [interpret_tt_result(theurl)],
             ["Turniername"],
-            self._ConfigDict,
+            self._config_dict,
         )
 
 

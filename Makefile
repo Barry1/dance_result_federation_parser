@@ -172,7 +172,7 @@ monkeytypeapply:
 	for a in `poetry run monkeytype list-modules` ; do poetry run monkeytype apply $a ; done
 
 pylint:
-	-poetry run pylint $(OBJS)
+	-poetry run pylint --py-version 3.12 $(OBJS)
 
 mypy:
 	-poetry run mypy --install-types --non-interactive $(OBJS)
