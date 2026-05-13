@@ -36,7 +36,14 @@ def setuplogger() -> logging.Logger:
 
 
 class AppConfig(BaseModel):
-    """This class holds the Pydantic-Type-Definition for the configuration file."""
+    """This class holds the Pydantic-Type-Definition for the configuration."""
+
+    # Hints for Pydantic
+    # https://pydantic.dev/docs/validation/latest/get-started/
+    # https://medium.com/@marcnealer/a-practical-guide-to-using-pydantic-8aafa7feebf6
+    # https://archive.today/Ldxhe
+    # https://realpython.com/python-pydantic/
+    # https://archive.today/D9q1A
 
     CHECKINGURLS: list[HttpUrl] = Field(default_factory=list)
     HEADLINELINKS: bool = False
