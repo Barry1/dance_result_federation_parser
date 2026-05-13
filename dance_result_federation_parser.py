@@ -15,7 +15,8 @@ import logging
 from collections.abc import Callable
 from contextlib import contextmanager, nullcontext
 from functools import partial
-from typing import Any, Generator, Literal
+from typing import Any, Literal
+from collections.abc import Generator
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
