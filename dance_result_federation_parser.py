@@ -33,9 +33,9 @@ from pandas import DataFrame
 from pandas import set_option as pandas_set_option
 
 # from strictly_typed_pandas import DataSet as DataFrame
-from valuefragments import run_grouped
+from valuefragments import run_grouped,setuplogger
 
-from configprocessing import AppConfig, readconfig, setuplogger
+from configprocessing import AppConfig, readconfig
 from dtvprocessing import get_dtv_df
 from presentationlayer import presentation_function
 from stringprocessing import og_human_comp_info, sr_human_comp_info
@@ -46,7 +46,7 @@ from topturnierprocessing import (
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
-thelogger: logging.Logger = setuplogger()
+thelogger: logging.Logger = setuplogger("resultParser")
 _ConfigDict: AppConfig = readconfig()
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 # pandas_set_option("mode.copy_on_write", True)

@@ -2,15 +2,15 @@
 
 import logging
 
-from configprocessing import readconfig, setuplogger, AppConfig
+from configprocessing import readconfig, AppConfig
+from valuefragments import setuplogger
 from dance_result_federation_parser import interpret_tt_result
 from presentationlayer import presentation_function
 
-thelogger: logging.Logger = setuplogger()
 _ConfigDict: AppConfig = readconfig()
 if __name__ == "__main__":
     import sys
-
+    thelogger: logging.Logger = setuplogger("singleResultParser")
     if len(sys.argv) > 1:
         for theurl in sys.argv[1:]:
             thelogger.info("Auswertung von %s", theurl)

@@ -4,36 +4,7 @@ import logging
 import tomllib
 from typing import Literal
 from pydantic import BaseModel, Field, EmailStr, HttpUrl
-
 LOGGERNAME = "resultParser"
-
-
-def setuplogger() -> logging.Logger:
-    """Setup Logging environment."""
-    thelogger: logging.Logger = logging.getLogger(LOGGERNAME)
-    # https://docs.python.org/3/library/logging.html#logrecord-attributes
-    if not thelogger.hasHandlers():
-        logformatter: logging.Formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
-        logfilehandler: logging.FileHandler = logging.FileHandler(
-            f"{LOGGERNAME}.log"
-        )
-        logfilehandler.setFormatter(logformatter)
-        thelogger.addHandler(logfilehandler)
-        if __debug__:
-            thelogger.setLevel(logging.DEBUG)
-        else:
-            thelogger.setLevel(logging.INFO)
-        # thelogger.log(logging.INFO,thelogger.getEffectiveLevel())
-        thelogger.info(
-            "Logging handler configured in process %i / thread %i",
-            __import__("os").getpid(),
-            __import__("threading").get_native_id(),
-        )
-        thelogger.debug("%s", __import__("traceback").format_stack())
-    return thelogger
-
 
 class AppConfig(BaseModel):
     """This class holds the Pydantic-Type-Definition for the configuration."""
