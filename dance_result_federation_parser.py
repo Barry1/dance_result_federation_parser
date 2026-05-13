@@ -209,12 +209,12 @@ class DanceResultFederationParser:
         self._config_dict = readconfig()
 
     @property
-    def RESULTFORMAT(self) -> str:
+    def result_format(self) -> str:
         """Get the result format."""
         return self._config_dict["RESULTFORMAT"]
 
-    @RESULTFORMAT.setter
-    def RESULTFORMAT(
+    @result_format.setter
+    def result_format(
         self, value: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"]
     ) -> None:
         """Set the result format."""
@@ -227,12 +227,12 @@ class DanceResultFederationParser:
         else:
             eventurl_to_web(url)
 
-    def parsesingle(self, theurl: str) -> None:
+    def parsesingle(self, single_competition_url: str) -> None:
         """Parse the given URL."""
         presentation_function(
-            theurl,
-            [theurl],
-            [interpret_tt_result(theurl)],
+            single_competition_url,
+            [single_competition_url],
+            [interpret_tt_result(single_competition_url)],
             ["Turniername"],
             self._config_dict,
         )
@@ -250,8 +250,9 @@ if __name__ == "__main__":
         # <https://docs.python.org/3/library/asyncio-sync.html>
         # zu lösen
         for theurl in (
-            theargv[1:]
-            if len(theargv := __import__("sys").argv) > 1
+            sys.argv[1:]
+            #if len(theargv := __import__("sys").argv) > 1
+            if len(sys.argv) > 1
             else _ConfigDict["CHECKINGURLS"]
         ):
             thelogger.info("Auswertung von %s", theurl)

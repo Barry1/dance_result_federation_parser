@@ -30,7 +30,7 @@ def main() -> None:
     # print(args)
     # _unneeded = get_dtv_df().sort_index().loc[403:406]
     if args.format:
-        da_re_fe_pa.RESULTFORMAT = args.format.upper()
+        da_re_fe_pa.result_format = args.format.upper()
     # print(da_re_fe_pa._ConfigDict)
     if args.single:
         da_re_fe_pa.parsesingle(args.URL)
