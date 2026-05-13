@@ -13,8 +13,12 @@ def cli_parser_args() -> Namespace:
         epilog="Good luck!",
     )
     da_re_fe_parser.add_argument("URL", type=str)
-    da_re_fe_parser.add_argument("-s", "--single", default=False, action="store_true")
-    da_re_fe_parser.add_argument("-v", "--verbose", default=False, action="store_true")
+    da_re_fe_parser.add_argument(
+        "-s", "--single", default=False, action="store_true"
+    )
+    da_re_fe_parser.add_argument(
+        "-v", "--verbose", default=False, action="store_true"
+    )
     da_re_fe_parser.add_argument(
         "-f",
         "--format",

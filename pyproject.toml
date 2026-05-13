@@ -45,7 +45,8 @@ in-place = true
 recursive = true
 jobs = 0
 ignore = ["E203"]
-
+[tool.ruff]
+line-length = 79
 [dependency-groups]
 dev = [
   "colorama>=0.4.6",

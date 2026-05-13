@@ -50,7 +50,9 @@ def sr_human_comp_info(turnier_info: str) -> str:
     firstpos: int = turnier_info.rfind("/", 0, lastpos) + 1
     turnier_info = turnier_info[firstpos:lastpos]
     comp_desc: str
-    [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split("_", 2)
+    [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split(
+        "_", 2
+    )
     comp_desc = comp_desc.upper()
     comp_desc = comp_desc.replace("U21", "UnderTwentyOne ")
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")

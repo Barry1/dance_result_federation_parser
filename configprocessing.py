@@ -16,7 +16,9 @@ def setuplogger() -> logging.Logger:
         logformatter: logging.Formatter = logging.Formatter(
             "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
         )
-        logfilehandler: logging.FileHandler = logging.FileHandler(f"{LOGGERNAME}.log")
+        logfilehandler: logging.FileHandler = logging.FileHandler(
+            f"{LOGGERNAME}.log"
+        )
         logfilehandler.setFormatter(logformatter)
         thelogger.addHandler(logfilehandler)
         if __debug__:
@@ -60,7 +62,9 @@ class AppConfig(BaseModel):
         "TVSA",
         "TTSV",
     ] = "TSH"
-    RESULTFORMAT: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"] = "MARKDOWN"
+    RESULTFORMAT: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"] = (
+        "MARKDOWN"
+    )
     INFORMEMAIL: EmailStr = "iyslyier@anonaddy.me"
 
 
@@ -74,5 +78,5 @@ def readconfig() -> AppConfig:
         thelogger.info("No file config.toml found, using defaults.")
         return AppConfig()
     except Exception as e:
-        thelogger.error(f"Configuration error: {e}")
+        thelogger.error("Configuration error: %s", e)
         raise
