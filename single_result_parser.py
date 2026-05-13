@@ -2,12 +2,12 @@
 
 import logging
 
-from configprocessing import MyConfigT, readconfig, setuplogger
+from configprocessing import readconfig, setuplogger, AppConfig
 from dance_result_federation_parser import interpret_tt_result
 from presentationlayer import presentation_function
 
 thelogger: logging.Logger = setuplogger()
-_ConfigDict: MyConfigT = readconfig()
+_ConfigDict: AppConfig = readconfig()
 if __name__ == "__main__":
     import sys
 

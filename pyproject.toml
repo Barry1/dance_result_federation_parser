@@ -1,6 +1,6 @@
 [project]
 name = "dance_result_federation_parser"
-version = "0.3.3"
+version = "0.3.4"
 description = ""
 requires-python = ">=3.12,<4.0"
 classifiers = [

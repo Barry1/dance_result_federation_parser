@@ -4,12 +4,13 @@ from joblib import Parallel, delayed
 from pandas import DataFrame
 from valuefragments import getselectedhreflinks
 
-from configprocessing import MyConfigT, readconfig  # , setuplogger
+
+from configprocessing import readconfig, AppConfig  # , setuplogger
 from presentationlayer import print_wordpress as presentation_function
 from stringprocessing import sr_human_comp_info as human_comp_info
 from topturnierprocessing import interpret_tt_result as the_interpret_fun
 
-_ConfigDict: MyConfigT = readconfig()
+_ConfigDict: AppConfig = readconfig()
 if __name__ == "__main__":
     import sys
 

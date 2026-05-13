@@ -81,9 +81,7 @@ def print_joomla(
         if value[value.Verband == cfg_dict.THEFEDERATION].empty:
             print("<!--")  # Beginning of Comment
             print(tournhdr)
-            print(
-                f"<p>Leider ohne {cfg_dict.THEFEDERATION}-Beteiligung.</p>"
-            )
+            print(f"<p>Leider ohne {cfg_dict.THEFEDERATION}-Beteiligung.</p>")
             print("-->")  # End of Comment
         else:
             print(tournhdr)

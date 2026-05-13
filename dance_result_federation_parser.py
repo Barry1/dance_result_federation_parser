@@ -251,7 +251,7 @@ class DanceResultFederationParser:
 
 if __name__ == "__main__":
     # execute only if run as a script
-    with pyannotatecontext() if _ConfigDict["PYANNOTATE"] else nullcontext():
+    with pyannotatecontext() if _ConfigDict.PYANNOTATE else nullcontext():
         # Besonders nötig, damit bei ASYNC nur einmal
         # ggf. die DTV-Vereinliste aktualisiert wird
         thelogger.info(get_dtv_df().sort_index().loc[403:406])
@@ -264,10 +264,10 @@ if __name__ == "__main__":
             sys.argv[1:]
             # if len(theargv := __import__("sys").argv) > 1
             if len(sys.argv) > 1
-            else _ConfigDict["CHECKINGURLS"]
+            else [x.encoded_string() for x in _ConfigDict.CHECKINGURLS]
         ):
             thelogger.info("Auswertung von %s", theurl)
-            if _ConfigDict["RUN_ASYNC"]:
+            if _ConfigDict.RUN_ASYNC:
                 asyncio.run(async_eventurl_to_web(theurl), debug=__debug__)
             else:
                 eventurl_to_web(theurl)

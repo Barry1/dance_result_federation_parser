@@ -3,7 +3,7 @@
 import logging
 import tomllib
 from typing import Literal
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field, EmailStr, HttpUrl
 
 LOGGERNAME = "resultParser"
 
@@ -36,7 +36,9 @@ def setuplogger() -> logging.Logger:
 
 
 class AppConfig(BaseModel):
-    CHECKINGURLS: list[str] = Field(default_factory=list)
+    """This class holds the Pydantic-Type-Definition for the configuration file."""
+
+    CHECKINGURLS: list[HttpUrl] = Field(default_factory=list)
     HEADLINELINKS: bool = False
     IMG_PREP: bool = False
     ESVCOUPLES: bool = False
