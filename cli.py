@@ -8,7 +8,7 @@ from dance_result_federation_parser import DanceResultFederationParser
 def cli_parser_args() -> Namespace:
     """Return the parsed command line arguments."""
     da_re_fe_parser = ArgumentParser(
-        prog="da_re_fe_pa",
+        prog="drfp",
         description="Dance Result Federation Parser",
         epilog="Good luck!",
     )

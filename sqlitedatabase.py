@@ -9,6 +9,7 @@ from typing import Any  # inspect.cleandoc
 from pandas import DataFrame, read_sql_query
 from valuefragments import portable_timing
 from configprocessing import LOGGERNAME
+
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 DATABASE_FILENAME = (
     __file__[:-17]

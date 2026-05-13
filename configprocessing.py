@@ -4,7 +4,9 @@ import logging
 import tomllib
 from typing import Literal
 from pydantic import BaseModel, Field, EmailStr, HttpUrl
+
 LOGGERNAME = "resultParser"
+
 
 class AppConfig(BaseModel):
     """This class holds the Pydantic-Type-Definition for the configuration."""

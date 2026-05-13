@@ -80,6 +80,7 @@ def tt_trndmntdatefrom(reqget: Response) -> dict[str, str]:
 
 def tt_from_erg(theresultresponse: Response) -> DataFrame:
     """Process erg.html from TopTurnier resultpage - as request-Response"""
+    thelogger.debug("tt_from_erg Aufruf mit %s", theresultresponse)
     try:
         tab1tbl: list[DataFrame] = read_html(
             StringIO(theresultresponse.text.replace("<BR>", "</td><td>")),
@@ -94,6 +95,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
             theresultresponse,
         )
         return DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
+    thelogger.debug("succesful extracted tab1tbl %s", tab1tbl)
     erg_df: DataFrame
     try:
         tab2tbl: list[DataFrame] = read_html(
@@ -101,15 +103,15 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
             flavor="lxml",
             attrs={"class": "tab2"},
         )
-    except ValueError:
+    except ValueError as ve:
+        thelogger.debug("ValueError %s bei tab2tbl. Sometimes expected", ve)
         erg_df = concat(tab1tbl)
         # Zeilen mit ungültigen Plätzen, Namen, Vereinen löschen
         erg_df.dropna(axis=0, subset=erg_df.columns[:3], inplace=True)
         # Spalten mit ungültigen Einträgen (Wertungsteile) löschen
         erg_df.dropna(axis=1, inplace=True)
         erg_df = erg_df.iloc[:, [0, -2, -1]]
-        thelogger.debug("Within ValueError %s", "Zeile 106")
-        thelogger.debug("%s", theresultresponse.text)
+        thelogger.debug("Using just tbl1 %s", erg_df)
     except Exception as e:
         thelogger.error("An error occurred: %s", e)  # exc_info = e
         thelogger.error(
@@ -132,20 +134,22 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
     erg_df = erg_df.set_axis(
         labels=["Platz", "Paar", "Verein"], axis="columns"
     )
-
     # Nur Zeilen behalten, bei denen ein "." im Platz ist
     erg_df = erg_df[["." in zeile for zeile in erg_df.Platz]]
     erg_df.loc[:, "Paar"] = erg_df.Paar.map(clean_number_from_couple)
     erg_df.loc[:, "Verein"] = erg_df.Verein.map(cleanevfromentry)
+    thelogger.debug("cleaned to %s", erg_df)
     cpldf: DataFrame
     if (ergdfgeridxs := erg_df.Verein == "Germany").any():
         # international competition, no club name
-        erg_df = erg_df[ergdfgeridxs]
+        # DO NOT reduce to only entries with GERMANY, sometimes a mixture
+        # For example Hessen Tanzt 2026 WDSF Open Senioren II S Standard
+        # erg_df = erg_df[ergdfgeridxs]
+        thelogger.debug("reduced to German couples to %s", erg_df)
         cpldf = couple_club_federation()
         erg_df.rename(columns={"Verein": "Land"}, inplace=True)
         cpldf.rename(columns={"Name": "Verein"}, inplace=True)
         return erg_df.merge(cpldf, on="Paar", how="inner")
-
     # thelogger.debug("%s", erg_df)
     # erg_df['ordercol']=erg_df['Platz'].apply(lambda x:int(x[:x.find('.')]))
     # erg_df=erg_df.sort_values(by='ordercol').drop('ordercol', axis=1)
@@ -156,6 +160,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
         cpldf = get_couples_df()
         cpldf["Verband"] = "NAMEDCOUPLE"
         return erg_df.merge(cpldf, on="Paar", how="inner")
+    thelogger.debug("Merging with DTV data")
     return erg_df.merge(get_dtv_df(autoupdate=False), on="Verein", how="left")
 
 
@@ -173,7 +178,7 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     ergurlresponse: Response = requests_get(
         theresulturl, timeout=MY_TIMEOUT, headers={"User-agent": "Mozilla"}
     )
-    # thelogger.debug("hier %s",ergurlresponse)
+    thelogger.debug("hier %s", ergurlresponse)
     if ergurlresponse.ok:
         thedatedict: dict[str, str] = tt_trndmntdatefrom(ergurlresponse)
         thelogger.debug("Veranstaltungsdatum %s", thedatedict)
@@ -205,6 +210,8 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
         thelogger.info("Veranstaltungsdatum %s", tournamentdate)
         try:
             ret_df = tt_from_erg(ergurlresponse)
+            thelogger.debug("BASTI IST HIER")
+            thelogger.debug("%s", ret_df)
             # ret_df = tt_from_erg_url(theresulturl)
         except HTTPError as http_error:
             thelogger.warning(

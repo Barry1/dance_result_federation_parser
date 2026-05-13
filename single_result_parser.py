@@ -10,6 +10,7 @@ from presentationlayer import presentation_function
 _ConfigDict: AppConfig = readconfig()
 if __name__ == "__main__":
     import sys
+
     thelogger: logging.Logger = setuplogger("singleResultParser")
     if len(sys.argv) > 1:
         for theurl in sys.argv[1:]:

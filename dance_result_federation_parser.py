@@ -33,7 +33,7 @@ from pandas import DataFrame
 from pandas import set_option as pandas_set_option
 
 # from strictly_typed_pandas import DataSet as DataFrame
-from valuefragments import run_grouped,setuplogger
+from valuefragments import run_grouped, setuplogger
 
 from configprocessing import AppConfig, readconfig
 from dtvprocessing import get_dtv_df
