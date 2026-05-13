@@ -35,7 +35,7 @@ from pandas import set_option as pandas_set_option
 # from strictly_typed_pandas import DataSet as DataFrame
 from valuefragments import run_grouped
 
-from configprocessing import MyConfigT, readconfig, setuplogger
+from configprocessing import AppConfig, readconfig, setuplogger
 from dtvprocessing import get_dtv_df
 from presentationlayer import presentation_function
 from stringprocessing import og_human_comp_info, sr_human_comp_info
@@ -47,7 +47,7 @@ from topturnierprocessing import (
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
 thelogger: logging.Logger = setuplogger()
-_ConfigDict: MyConfigT = readconfig()
+_ConfigDict: AppConfig = readconfig()
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 # pandas_set_option("mode.copy_on_write", True)
 
@@ -121,7 +121,7 @@ async def async_eventurl_to_web(eventurl: str) -> None:
             # <https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor>
             # python >=3.11 TaskGroup instead of gather
             # <https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup>
-            if _ConfigDict["TOTHREAD"]:
+            if _ConfigDict.TOTHREAD:
                 tsh_results = await run_grouped(
                     [partial(the_interpret_fun, onelink) for onelink in allreslinks],
                     "thread",
@@ -192,6 +192,7 @@ def pyannotatecontext() -> Generator[None, Any, None]:
     """Context manager for pyannotate."""
     # pylint: disable=import-outside-toplevel
     from pyannotate_runtime import collect_types
+
     collect_types.init_types_collection()
     collect_types.start()
     yield
@@ -202,7 +203,7 @@ def pyannotatecontext() -> Generator[None, Any, None]:
 class DanceResultFederationParser:
     """Dance Result Federation Parser main class."""
 
-    _config_dict: MyConfigT
+    _config_dict: AppConfig
 
     def __init__(self) -> None:
         """Initialize the parser with the configuration."""
@@ -211,18 +212,18 @@ class DanceResultFederationParser:
     @property
     def result_format(self) -> str:
         """Get the result format."""
-        return self._config_dict["RESULTFORMAT"]
+        return self._config_dict.RESULTFORMAT
 
     @result_format.setter
     def result_format(
         self, value: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"]
     ) -> None:
         """Set the result format."""
-        self._config_dict["RESULTFORMAT"] = value
+        self._config_dict.RESULTFORMAT = value
 
     def parse(self, url: str) -> None:
         """Parse the given URL."""
-        if self._config_dict["RUN_ASYNC"]:
+        if self._config_dict.RUN_ASYNC:
             asyncio.run(async_eventurl_to_web(url), debug=__debug__)
         else:
             eventurl_to_web(url)
@@ -251,7 +252,7 @@ if __name__ == "__main__":
         # zu lösen
         for theurl in (
             sys.argv[1:]
-            #if len(theargv := __import__("sys").argv) > 1
+            # if len(theargv := __import__("sys").argv) > 1
             if len(sys.argv) > 1
             else _ConfigDict["CHECKINGURLS"]
         ):

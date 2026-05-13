@@ -14,7 +14,7 @@ from pandas import DataFrame, concat, read_html
 from requests import Response
 from requests import get as requests_get
 
-from configprocessing import LOGGERNAME, MyConfigT, readconfig
+from configprocessing import LOGGERNAME, AppConfig, readconfig
 from dtvprocessing import get_dtv_df
 from esvprocessing import get_couples_df
 from sqlitedatabase import couple_club_federation, insertcouplestodb
@@ -24,7 +24,7 @@ from stringprocessing import clean_number_from_couple, cleanevfromentry
 
 
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
-_ConfigDict: MyConfigT = readconfig()
+_ConfigDict: AppConfig = readconfig()
 MY_TIMEOUT: Literal[3] = 3
 
 
@@ -150,7 +150,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
     # "inner" ging, sortiere falsch#.sort_values(by="Platz")
     #    if (geridxs:=erg_df.Verein=="Germany").sum()>0:
     #        thelogger.info("Germany %i",geridxs.sum())
-    if _ConfigDict["ESVCOUPLES"]:
+    if _ConfigDict.ESVCOUPLES:
         cpldf = get_couples_df()
         cpldf["Verband"] = "NAMEDCOUPLE"
         return erg_df.merge(cpldf, on="Paar", how="inner")

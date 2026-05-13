@@ -8,7 +8,7 @@ from pandas import DataFrame, Series
 # from strictly_typed_pandas import DataSet as DataFrame
 from valuefragments import eprint
 
-from configprocessing import LOGGERNAME, MyConfigT
+from configprocessing import LOGGERNAME, AppConfig
 
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 
@@ -47,7 +47,7 @@ def print_joomla(
     allreslinks: list[str],
     tsh_results: list[DataFrame],
     compnames: list[str],
-    cfg_dict: MyConfigT,
+    cfg_dict: AppConfig,
 ) -> None:
     """Export data as HTML for TSH-CMS."""
     thelogger.debug("PresentationLayer for TSH-CMS")
@@ -56,7 +56,7 @@ def print_joomla(
         '<hr id="system-readmore" />',
         "<p>Hier folgend die Ergebnisse",
         "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",
-        f"der {cfg_dict['THEFEDERATION']}-Paare.",
+        f"der {cfg_dict.THEFEDERATION}-Paare.",
         #        "Die &Uuml;berschriften sind die Links zum Ergebnis.",
         "</p>",
         "<!-- =================================================== -->",
@@ -67,14 +67,14 @@ def print_joomla(
                 f'<h2><a href="{actreslink}" target="_blank" '
                 f'rel="noopener">{turnier_info}</a></h2>'
             )
-            if cfg_dict["HEADLINELINKS"]
+            if cfg_dict.HEADLINELINKS
             else f"<h2>{turnier_info}</h2>"
         )
         # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
         # wird der Verband künstlich gesetzt:
         # value.Verband[value.Verband == "NAMEDCOUPLE"]
-        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict["THEFEDERATION"]
-        if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict.THEFEDERATION
+        if value[value.Verband == cfg_dict.THEFEDERATION].empty:
             print("<!--")  # Beginning of Comment
             print(tournhdr)
             print(f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>")
@@ -94,7 +94,7 @@ def print_joomla(
                     sep="",
                 )
                 for resline in value[
-                    value.Verband == cfg_dict["THEFEDERATION"]
+                    value.Verband == cfg_dict.THEFEDERATION
                 ].iterrows():
                     print(
                         "<tr><td><strong>&nbsp;</strong></td>",
@@ -111,7 +111,7 @@ def print_joomla(
             else:
                 print_ul_html(
                     therowiterator=value[
-                        value.Verband == cfg_dict["THEFEDERATION"]
+                        value.Verband == cfg_dict.THEFEDERATION
                     ].iterrows()
                 )
         print("<!-- =================================================== -->")
@@ -125,7 +125,7 @@ def print_joomla(
         "<p>Falls ich ein Paar übersehen habe, ",
         "bitte ich freundlich um eine ",
         '<a href="mailto:',
-        cfg_dict["INFORMEMAIL"],
+        cfg_dict.INFORMEMAIL,
         '?subject=&Uuml;bersehenes%20Ergebnis"',
         ">Email</a>.</p>",
         sep="",
@@ -137,7 +137,7 @@ def print_markdown(
     allreslinks: list[str],
     tsh_results: list[DataFrame],
     compnames: list[str],
-    cfg_dict: MyConfigT,
+    cfg_dict: AppConfig,
 ) -> None:
     """Export data as Markdown."""
     thelogger.debug("PresentationLayer Markdown")
@@ -145,7 +145,7 @@ def print_markdown(
         "Die folgenden Inhalte sind die Auswertung der [Turnierergebnisse](",
         wholereslink,
         ") für den Verband ",
-        cfg_dict["THEFEDERATION"],
+        cfg_dict.THEFEDERATION,
         ".",
         sep="",
     )
@@ -160,25 +160,25 @@ def print_markdown(
             "\n"
             + (
                 f"## [{turnier_info}]({actreslink})"
-                if cfg_dict["HEADLINELINKS"]
+                if cfg_dict.HEADLINELINKS
                 else f"## {turnier_info}"
             )
             + "\n"
         )
-        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict["THEFEDERATION"]
-        if value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict.THEFEDERATION
+        if value[value.Verband == cfg_dict.THEFEDERATION].empty:
             eprint(tournhdr)
-            eprint(f"<p>Leider ohne {cfg_dict['THEFEDERATION']}-Beteiligung.</p>")
+            eprint(f"<p>Leider ohne {cfg_dict.THEFEDERATION}-Beteiligung.</p>")
             eprint("<!-- =================================================== -->")
         else:
             print(tournhdr)
-            if cfg_dict["IMG_PREP"]:
+            if cfg_dict.IMG_PREP:
                 print_img_placeholder()
-            if cfg_dict["RESULTTABLE"]:
+            if cfg_dict.RESULTTABLE:
                 print("|Platz|Paar|Verein|")
                 print("|---:|---:|---:|")
                 for resline in value[
-                    value.Verband == cfg_dict["THEFEDERATION"]
+                    value.Verband == cfg_dict.THEFEDERATION
                 ].iterrows():
                     print(
                         "|",
@@ -192,7 +192,7 @@ def print_markdown(
                     )
             else:
                 for resline in value[
-                    value.Verband == cfg_dict["THEFEDERATION"]
+                    value.Verband == cfg_dict.THEFEDERATION
                 ].iterrows():
                     print(
                         "- ",
@@ -214,7 +214,7 @@ def print_markdown(
     print(
         "Falls ich ein Paar übersehen habe, bitte ich freundlich um eine ",
         "[Email](mailto:",
-        cfg_dict["INFORMEMAIL"],
+        cfg_dict.INFORMEMAIL,
         "?subject=&Uuml;bersehenes%20Ergebnis).",
         sep="",
     )
@@ -225,7 +225,7 @@ def print_wordpress(
     allreslinks: list[str],
     tsh_results: list[DataFrame],
     compnames: list[str],
-    cfg_dict: MyConfigT,
+    cfg_dict: AppConfig,
 ) -> None:
     """Export data as WordPress."""
     thelogger.debug("PresentationLayer WordPress")
@@ -243,7 +243,7 @@ def print_wordpress(
         "<!-- wp:paragraph -->",
         "<p>Hier folgend die Ergebnisse",
         "(nach Verf&uuml;gbarkeit fortlaufend gepflegt)",
-        f"der {cfg_dict['THEFEDERATION']}-Paare.",
+        f"der {cfg_dict.THEFEDERATION}-Paare.",
         "</p>",
         "<!-- /wp:paragraph -->",
     )
@@ -256,7 +256,7 @@ def print_wordpress(
                 f'rel="noopener">{turnier_info}</a></h2>'
                 "<!-- /wp:heading -->"
             )
-            if cfg_dict["HEADLINELINKS"]
+            if cfg_dict.HEADLINELINKS
             else (
                 "<!-- wp:heading -->"
                 f'<h2 class="wp-block-heading">{turnier_info}</h2>'
@@ -266,10 +266,10 @@ def print_wordpress(
         # Falls die gefundenen Ergebnisse aus Paarnamen kommen,
         # wird der Verband künstlich gesetzt:
         # value.Verband[value.Verband == "NAMEDCOUPLE"]
-        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict["THEFEDERATION"]
-        if not value[value.Verband == cfg_dict["THEFEDERATION"]].empty:
+        value.loc[value.Verband == "NAMEDCOUPLE", "Verband"] = cfg_dict.THEFEDERATION
+        if not value[value.Verband == cfg_dict.THEFEDERATION].empty:
             print(tournhdr)
-            if cfg_dict["IMG_PREP"]:
+            if cfg_dict.IMG_PREP:
                 print('<!-- wp:image {"sizeSlug":"large"} -->')
                 print('<figure class="wp-block-image size-large">')
                 print(
@@ -283,7 +283,7 @@ def print_wordpress(
                 )
                 print("</figure>")
                 print("<!-- /wp:image -->")
-            if cfg_dict["RESULTTABLE"]:
+            if cfg_dict.RESULTTABLE:
                 print('<!-- wp:table {"hasFixedLayout":false} -->')
                 print('<figure class="wp-block-table">')
                 print("<table>")
@@ -296,7 +296,7 @@ def print_wordpress(
                     sep="",
                 )
                 for resline in value[
-                    value.Verband == cfg_dict["THEFEDERATION"]
+                    value.Verband == cfg_dict.THEFEDERATION
                 ].iterrows():
                     print(
                         "<tr><td><strong>&nbsp;</strong></td>",
@@ -314,7 +314,7 @@ def print_wordpress(
             else:
                 print_ul_html(
                     therowiterator=value[
-                        value.Verband == cfg_dict["THEFEDERATION"]
+                        value.Verband == cfg_dict.THEFEDERATION
                     ].iterrows()
                 )
             print("<!-- wp:spacer -->")
@@ -346,7 +346,7 @@ def print_wordpress(
         "<p>Falls ich ein Paar übersehen habe, ",
         "bitte ich freundlich um eine ",
         "<a href=",
-        f'"mailto:{cfg_dict["INFORMEMAIL"]}',
+        f'"mailto:{cfg_dict.INFORMEMAIL}',
         '?subject=&Uuml;bersehenes%20Ergebnis"',
         ">Email</a>.</p>",
         "<!-- /wp:paragraph -->",
@@ -359,10 +359,10 @@ def presentation_function(
     allreslinks: list[str],
     tsh_results: list[DataFrame],
     compnames: list[str],
-    cfg_dict: MyConfigT,
+    cfg_dict: AppConfig,
 ) -> None:
     """Returns result based on config selector."""
-    match cfg_dict["RESULTFORMAT"]:
+    match cfg_dict.RESULTFORMAT:
         case "JOOMLA":
             return print_joomla(
                 wholereslink, allreslinks, tsh_results, compnames, cfg_dict

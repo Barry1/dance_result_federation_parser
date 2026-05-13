@@ -8,7 +8,9 @@ from dance_result_federation_parser import DanceResultFederationParser
 def cli_parser_args() -> Namespace:
     """Return the parsed command line arguments."""
     da_re_fe_parser = ArgumentParser(
-        prog="da_re_fe_pa", description="Dance Result Federation Parser", epilog="Good luck!"
+        prog="da_re_fe_pa",
+        description="Dance Result Federation Parser",
+        epilog="Good luck!",
     )
     da_re_fe_parser.add_argument("URL", type=str)
     da_re_fe_parser.add_argument("-s", "--single", default=False, action="store_true")

@@ -2,7 +2,8 @@
 
 import logging
 import tomllib
-from typing import Any, Literal, TypedDict
+from typing import Literal
+from pydantic import BaseModel, Field, EmailStr
 
 LOGGERNAME = "resultParser"
 
@@ -32,16 +33,15 @@ def setuplogger() -> logging.Logger:
     return thelogger
 
 
-class MyConfigT(TypedDict):
-    """Typing-Class for configuration."""
-
-    HEADLINELINKS: bool
-    IMG_PREP: bool
-    PYANNOTATE: bool
-    ESVCOUPLES: bool
-    RUN_ASYNC: bool
-    TOTHREAD: bool
-    RESULTTABLE: bool
+class AppConfig(BaseModel):
+    CHECKINGURLS: list[str] = Field(default_factory=list)
+    HEADLINELINKS: bool = False
+    IMG_PREP: bool = False
+    ESVCOUPLES: bool = False
+    PYANNOTATE: bool = False
+    RUN_ASYNC: bool = True
+    TOTHREAD: bool = False
+    RESULTTABLE: bool = True
     THEFEDERATION: Literal[
         "TSH",
         "HATV",
@@ -59,33 +59,20 @@ class MyConfigT(TypedDict):
         "TVS",
         "TVSA",
         "TTSV",
-    ]
-    CHECKINGURLS: list[str]
-    RESULTFORMAT: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"]
-    INFORMEMAIL: str
+    ] = "TSH"
+    RESULTFORMAT: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"] = "MARKDOWN"
+    INFORMEMAIL: EmailStr = "iyslyier@anonaddy.me"
 
 
-def readconfig() -> MyConfigT:
+def readconfig() -> AppConfig:
     """Load config.toml or default configuration."""
     thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
-    theconfig: MyConfigT = MyConfigT()  # type: ignore
-    cfg: dict[str, Any]
     try:
         with open("config.toml", "rb") as buffered_config_file:
-            cfg = tomllib.load(buffered_config_file)
+            return AppConfig(**tomllib.load(buffered_config_file))
     except FileNotFoundError:
-        thelogger.info("No file config.toml found, default configuration used.")
-        cfg = {}
-    theconfig["CHECKINGURLS"] = cfg.get("CHECKINGURLS", [])
-    theconfig["HEADLINELINKS"] = cfg.get("HEADLINELINKS", False)
-    theconfig["IMG_PREP"] = cfg.get("IMG_PREP", False)
-    theconfig["ESVCOUPLES"] = cfg.get("ESVCOUPLES", False)
-    theconfig["PYANNOTATE"] = cfg.get("PYANNOTATE", False)
-    theconfig["RUN_ASYNC"] = cfg.get("RUN_ASYNC", True)
-    theconfig["TOTHREAD"] = cfg.get("TOTHREAD", False)
-    theconfig["RESULTTABLE"] = cfg.get("RESULTTABLE", True)
-    theconfig["THEFEDERATION"] = cfg.get("THEFEDERATION", "TSH")
-    theconfig["RESULTFORMAT"] = cfg.get("RESULTFORMAT", "MARKDOWN")
-    theconfig["INFORMEMAIL"] = cfg.get("INFORMEMAIL", "iyslyier@anonaddy.me")
-    thelogger.debug(theconfig)
-    return theconfig
+        thelogger.info("No file config.toml found, using defaults.")
+        return AppConfig()
+    except Exception as e:
+        thelogger.error(f"Configuration error: {e}")
+        raise
