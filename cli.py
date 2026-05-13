@@ -1,15 +1,8 @@
 """Command line interface for Dance Result Federation Parser."""
 
-import asyncio
 from argparse import ArgumentParser, Namespace
 
-from configprocessing import MyConfigT, readconfig
-from dance_result_federation_parser import (
-    DanceResultFederationParser,
-    async_eventurl_to_web,
-    eventurl_to_web,
-    get_dtv_df,
-)
+from dance_result_federation_parser import DanceResultFederationParser
 
 
 def cliParserArgs() -> Namespace:
