@@ -9,7 +9,7 @@ LOGGERNAME = "resultParser"
 
 
 class AppConfig(BaseModel):
-    """This class holds the Pydantic-Type-Definition for the configuration."""
+    """Class holding Pydantic-Type-Definition for configuration."""
 
     # Hints for Pydantic
     # https://pydantic.dev/docs/validation/latest/get-started/
