@@ -14,7 +14,7 @@
 #alltargets="${targets} ${goctargets}"
 # OLD STYLE
 
-mv config.toml versteckmalschnell
+[ -f config.toml ] && mv config.toml versteckmalschnell
 mv Results versteckResults
 mkdir Results
 alltargets=$(make list)
@@ -27,4 +27,4 @@ echo "Targets: ${mdtargets}"
 make --jobs 1 --ignore-errors --always-make ${mdtargets}
 mv versteckResults/* Results/
 rmdir versteckResults
-mv versteckmalschnell config.toml
+[ -f versteckmalschnell ] && mv versteckmalschnell config.toml
