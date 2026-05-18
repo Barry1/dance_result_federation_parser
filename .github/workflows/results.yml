@@ -74,7 +74,7 @@ jobs:
       #      - name: Results creation by Makefile - all others parallel
       #        run: make --keep-going --file=Makefile.githubworkflow OTHERS || true
       - name: Show err-files
-        run: cat *.err
+        run: cat *.err || echo "No error files found"        
       - name: Push to orphan branch results
         run: |
           git checkout --orphan results
