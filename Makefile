@@ -60,9 +60,9 @@ info:
 	else \
 		echo "Change detected or file missing. Updating $@..."; \
 		echo "$$CURRENT_HASH" > $$HASH_FILE; \
-		mv config.toml versteckt_config.toml; \
+		[ -f config.toml ] && mv config.toml versteckt_config.toml; \
 		$(PYTHON_CALL) "$$URL" > $@; \
-		mv versteckt_config.toml config.toml; \
+		[ -f versteckt_config.toml ] && mv versteckt_config.toml config.toml; \
 	fi
 
 %.txt:
