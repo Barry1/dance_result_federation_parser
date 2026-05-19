@@ -37,7 +37,12 @@ from valuefragments import run_grouped, setuplogger
 
 from configprocessing import AppConfig, readconfig
 from dtvprocessing import get_dtv_df
-from presentationlayer import presentation_function
+from presentationlayer import (
+    presentation_function,
+    print_joomla,
+    print_markdown,
+    print_wordpress,
+)
 from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
     checkttontree,
@@ -214,10 +219,30 @@ class DanceResultFederationParser:
     """Dance Result Federation Parser main class."""
 
     _config_dict: AppConfig
+    _presentation_function: Callable[
+        [str, list[str], list[DataFrame], list[str], AppConfig], None
+    ]
 
     def __init__(self) -> None:
         """Initialize the parser with the configuration."""
         self._config_dict = readconfig()
+        print(self._config_dict.RESULTFORMAT)
+        match self._config_dict.RESULTFORMAT:
+            case "JOOMLA":
+                self._presentation_function = print_joomla
+                print("JOOMLA-Format wird ausgegeben.")
+            case "WORDPRESS" | "TSH":
+                self._presentation_function = print_wordpress
+                print("WORDPRESS-Format wird ausgegeben.")
+            case "MARKDOWN":
+                self._presentation_function = print_markdown
+                print("MARKDOWN-Format wird ausgegeben.")
+            case wrongresultformat:
+                thelogger.debug(
+                    "Missing or invalid RESULTFORMAT '%s' in config",
+                    wrongresultformat,
+                )
+                self._presentation_function = print_markdown
 
     @property
     def result_format(self) -> str:
@@ -230,6 +255,22 @@ class DanceResultFederationParser:
     ) -> None:
         """Set the result format."""
         self._config_dict.RESULTFORMAT = value
+        match self._config_dict.RESULTFORMAT:
+            case "JOOMLA":
+                self._presentation_function = print_joomla
+                print("JOOMLA-Format wird ausgegeben.")
+            case "WORDPRESS" | "TSH":
+                self._presentation_function = print_wordpress
+                print("WORDPRESS-Format wird ausgegeben.")
+            case "MARKDOWN":
+                self._presentation_function = print_markdown
+                print("MARKDOWN-Format wird ausgegeben.")
+            case wrongresultformat:
+                thelogger.debug(
+                    "Missing or invalid RESULTFORMAT '%s' in config",
+                    wrongresultformat,
+                )
+                self._presentation_function = print_markdown
 
     def parse(self, url: str) -> None:
         """Parse the given URL."""
@@ -240,7 +281,7 @@ class DanceResultFederationParser:
 
     def parsesingle(self, single_competition_url: str) -> None:
         """Parse the given URL."""
-        presentation_function(
+        self._presentation_function(
             single_competition_url,
             [single_competition_url],
             [interpret_tt_result(single_competition_url)],
