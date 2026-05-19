@@ -226,28 +226,21 @@ class DanceResultFederationParser:
     def __init__(self) -> None:
         """Initialize the parser with the configuration."""
         self._config_dict = readconfig()
-        print(self._config_dict.RESULTFORMAT)
-        match self._config_dict.RESULTFORMAT:
-            case "JOOMLA":
-                self._presentation_function = print_joomla
-                print("JOOMLA-Format wird ausgegeben.")
-            case "WORDPRESS" | "TSH":
-                self._presentation_function = print_wordpress
-                print("WORDPRESS-Format wird ausgegeben.")
-            case "MARKDOWN":
-                self._presentation_function = print_markdown
-                print("MARKDOWN-Format wird ausgegeben.")
-            case wrongresultformat:
-                thelogger.debug(
-                    "Missing or invalid RESULTFORMAT '%s' in config",
-                    wrongresultformat,
-                )
-                self._presentation_function = print_markdown
+        self.result_format = self._config_dict.RESULTFORMAT
+
+    @property
+    def output(self) -> str | None:
+        """Get the Target."""
+        return self._config_dict.OUTPUT
 
     @property
     def result_format(self) -> str:
         """Get the result format."""
         return self._config_dict.RESULTFORMAT
+
+    @output.setter
+    def output(self, value: str | None) -> None:
+        self._config_dict.OUTPUT = value
 
     @result_format.setter
     def result_format(
@@ -258,13 +251,13 @@ class DanceResultFederationParser:
         match self._config_dict.RESULTFORMAT:
             case "JOOMLA":
                 self._presentation_function = print_joomla
-                print("JOOMLA-Format wird ausgegeben.")
+                thelogger.debug("JOOMLA-Format aktiviert.")
             case "WORDPRESS" | "TSH":
                 self._presentation_function = print_wordpress
-                print("WORDPRESS-Format wird ausgegeben.")
+                thelogger.debug("WORDPRESS-Format aktiviert.")
             case "MARKDOWN":
                 self._presentation_function = print_markdown
-                print("MARKDOWN-Format wird ausgegeben.")
+                thelogger.debug("MARKDOWN-Format aktiviert.")
             case wrongresultformat:
                 thelogger.debug(
                     "Missing or invalid RESULTFORMAT '%s' in config",

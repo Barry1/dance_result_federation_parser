@@ -19,13 +19,17 @@ class AppConfig(BaseModel):
     # https://archive.today/D9q1A
 
     CHECKINGURLS: list[HttpUrl] = Field(default_factory=list)
+    ESVCOUPLES: bool = False
     HEADLINELINKS: bool = False
     IMG_PREP: bool = False
-    ESVCOUPLES: bool = False
+    INFORMEMAIL: EmailStr = "iyslyier@anonaddy.me"
+    OUTPUT: str | None = None
     PYANNOTATE: bool = False
-    RUN_ASYNC: bool = True
-    TOTHREAD: bool = False
+    RESULTFORMAT: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"] = (
+        "MARKDOWN"
+    )
     RESULTTABLE: bool = True
+    RUN_ASYNC: bool = True
     THEFEDERATION: Literal[
         "TSH",
         "HATV",
@@ -44,10 +48,7 @@ class AppConfig(BaseModel):
         "TVSA",
         "TTSV",
     ] = "TSH"
-    RESULTFORMAT: Literal["TSH", "JOOMLA", "TYPO", "WORDPRESS", "MARKDOWN"] = (
-        "MARKDOWN"
-    )
-    INFORMEMAIL: EmailStr = "iyslyier@anonaddy.me"
+    TOTHREAD: bool = False
 
 
 def readconfig() -> AppConfig:
