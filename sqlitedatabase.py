@@ -6,8 +6,10 @@ import sqlite3
 from os import sep
 from textwrap import dedent
 from typing import Any  # inspect.cleandoc
+
 from pandas import DataFrame, read_sql_query
 from valuefragments import portable_timing
+
 from configprocessing import LOGGERNAME
 
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")

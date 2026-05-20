@@ -1,6 +1,7 @@
 """Command line interface for Dance Result Federation Parser."""
 
 from argparse import ArgumentParser, Namespace
+
 from dance_result_federation_parser import DanceResultFederationParser
 
 
@@ -23,7 +24,7 @@ def cli_parser_args() -> Namespace:
         "--format",
         type=str.lower,
         choices=["joomla", "typo", "wordpress", "markdown"],
-        default="markdown",
+        #        default="markdown",
         help="Output format (default: markdown)",
     )
     da_re_fe_parser.add_argument(
@@ -55,6 +56,10 @@ def main() -> None:
     if args.single:
         da_re_fe_pa.parsesingle(args.URL)
     else:
+        print("BASTI")
+        print(args)
+        print(da_re_fe_pa._config_dict)
+        print("BASTI")
         da_re_fe_pa.parse(args.URL)
 
 

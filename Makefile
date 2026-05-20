@@ -4,7 +4,8 @@ include Makefile.competitions
 .PHONY: alltools pylint mypy isort black vulture pytype poetryprep bindeps tpstestruns testruns pyright pylyze pipdeptree formatting clean test
 
 # --- Konfiguration ---
-PYTHON_SCRIPT = ./dance_result_federation_parser.py
+#PYTHON_SCRIPT = ./dance_result_federation_parser.py
+PYTHON_SCRIPT = ./cli.py
 ifndef GITHUB_ACTION
 #$(info Not in a GITHUB Action)
 PYTHON_CALL = poetry run python -OO $(PYTHON_SCRIPT)
@@ -61,7 +62,7 @@ info:
 		echo "Change detected or file missing. Updating $@..."; \
 		echo "$$CURRENT_HASH" > $$HASH_FILE; \
 		[ -f config.toml ] && mv config.toml versteckt_config.toml; \
-		$(PYTHON_CALL) "$$URL" > $@; \
+		$(PYTHON_CALL) --format=markdown --output $@ "$$URL"; \
 		[ -f versteckt_config.toml ] && mv versteckt_config.toml config.toml; \
 	fi
 
@@ -86,7 +87,7 @@ info:
 	else \
 		echo "Change detected or file missing. Updating $@..."; \
 		echo "$$CURRENT_HASH" > $$HASH_FILE; \
-		$(PYTHON_CALL) "$$URL" > $@; \
+		$(PYTHON_CALL) --output $@ "$$URL"; \
 	fi
 
 #<https://stackoverflow.com/questions/4219255/how-do-you-get-the-list-of-targets-in-a-makefile/26339924#26339924>

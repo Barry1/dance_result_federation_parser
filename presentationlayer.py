@@ -1,11 +1,13 @@
 """Module for the presentation Layer of the results."""
 
-from contextlib import nullcontext
-from io import TextIOWrapper
 import logging
 from collections.abc import Hashable, Iterator
+from contextlib import nullcontext
+from io import TextIOWrapper
+
 from pandas import DataFrame, Series
 from valuefragments import eprint
+
 from configprocessing import LOGGERNAME, AppConfig
 
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
@@ -54,6 +56,7 @@ def print_joomla(
     cfg_dict: AppConfig,
 ) -> None:
     """Export data as HTML for TSH-CMS."""
+    thelogger.info("PresentationLayer Joomla with config: %s", cfg_dict)
     thelogger.debug("PresentationLayer for TSH-CMS")
     with (
         open(cfg_dict.OUTPUT, "x", encoding="utf-8")
@@ -165,6 +168,7 @@ def print_markdown(
     cfg_dict: AppConfig,
 ) -> None:
     """Export data as Markdown."""
+    thelogger.info("PresentationLayer Markdown with config: %s", cfg_dict)
     thelogger.debug("PresentationLayer Markdown")
     with (
         open(cfg_dict.OUTPUT, "x", encoding="utf-8")
@@ -272,6 +276,7 @@ def print_wordpress(
     cfg_dict: AppConfig,
 ) -> None:
     """Export data as WordPress."""
+    thelogger.info("PresentationLayer WordPress with config: %s", cfg_dict)
     thelogger.debug("PresentationLayer WordPress")
     with (
         open(cfg_dict.OUTPUT, "x", encoding="utf-8")
@@ -427,34 +432,3 @@ def print_wordpress(
             sep="",
             file=filehandle,
         )
-
-
-def presentation_function(
-    wholereslink: str,
-    allreslinks: list[str],
-    tsh_results: list[DataFrame],
-    compnames: list[str],
-    cfg_dict: AppConfig,
-) -> None:
-    """Returns result based on config selector."""
-    match cfg_dict.RESULTFORMAT:
-        case "JOOMLA":
-            return print_joomla(
-                wholereslink, allreslinks, tsh_results, compnames, cfg_dict
-            )
-        case "WORDPRESS" | "TSH":
-            return print_wordpress(
-                wholereslink, allreslinks, tsh_results, compnames, cfg_dict
-            )
-        case "MARKDOWN":
-            return print_markdown(
-                wholereslink, allreslinks, tsh_results, compnames, cfg_dict
-            )
-        case wrongresultformat:
-            thelogger.debug(
-                "Missing or invalid RESULTFORMAT '%s' in config",
-                wrongresultformat,
-            )
-            return print_markdown(
-                wholereslink, allreslinks, tsh_results, compnames, cfg_dict
-            )

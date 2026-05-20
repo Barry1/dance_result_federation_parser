@@ -2,8 +2,9 @@
 
 import logging
 
-from configprocessing import readconfig, AppConfig
 from valuefragments import setuplogger
+
+from configprocessing import AppConfig, readconfig
 from dance_result_federation_parser import interpret_tt_result
 from presentationlayer import presentation_function
 

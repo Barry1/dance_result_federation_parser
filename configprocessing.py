@@ -3,7 +3,8 @@
 import logging
 import tomllib
 from typing import Literal
-from pydantic import BaseModel, Field, EmailStr, HttpUrl
+
+from pydantic import BaseModel, EmailStr, Field, HttpUrl
 
 LOGGERNAME = "resultParser"
 

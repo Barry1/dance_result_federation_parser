@@ -9,8 +9,9 @@ from typing import Literal
 import aiofiles
 import aiofiles.os
 from pandas import DataFrame, read_json, read_parquet
-from stringprocessing import cleanevfromentry
+
 from configprocessing import LOGGERNAME
+from stringprocessing import cleanevfromentry
 
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
