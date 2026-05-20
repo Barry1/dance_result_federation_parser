@@ -56,7 +56,7 @@ def print_joomla(
     """Export data as HTML for TSH-CMS."""
     thelogger.debug("PresentationLayer for TSH-CMS")
     with (
-        open(cfg_dict.OUTPUT, "w", encoding="utf-8")
+        open(cfg_dict.OUTPUT, "x", encoding="utf-8")
         if cfg_dict.OUTPUT
         else nullcontext() as filehandle
     ):
@@ -167,7 +167,7 @@ def print_markdown(
     """Export data as Markdown."""
     thelogger.debug("PresentationLayer Markdown")
     with (
-        open(cfg_dict.OUTPUT, "w", encoding="utf-8")
+        open(cfg_dict.OUTPUT, "x", encoding="utf-8")
         if cfg_dict.OUTPUT
         else nullcontext() as filehandle
     ):
@@ -274,7 +274,7 @@ def print_wordpress(
     """Export data as WordPress."""
     thelogger.debug("PresentationLayer WordPress")
     with (
-        open(cfg_dict.OUTPUT, "w", encoding="utf-8")
+        open(cfg_dict.OUTPUT, "x", encoding="utf-8")
         if cfg_dict.OUTPUT
         else nullcontext() as filehandle
     ):
