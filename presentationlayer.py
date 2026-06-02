@@ -61,8 +61,8 @@ def print_joomla(
     with (
         open(cfg_dict.OUTPUT, "x", encoding="utf-8")
         if cfg_dict.OUTPUT
-        else nullcontext() as filehandle
-    ):
+        else nullcontext()
+    ) as filehandle:
         print(
             "<p>Einleitende Worte.</p>",
             '<hr id="system-readmore" />',
@@ -173,8 +173,8 @@ def print_markdown(
     with (
         open(cfg_dict.OUTPUT, "x", encoding="utf-8")
         if cfg_dict.OUTPUT
-        else nullcontext() as filehandle
-    ):
+        else nullcontext()
+    ) as filehandle:
         print(
             "Die folgenden Inhalte sind die Auswertung der [Turnierergebnisse](",
             wholereslink,
@@ -281,8 +281,8 @@ def print_wordpress(
     with (
         open(cfg_dict.OUTPUT, "x", encoding="utf-8")
         if cfg_dict.OUTPUT
-        else nullcontext() as filehandle
-    ):
+        else nullcontext()
+    ) as filehandle:
         print(
             "<!-- wp:paragraph -->",
             "<p>Einleitende Worte.</p>",
