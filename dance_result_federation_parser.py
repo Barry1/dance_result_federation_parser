@@ -6,13 +6,27 @@ urllib.request für https nötig
 https://www.w3schools.com/xml/xpath_syntax.asp
 """
 
-import sys
+__lazy_modules__: list[str] = [
+    "asyncio",
+    "logging",
+    "collections.abc",
+    "contextlib",
+    "functools",
+    "typing",
+    "urllib.error",
+    "urllib.request",
+    "joblib",
+    "lxml.etree",
+    "lxml.html",
+    "pandas",
+    "valuefragments",
+    "configprocessing",
+    "presentationlayer",
+    "stringprocessing",
+    "topturnierprocessing",
+    "tpsprocessing",
+]
 
-# if hasattr(sys, "set_lazy_imports"):
-if sys.version_info >= (3, 15):
-    # pylint: disable=no-member"
-    sys.set_lazy_imports("all")
-# pylint: disable=wrong-import-position"
 import asyncio
 import logging
 from collections.abc import Callable, Generator
