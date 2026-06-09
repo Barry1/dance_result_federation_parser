@@ -43,7 +43,8 @@ jobs:
         run: |
           cd DanceCouplesData
           mv couples_clubs_federations.sqlite3 couples_clubs_federations.sql
-          cat couples_clubs_federations.sql | sqlite3 -bail -batch couples_clubs_federations.sqlite3
+          # cat couples_clubs_federations.sql | sqlite3 -bail -batch couples_clubs_federations.sqlite3
+          sqlite3 -bail -batch couples_clubs_federations.sqlite3 < couples_clubs_federations.sql
           rm couples_clubs_federations.sql
       - name: NewPreb
         run: |
@@ -74,7 +75,7 @@ jobs:
       #      - name: Results creation by Makefile - all others parallel
       #        run: make --keep-going --file=Makefile.githubworkflow OTHERS || true
       - name: Show err-files
-        run: cat *.err || echo "No error files found"        
+        run: cat ./*.err || echo "No error files found"        
       - name: Push to orphan branch results
         run: |
           git checkout --orphan results
