@@ -25,6 +25,7 @@ echo "Targets: ${mdtargets}"
 # shellcheck disable=SC2086
 # make --jobs 1 -f Makefile.githubworkflow --ignore-errors --always-make ${mdtargets}
 make --jobs 1 --ignore-errors --always-make ${mdtargets}
+mv Results/*.md .
 mv versteckResults/* Results/
 rmdir versteckResults
 [ -f versteckmalschnell ] && mv versteckmalschnell config.toml
