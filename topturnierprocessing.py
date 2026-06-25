@@ -67,6 +67,13 @@ def srparserurl(baseurlwith: str) -> dict[str, str]:
             href_val := the_parent["href"], list
         ):
             tournmtsdict[eintrag.text] = f"{baseurl}/{href_val}"
+    if not tournmtsdict:
+        thelogger.info(
+            "Keine Turniere auf %s gefunden. "
+            "Ist das vielleicht eine Einzelveranstaltung?",
+            baseurlwith,
+        )
+        tournmtsdict["Turniername"] = baseurlwith
     return tournmtsdict
 
 
