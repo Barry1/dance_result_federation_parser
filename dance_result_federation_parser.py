@@ -143,16 +143,16 @@ class DanceResultFederationParser:
         else:
             self._eventurl_to_web(url)
 
-    def parsesingle(self, single_competition_url: str) -> None:
-        """Parse the given URL."""
-        thelogger.info("ParseSingle %s", single_competition_url)
-        self._presentation_function(
-            single_competition_url,
-            [single_competition_url],
-            [interpret_tt_result(single_competition_url)],
-            ["Turniername"],
-            self._config_dict,
-        )
+    #    def parsesingle(self, single_competition_url: str) -> None:
+    #        """Parse the given URL."""
+    #        thelogger.info("ParseSingle %s", single_competition_url)
+    #        self._presentation_function(
+    #            single_competition_url,
+    #            [single_competition_url],
+    #            [interpret_tt_result(single_competition_url)],
+    #            ["Turniername"],
+    #            self._config_dict,
+    #        )
 
     async def _async_eventurl_to_web(self, eventurl: str) -> None:
         """Async convert URL from Event to HTML for TSH CMS."""

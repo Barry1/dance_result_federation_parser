@@ -11,7 +11,7 @@ run=python3 -OO
 endif
 
 runme=$(run) ./dance_result_federation_parser.py https\://$< > $@ 2> $(@:.txt=.err)
-runmesingle=$(run) ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
+#runmesingle=$(run) ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
 rungoc=$(run) ./goc_parser.py $(subst GOC_,,$(@:.txt=)) > $@ 2> $(@:.txt=.err)
 
 %.md: %.txt

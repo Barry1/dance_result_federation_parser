@@ -108,7 +108,7 @@ runme=poetry run python -OO ./dance_result_federation_parser.py https\://$< > $@
 rungoc=poetry run python -OO ./goc_parser.py $(subst GOC_,,$(@:.txt=)) > $@ 2> $(@:.txt=.err)
 cpldb=DanceCouplesData/couples_clubs_federations.sqlite3
 
-runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
+#runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
 
 alltools: pylint mypy formatting vulture pytype sourcery
 
@@ -149,7 +149,7 @@ pipdeptree:
 	poetry run pipdeptree --packages=aiofiles,bs4,fastparquet,html5lib,joblib,lxml,pyarrow,pytype,requests,typing
 
 pylyze:
-	poetry run pylyzer dance_result_federation_parser.py single_result_parser.py
+	poetry run pylyzer dance_result_federation_parser.py
 
 sourcery:
 	poetry run sourcery review $(OBJS) --summary --fix --verbose

@@ -14,9 +14,6 @@ def cli_parser_args() -> Namespace:
     )
     da_re_fe_parser.add_argument("URL", type=str)
     da_re_fe_parser.add_argument(
-        "-s", "--single", default=False, action="store_true"
-    )
-    da_re_fe_parser.add_argument(
         "-v", "--verbose", default=False, action="store_true"
     )
     da_re_fe_parser.add_argument(
@@ -53,14 +50,7 @@ def main() -> None:
         da_re_fe_pa.output = args.output
     # print(da_re_fe_pa._config_dict)
     # print("Format okay")
-    if args.single:
-        da_re_fe_pa.parsesingle(args.URL)
-    else:
-        print("BASTI")
-        print(args)
-        print(da_re_fe_pa._config_dict)
-        print("BASTI")
-        da_re_fe_pa.parse(args.URL)
+    da_re_fe_pa.parse(args.URL)
 
 
 if __name__ == "__main__":

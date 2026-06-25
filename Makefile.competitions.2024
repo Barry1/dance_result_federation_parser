@@ -1,36 +1,21 @@
-.PHONY: www.htv.de/media/24_09_28/0-dm_mas3sstd/index.htm
-2024_DM_MASIII_S_STD.txt: www.htv.de/media/24_09_28/0-dm_mas3sstd/index.htm
-	$(runmesingle) 
-
-.PHONY: tanzen-in-sh.de/ergebnisse/2024/2024-09-15_GLM_MASIII_S_STD/index.htm
-2024_GLM_MASIII_S_STD.txt: tanzen-in-sh.de/ergebnisse/2024/2024-09-15_GLM_MASIII_S_STD/index.htm
-	$(runmesingle) 
-
-.PHONY: ltvb.de/wp-content/uploads/results/15209/index.htm
-2024_DM_HGR_S_Kombi.txt: ltvb.de/wp-content/uploads/results/15209/index.htm
-	$(runmesingle) 
-
-.PHONY: ltvb.de/wp-content/uploads/results/15218/index.htm
-2024_DC_HGR_A_LAT.txt: ltvb.de/wp-content/uploads/results/15218/index.htm
-	$(runmesingle)
-
-.PHONY: www.gruen-weiss-aachen.de/files/ergebnisse/3le-2024/3le-2024/3-1506_dm_mas2sstd/index.htm
-2024_DM_MASII_S_STD.txt: www.gruen-weiss-aachen.de/files/ergebnisse/3le-2024/3le-2024/3-1506_dm_mas2sstd/index.htm
-	$(runmesingle)
-
-URL_2024_DSF.txt = https://ergebnisse.ggcbremen.de/2024-05-31.DSF/
+#URL_DM_Equality.txt = https://www.equalitydancing.de/files/Ergebnisse/240518u19_DM2024-Koeln/index.htm
+#URL_DM_Latein.txt = https://www.tanzclub-bernau.de/Tunierergebnisse/DM2024/16032024/index.htm
+#URL_GBM_Kombi.txt = https://app.ceronne.de/ergebnisse/993_GM_Nord_2024/
+#URL_GLM_HGR_A+S_MAS_S_LAT.txt = https://app.ceronne.de/ergebnisse/994_Landesmeisterschaft%20Nord%20Latein/
+#URL_HaTaTa2024.txt = https://hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/hatatas2024/index.htm
 URL_2024_BDF.txt = https://berlin-dance-festival.de/files/bdf/results/2024/index.htm
 URL_2024_BlauesBand2024.txt = https://turniere.btc-gruen-gold.de/bb2024/index.htm
 URL_2024_BYO.txt = https://tanzen-in-sh.de/ergebnisse/2024/2024-11-30-12-01_BYO_Ergebnisse/index.htm	
 URL_2024_danceComp.txt = https://ergebnisse.dancecomp.de/2024/index.htm
-#URL_DM_Equality.txt = https://www.equalitydancing.de/files/Ergebnisse/240518u19_DM2024-Koeln/index.htm
+URL_2024_DC_HGR_A_LAT.txt = https://ltvb.de/wp-content/uploads/results/15218/index.htm
+URL_2024_DM_HGR_S_Kombi.txt = https://ltvb.de/wp-content/uploads/results/15209/index.htm
 URL_2024_DM_Kombi_U18MASIV_STD.txt = https://www.tsz-stuttgart.de/fileadmin/01_TSZ_Stuttgart/ergebnisse/2024_DM_MAS_U21/index.htm
-#URL_DM_Latein.txt = https://www.tanzclub-bernau.de/Tunierergebnisse/DM2024/16032024/index.htm
+URL_2024_DM_MASII_S_STD.txt = https://www.gruen-weiss-aachen.de/files/ergebnisse/3le-2024/3le-2024/3-1506_dm_mas2sstd/index.htm
+URL_2024_DM_MASIII_S_STD.txt = https://www.htv.de/media/24_09_28/0-dm_mas3sstd/index.htm
+URL_2024_DSF.txt = https://ergebnisse.ggcbremen.de/2024-05-31.DSF/
 URL_2024_DSF.txt = https://ergebnisse.ggcbremen.de/2024-05-31.DSF/
 URL_2024_GBM_Kombi.txt = https://app.ceronne.de/ergebnisse/981_2024/993_2024%20GM%20Nord/
-#URL_GBM_Kombi.txt = https://app.ceronne.de/ergebnisse/993_GM_Nord_2024/
 URL_2024_GLM_HGR_A+S_MAS_S_LAT.txt = https://app.ceronne.de/ergebnisse/981_2024/994_2024%20LM%20Nord%20-%20Latein/
-#URL_GLM_HGR_A+S_MAS_S_LAT.txt = https://app.ceronne.de/ergebnisse/994_Landesmeisterschaft%20Nord%20Latein/
 URL_2024_GLM_HGR_D-B_LAT.txt = https://ergebnisse.ltvbremen.de/2024-09-07-glm-bremerhaven/index.htm
 URL_2024_GLM_HGR_MAS_D-B_STD.txt : www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/GLM_OL_2024/GLM_OL_2024/index.htm
 URL_2024_GLM_HGR_MASI_A-S_STD.txt = https://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/2024_glm_hgr_masi-a_s/2024_glm_hgr%2Bmasi-a%2Bs/index.htm
@@ -39,8 +24,8 @@ URL_2024_GLM_HGRII_MASI-III_LAT.txt = https://hatv.de/wrapper/2024/GLM-Savoy/ind
 URL_2024_GLM_KIN-JUG_STD.txt = https://tanzen-in-sh.de/ergebnisse/2024/2024-09-14_GLM_KIN-JUG_STD/index.htm
 URL_2024_GLM_MasII_BAS_STD.txt = https://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/2024_lm_mas_ii_b-s_std/2024_lm_mas_ii_b-s_std/index.htm
 URL_2024_GLM_MASII-III_HGRII_D-C_STD.txt = https://tanzen-in-sh.de/ergebnisse/2024/2024-09-14_GLM_MASII-III_HGRII_D-C_STD/index.htm
+URL_2024_GLM_MASIII_S_STD.txt = https://tanzen-in-sh.de/ergebnisse/2024/2024-09-15_GLM_MASIII_S_STD/index.htm
 URL_2024_GLM_MasIV_STD.txt = https://tanzen-in-sh.de/ergebnisse/2024/2024-02-24_GLM_MasIV_STD/
-#URL_HaTaTa2024.txt = https://hannoversche-tanzsporttage.de/wp-content/uploads/ergebnisse/hatatas2024/index.htm
 URL_2024_HessenTanzt.txt = https://hessen-tanzt.de/media/ht2024/index.htm
 URL_2024_RL_Fuerth.txt = https://ltvb.de/wp-content/uploads/results/15138/index.htm
 URL_2024_RL_GLINDE.txt = https://hatv.de/wrapper/2024/RL_Glinde/index.htm
