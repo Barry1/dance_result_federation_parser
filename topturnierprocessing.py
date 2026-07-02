@@ -147,8 +147,9 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
     erg_df.loc[:, "Verein"] = erg_df.Verein.map(cleanevfromentry)
     thelogger.debug("cleaned to %s", erg_df)
     cpldf: DataFrame
-    if (ergdfgeridxs := erg_df.Verein == "Germany").any():
+    if (erg_df.Verein == "Germany").any():
         # international competition, no club name
+        # ergdfgeridxs := 
         # DO NOT reduce to only entries with GERMANY, sometimes a mixture
         # For example Hessen Tanzt 2026 WDSF Open Senioren II S Standard
         # erg_df = erg_df[ergdfgeridxs]

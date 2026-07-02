@@ -29,10 +29,9 @@ __lazy_modules__: list[str] = [
 
 import asyncio
 import logging
-from collections.abc import Callable, Generator
-from contextlib import contextmanager, nullcontext
+from collections.abc import Callable
 from functools import partial
-from typing import Any, Literal
+from typing import Literal
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
