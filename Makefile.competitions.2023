@@ -1,27 +1,26 @@
-URL_2023_BeDaFe.txt: berlin-dance-festival.de/files/bdf/results/2023/index.htm
-URL_2023_BlauesBand.txt: turniere.btc-gruen-gold.de/bb2023/index.htm
-URL_2023_BYO.txt: tanzen-in-sh.de/ergebnisse/2023/2023-11-25-26_BYO/
-URL_2023_danceComp.txt: ergebnisse.dancecomp.de/2023/index.htm
+URL_2023_BeDaFe.txt = https://berlin-dance-festival.de/files/bdf/results/2023/index.htm
+URL_2023_BlauesBand.txt = https://turniere.btc-gruen-gold.de/bb2023/index.htm
+URL_2023_BYO.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-11-25-26_BYO/
+URL_2023_danceComp.txt = https://ergebnisse.dancecomp.de/2023/index.htm
 URL_2023_DC_HGR-A-LAT.txt = https://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2023/3-1006_dc_hgralat/3-1006_dc_hgralat/index.htm
 URL_2023_DM_HGRSSTD.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-11-04_DM_HGR_S_STD/index.htm
-URL_2023_DM_Kin-Jug_STD.txt: ltvb.de/wp-content/uploads/results/13941/index.htm
+URL_2023_DM_Kin-Jug_STD.txt = https://ltvb.de/wp-content/uploads/results/13941/index.htm
 URL_2023_dm_mas2sstd.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-06-10_DM_MAS-II_S_STD/0-dm_mas2sstd/index.htm
 URL_2023_DM_MAS3SSTD.txt = https://www.hatv.de/wrapper/2023/dm_mas_iii_s_std_2023/0-dm_mas3sstd/index.htm
 URL_2023_DSF.txt = https://ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/
-URL_2023_DSF.txt: ergebnisse.ggcbremen.de/2023-06-02.Dance.Sport.Festival/index.htm
-URL_2023_GBM_Kombi.txt: tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
-URL_2023_GLM_HGR_MASI_D-B_STD.txt: hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
-URL_2023_GLM_HGR-MAS_A-S_LAT.txt: tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
-URL_2023_GLM_HGRII_D-S_STD.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-02_GLM_HGRII_D-S_STD/index.htm
-URL_2023_GLM4_HGR_D-B_LAT.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-09_GLM4_HGR_D-B_LAT/index.htm
-URL_2023_GLM4_MASII_AS_MASV_S_STD.txt: hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
-URL_2023_GLM4_MASII-III_D-B_STD.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-03_GLM4_MASII-III_D-B_STD/index.htm
-URL_2023_GLM5_HgrMasI_AS_STD.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-24_GLM5_HGR_A-S_STD/
-URL_2023_GLM5_Kin-Jug_STD.txt: tanzen-in-sh.de/ergebnisse/2023/2023-09-16_GLM5_Kin-Jug_STD/index.html
-URL_2023_HessenTanzt.txt: hessen-tanzt.de/media/ht2023/index.htm
-URL_2023_Kamen.txt: www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
-URL_2023_Nuernberg.txt: ltvb.de/wp-content/uploads/results/13347/index.htm
-URL_2023_OWL.txt: www.owl-tanzt.de/turniere/2023/
-URL_2023_RL_DUS.txt: ergebnisse.tnw.de/vereine/912/2023-02-25/index.htm
-URL_2023_RL_GLINDE.txt: hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
-URL_GOC_ALLTIME.txt: www.goc-stuttgart.de/programm/ergebnis-archiv-kopie-1
+URL_2023_GBM_Kombi.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-03-11_GBM_Kombi/index.htm
+URL_2023_GLM_HGR_MASI_D-B_STD.txt = https://hatv.de/wrapper/2023/GLM_HGRMAS-D-B-HSV/index.html
+URL_2023_GLM_HGR-MAS_A-S_LAT.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-02-12_GLM_HGR_MAS_A-S_LAT/index.htm
+URL_2023_GLM_HGRII_D-S_STD.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-09-02_GLM_HGRII_D-S_STD/index.htm
+URL_2023_GLM4_HGR_D-B_LAT.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-09-09_GLM4_HGR_D-B_LAT/index.htm
+URL_2023_GLM4_MASII_AS_MASV_S_STD.txt = https://hatv.de/wrapper/2023/GLM-MAS-IIA-IIS-MAS-V-Std-TSVBuchholz/index.html
+URL_2023_GLM4_MASII-III_D-B_STD.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-09-03_GLM4_MASII-III_D-B_STD/index.htm
+URL_2023_GLM5_HgrMasI_AS_STD.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-09-24_GLM5_HGR_A-S_STD/
+URL_2023_GLM5_Kin-Jug_STD.txt = https://tanzen-in-sh.de/ergebnisse/2023/2023-09-16_GLM5_Kin-Jug_STD/index.html
+URL_2023_HessenTanzt.txt = https://hessen-tanzt.de/media/ht2023/index.htm
+URL_2023_Kamen.txt = https://www.tanzsportclub-dortmund.de/ergebnisse/2023/dmkamen23/
+URL_2023_Nuernberg.txt = https://ltvb.de/wp-content/uploads/results/13347/index.htm
+URL_2023_OWL.txt = https://www.owl-tanzt.de/turniere/2023/
+URL_2023_RL_DUS.txt = https://ergebnisse.tnw.de/vereine/912/2023-02-25/index.htm
+URL_2023_RL_GLINDE.txt = https://hatv.de/wrapper/2023/RL_Glinde_2023/index.htm
+URL_GOC_ALLTIME.txt = https://www.goc-stuttgart.de/programm/ergebnis-archiv-kopie-1
