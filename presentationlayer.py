@@ -6,7 +6,7 @@ from contextlib import nullcontext
 from io import TextIOWrapper
 
 from pandas import DataFrame, Series
-from valuefragments import eprint
+# from valuefragments import eprint
 
 from configprocessing import LOGGERNAME, AppConfig
 
@@ -207,12 +207,13 @@ def print_markdown(
                 cfg_dict.THEFEDERATION
             )
             if value[value.Verband == cfg_dict.THEFEDERATION].empty:
-                eprint(tournhdr)
-                eprint(
-                    f"<p>Leider ohne {cfg_dict.THEFEDERATION}-Beteiligung.</p>",
+                thelogger.info(tournhdr)
+                thelogger.info(
+                    "<p>Leider ohne %s-Beteiligung.</p>",
+                    cfg_dict.THEFEDERATION,
                 )
-                eprint(
-                    "<!-- =================================================== -->"
+                thelogger.info(
+                    "<!-- ================================================ -->"
                 )
             else:
                 print(tournhdr, file=filehandle)

@@ -149,7 +149,7 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
     cpldf: DataFrame
     if (erg_df.Verein == "Germany").any():
         # international competition, no club name
-        # ergdfgeridxs := 
+        # ergdfgeridxs :=
         # DO NOT reduce to only entries with GERMANY, sometimes a mixture
         # For example Hessen Tanzt 2026 WDSF Open Senioren II S Standard
         # erg_df = erg_df[ergdfgeridxs]
