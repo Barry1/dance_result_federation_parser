@@ -43,19 +43,19 @@ info:
 %.md:
 	@# 1. Sicherstellen, dass das Hash-Verzeichnis existiert
 	@mkdir -p $(HASH_DIR) $(MD_RESULTS_DIR)
-	
+
 	@# 2. Die URL für das aktuelle Target dynamisch auflösen
 	$(eval CURRENT_URL := $(URL_$(@F:.md=.txt)))
 	@URL="$(CURRENT_URL)"; \
 	HASH_FILE="$(HASH_DIR)/.$(@F:.md=.sha256)"; \
-	\
+ \
 	if [ -z "$$URL" ]; then \
 		echo "Error: No URL defined for $(@F) (Variable URL_$(@F) is empty)"; \
 		exit 1; \
 	fi; \
-	\
+ \
 	CURRENT_HASH=$$(curl -s "$$URL" | sha256sum | cut -d' ' -f1); \
-	\
+ \
 	if [ -f "$$HASH_FILE" ] && [ "$$CURRENT_HASH" = "$$(cat $$HASH_FILE)" ] && [ -f $@ ]; then \
 		echo "No changes for $@. Skipping..."; \
 	else \
@@ -69,19 +69,19 @@ info:
 %.txt:
 	@# 1. Sicherstellen, dass das Hash-Verzeichnis existiert
 	@mkdir -p $(HASH_DIR) $(RESULTS_DIR)
-	
+
 	@# 2. Die URL für das aktuelle Target dynamisch auflösen
 	$(eval CURRENT_URL := $(URL_$(@F)))
 	@URL="$(CURRENT_URL)"; \
 	HASH_FILE="$(HASH_DIR)/.$(@F:.txt=.sha256)"; \
-	\
+ \
 	if [ -z "$$URL" ]; then \
 		echo "Error: No URL defined for $(@F) (Variable URL_$(@F) is empty)"; \
 		exit 1; \
 	fi; \
-	\
+ \
 	CURRENT_HASH=$$(curl -s "$$URL" | sha256sum | cut -d' ' -f1); \
-	\
+ \
 	if [ -f "$$HASH_FILE" ] && [ "$$CURRENT_HASH" = "$$(cat $$HASH_FILE)" ] && [ -f $@ ]; then \
 		echo "No changes for $@. Skipping..."; \
 	else \
@@ -95,18 +95,18 @@ info:
 list:
 	@#LC_ALL=C $(MAKE) -pRrq -f $(firstword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/(^|\n)# Files(\n|$$)/,/(^|\n)# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | grep -E -v -e '^[^[:alnum:]]' -e '^$@$$'
 	@#echo "Erzeugbare .txt-Dateien (mit definierter URL):"
-	@# Wir nutzen 'grep', um im aktuellen Makefile (und ggf. include-Dateien) 
+	@# Wir nutzen 'grep', um im aktuellen Makefile (und ggf. include-Dateien)
 	@# alle Zeilen zu finden, die mit 'URL_' beginnen und auf '.txt' enden.
 	@# Dann extrahieren wir den Variablennamen und entfernen das 'URL_' Präfix.
 	@grep -r "^URL_.*\.txt =" $(MAKEFILE_LIST) | sed 's/.*URL_\(.*\) =.*/Results\/\1/' | sort | uniq
 	@#echo ""
 	@#echo "Tipp: Nutzen Sie 'make <dateiname>.txt', um eine Datei zu erzeugen."
-#OBJS=dtvprocessing.py dance_result_federation_parser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py 
-OBJS=$(shell git ls-files *.py *.pyi)
+#OBJS=dtvprocessing.py dance_result_federation_parser.py stringprocessing.py topturnierprocessing.py tpsprocessing.py single_result_parser.py
+OBJS = $(shell git ls-files *.py *.pyi)
 
 runme=poetry run python -OO ./dance_result_federation_parser.py https\://$< > $@ 2> $(@:.txt=.err)
 rungoc=poetry run python -OO ./goc_parser.py $(subst GOC_,,$(@:.txt=)) > $@ 2> $(@:.txt=.err)
-cpldb=DanceCouplesData/couples_clubs_federations.sqlite3
+cpldb = DanceCouplesData/couples_clubs_federations.sqlite3
 
 #runmesingle=poetry run python -OO ./single_result_parser.py https\://$< > $@ 2> $(@:.txt=.err)
 
@@ -124,7 +124,6 @@ multicouplecheck:
 	sqlite3 -readonly -markdown DanceCouplesData/couples_clubs_federations.sqlite3 "select * from CoupleClubFederation where Paar like \"%Ebeling%\";"
 	sqlite3 -readonly -markdown DanceCouplesData/couples_clubs_federations.sqlite3 "select count(*) from CoupleClubFederation;"
 	sqlite3 -readonly -markdown DanceCouplesData/couples_clubs_federations.sqlite3 "select count(*) from CoupleClubFederation where Paar like \"%,%/%,%\";"
-
 
 .PHONY: dbreset
 dbreset:
@@ -167,7 +166,7 @@ poetryprep:
 	poetry install
 
 monkeytype.sqlite3:
-	poetry run monkeytype run ./dance_result_federation_parser.py 
+	poetry run monkeytype run ./dance_result_federation_parser.py
 
 monkeytypeapply:
 	for a in `poetry run monkeytype list-modules` ; do poetry run monkeytype apply $a ; done
@@ -202,7 +201,7 @@ bindeps:
 	sudo apt-get install --assume-yes libxml2-dev libxslt1-dev patchelf
 
 nuitka/resultParser.bin: dance_result_federation_parser.py
-	niceload poetry run nuitka3 --follow-imports --output-dir=nuitka --show-progress dance_result_federation_parser.py 
+	niceload poetry run nuitka3 --follow-imports --output-dir=nuitka --show-progress dance_result_federation_parser.py
 
 dance_result_federation_parser.bin: dance_result_federation_parser.py
 	sudo nala install patchelf ccache
@@ -242,7 +241,7 @@ prospector:
 	-poetry run prospector -X $(OBJS)
 
 md5sumsave.md5: dtv_associations.parquet
-	md5sum $^ > $@ 
+	md5sum $^ > $@
 
 dtv_ass_par_check: dtv_associations.parquet
 	md5sum --check md5sumsave.md5
