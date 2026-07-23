@@ -172,6 +172,7 @@ def print_markdown(
     thelogger.debug("PresentationLayer Markdown")
     with (
         open(cfg_dict.OUTPUT, "x", encoding="utf-8")
+        # BASTI: wenn exisitiert, überschreiben oder Backup?
         if cfg_dict.OUTPUT
         else nullcontext()
     ) as filehandle:

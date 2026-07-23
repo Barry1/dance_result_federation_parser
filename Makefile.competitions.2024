@@ -17,7 +17,7 @@ URL_2024_DSF.txt = https://ergebnisse.ggcbremen.de/2024-05-31.DSF/
 URL_2024_GBM_Kombi.txt = https://app.ceronne.de/ergebnisse/981_2024/993_2024%20GM%20Nord/
 URL_2024_GLM_HGR_A+S_MAS_S_LAT.txt = https://app.ceronne.de/ergebnisse/981_2024/994_2024%20LM%20Nord%20-%20Latein/
 URL_2024_GLM_HGR_D-B_LAT.txt = https://ergebnisse.ltvbremen.de/2024-09-07-glm-bremerhaven/index.htm
-URL_2024_GLM_HGR_MAS_D-B_STD.txt : www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/GLM_OL_2024/GLM_OL_2024/index.htm
+URL_2024_GLM_HGR_MAS_D-B_STD.txt = www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/GLM_OL_2024/GLM_OL_2024/index.htm
 URL_2024_GLM_HGR_MASI_A-S_STD.txt = https://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2024/2024_glm_hgr_masi-a_s/2024_glm_hgr%2Bmasi-a%2Bs/index.htm
 URL_2024_GLM_HGRII_B-S_MASIII_B-A_MASV_S_STD.txt = https://tanzen-in-sh.de/ergebnisse/2024/2024-09-15_GLM_HGRII_B-S_MASIII_B-A_MASV_S_STD/index.htm
 URL_2024_GLM_HGRII_MASI-III_LAT.txt = https://hatv.de/wrapper/2024/GLM-Savoy/index.html
