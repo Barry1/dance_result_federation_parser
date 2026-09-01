@@ -1,4 +1,4 @@
-URL_2026_BadBevensenPfingsten.txt = https://tanzsport-biedermann.de/results/pfingsten26/index.html
+URL_2026_BadBevensen_Pfingsten.txt = https://tanzsport-biedermann.de/results/pfingsten26/index.html
 URL_2026_BerlinDanceFestival.txt = https://berlin-dance-festival.de/files/bdf/results/2026/index.htm
 URL_2026_BlauesBand.txt = https://turniere.btc-gruen-gold.de/bb2026/index.htm
 URL_2026_DM_LAT.txt = https://ergebnisse.tnw.de/vereine/912/2026-03-14/index.htm
@@ -12,6 +12,6 @@ URL_2026_TTC_Sparkassenpokal.txt = https://ttc-elmshorn.de/ergebnisse/2026_02_14
 URL_2026_DM_Kombi_DC_LAT.txt = https://turniere.tsz-blaugold.de/20260613
 URL_2026_DM_SenII_S_STD.txt = https://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2026/2026_dm_sen_ii_s_std/0-dm_sen2sstd/index.htm
 URL_2026_danceComp.txt = https://ergebnisse.dancecomp.de/2026/index.htm
-
+URL_2026_BadBevensen_Sommer.txt = https://tanzsport-biedermann.de/results/sommer26/index.html
 Results/2026_GOC.txt:
 	poetry run python3 goc_parser.py 2026 > $@ 2> $(@:.txt=.err)
