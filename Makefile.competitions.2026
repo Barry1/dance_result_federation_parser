@@ -1,7 +1,11 @@
 URL_2026_BadBevensen_Pfingsten.txt = https://tanzsport-biedermann.de/results/pfingsten26/index.html
+URL_2026_BadBevensen_Sommer.txt = https://tanzsport-biedermann.de/results/sommer26/index.html
 URL_2026_BerlinDanceFestival.txt = https://berlin-dance-festival.de/files/bdf/results/2026/index.htm
 URL_2026_BlauesBand.txt = https://turniere.btc-gruen-gold.de/bb2026/index.htm
+URL_2026_danceComp.txt = https://ergebnisse.dancecomp.de/2026/index.htm
+URL_2026_DM_Kombi_DC_LAT.txt = https://turniere.tsz-blaugold.de/20260613
 URL_2026_DM_LAT.txt = https://ergebnisse.tnw.de/vereine/912/2026-03-14/index.htm
+URL_2026_DM_SenII_S_STD.txt = https://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2026/2026_dm_sen_ii_s_std/0-dm_sen2sstd/index.htm
 URL_2026_GLM_HGR-SEN_D-B_STD.txt = https://tanzen-in-sh.de/ergebnisse/2026/2026-05-02_GLM_HGR_SENI_D-B_STD/index.htm
 URL_2026_GLM_HGRII-SENIII_D-S_LAT.txt = https://tanzen-in-sh.de/ergebnisse/2026/2026-05-30_glm_hgrII_seni_senII_senIII_d-s_latein/index.htm
 URL_2026_GLM_SenII_BAS_STD.txt = https://tanzen-in-sh.de/ergebnisse/2026/2026-03-08_glm_senii_b_s_std/
@@ -9,9 +13,5 @@ URL_2026_GLM-Nord_Solo_LAT.txt = https://ergebnisse.ggcbremen.de/2026-05-23.GLM.
 URL_2026_HessenTanzt.txt = https://hessen-tanzt.de/media/ht2026/index.htm
 URL_2026_JanuarRLs.txt = https://hatv.de/wrapper/RL2026/index.htm
 URL_2026_TTC_Sparkassenpokal.txt = https://ttc-elmshorn.de/ergebnisse/2026_02_14
-URL_2026_DM_Kombi_DC_LAT.txt = https://turniere.tsz-blaugold.de/20260613
-URL_2026_DM_SenII_S_STD.txt = https://www.ntv-tanzsport.de/fileadmin/ntv/ergebnisse/2026/2026_dm_sen_ii_s_std/0-dm_sen2sstd/index.htm
-URL_2026_danceComp.txt = https://ergebnisse.dancecomp.de/2026/index.htm
-URL_2026_BadBevensen_Sommer.txt = https://tanzsport-biedermann.de/results/sommer26/index.html
 Results/2026_GOC.txt:
 	poetry run python3 goc_parser.py 2026 > $@ 2> $(@:.txt=.err)
