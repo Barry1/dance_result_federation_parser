@@ -7,7 +7,7 @@ from urllib.parse import quote
 from urllib.request import urlopen
 
 # noinspection PyProtectedMember
-from lxml.etree import _ElementTree
+from lxml import etree
 from lxml.html import parse
 from pandas import DataFrame, read_html, to_numeric  # , option_context
 
@@ -21,7 +21,7 @@ from stringprocessing import cleanevfromentry  # ,clean_number_from_couple
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
 
 
-def checktpsontree(the_e_tree: _ElementTree) -> bool:
+def checktpsontree(the_e_tree: etree._ElementTree) -> bool:
     """Search lxml-Tree for indicator if TPS."""
     return bool(
         the_e_tree.xpath(

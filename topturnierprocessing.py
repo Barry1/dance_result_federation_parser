@@ -9,7 +9,7 @@ from urllib.error import HTTPError
 
 from bs4 import BeautifulSoup
 from bs4.filter import SoupStrainer
-from lxml.etree import _ElementTree as ElementTree
+from lxml import etree
 from pandas import DataFrame, concat, read_html
 from requests import Response
 from requests import get as requests_get
@@ -28,7 +28,7 @@ _ConfigDict: AppConfig = readconfig()
 MY_TIMEOUT: Literal[3] = 3
 
 
-def checkttontree(the_e_tree: ElementTree) -> bool:
+def checkttontree(the_e_tree: etree._ElementTree) -> bool:
     """Sucht in einem lxml-Tree nach Hinweisen dafür,
     ob das eine HTML-Seite von TopTurnier von Stefan Rath ist.
     Konkret wird nach einem Link auf die Homepage topturnier.de gesucht.

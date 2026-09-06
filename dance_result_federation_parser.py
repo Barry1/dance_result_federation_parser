@@ -38,7 +38,7 @@ from urllib.request import urlopen
 from joblib import Parallel, delayed
 
 # noinspection PyProtectedMember
-from lxml.etree import _ElementTree
+from lxml import etree
 
 # import lxml.etree
 from lxml.html import parse
@@ -67,7 +67,7 @@ pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 
 
 def reslinks_interpreter(
-    tree: _ElementTree,
+    tree: etree._ElementTree,
 ) -> tuple[
     Callable[[str], dict[str, str]],
     Callable[[str], DataFrame],
@@ -179,7 +179,7 @@ class DanceResultFederationParser:
         try:
             with openedurl:
                 eventurl = openedurl.geturl()
-                tree: _ElementTree = await asyncio.to_thread(parse, openedurl)
+                tree: etree._ElementTree = await asyncio.to_thread(parse, openedurl)
         except HTTPError as http_error:
             thelogger.exception(http_error)
         else:
@@ -235,7 +235,7 @@ class DanceResultFederationParser:
         try:
             with urlopen(synceventurl) as openedurl:  # nosec B310
                 synceventurl = openedurl.geturl()
-                tree: _ElementTree = parse(openedurl)
+                tree: etree._ElementTree = parse(openedurl)
         except HTTPError as sync_http_error:
             thelogger.exception(sync_http_error)
         else:

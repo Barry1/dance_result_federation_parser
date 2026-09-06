@@ -25,12 +25,10 @@ if __name__ == "__main__":
     )
     print(60 * "=")
     print("Running Sync")
-    with TimingCM():
-        with NoOutput():
-            eventurl_to_web(theurl)
+    with TimingCM(), NoOutput():
+        eventurl_to_web(theurl)
     print(60 * "=")
     print("Running ASync")
-    with TimingCM():
-        with NoOutput():
-            asyncio.run(async_eventurl_to_web(theurl))
+    with TimingCM(), NoOutput():
+        asyncio.run(async_eventurl_to_web(theurl))
     print(60 * "=")
