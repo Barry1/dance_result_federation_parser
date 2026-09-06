@@ -3,7 +3,6 @@
 import logging
 import re
 import sqlite3
-from os import sep
 from textwrap import dedent
 from typing import Any  # inspect.cleandoc
 
@@ -13,13 +12,13 @@ from valuefragments import portable_timing
 from configprocessing import LOGGERNAME
 
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
-DATABASE_FILENAME = (
-    __file__[:-17]
-    + "DanceCouplesData"
-    + sep
-    + "couples_clubs_federations.sqlite3"
-)
+from pathlib import Path
 
+DATABASE_FILENAME = (
+    Path(__file__).resolve().parent
+    / "DanceCouplesData"
+    / "couples_clubs_federations.sqlite3"
+)
 CREATE_TABLES_STATEMENT: str = dedent(
     """\
     CREATE TABLE IF NOT EXISTS "Federations" (
