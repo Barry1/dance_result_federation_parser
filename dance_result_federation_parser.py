@@ -47,11 +47,7 @@ from pandas import set_option as pandas_set_option
 from valuefragments import run_grouped, setuplogger
 
 from configprocessing import AppConfig, readconfig
-from presentationlayer import (
-    print_joomla,
-    print_markdown,
-    print_wordpress,
-)
+from presentationlayer import print_results
 from stringprocessing import og_human_comp_info, sr_human_comp_info
 from topturnierprocessing import (
     checkttontree,
@@ -90,7 +86,7 @@ class DanceResultFederationParser:
     _config_dict: AppConfig
     _presentation_function: Callable[
         [str, list[str], list[DataFrame], list[str], AppConfig], None
-    ]
+    ] = print_results
 
     def __init__(self) -> None:
         """Initialize the parser with the configuration."""
@@ -117,22 +113,6 @@ class DanceResultFederationParser:
     ) -> None:
         """Set the result format."""
         self._config_dict.RESULTFORMAT = value
-        match self._config_dict.RESULTFORMAT:
-            case "JOOMLA":
-                self._presentation_function = print_joomla
-                thelogger.debug("JOOMLA-Format aktiviert.")
-            case "WORDPRESS" | "TSH":
-                self._presentation_function = print_wordpress
-                thelogger.debug("WORDPRESS-Format aktiviert.")
-            case "MARKDOWN":
-                self._presentation_function = print_markdown
-                thelogger.debug("MARKDOWN-Format aktiviert.")
-            case wrongresultformat:
-                thelogger.debug(
-                    "Missing or invalid RESULTFORMAT '%s' in config",
-                    wrongresultformat,
-                )
-                self._presentation_function = print_markdown
 
     def parse(self, url: str) -> None:
         """Parse the given URL."""
