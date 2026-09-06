@@ -159,13 +159,13 @@ class DanceResultFederationParser:
         try:
             openedurl = urlopen(eventurl)  # nosec B310
             thelogger.debug("%s wurde geöffnet", eventurl)
-        except URLError as url_error:  # spricht der Server kein https?
+        except URLError:  # spricht der Server kein https?
             thelogger.exception(
                 "Die URL %s ist nicht erreichbar, "
                 "möglicherweise spricht der Server kein https?",
                 eventurl,
             )
-            thelogger.exception(url_error)
+            # thelogger.exception(url_error)
             eventurl = eventurl[:4] + eventurl[5:]
             thelogger.debug(
                 "Die URL %s wurde auf http umgestellt, "
@@ -179,9 +179,13 @@ class DanceResultFederationParser:
         try:
             with openedurl:
                 eventurl = openedurl.geturl()
-                tree: etree._ElementTree = await asyncio.to_thread(parse, openedurl)
-        except HTTPError as http_error:
-            thelogger.exception(http_error)
+                tree: etree._ElementTree = await asyncio.to_thread(
+                    parse, openedurl
+                )
+        except HTTPError:
+            thelogger.exception(
+                "Da ging etwas mit %s bzw. %s schief.", openedurl, eventurl
+            )
         else:
             try:
                 theparsefun: Callable[[str], dict[str, str]]
@@ -236,8 +240,10 @@ class DanceResultFederationParser:
             with urlopen(synceventurl) as openedurl:  # nosec B310
                 synceventurl = openedurl.geturl()
                 tree: etree._ElementTree = parse(openedurl)
-        except HTTPError as sync_http_error:
-            thelogger.exception(sync_http_error)
+        except HTTPError:
+            thelogger.exception(
+                "Da ging etwas mit %s bzw. %s schief.", openedurl, synceventurl
+            )
         else:
             try:
                 human_comp_info: Callable[[str], str]

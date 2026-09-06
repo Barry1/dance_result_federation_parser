@@ -179,7 +179,7 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     if not theresulturl.endswith("index.htm"):
         thelogger.debug("URL endet nicht auf index.htm")
         theresulturl += (
-            "/index.htm" if theresulturl.endswith("/") else "/index.htm"
+            "index.htm" if theresulturl.endswith("/") else "/index.htm"
         )
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
     thelogger.debug("interpret_tt_result Auswertung von %s", theresulturl)
@@ -234,11 +234,10 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
                 theresulturl,
                 value_error,
             )
-        except Exception as general_exception:
+        except Exception:
             thelogger.exception(
-                "Beim tt_from_erg von %s trat %s auf",
+                "Beim tt_from_erg von %s trat ein Fehler auf",
                 theresulturl,
-                general_exception,
             )
             raise
         if not getenv("CI"):

@@ -62,11 +62,10 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
         tps_result_df = read_html(
             theresulturl, attrs={"class": "table fa-lg"}
         )[0]
-    except IndexError as index_error:
+    except IndexError:
         thelogger.exception(
-            "Bei interpret_tps_result von %s trag der IndexError %s auf.",
+            "Bei interpret_tps_result von %s trag IndexError auf.",
             theresulturl,
-            index_error,
         )
         tps_result_df = DataFrame(
             columns=["Platz", "Startnummer", "Paar", "Verein"]
