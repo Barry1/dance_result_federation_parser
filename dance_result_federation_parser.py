@@ -84,9 +84,9 @@ class DanceResultFederationParser:
     """Dance Result Federation Parser main class."""
 
     _config_dict: AppConfig
-    _presentation_function: Callable[
-        [str, list[str], list[DataFrame], list[str], AppConfig], None
-    ] = print_results
+    # _presentation_function: Callable[
+    #    [str, list[str], list[DataFrame], list[str], AppConfig], None
+    # ] = print_results
 
     def __init__(self) -> None:
         """Initialize the parser with the configuration."""
@@ -206,7 +206,7 @@ class DanceResultFederationParser:
                         ],
                         "tpe",
                     )
-                self._presentation_function(
+                print_results(
                     eventurl,
                     list(allreslinks),
                     tsh_results,
@@ -253,7 +253,7 @@ class DanceResultFederationParser:
                     # Testrun loky 4.8099999986588955 (30,918 für 5)
                     #                    prefer='processes',
                 )(delayed(the_interpret_fun)(a) for a in allreslinks)
-                self._presentation_function(
+                print_results(
                     synceventurl,
                     list(allreslinks),
                     tsh_results,
