@@ -318,10 +318,6 @@ def print_results(
         )
 
 
-# Rückwärtskompatibilität (kann später entfernt werden)
-print_joomla = print_markdown = print_wordpress = print_results
-
-
 def print_ul_html(
     therowiterator: Iterator[tuple[Hashable, Series]],
     filehandle: TextIOWrapper | None,
