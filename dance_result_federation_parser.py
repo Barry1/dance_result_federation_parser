@@ -41,7 +41,7 @@ from joblib import Parallel, delayed
 from lxml import etree
 
 # import lxml.etree
-from lxml.html import parse
+from lxml.html import parse as html_parse
 from pandas import DataFrame
 from pandas import set_option as pandas_set_option
 from valuefragments import run_grouped, setuplogger
@@ -84,9 +84,6 @@ class DanceResultFederationParser:
     """Dance Result Federation Parser main class."""
 
     _config_dict: AppConfig
-    # _presentation_function: Callable[
-    #    [str, list[str], list[DataFrame], list[str], AppConfig], None
-    # ] = print_results
 
     def __init__(self) -> None:
         """Initialize the parser with the configuration."""
@@ -160,7 +157,7 @@ class DanceResultFederationParser:
             with openedurl:
                 eventurl = openedurl.geturl()
                 tree: etree._ElementTree = await asyncio.to_thread(
-                    parse, openedurl
+                    html_parse, openedurl
                 )
         except HTTPError:
             thelogger.exception(
@@ -219,7 +216,7 @@ class DanceResultFederationParser:
         try:
             with urlopen(synceventurl) as openedurl:  # nosec B310
                 synceventurl = openedurl.geturl()
-                tree: etree._ElementTree = parse(openedurl)
+                tree: etree._ElementTree = html_parse(openedurl)
         except HTTPError:
             thelogger.exception(
                 "Da ging etwas mit %s bzw. %s schief.", openedurl, synceventurl

@@ -9,7 +9,6 @@ from typing import TextIO
 
 from pandas import DataFrame, Series
 
-# from valuefragments import eprint
 from configprocessing import LOGGERNAME, AppConfig
 
 thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
@@ -99,7 +98,7 @@ class JoomlaFormatter(ResultFormatter):
         return "\n".join(lines)
 
     def results_list(self, rows: Iterator[tuple[object, Series]]) -> str:
-        lines = ["<ul>"]
+        lines: list[str] = ["<ul>"]
         for _, row in rows:
             lines.append(f"<li>{row.Platz} {row.Paar} ({row.Verein})</li>")
         lines.append("</ul>")
@@ -144,7 +143,7 @@ class MarkdownFormatter(ResultFormatter):
         )
 
     def results_table(self, rows: Iterator[tuple[object, Series]]) -> str:
-        lines = ["|Platz|Paar|Verein|", "|---:|---:|---:|"]
+        lines: list[str] = ["|Platz|Paar|Verein|", "|---:|---:|---:|"]
         for _, row in rows:
             lines.append(f"|{row.Platz}|{row.Paar}|{row.Verein}|")
         return "\n".join(lines)
@@ -261,16 +260,16 @@ def render_results(
     file: TextIO | None = None,
 ) -> None:
     """Gemeinsame Logik für alle Formate."""
-    cfg = formatter.cfg
+    cfg: AppConfig = formatter.cfg
     federation = cfg.THEFEDERATION
 
     print(formatter.header(federation, whole_link), file=file)
 
     for link, df, title in zip(all_links, results, comp_names):
-        filtered = _prepare_df(df, federation)
+        filtered: DataFrame = _prepare_df(df, federation)
 
         if filtered.empty:
-            no_part = formatter.no_participation(federation)
+            no_part: str = formatter.no_participation(federation)
             if no_part:
                 print(no_part, file=file)
             continue
@@ -306,7 +305,7 @@ def print_results(
     cfg: AppConfig,
 ) -> None:
     """Einzige öffentliche Funktion."""
-    formatter = _get_formatter(cfg)
+    formatter: ResultFormatter = _get_formatter(cfg)
 
     with (
         open(cfg.OUTPUT, "w", encoding="utf-8")
