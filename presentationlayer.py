@@ -87,20 +87,18 @@ class JoomlaFormatter(ResultFormatter):
                 "</tr></thead><tbody>"
             ),
         ]
-        for _, row in rows:
-            lines.append(
-                "<tr><td><strong>&nbsp;</strong></td>"
-                f'<td style="text-align: right;">{row.Platz}</td>'
-                f'<td style="text-align: right;">{row.Paar}</td>'
-                f'<td style="text-align: right;">{row.Verein}</td></tr>'
-            )
+        lines.extend(
+            f'<tr><td><strong>&nbsp;</strong></td><td style="text-align: right;">{row.Platz}</td><td style="text-align: right;">{row.Paar}</td><td style="text-align: right;">{row.Verein}</td></tr>'
+            for _, row in rows
+        )
         lines.append("</tbody></table>")
         return "\n".join(lines)
 
     def results_list(self, rows: Iterator[tuple[object, Series]]) -> str:
         lines: list[str] = ["<ul>"]
-        for _, row in rows:
-            lines.append(f"<li>{row.Platz} {row.Paar} ({row.Verein})</li>")
+        lines.extend(
+            f"<li>{row.Platz} {row.Paar} ({row.Verein})</li>" for _, row in rows
+        )
         lines.append("</ul>")
         return "\n".join(lines)
 
@@ -144,8 +142,7 @@ class MarkdownFormatter(ResultFormatter):
 
     def results_table(self, rows: Iterator[tuple[object, Series]]) -> str:
         lines: list[str] = ["|Platz|Paar|Verein|", "|---:|---:|---:|"]
-        for _, row in rows:
-            lines.append(f"|{row.Platz}|{row.Paar}|{row.Verein}|")
+        lines.extend(f"|{row.Platz}|{row.Paar}|{row.Verein}|" for _, row in rows)
         return "\n".join(lines)
 
     def results_list(self, rows: Iterator[tuple[object, Series]]) -> str:
@@ -269,8 +266,7 @@ def render_results(
         filtered: DataFrame = _prepare_df(df, federation)
 
         if filtered.empty:
-            no_part: str = formatter.no_participation(federation)
-            if no_part:
+            if no_part := formatter.no_participation(federation):
                 print(no_part, file=file)
             continue
 
@@ -290,8 +286,7 @@ def render_results(
         else:
             print(formatter.results_list(rows), file=file)
 
-        sep = formatter.separator()
-        if sep:
+        if sep := formatter.separator():
             print(sep, file=file)
 
     print(formatter.footer(whole_link, cfg.INFORMEMAIL), file=file)
