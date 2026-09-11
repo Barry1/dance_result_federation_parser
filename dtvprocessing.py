@@ -1,9 +1,10 @@
 """Module for processing of DTV details."""
 
-import asyncio
-import time
+from asyncio import run as asyncio_run
 from os import path as os_path
 from os import sep as os_sep
+from time import ctime as time_ctime
+from time import time as time_time
 from typing import Literal
 
 import aiofiles
@@ -87,13 +88,13 @@ def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     dtv_associations: DataFrame
     if os_path.exists(dtv_associations_cache_file) and not (
         autoupdate
-        and time.time()
+        and time_time()
         - os_path.getmtime(filename=dtv_associations_cache_file)
         > MAX_CACHE_AGE_IN_SECONDS
     ):  # Cache-Datei vorhanden
         thelogger.info(
             "DTV-Vereinsdaten sind vom %s.",
-            time.ctime(os_path.getmtime(filename=dtv_associations_cache_file)),
+            time_ctime(os_path.getmtime(filename=dtv_associations_cache_file)),
         )
         dtv_associations = read_parquet(
             path=dtv_associations_cache_file, engine=PARQUETENGINE
@@ -141,4 +142,4 @@ async def outputassocfiles() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main=outputassocfiles())
+    asyncio_run(main=outputassocfiles())
