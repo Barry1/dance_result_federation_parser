@@ -1,7 +1,7 @@
 """Module for reading configuration from config.toml."""
 
-import logging
-import tomllib
+from logging import Logger, getLogger
+from tomllib import load as tomllib_load
 from typing import Literal
 
 from pydantic import BaseModel, EmailStr, Field, HttpUrl
@@ -54,10 +54,10 @@ class AppConfig(BaseModel):
 
 def readconfig() -> AppConfig:
     """Load config.toml or default configuration."""
-    thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
+    thelogger: Logger = getLogger(f"{LOGGERNAME}.{__name__}")
     try:
         with open("config.toml", "rb") as buffered_config_file:
-            return AppConfig(**tomllib.load(buffered_config_file))
+            return AppConfig(**tomllib_load(buffered_config_file))
     except FileNotFoundError:
         thelogger.info("No file config.toml found, using defaults.")
         return AppConfig()
