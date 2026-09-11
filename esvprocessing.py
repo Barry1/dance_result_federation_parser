@@ -1,12 +1,12 @@
 """Relevant functions for parsing ESV data."""
 
-import configparser
+from configparser import ConfigParser
 from io import StringIO
-
-import requests
 
 # import pandas
 from pandas import DataFrame, read_csv
+from requests import Response as requests_Response
+from requests import Session as requests_Session
 
 # from strictly_typed_pandas import DataSet as DataFrame
 from valuefragments import memoize
@@ -17,7 +17,7 @@ from stringprocessing import correcttitleposition
 @memoize
 def get_esvcredentials() -> dict[str, str]:
     """Loading credentials from file."""
-    mycredentialsconf: configparser.ConfigParser = configparser.ConfigParser()
+    mycredentialsconf: ConfigParser = ConfigParser()
     mycredentialsconf.read(".credentials")
     return {
         "action": "login",
@@ -38,13 +38,13 @@ def get_couples_df() -> DataFrame:
     login_url = "https://ev.tanzsport-portal.de"
     couples_url: str = f"{login_url}/Auswertungen/showAuswertung/id/57"
     logout_url: str = f"{login_url}/DefaultMod/logout"
-    esvsession: requests.Session
-    with requests.Session() as esvsession:
-        loginreq: requests.Response = esvsession.post(
+    esvsession: requests_Session
+    with requests_Session() as esvsession:
+        loginreq: requests_Response = esvsession.post(
             login_url, data=get_esvcredentials()
         )
         assert loginreq.status_code == 200  # nosec B101
-        whatweneed: requests.Response = esvsession.post(
+        whatweneed: requests_Response = esvsession.post(
             couples_url, data={"execute": 1, "export": 1, "print": 0}
         )
         esvsession.get(logout_url)
