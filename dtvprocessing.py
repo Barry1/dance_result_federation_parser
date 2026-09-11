@@ -1,8 +1,9 @@
 """Module for processing of DTV details."""
 
 import asyncio
-import os
 import time
+from os import path as os_path
+from os import sep as os_sep
 from typing import Literal
 
 import aiofiles
@@ -81,18 +82,18 @@ def create_dtv_df() -> DataFrame:
 def get_dtv_df(autoupdate: bool = True) -> DataFrame:
     """Retrieve dataframe of associations from Cache or Web."""
     dtv_associations_cache_file: str = (
-        f"{__file__[: __file__.rfind(os.sep)]}/dtv_associations.parquet"
+        f"{__file__[: __file__.rfind(os_sep)]}/dtv_associations.parquet"
     )
     dtv_associations: DataFrame
-    if os.path.exists(dtv_associations_cache_file) and not (
+    if os_path.exists(dtv_associations_cache_file) and not (
         autoupdate
         and time.time()
-        - os.path.getmtime(filename=dtv_associations_cache_file)
+        - os_path.getmtime(filename=dtv_associations_cache_file)
         > MAX_CACHE_AGE_IN_SECONDS
     ):  # Cache-Datei vorhanden
         thelogger.info(
             "DTV-Vereinsdaten sind vom %s.",
-            time.ctime(os.path.getmtime(filename=dtv_associations_cache_file)),
+            time.ctime(os_path.getmtime(filename=dtv_associations_cache_file)),
         )
         dtv_associations = read_parquet(
             path=dtv_associations_cache_file, engine=PARQUETENGINE
@@ -124,8 +125,8 @@ async def outputassocfiles() -> None:
         #            if isinstance(verbandsvereine[0], bytes)
         #            else verbandsvereine[0]
         #        )
-        if not await aiofiles.os.path.isdir("associations"):
-            await aiofiles.os.mkdir(path="associations")
+        if not await aiofiles.os_path.isdir("associations"):
+            await aiofiles.os_mkdir(path="associations")
         async with aiofiles.open(
             file=f"associations/{verbandsname}.txt",
             mode="w",
