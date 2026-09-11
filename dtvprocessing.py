@@ -8,8 +8,8 @@ from time import time as time_time
 from typing import Literal
 
 from aiofiles import open as aiofiles_open
-from aiofiles_os import mkdir as aiofiles_os_mkdir
-from aiofiles_os import path as aiofiles_os_path
+from aiofiles.os import mkdir as aiofiles_os_mkdir
+from aiofiles.os import path as aiofiles_os_path
 from pandas import DataFrame, read_json, read_parquet
 
 from configprocessing import LOGGERNAME, Logger, getLogger
