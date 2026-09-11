@@ -1,7 +1,6 @@
 """Module for processing of DTV details."""
 
 import asyncio
-import logging
 import os
 import time
 from typing import Literal
@@ -10,10 +9,10 @@ import aiofiles
 import aiofiles.os
 from pandas import DataFrame, read_json, read_parquet
 
-from configprocessing import LOGGERNAME
+from configprocessing import LOGGERNAME, Logger, getLogger
 from stringprocessing import cleanevfromentry
 
-thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
+thelogger: Logger = getLogger(f"{LOGGERNAME}.{__name__}")
 MAX_CACHE_AGE_IN_SECONDS: int = 7 * 24 * 60 * 60  # eine Woche
 PARQUETENGINE: Literal["fastparquet", "pyarrow", "auto"] = "fastparquet"
 
