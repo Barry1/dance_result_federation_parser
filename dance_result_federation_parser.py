@@ -27,8 +27,9 @@ __lazy_modules__: list[str] = [
     "tpsprocessing",
 ]
 
-import asyncio
 import logging
+from asyncio import run as asyncio_run
+from asyncio import to_thread as asyncio_to_thread
 from collections.abc import Callable
 from functools import partial
 from typing import Literal
@@ -115,7 +116,7 @@ class DanceResultFederationParser:
         """Parse the given URL."""
         thelogger.info("Parse %s", url)
         if self._config_dict.RUN_ASYNC:
-            asyncio.run(self._async_eventurl_to_web(url), debug=__debug__)
+            asyncio_run(self._async_eventurl_to_web(url), debug=__debug__)
         else:
             self._eventurl_to_web(url)
 
@@ -156,7 +157,7 @@ class DanceResultFederationParser:
         try:
             with openedurl:
                 eventurl = openedurl.geturl()
-                tree: etree._ElementTree = await asyncio.to_thread(
+                tree: etree._ElementTree = await asyncio_to_thread(
                     html_parse, openedurl
                 )
         except HTTPError:
