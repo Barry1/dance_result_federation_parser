@@ -7,8 +7,9 @@ from time import ctime as time_ctime
 from time import time as time_time
 from typing import Literal
 
-import aiofiles
-import aiofiles.os
+from aiofiles import open as aiofiles_open
+from aiofiles_os import mkdir as aiofiles_os_mkdir
+from aiofiles_os import path as aiofiles_os_path
 from pandas import DataFrame, read_json, read_parquet
 
 from configprocessing import LOGGERNAME, Logger, getLogger
@@ -126,9 +127,9 @@ async def outputassocfiles() -> None:
         #            if isinstance(verbandsvereine[0], bytes)
         #            else verbandsvereine[0]
         #        )
-        if not await aiofiles.os_path.isdir("associations"):
-            await aiofiles.os_mkdir(path="associations")
-        async with aiofiles.open(
+        if not await aiofiles_os_path.isdir("associations"):
+            await aiofiles_os_mkdir(path="associations")
+        async with aiofiles_open(
             file=f"associations/{verbandsname}.txt",
             mode="w",
         ) as ausgabedatei:
