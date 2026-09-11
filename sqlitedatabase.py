@@ -1,6 +1,6 @@
 """Module for the SQLite-Database handling."""
 
-import re
+from re import match
 from sqlite3 import Cursor as sqlite3_Cursor
 from sqlite3 import connect as sqlite3_connect
 from textwrap import dedent
@@ -227,7 +227,7 @@ def cpltobasecpl() -> None:
                 "ClubID": row[2],
                 "FromDate": row[3],
             }
-            if (thematch := re.match(theregex, row[1]))
+            if (thematch := match(theregex, row[1]))
             else {}
         )
         for row in allrows
