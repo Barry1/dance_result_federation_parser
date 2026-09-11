@@ -1,7 +1,8 @@
 """Module for the SQLite-Database handling."""
 
 import re
-import sqlite3
+from sqlite3 import Cursor as sqlite3_Cursor
+from sqlite3 import connect as sqlite3_connect
 from textwrap import dedent
 from typing import Any  # inspect.cleandoc
 
@@ -142,21 +143,21 @@ def insertcouplestodb(sourcedf: DataFrame, tournamentdate: str) -> None:
             }
         )
     thelogger.debug("%s", cpls)
-    with sqlite3.connect(DATABASE_FILENAME) as con:
+    with sqlite3_connect(DATABASE_FILENAME) as con:
         con.set_trace_callback(thelogger.debug)
         con.executemany(INSERT_COUPLES_STATEMENT, cpls)
 
 
 def insertnewclubs(tempmatchdict: list[dict[str, str]]) -> None:
     """Insert given clubs and their details into the database."""
-    with sqlite3.connect(DATABASE_FILENAME) as con:
+    with sqlite3_connect(DATABASE_FILENAME) as con:
         con.set_trace_callback(thelogger.debug)
         con.executemany(INSERT_NEW_CLUB_STATEMENT, tempmatchdict)
 
 
 def couple_club_federation() -> DataFrame:
     """Get Couples with Clubs and Federations from DB."""
-    with sqlite3.connect(f"file:{DATABASE_FILENAME}?mode=ro", uri=True) as con:
+    with sqlite3_connect(f"file:{DATABASE_FILENAME}?mode=ro", uri=True) as con:
         couple_club_federation_df: DataFrame = read_sql_query(
             "SELECT * from CoupleClubFederation", con
         )
@@ -167,7 +168,7 @@ def couple_club_federation() -> DataFrame:
 def create_structure() -> None:
     """Setups database and fills the federations abbreviations."""
     # Options for Opening <https://www.sqlite.org/uri.html>
-    with sqlite3.connect(
+    with sqlite3_connect(
         DATABASE_FILENAME
     ) as con:  # autocommit=False from py3.12
         con.set_trace_callback(thelogger.debug)
@@ -208,8 +209,8 @@ def cpltobasecpl() -> None:
         + " / "
         + r"(?P<SheSurname>.*), (?P<SheFirstname>.*)"
     )
-    with sqlite3.connect(DATABASE_FILENAME) as con:
-        couplescursor: sqlite3.Cursor = con.cursor()
+    with sqlite3_connect(DATABASE_FILENAME) as con:
+        couplescursor: sqlite3_Cursor = con.cursor()
         couplescursor.execute(
             "select * from Couples "
             'where String like "%, % / %, %" '
@@ -231,7 +232,7 @@ def cpltobasecpl() -> None:
         )
         for row in allrows
     ]
-    with sqlite3.connect(DATABASE_FILENAME) as con:
+    with sqlite3_connect(DATABASE_FILENAME) as con:
         con.set_trace_callback(thelogger.debug)
         con.executemany(INSERT_BASECOUPLES_STATEMENT, newbasecouplesdict)
 
