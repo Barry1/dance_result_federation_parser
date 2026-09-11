@@ -27,11 +27,11 @@ __lazy_modules__: list[str] = [
     "tpsprocessing",
 ]
 
-import logging
 from asyncio import run as asyncio_run
 from asyncio import to_thread as asyncio_to_thread
 from collections.abc import Callable
 from functools import partial
+from logging import Logger
 from typing import Literal
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
@@ -57,7 +57,7 @@ from topturnierprocessing import (
 )
 from tpsprocessing import checktpsontree, interpret_tps_result, ogparserurl
 
-thelogger: logging.Logger = setuplogger("resultParser")
+thelogger: Logger = setuplogger("resultParser")
 # _ConfigDict: AppConfig = readconfig()
 pandas_set_option("mode.chained_assignment", "raise")  # warn,raise,None
 # pandas_set_option("mode.copy_on_write", True)

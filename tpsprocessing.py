@@ -1,6 +1,6 @@
 """Module for TPS-specific functions."""
 
-import logging
+from logging import Logger, getLogger
 
 # from __future__ import annotations
 from urllib.parse import quote
@@ -18,7 +18,7 @@ from stringprocessing import cleanevfromentry  # ,clean_number_from_couple
 # from strictly_typed_pandas import DataSet as DataFrame
 
 
-thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
+thelogger: Logger = getLogger(f"{LOGGERNAME}.{__name__}")
 
 
 def checktpsontree(the_e_tree: etree._ElementTree) -> bool:

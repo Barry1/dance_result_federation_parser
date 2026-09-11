@@ -1,11 +1,11 @@
 """Helpers for String processing."""
 
-import logging
+from logging import Logger, getLogger
 from re import sub as re_sub
 
 from configprocessing import LOGGERNAME
 
-thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
+thelogger: Logger = getLogger(f"{LOGGERNAME}.{__name__}")
 
 
 def correcttitleposition(couplestring: str) -> str:

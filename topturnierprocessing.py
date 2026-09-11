@@ -1,7 +1,7 @@
 """Module for TopTurnier-specific functions."""
 
-import logging
 from io import StringIO
+from logging import Logger, getLogger
 from os import getenv
 from re import DOTALL, IGNORECASE, match
 from typing import Literal
@@ -23,7 +23,7 @@ from stringprocessing import clean_number_from_couple, cleanevfromentry
 # from strictly_typed_pandas import DataSet as DataFrame
 
 
-thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
+thelogger: Logger = getLogger(f"{LOGGERNAME}.{__name__}")
 _ConfigDict: AppConfig = readconfig()
 MY_TIMEOUT: Literal[3] = 3
 

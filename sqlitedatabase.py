@@ -1,6 +1,5 @@
 """Module for the SQLite-Database handling."""
 
-import logging
 import re
 import sqlite3
 from textwrap import dedent
@@ -9,9 +8,9 @@ from typing import Any  # inspect.cleandoc
 from pandas import DataFrame, read_sql_query
 from valuefragments import portable_timing
 
-from configprocessing import LOGGERNAME
+from configprocessing import LOGGERNAME, Logger, getLogger
 
-thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
+thelogger: Logger = getLogger(f"{LOGGERNAME}.{__name__}")
 from pathlib import Path
 
 DATABASE_FILENAME = (

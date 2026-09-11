@@ -1,17 +1,17 @@
 """Module for the presentation Layer of the results."""
 
-import logging
 from abc import ABC, abstractmethod
 from collections.abc import Hashable, Iterator
 from contextlib import nullcontext
 from io import TextIOWrapper
+from logging import Logger, getLogger
 from typing import TextIO
 
 from pandas import DataFrame, Series
 
 from configprocessing import LOGGERNAME, AppConfig
 
-thelogger: logging.Logger = logging.getLogger(f"{LOGGERNAME}.{__name__}")
+thelogger: Logger = getLogger(f"{LOGGERNAME}.{__name__}")
 
 
 class ResultFormatter(ABC):
@@ -97,7 +97,8 @@ class JoomlaFormatter(ResultFormatter):
     def results_list(self, rows: Iterator[tuple[object, Series]]) -> str:
         lines: list[str] = ["<ul>"]
         lines.extend(
-            f"<li>{row.Platz} {row.Paar} ({row.Verein})</li>" for _, row in rows
+            f"<li>{row.Platz} {row.Paar} ({row.Verein})</li>"
+            for _, row in rows
         )
         lines.append("</ul>")
         return "\n".join(lines)
@@ -142,7 +143,9 @@ class MarkdownFormatter(ResultFormatter):
 
     def results_table(self, rows: Iterator[tuple[object, Series]]) -> str:
         lines: list[str] = ["|Platz|Paar|Verein|", "|---:|---:|---:|"]
-        lines.extend(f"|{row.Platz}|{row.Paar}|{row.Verein}|" for _, row in rows)
+        lines.extend(
+            f"|{row.Platz}|{row.Paar}|{row.Verein}|" for _, row in rows
+        )
         return "\n".join(lines)
 
     def results_list(self, rows: Iterator[tuple[object, Series]]) -> str:
