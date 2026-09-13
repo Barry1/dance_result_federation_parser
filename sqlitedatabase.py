@@ -1,5 +1,6 @@
 """Module for the SQLite-Database handling."""
 
+from logging import Logger, getLogger
 from re import match
 from sqlite3 import Cursor as sqlite3_Cursor
 from sqlite3 import connect as sqlite3_connect
@@ -9,7 +10,7 @@ from typing import Any  # inspect.cleandoc
 from pandas import DataFrame, read_sql_query
 from valuefragments import portable_timing
 
-from configprocessing import LOGGERNAME, Logger, getLogger
+from configprocessing import LOGGERNAME
 
 thelogger: Logger = getLogger(f"{LOGGERNAME}.{__name__}")
 from pathlib import Path

@@ -1,6 +1,7 @@
 """Module for processing of DTV details."""
 
 from asyncio import run as asyncio_run
+from logging import Logger, getLogger
 from os import path as os_path
 from os import sep as os_sep
 from time import ctime as time_ctime
@@ -12,7 +13,7 @@ from aiofiles.os import mkdir as aiofiles_os_mkdir
 from aiofiles.os import path as aiofiles_os_path
 from pandas import DataFrame, read_json, read_parquet
 
-from configprocessing import LOGGERNAME, Logger, getLogger
+from configprocessing import LOGGERNAME
 from stringprocessing import cleanevfromentry
 
 thelogger: Logger = getLogger(f"{LOGGERNAME}.{__name__}")
