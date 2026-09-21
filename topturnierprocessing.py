@@ -184,63 +184,70 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
     theresulturl = theresulturl.replace("index.htm", "erg.htm")
     thelogger.debug("interpret_tt_result Auswertung von %s", theresulturl)
     ret_df = DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
-    ergurlresponse: Response = requests_get(
-        theresulturl, timeout=MY_TIMEOUT, headers={"User-agent": "Mozilla"}
-    )
-    thelogger.debug("hier %s", ergurlresponse)
-    if ergurlresponse.ok:
-        thedatedict: dict[str, str] = tt_trndmntdatefrom(ergurlresponse)
-        thelogger.debug("Veranstaltungsdatum %s", thedatedict)
-        monthtonum: dict[str, str] = {
-            "Jan": "01",
-            "Feb": "02",
-            "Mar": "03",
-            "Apr": "04",
-            "May": "05",
-            "Jun": "06",
-            "Jul": "07",
-            "Aug": "08",
-            "Sep": "09",
-            "Oct": "10",
-            "Nov": "11",
-            "Dec": "12",
-        }
-        tournamentdate: str = (
-            thedatedict["JAHR"]
-            + "-"
-            + (
-                thedatedict["MONAT"]
-                if thedatedict["MONAT"].isdecimal()
-                else monthtonum[thedatedict["MONAT"]]
-            )
-            + "-"
-            + thedatedict["TAG"]
+    try:
+        ergurlresponse: Response = requests_get(
+            theresulturl, timeout=MY_TIMEOUT, headers={"User-agent": "Mozilla"}
         )
-        thelogger.info("Veranstaltungsdatum %s", tournamentdate)
-        try:
-            ret_df = tt_from_erg(ergurlresponse)
-            thelogger.debug("BASTI IST HIER")
-            thelogger.debug("%s", ret_df)
-            # ret_df = tt_from_erg_url(theresulturl)
-        except HTTPError as http_error:
-            thelogger.warning(
-                "Beim tt_from_erg von %s trat der HTTPError %s auf",
-                theresulturl,
-                http_error,
+    except Exception:
+        thelogger.exception(
+            "Beim requests_get von %s trat ein Fehler auf.", theresulturl
+        )
+        return DataFrame(columns=["Platz", "Paar", "Verein", "Verband"])
+    else:
+        thelogger.debug("hier %s", ergurlresponse)
+        if ergurlresponse.ok:
+            thedatedict: dict[str, str] = tt_trndmntdatefrom(ergurlresponse)
+            thelogger.debug("Veranstaltungsdatum %s", thedatedict)
+            monthtonum: dict[str, str] = {
+                "Jan": "01",
+                "Feb": "02",
+                "Mar": "03",
+                "Apr": "04",
+                "May": "05",
+                "Jun": "06",
+                "Jul": "07",
+                "Aug": "08",
+                "Sep": "09",
+                "Oct": "10",
+                "Nov": "11",
+                "Dec": "12",
+            }
+            tournamentdate: str = (
+                thedatedict["JAHR"]
+                + "-"
+                + (
+                    thedatedict["MONAT"]
+                    if thedatedict["MONAT"].isdecimal()
+                    else monthtonum[thedatedict["MONAT"]]
+                )
+                + "-"
+                + thedatedict["TAG"]
             )
-        except ValueError as value_error:
-            thelogger.debug(
-                "Beim tt_from_erg von %s trat der ValueError %s auf",
-                theresulturl,
-                value_error,
-            )
-        except Exception:
-            thelogger.exception(
-                "Beim tt_from_erg von %s trat ein Fehler auf",
-                theresulturl,
-            )
-            raise
-        if not getenv("CI"):
-            insertcouplestodb(ret_df, tournamentdate)
-    thelogger.debug("%s", ret_df)
-    return ret_df
+            thelogger.info("Veranstaltungsdatum %s", tournamentdate)
+            try:
+                ret_df = tt_from_erg(ergurlresponse)
+                thelogger.debug("BASTI IST HIER")
+                thelogger.debug("%s", ret_df)
+                # ret_df = tt_from_erg_url(theresulturl)
+            except HTTPError as http_error:
+                thelogger.warning(
+                    "Beim tt_from_erg von %s trat der HTTPError %s auf",
+                    theresulturl,
+                    http_error,
+                )
+            except ValueError as value_error:
+                thelogger.debug(
+                    "Beim tt_from_erg von %s trat der ValueError %s auf",
+                    theresulturl,
+                    value_error,
+                )
+            except Exception:
+                thelogger.exception(
+                    "Beim tt_from_erg von %s trat ein Fehler auf",
+                    theresulturl,
+                )
+                raise
+            if not getenv("CI"):
+                insertcouplestodb(ret_df, tournamentdate)
+        thelogger.debug("%s", ret_df)
+        return ret_df
