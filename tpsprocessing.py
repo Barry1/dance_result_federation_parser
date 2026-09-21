@@ -8,8 +8,9 @@ from urllib.request import urlopen
 
 # noinspection PyProtectedMember
 from lxml import etree
-from lxml.html import parse
-from pandas import DataFrame, read_html, to_numeric  # , option_context
+from lxml.html import parse as lxml_parse
+from pandas import DataFrame, read_html  # , option_context
+from pandas import to_numeric as pd_to_numeric
 
 from configprocessing import LOGGERNAME
 from dtvprocessing import get_dtv_df
@@ -37,12 +38,12 @@ def ogparserurl(baseurl: str) -> dict[str, str]:
     tournmtsdict: dict[str, str] = {}
     base: str = baseurl[: baseurl.rfind("/")]
     with urlopen(baseurl) as urlrequest:  # nosec B310
-        for entry in parse(urlrequest).xpath("/html/body/div/main/a[*]"):
+        for entry in lxml_parse(urlrequest).xpath("/html/body/div/main/a[*]"):
             tournmtsdict[entry.xpath("div/div/h4/text()")[0]] = (
                 f"{base}/{quote(entry.xpath('@href')[0])}"
             )
     if not tournmtsdict:  # keine in Main gefunden, jetzt DropDown nutzen
-        for entry in parse(baseurl).xpath(
+        for entry in lxml_parse(baseurl).xpath(
             "/html/body/nav/div[2]/ul/li[1]/ul/li[*]/a"
         ):
             tournmtsdict[entry.text] = f"{base}/{quote(entry.get('href'))}"
@@ -74,11 +75,14 @@ def interpret_tps_result(theresulturl: str) -> DataFrame:
         labels=["Platz", "Startnummer", "Paar", "Verein"], axis="columns"
     )
     tps_result_df = tps_result_df[
-        to_numeric(tps_result_df.Startnummer, errors="coerce").notnull()
+        pd_to_numeric(tps_result_df.Startnummer, errors="coerce").notnull()
     ]
     # with option_context("mode.chained_assignment", None):
-    tps_result_df.loc[:, "Verein"] = tps_result_df.Verein.map(cleanevfromentry)
+    CLUB_COLUMN = "Verein"
+    tps_result_df[CLUB_COLUMN] = tps_result_df[CLUB_COLUMN].map(
+        cleanevfromentry
+    )
     # Sortierung korrigert
     return tps_result_df.merge(
-        get_dtv_df(autoupdate=False), on="Verein", how="left"
+        get_dtv_df(autoupdate=False), on=CLUB_COLUMN, how="left"
     )
