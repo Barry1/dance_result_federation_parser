@@ -119,14 +119,17 @@ def tt_from_erg(theresultresponse: Response) -> DataFrame:
         erg_df.dropna(axis=1, inplace=True)
         erg_df = erg_df.iloc[:, [0, -2, -1]]
         thelogger.debug("Using just tbl1 %s", erg_df)
-    except Exception as e:
-        thelogger.error("An error occurred: %s", e)  # exc_info = e
+    except Exception:
+        thelogger.exception(
+            "Beim tt_from_erg von %s trat ein Fehler auf", theresultresponse
+        )
+        """         thelogger.error("An error occurred: %s", e)  # exc_info = e
         thelogger.error(
             "%s in line %i of %s",
             type(e).__name__,
             e.__traceback__.tb_lineno if e.__traceback__ else 0,
             __file__,
-        )
+        )"""
         raise
     else:
         erg_df = concat([*tab1tbl, *tab2tbl])
@@ -215,11 +218,7 @@ def interpret_tt_result(theresulturl: str) -> DataFrame:
             tournamentdate: str = (
                 thedatedict["JAHR"]
                 + "-"
-                + (
-                    thedatedict["MONAT"]
-                    if thedatedict["MONAT"].isdecimal()
-                    else monthtonum[thedatedict["MONAT"]]
-                )
+                + monthtonum.get(thedatedict["MONAT"], thedatedict["MONAT"])
                 + "-"
                 + thedatedict["TAG"]
             )
