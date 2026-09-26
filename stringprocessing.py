@@ -46,6 +46,7 @@ def clean_number_from_couple(couple_str_with_num: str) -> str:
 
 def sr_human_comp_info(turnier_info: str) -> str:
     """Convert URL part to human words."""
+    thelogger.debug("comp_desc_url: %s", turnier_info)
     lastpos: int = turnier_info.rfind("/")
     firstpos: int = turnier_info.rfind("/", 0, lastpos) + 1
     turnier_info = turnier_info[firstpos:lastpos]
@@ -53,7 +54,11 @@ def sr_human_comp_info(turnier_info: str) -> str:
     [_comp_num, comp_date, comp_desc] = turnier_info.replace("-", "_").split(
         "_", 2
     )
+    thelogger.debug(
+        "num: %s date: %s desc: %s", _comp_num, comp_date, comp_desc
+    )
     comp_desc = comp_desc.upper()
+    thelogger.debug("comp_desc: %s", comp_desc)
     comp_desc = comp_desc.replace("U21", "UnderTwentyOne ")
     comp_desc = comp_desc.replace("HGR", "Hauptgruppe ")
     comp_desc = comp_desc.replace("MAS", "Masters ")
@@ -61,22 +66,31 @@ def sr_human_comp_info(turnier_info: str) -> str:
     comp_desc = comp_desc.replace("KIN", "Kinder ")
     comp_desc = comp_desc.replace("JUG", "Jugend ")
     comp_desc = comp_desc.replace("JUN", "Junioren ")
+    thelogger.debug("comp_desc: %s", comp_desc)
     comp_desc = comp_desc.replace("INT", "International ")
     comp_desc = comp_desc.replace("STD", " Standard ")
     comp_desc = comp_desc.replace("LAT", " Latein ")
+    thelogger.debug("comp_desc: %s", comp_desc)
     comp_desc = comp_desc.replace("1", " I ")
     comp_desc = comp_desc.replace("2", " II ")
     comp_desc = comp_desc.replace("3", " III ")
     comp_desc = comp_desc.replace("4", " IV ")
+    thelogger.debug("comp_desc: %s", comp_desc)
     comp_desc = comp_desc.replace("55", " %% ")  # G55
     comp_desc = comp_desc.replace("5", " V ")
     comp_desc = comp_desc.replace(" %% ", " 55 ")  # G55
+    thelogger.debug("comp_desc: %s", comp_desc)
     comp_desc = comp_desc.replace("  ", " ")
+    thelogger.debug("comp_desc: %s", comp_desc)
     comp_desc_human: str = f"{comp_date[:2]}.{comp_date[2:]}."  # comp_num+':'+
     if comp_desc.startswith("WDSF"):
         comp_desc_human += f" WDSF {comp_desc[4:].strip()}"
-    else:
+    elif comp_desc.startswith("DTV"):
         comp_desc_human += f" DTV {comp_desc[3:].strip()}"
+    elif comp_desc.startswith("LM"):
+        comp_desc_human += f" (G)LM {comp_desc.strip()}"
+    else:
+        comp_desc_human += f" {comp_desc.strip()}"
     thelogger.debug("%s ==> %s", turnier_info, comp_desc_human)
     return comp_desc_human
 
